@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Composio</title>
+    <script>
+        async function runComposio() {
+            const input = document.getElementById("userInput").value;
+            const response = await fetch("/run", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ input })
+            });
+
+            const result = await response.json();
+            document.getElementById("output").innerText = JSON.stringify(result, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Demo Composio trên Localhost</h1>
+    <input type="text" id="userInput" placeholder="Nhập lệnh của bạn...">
+    <button onclick="runComposio()">Chạy</button>
+    <pre id="output"></pre>
+</body>
+</html>

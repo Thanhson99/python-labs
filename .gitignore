@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+
+# Python cache/build
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment files (secrets)
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Local secret config
+composio/config.ini
+
+# Logs and runtime files
+*.log
+logs/
+
+# Build/dist artifacts
+build/
+dist/
+*.pyz
+*.toc
+exe/build/
+exe/dist/
+
+# IDE/editor
+.vscode/
+.idea/

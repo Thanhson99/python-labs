@@ -1,0 +1,194 @@
+{
+    "sources": [
+        {
+            "name": "CoinDesk",
+            "url": "https://www.coindesk.com/",
+            "rss": "https://www.coindesk.com/arc/outboundfeeds/rss/"
+        },
+        {
+            "name": "CoinTelegraph",
+            "url": "https://cointelegraph.com/",
+            "rss": "https://cointelegraph.com/rss"
+        },
+        {
+            "name": "Decrypt",
+            "url": "https://decrypt.co/",
+            "rss": "https://decrypt.co/feed"
+        },
+        {
+            "name": "The Block",
+            "url": "https://www.theblock.co/",
+            "rss": "https://www.theblock.co/rss.xml"
+        },
+        {
+            "name": "Bitcoin Magazine",
+            "url": "https://bitcoinmagazine.com/",
+            "rss": "https://bitcoinmagazine.com/.rss/full/"
+        },
+        {
+            "name": "CryptoSlate",
+            "url": "https://cryptoslate.com/",
+            "rss": "https://cryptoslate.com/feed/"
+        },
+        {
+            "name": "NewsBTC",
+            "url": "https://www.newsbtc.com/",
+            "rss": "https://www.newsbtc.com/feed/"
+        },
+        {
+            "name": "BeInCrypto",
+            "url": "https://beincrypto.com/",
+            "rss": "https://beincrypto.com/feed/"
+        },
+        {
+            "name": "U.Today",
+            "url": "https://u.today/",
+            "rss": "https://u.today/rss"
+        },
+        {
+            "name": "AMB Crypto",
+            "url": "https://ambcrypto.com/",
+            "rss": "https://ambcrypto.com/feed/"
+        },
+        {
+            "name": "CoinMarketCap News",
+            "url": "https://coinmarketcap.com/headlines/news/",
+            "rss": ""
+        },
+        {
+            "name": "Crypto Briefing",
+            "url": "https://cryptobriefing.com/",
+            "rss": "https://cryptobriefing.com/feed/"
+        },
+        {
+            "name": "Ethereum World News",
+            "url": "https://en.ethereumworldnews.com/",
+            "rss": "https://en.ethereumworldnews.com/feed/"
+        },
+        {
+            "name": "Daily Hodl",
+            "url": "https://dailyhodl.com/",
+            "rss": "https://dailyhodl.com/feed/"
+        },
+        {
+            "name": "Investing.com Crypto",
+            "url": "https://www.investing.com/news/cryptocurrency-news",
+            "rss": ""
+        },
+        {
+            "name": "FXStreet Crypto",
+            "url": "https://www.fxstreet.com/cryptocurrencies",
+            "rss": ""
+        },
+        {
+            "name": "CryptoPotato",
+            "url": "https://cryptopotato.com/",
+            "rss": "https://cryptopotato.com/feed/"
+        },
+        {
+            "name": "CoinGape",
+            "url": "https://coingape.com/",
+            "rss": "https://coingape.com/feed/"
+        },
+        {
+            "name": "Bitcoinist",
+            "url": "https://bitcoinist.com/",
+            "rss": "https://bitcoinist.com/feed/"
+        },
+        {
+            "name": "Binance Blog",
+            "url": "https://www.binance.com/en/blog",
+            "rss": ""
+        },
+        {
+            "name": "Binance News",
+            "url": "https://www.binance.com/en/news",
+            "rss": ""
+        },
+        {
+            "name": "OKX Blog",
+            "url": "https://www.okx.com/blog/",
+            "rss": ""
+        },
+        {
+            "name": "Kraken Blog",
+            "url": "https://blog.kraken.com/",
+            "rss": ""
+        },
+        {
+            "name": "FTX Blog",
+            "url": "https://blog.ftx.com/",
+            "rss": ""
+        },
+        {
+            "name": "KuCoin Blog",
+            "url": "https://www.kucoin.com/blog",
+            "rss": ""
+        },
+        {
+            "name": "Huobi Blog",
+            "url": "https://www.huobi.com/blog/",
+            "rss": ""
+        },
+        {
+            "name": "Gate.io Blog",
+            "url": "https://www.gate.io/blog",
+            "rss": ""
+        },
+        {
+            "name": "Bybit Blog",
+            "url": "https://blog.bybit.com/",
+            "rss": ""
+        },
+        {
+            "name": "CoinGecko News",
+            "url": "https://www.coingecko.com/en/news",
+            "rss": ""
+        },
+        {
+            "name": "Messari News",
+            "url": "https://messari.io/news",
+            "rss": ""
+        },
+        {
+            "name": "Santiment Blog",
+            "url": "https://santiment.net/blog/",
+            "rss": ""
+        },
+        {
+            "name": "Dune Analytics Blog",
+            "url": "https://dune.com/blog/",
+            "rss": ""
+        },
+        {
+            "name": "Nansen Blog",
+            "url": "https://www.nansen.ai/research",
+            "rss": ""
+        },
+        {
+            "name": "Glassnode Insights",
+            "url": "https://glassnode.com/insights/",
+            "rss": ""
+        },
+        {
+            "name": "IntoTheBlock Blog",
+            "url": "https://blog.intotheblock.com/",
+            "rss": ""
+        },
+        {
+            "name": "DefiLlama News",
+            "url": "https://defillama.com/news",
+            "rss": ""
+        },
+        {
+            "name": "LBank Blog",
+            "url": "https://blog.lbank.info/",
+            "rss": ""
+        },
+        {
+            "name": "CryptoCompare",
+            "url": "https://www.cryptocompare.com/",
+            "rss": "https://www.cryptocompare.com/api/data/news/"
+        }
+    ]
+}

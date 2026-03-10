@@ -1,0 +1,4 @@
+google-search-results
+beautifulsoup4
+requests
+numpy

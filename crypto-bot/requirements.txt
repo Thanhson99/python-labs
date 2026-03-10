@@ -1,0 +1,7 @@
+# Required modules
+pip install python-telegram-bot python-dotenv
+pip install apscheduler
+pip install feedparser
+
+# Test
+pip install pytest
