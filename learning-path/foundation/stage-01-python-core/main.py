@@ -16,7 +16,7 @@ def normalize_user(name: str, retries: int, active: bool) -> dict:
 
 def main() -> None:
     users = [
-        ("Hopee", 2, True),
+        ("ThanhSon99", 2, True),
         ("Guest", 5, False),
     ]
 

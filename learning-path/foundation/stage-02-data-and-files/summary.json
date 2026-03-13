@@ -1,0 +1,8 @@
+{
+  "total_events": 3,
+  "kind_counts": {
+    "login": 2,
+    "purchase": 1
+  },
+  "success_rate": 0.667
+}

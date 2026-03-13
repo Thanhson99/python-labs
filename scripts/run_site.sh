@@ -67,4 +67,4 @@ fi
 "$PYTHON_CMD" "$ROOT_DIR/scripts/build_site.py"
 
 echo "Serving site at http://127.0.0.1:${FREE_PORT} using ${PYTHON_CMD}"
-exec "$PYTHON_CMD" -m http.server "$FREE_PORT" --directory "$ROOT_DIR/site"
+exec "$PYTHON_CMD" "$ROOT_DIR/scripts/serve_site.py" --host 127.0.0.1 --port "$FREE_PORT" --site-dir "$ROOT_DIR/site"

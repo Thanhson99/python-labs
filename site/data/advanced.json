@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T05:43:08.264134+00:00",
+  "generated_at": "2026-03-13T05:53:52.038106+00:00",
   "site": "advanced",
   "title": "Python Advanced Architecture Track",
   "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
@@ -354,7 +354,8 @@
         "protobuf",
         "spectral"
       ],
-      "example_path": "learning-path/advanced/phase-a-service-contracts"
+      "example_path": "learning-path/advanced/phase-a-service-contracts",
+      "example_file": "learning-path/advanced/phase-a-service-contracts/pydantic_models.py"
     },
     {
       "stage": "Phase B: Event-Driven Core",
@@ -372,7 +373,8 @@
         "Kafka",
         "Redis Streams"
       ],
-      "example_path": "learning-path/advanced/phase-b-event-driven-core"
+      "example_path": "learning-path/advanced/phase-b-event-driven-core",
+      "example_file": "learning-path/advanced/phase-b-event-driven-core/rabbitmq_worker_example.py"
     },
     {
       "stage": "Phase C: Consistency Patterns",
@@ -389,7 +391,8 @@
         "Celery",
         "Kafka"
       ],
-      "example_path": "learning-path/advanced/phase-c-consistency-patterns"
+      "example_path": "learning-path/advanced/phase-c-consistency-patterns",
+      "example_file": "learning-path/advanced/phase-c-consistency-patterns/outbox_pattern_example.py"
     },
     {
       "stage": "Phase D: Data Platform",
@@ -407,7 +410,8 @@
         "Alembic",
         "Redis"
       ],
-      "example_path": "learning-path/advanced/phase-d-data-platform"
+      "example_path": "learning-path/advanced/phase-d-data-platform",
+      "example_file": "learning-path/advanced/phase-d-data-platform/repository_pattern.py"
     },
     {
       "stage": "Phase E: Reliability Engineering",
@@ -424,7 +428,8 @@
         "tenacity",
         "rate limiting"
       ],
-      "example_path": "learning-path/advanced/phase-e-reliability-engineering"
+      "example_path": "learning-path/advanced/phase-e-reliability-engineering",
+      "example_file": "learning-path/advanced/phase-e-reliability-engineering/resilient_http_client.py"
     },
     {
       "stage": "Phase F: Security",
@@ -442,7 +447,8 @@
         "Vault",
         "OPA"
       ],
-      "example_path": "learning-path/advanced/phase-f-security"
+      "example_path": "learning-path/advanced/phase-f-security",
+      "example_file": "learning-path/advanced/phase-f-security/jwt_service_example.py"
     },
     {
       "stage": "Phase G: Observability",
@@ -460,7 +466,8 @@
         "OpenTelemetry",
         "Loki"
       ],
-      "example_path": "learning-path/advanced/phase-g-observability"
+      "example_path": "learning-path/advanced/phase-g-observability",
+      "example_file": "learning-path/advanced/phase-g-observability/structured_logging_example.py"
     },
     {
       "stage": "Phase H: Platform and Delivery",
@@ -477,7 +484,8 @@
         "Kubernetes",
         "Argo Rollouts"
       ],
-      "example_path": "learning-path/advanced/phase-h-platform-delivery"
+      "example_path": "learning-path/advanced/phase-h-platform-delivery",
+      "example_file": ""
     },
     {
       "stage": "Phase I: Governance and Cost",
@@ -493,7 +501,8 @@
         "Backstage",
         "FinOps dashboards"
       ],
-      "example_path": "learning-path/advanced/phase-i-governance-and-cost"
+      "example_path": "learning-path/advanced/phase-i-governance-and-cost",
+      "example_file": ""
     }
   ],
   "java_python_map": [
@@ -600,6 +609,49 @@
         "authlib",
         "hvac"
       ]
+    }
+  ],
+  "mini_projects": [
+    {
+      "name": "Advanced Milestone 1: Event Pipeline Starter",
+      "path": "learning-path/projects/advanced-event-pipeline-starter",
+      "focus": "Producer-consumer flow + retry + outbox pattern",
+      "stack": [
+        "Kafka",
+        "RabbitMQ",
+        "SQLite",
+        "Python workers"
+      ]
+    },
+    {
+      "name": "Advanced Milestone 2: Observable Service Platform",
+      "path": "learning-path/projects/advanced-observable-service-platform",
+      "focus": "API + DB + metrics + structured logging + deploy templates",
+      "stack": [
+        "FastAPI",
+        "PostgreSQL",
+        "Prometheus",
+        "OpenTelemetry",
+        "Docker"
+      ]
+    }
+  ],
+  "architecture_diagrams": [
+    {
+      "title": "RabbitMQ Worker Flow",
+      "file": "assets/diagrams/rabbitmq-flow.svg"
+    },
+    {
+      "title": "Kafka Stream Processing Flow",
+      "file": "assets/diagrams/kafka-flow.svg"
+    },
+    {
+      "title": "Outbox Pattern Transaction Flow",
+      "file": "assets/diagrams/outbox-pattern.svg"
+    },
+    {
+      "title": "Saga Orchestration Flow",
+      "file": "assets/diagrams/saga-flow.svg"
     }
   ],
   "capstone_projects": [

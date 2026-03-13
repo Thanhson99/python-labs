@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 260" role="img" aria-label="Outbox pattern flow">
+  <defs>
+    <style>
+      .box { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; rx: 10; }
+      .text { font: 600 18px 'IBM Plex Sans', sans-serif; fill: #155e75; }
+      .small { font: 500 14px 'IBM Plex Sans', sans-serif; fill: #0f172a; }
+      .arrow { stroke: #0f766e; stroke-width: 3; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect class="box" x="40" y="85" width="230" height="100"/>
+  <text class="text" x="85" y="125">Order Service</text>
+  <text class="small" x="62" y="150">write order + outbox in one TX</text>
+
+  <rect class="box" x="380" y="45" width="240" height="80"/>
+  <text class="text" x="445" y="90">Orders Table</text>
+
+  <rect class="box" x="380" y="145" width="240" height="80"/>
+  <text class="text" x="445" y="190">Outbox Table</text>
+
+  <rect class="box" x="760" y="85" width="180" height="100"/>
+  <text class="text" x="793" y="125">Relay Worker</text>
+  <text class="small" x="785" y="150">publish events safely</text>
+
+  <line class="arrow" x1="270" y1="120" x2="380" y2="85"/>
+  <line class="arrow" x1="270" y1="150" x2="380" y2="185"/>
+  <line class="arrow" x1="620" y1="185" x2="760" y2="135"/>
+</svg>

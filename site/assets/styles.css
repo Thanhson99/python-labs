@@ -121,6 +121,33 @@ main {
   padding: 0.85rem;
 }
 
+.roadmap-actions {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.roadmap-actions label {
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.run-example-btn {
+  border: 1px solid transparent;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 60%, #7c3aed 100%);
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.45rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.run-example-btn:hover {
+  filter: saturate(1.08);
+}
+
 .cheat-item {
   border-left: 4px solid #60a5fa;
 }
@@ -231,6 +258,18 @@ footer {
   text-align: center;
   padding: 0.8rem 1rem 1.4rem;
   font-size: 0.85rem;
+}
+
+.console-panel {
+  margin: 0 1.5rem 1rem;
+}
+
+.diagram-card img {
+  display: block;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #ffffff;
 }
 
 @media (max-width: 920px) {

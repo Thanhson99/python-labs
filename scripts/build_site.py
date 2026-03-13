@@ -54,7 +54,7 @@ FOUNDATION_CHEATSHEET = [
         "category": "Syntax",
         "title": "Variables and Naming",
         "summary": "Use snake_case and keep names semantic.",
-        "snippet": "user_name = 'hopee'\\nmax_retries = 3\\nis_ready = False",
+        "snippet": "user_name = 'ThanhSon99'\\nmax_retries = 3\\nis_ready = False",
         "application": "Readable scripts and maintainable configs.",
         "tags": ["variables", "style"],
     },
@@ -702,6 +702,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["CLI calculator", "json parser", "file reader tool"],
             "tools": ["python", "venv", "pip", "argparse"],
             "example_path": "learning-path/foundation/stage-01-python-core",
+            "example_file": "learning-path/foundation/stage-01-python-core/main.py",
         },
         {
             "stage": "Stage 2: Data and Files",
@@ -714,6 +715,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["daily report generator", "data cleaner", "batch rename script"],
             "tools": ["json", "csv", "pathlib", "collections"],
             "example_path": "learning-path/foundation/stage-02-data-and-files",
+            "example_file": "learning-path/foundation/stage-02-data-and-files/transform_data.py",
         },
         {
             "stage": "Stage 3: API Integrations",
@@ -726,6 +728,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["weather cli", "currency monitor", "rss news collector"],
             "tools": ["requests", "python-dotenv", "logging"],
             "example_path": "learning-path/foundation/stage-03-api-integrations",
+            "example_file": "learning-path/foundation/stage-03-api-integrations/api_client.py",
         },
         {
             "stage": "Stage 4: Project Structure",
@@ -738,6 +741,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["mini service template", "shared utils package"],
             "tools": ["pip", "pytest", "ruff", "black"],
             "example_path": "learning-path/foundation/stage-04-project-structure",
+            "example_file": "learning-path/foundation/stage-04-project-structure/app/main.py",
         },
         {
             "stage": "Stage 5: Intermediate Automation",
@@ -750,6 +754,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["market tracker", "auto summary bot", "alert scheduler"],
             "tools": ["apscheduler", "jinja2", "pytest"],
             "example_path": "learning-path/foundation/stage-05-intermediate-automation",
+            "example_file": "learning-path/foundation/stage-05-intermediate-automation/scheduler_demo.py",
         },
         {
             "stage": "Stage 6: API Service Basics",
@@ -762,6 +767,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["task api", "auth prototype", "service status board"],
             "tools": ["fastapi", "uvicorn", "pydantic"],
             "example_path": "learning-path/foundation/stage-06-api-service-basics",
+            "example_file": "learning-path/foundation/stage-06-api-service-basics/mini_api.py",
         },
         {
             "stage": "Stage 7: Storage",
@@ -775,6 +781,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["inventory service", "blog backend"],
             "tools": ["postgresql", "sqlalchemy", "alembic"],
             "example_path": "learning-path/foundation/stage-07-storage",
+            "example_file": "learning-path/foundation/stage-07-storage/sqlite_example.py",
         },
         {
             "stage": "Stage 8: Async and Concurrency",
@@ -787,6 +794,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["bulk fetcher", "parallel scraper", "async notifier"],
             "tools": ["asyncio", "httpx", "concurrent.futures"],
             "example_path": "learning-path/foundation/stage-08-async-and-concurrency",
+            "example_file": "learning-path/foundation/stage-08-async-and-concurrency/async_demo.py",
         },
         {
             "stage": "Stage 9: Testing and Quality",
@@ -799,6 +807,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["test harness for one service"],
             "tools": ["pytest", "coverage", "pre-commit"],
             "example_path": "learning-path/foundation/stage-09-testing-and-quality",
+            "example_file": "learning-path/foundation/stage-09-testing-and-quality/math_utils.py",
         },
         {
             "stage": "Stage 10: Delivery",
@@ -811,6 +820,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             "build": ["dockerized api + ci"],
             "tools": ["docker", "github actions", "makefile"],
             "example_path": "learning-path/foundation/stage-10-delivery",
+            "example_file": "",
         },
     ]
 
@@ -842,6 +852,21 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         },
     ]
 
+    mini_projects = [
+        {
+            "name": "Foundation Milestone 1: CLI Data Toolkit",
+            "path": "learning-path/projects/foundation-cli-data-toolkit",
+            "focus": "Core syntax + data transformations + file outputs",
+            "stack": ["python", "argparse", "json", "pathlib"],
+        },
+        {
+            "name": "Foundation Milestone 2: API + Storage Service",
+            "path": "learning-path/projects/foundation-api-storage-service",
+            "focus": "HTTP endpoint + persistence + tests",
+            "stack": ["http.server", "sqlite3", "pytest"],
+        },
+    ]
+
     return {
         "generated_at": generated_at,
         "site": "foundation",
@@ -851,6 +876,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         "cheat_sheets": FOUNDATION_CHEATSHEET,
         "roadmap": roadmap,
         "open_source_stacks": open_source_stacks,
+        "mini_projects": mini_projects,
         "recommended_services": beginner_services,
     }
 
@@ -925,6 +951,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["contract-first user service", "api lint pipeline"],
             "tools": ["FastAPI", "Pydantic", "protobuf", "spectral"],
             "example_path": "learning-path/advanced/phase-a-service-contracts",
+            "example_file": "learning-path/advanced/phase-a-service-contracts/pydantic_models.py",
         },
         {
             "stage": "Phase B: Event-Driven Core",
@@ -936,6 +963,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["order event pipeline", "notification worker"],
             "tools": ["RabbitMQ", "Kafka", "Redis Streams"],
             "example_path": "learning-path/advanced/phase-b-event-driven-core",
+            "example_file": "learning-path/advanced/phase-b-event-driven-core/rabbitmq_worker_example.py",
         },
         {
             "stage": "Phase C: Consistency Patterns",
@@ -947,6 +975,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["payment + order saga"],
             "tools": ["PostgreSQL", "Celery", "Kafka"],
             "example_path": "learning-path/advanced/phase-c-consistency-patterns",
+            "example_file": "learning-path/advanced/phase-c-consistency-patterns/outbox_pattern_example.py",
         },
         {
             "stage": "Phase D: Data Platform",
@@ -958,6 +987,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["billing ledger", "query side read API"],
             "tools": ["SQLAlchemy", "Alembic", "Redis"],
             "example_path": "learning-path/advanced/phase-d-data-platform",
+            "example_file": "learning-path/advanced/phase-d-data-platform/repository_pattern.py",
         },
         {
             "stage": "Phase E: Reliability Engineering",
@@ -969,6 +999,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["resilient API adapter layer"],
             "tools": ["httpx", "tenacity", "rate limiting"],
             "example_path": "learning-path/advanced/phase-e-reliability-engineering",
+            "example_file": "learning-path/advanced/phase-e-reliability-engineering/resilient_http_client.py",
         },
         {
             "stage": "Phase F: Security",
@@ -980,6 +1011,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["auth gateway", "token introspection service"],
             "tools": ["Auth0/Keycloak", "Vault", "OPA"],
             "example_path": "learning-path/advanced/phase-f-security",
+            "example_file": "learning-path/advanced/phase-f-security/jwt_service_example.py",
         },
         {
             "stage": "Phase G: Observability",
@@ -991,6 +1023,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["full telemetry stack for 3 services"],
             "tools": ["Prometheus", "Grafana", "OpenTelemetry", "Loki"],
             "example_path": "learning-path/advanced/phase-g-observability",
+            "example_file": "learning-path/advanced/phase-g-observability/structured_logging_example.py",
         },
         {
             "stage": "Phase H: Platform and Delivery",
@@ -1002,6 +1035,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["production deployment blueprint"],
             "tools": ["Docker", "Kubernetes", "Argo Rollouts"],
             "example_path": "learning-path/advanced/phase-h-platform-delivery",
+            "example_file": "",
         },
         {
             "stage": "Phase I: Governance and Cost",
@@ -1013,6 +1047,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "build": ["team service catalog + operational playbook"],
             "tools": ["Backstage", "FinOps dashboards"],
             "example_path": "learning-path/advanced/phase-i-governance-and-cost",
+            "example_file": "",
         },
     ]
 
@@ -1062,6 +1097,28 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         },
     ]
 
+    mini_projects = [
+        {
+            "name": "Advanced Milestone 1: Event Pipeline Starter",
+            "path": "learning-path/projects/advanced-event-pipeline-starter",
+            "focus": "Producer-consumer flow + retry + outbox pattern",
+            "stack": ["Kafka", "RabbitMQ", "SQLite", "Python workers"],
+        },
+        {
+            "name": "Advanced Milestone 2: Observable Service Platform",
+            "path": "learning-path/projects/advanced-observable-service-platform",
+            "focus": "API + DB + metrics + structured logging + deploy templates",
+            "stack": ["FastAPI", "PostgreSQL", "Prometheus", "OpenTelemetry", "Docker"],
+        },
+    ]
+
+    architecture_diagrams = [
+        {"title": "RabbitMQ Worker Flow", "file": "assets/diagrams/rabbitmq-flow.svg"},
+        {"title": "Kafka Stream Processing Flow", "file": "assets/diagrams/kafka-flow.svg"},
+        {"title": "Outbox Pattern Transaction Flow", "file": "assets/diagrams/outbox-pattern.svg"},
+        {"title": "Saga Orchestration Flow", "file": "assets/diagrams/saga-flow.svg"},
+    ]
+
     return {
         "generated_at": generated_at,
         "site": "advanced",
@@ -1072,6 +1129,8 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         "roadmap": roadmap,
         "java_python_map": java_python_map,
         "open_source_stacks": open_source_stacks,
+        "mini_projects": mini_projects,
+        "architecture_diagrams": architecture_diagrams,
         "capstone_projects": capstone,
         "recommended_services": advanced_services,
     }

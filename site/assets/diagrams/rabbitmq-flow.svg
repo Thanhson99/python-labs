@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" role="img" aria-label="RabbitMQ worker flow">
+  <defs>
+    <style>
+      .box { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; rx: 10; }
+      .text { font: 600 18px 'IBM Plex Sans', sans-serif; fill: #1e3a8a; }
+      .small { font: 500 14px 'IBM Plex Sans', sans-serif; fill: #334155; }
+      .arrow { stroke: #0f766e; stroke-width: 3; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+  <rect class="box" x="40" y="70" width="180" height="90"/>
+  <text class="text" x="68" y="110">API Producer</text>
+  <text class="small" x="64" y="135">publish order event</text>
+
+  <rect class="box" x="390" y="70" width="200" height="90"/>
+  <text class="text" x="430" y="110">RabbitMQ</text>
+  <text class="small" x="422" y="135">queue + retry + DLQ</text>
+
+  <rect class="box" x="760" y="70" width="180" height="90"/>
+  <text class="text" x="794" y="110">Worker</text>
+  <text class="small" x="785" y="135">consume and process</text>
+
+  <line class="arrow" x1="220" y1="115" x2="390" y2="115"/>
+  <line class="arrow" x1="590" y1="115" x2="760" y2="115"/>
+</svg>

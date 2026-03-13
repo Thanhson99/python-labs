@@ -11,8 +11,19 @@ function normalizeSnippet(snippet) {
   if (snippet === null || snippet === undefined) {
     return "";
   }
-  // Data can contain literal "\n"; convert to real line breaks for <pre><code>.
   return String(snippet).replace(/\\n/g, "\n");
+}
+
+function getProgressKey(track, itemName) {
+  return `learning_progress:${track}:${itemName}`;
+}
+
+function isCompleted(track, itemName) {
+  return localStorage.getItem(getProgressKey(track, itemName)) === "1";
+}
+
+function setCompleted(track, itemName, completed) {
+  localStorage.setItem(getProgressKey(track, itemName), completed ? "1" : "0");
 }
 
 function renderStats(data) {
@@ -24,11 +35,14 @@ function renderStats(data) {
   const totalCheats = Array.isArray(data.cheat_sheets) ? data.cheat_sheets.length : 0;
   const totalRoadmap = Array.isArray(data.roadmap) ? data.roadmap.length : 0;
   const totalServices = Array.isArray(data.recommended_services) ? data.recommended_services.length : 0;
+  const totalDone = Array.isArray(data.roadmap)
+    ? data.roadmap.filter((item) => isCompleted(data.site || "track", item.stage || item.phase || "")).length
+    : 0;
 
   stats.innerHTML = [
     ["Cheat Items", totalCheats],
     ["Roadmap Stages", totalRoadmap],
-    ["Services", totalServices],
+    ["Completed", `${totalDone}/${totalRoadmap}`],
     ["Track", data.site || "catalog"],
   ]
     .map(
@@ -66,29 +80,91 @@ function renderCheatSheet(items) {
     .join("");
 }
 
-function renderRoadmap(items) {
+function bindRoadmapActions(track, data) {
+  const checkboxes = document.querySelectorAll(".progress-toggle");
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const itemName = checkbox.dataset.item || "";
+      setCompleted(track, itemName, checkbox.checked);
+      renderStats(data);
+    });
+  });
+
+  const runButtons = document.querySelectorAll(".run-example-btn");
+  runButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      const exampleFile = button.dataset.exampleFile || "";
+      if (!exampleFile) {
+        return;
+      }
+
+      const output = document.getElementById("runnerOutput");
+      if (output) {
+        output.textContent = `Running: ${exampleFile} ...`;
+      }
+
+      try {
+        const response = await fetch("/api/run-example", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ example_file: exampleFile }),
+        });
+        const payload = await response.json();
+
+        const lines = [
+          `ok: ${payload.ok}`,
+          payload.command ? `command: ${payload.command}` : "",
+          payload.error ? `error: ${payload.error}` : "",
+          payload.stdout ? `\nstdout:\n${payload.stdout}` : "",
+          payload.stderr ? `\nstderr:\n${payload.stderr}` : "",
+        ].filter(Boolean);
+
+        if (output) {
+          output.textContent = lines.join("\n");
+        }
+      } catch (error) {
+        if (output) {
+          output.textContent = `Runner request failed: ${error}`;
+        }
+      }
+    });
+  });
+}
+
+function renderRoadmap(items, track, data) {
   const container = document.getElementById("roadmap");
   if (!container || !Array.isArray(items)) {
     return;
   }
 
   container.innerHTML = items
-    .map(
-      (item) => `
+    .map((item, index) => {
+      const itemName = item.stage || item.phase || `item-${index}`;
+      const checked = isCompleted(track, itemName) ? "checked" : "";
+      const runButton = item.example_file
+        ? `<button class="run-example-btn" data-example-file="${escapeHtml(item.example_file)}">Run example</button>`
+        : "";
+
+      return `
       <article class="timeline-item">
-        <h3>${escapeHtml(item.stage || item.phase || "")}</h3>
+        <h3>${escapeHtml(itemName)}</h3>
         <p><strong>Goals:</strong> ${escapeHtml((item.goals || item.focus || []).join(", "))}</p>
         <p><strong>Build:</strong> ${escapeHtml((item.build || item.practice_with || []).join(", "))}</p>
         <p><strong>Tools:</strong> ${escapeHtml((item.tools || []).join(", "))}</p>
-        ${
-          item.example_path
-            ? `<p><strong>Example code:</strong> <code>${escapeHtml(item.example_path)}</code></p>`
-            : ""
-        }
+        ${item.example_path ? `<p><strong>Example code:</strong> <code>${escapeHtml(item.example_path)}</code></p>` : ""}
+        <div class="roadmap-actions">
+          <label>
+            <input type="checkbox" class="progress-toggle" data-item="${escapeHtml(itemName)}" ${checked} />
+            Mark completed
+          </label>
+          ${runButton}
+        </div>
       </article>
-    `,
-    )
+    `;
+    })
     .join("");
+
+  bindRoadmapActions(track, data);
 }
 
 function renderServices(services) {
@@ -195,6 +271,57 @@ function renderOpenSourceStacks(items) {
     .join("");
 }
 
+function renderMiniProjects(items) {
+  const container = document.getElementById("miniProjects");
+  if (!container) {
+    return;
+  }
+
+  if (!Array.isArray(items) || items.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+      <article class="service-card">
+        <h3>${escapeHtml(item.name || "")}</h3>
+        <p><strong>Path:</strong> <code>${escapeHtml(item.path || "")}</code></p>
+        <p><strong>Focus:</strong> ${escapeHtml(item.focus || "")}</p>
+        <div class="tags">
+          ${(item.stack || []).map((tech) => `<span class="tag">${escapeHtml(tech)}</span>`).join("")}
+        </div>
+      </article>
+    `,
+    )
+    .join("");
+}
+
+function renderArchitectureDiagrams(items) {
+  const container = document.getElementById("diagrams");
+  const panel = document.getElementById("diagramPanel");
+  if (!panel || !container) {
+    return;
+  }
+
+  if (!Array.isArray(items) || items.length === 0) {
+    panel.style.display = "none";
+    return;
+  }
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+      <article class="service-card diagram-card">
+        <h3>${escapeHtml(item.title || "")}</h3>
+        <img src="${escapeHtml(item.file || "")}" alt="${escapeHtml(item.title || "diagram")}" />
+      </article>
+    `,
+    )
+    .join("");
+}
+
 async function initLearningSite() {
   const source = document.body.dataset.source;
   if (!source) {
@@ -203,6 +330,7 @@ async function initLearningSite() {
 
   const response = await fetch(source);
   const data = await response.json();
+  const track = data.site || "track";
 
   const title = document.getElementById("title");
   const subtitle = document.getElementById("subtitle");
@@ -217,9 +345,11 @@ async function initLearningSite() {
 
   renderStats(data);
   renderCheatSheet(data.cheat_sheets || []);
-  renderRoadmap(data.roadmap || []);
+  renderRoadmap(data.roadmap || [], track, data);
   renderStackMap(data.java_python_map || []);
+  renderArchitectureDiagrams(data.architecture_diagrams || []);
   renderOpenSourceStacks(data.open_source_stacks || []);
+  renderMiniProjects(data.mini_projects || []);
   renderCapstones(data.capstone_projects || []);
   renderServices(data.recommended_services || []);
 

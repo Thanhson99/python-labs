@@ -18,5 +18,5 @@ def download_youtube_video(url, path_to_save):
 
 # Example usage
 video_url = "https://www.youtube.com/watch?v=AbI--MaIh-k"
-save_path = "/Users/hopee/Downloads/python/download-video/"
+save_path = "./download-video/"
 download_youtube_video(video_url, save_path)

@@ -58,4 +58,4 @@ $siteDir = Join-Path $RootDir 'site'
 & $pythonExe @pythonArgs $buildScript
 
 Write-Host "Serving site at http://127.0.0.1:$port using $($pythonCmd -join ' ')"
-& $pythonExe @pythonArgs -m http.server $port --directory $siteDir
+& $pythonExe @pythonArgs (Join-Path $RootDir 'scripts/serve_site.py') --host 127.0.0.1 --port $port --site-dir $siteDir

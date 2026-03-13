@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 260" role="img" aria-label="Kafka stream flow">
+  <defs>
+    <style>
+      .box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; rx: 10; }
+      .text { font: 600 18px 'IBM Plex Sans', sans-serif; fill: #92400e; }
+      .small { font: 500 14px 'IBM Plex Sans', sans-serif; fill: #7c2d12; }
+      .arrow { stroke: #1d4ed8; stroke-width: 3; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+  <rect class="box" x="40" y="85" width="170" height="90"/>
+  <text class="text" x="68" y="125">Producer</text>
+  <text class="small" x="62" y="150">publish to topic</text>
+
+  <rect class="box" x="330" y="35" width="290" height="190"/>
+  <text class="text" x="432" y="78">Kafka Topic</text>
+  <text class="small" x="360" y="108">partition-0 | partition-1 | partition-2</text>
+  <text class="small" x="410" y="138">retention + replay</text>
+  <text class="small" x="388" y="168">consumer groups read offsets</text>
+
+  <rect class="box" x="760" y="85" width="170" height="90"/>
+  <text class="text" x="785" y="125">Consumer</text>
+  <text class="small" x="782" y="150">process stream</text>
+
+  <line class="arrow" x1="210" y1="130" x2="330" y2="130"/>
+  <line class="arrow" x1="620" y1="130" x2="760" y2="130"/>
+</svg>

@@ -64,6 +64,9 @@ scripts\run_site.cmd
 - `http://127.0.0.1:<PORT>/advanced.html` -> advanced architecture roadmap + Java/Python stack mapping
 
 Each roadmap card includes an `Example code` path under `learning-path/` so you can open matching code while reading the site.
+Roadmap cards also include:
+- progress checkbox (saved in browser local storage)
+- `Run example` button (runs local `.py` sample and shows output in-page)
 
 ## Auto Runtime Behavior
 
@@ -74,11 +77,21 @@ Each roadmap card includes an `Example code` path under `learning-path/` so you 
   - `site/data/catalog.json`
   - `site/data/foundation.json`
   - `site/data/advanced.json`
+- Starts interactive site API:
+  - `POST /api/run-example` for running local learning examples
 
 ## Manual Build Only
 
 ```bash
 python3 scripts/build_site.py
+```
+
+## Learning-Path Quality Gate
+
+Run all core learning-path checks (compile + selected samples + pytest stage):
+
+```bash
+python3 scripts/verify_learning_path.py
 ```
 
 ## Notes

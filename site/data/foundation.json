@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T05:43:08.264134+00:00",
+  "generated_at": "2026-03-13T05:53:52.038106+00:00",
   "site": "foundation",
   "title": "Python Foundation Track",
   "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
@@ -9,7 +9,7 @@
       "category": "Syntax",
       "title": "Variables and Naming",
       "summary": "Use snake_case and keep names semantic.",
-      "snippet": "user_name = 'hopee'\\nmax_retries = 3\\nis_ready = False",
+      "snippet": "user_name = 'ThanhSon99'\\nmax_retries = 3\\nis_ready = False",
       "application": "Readable scripts and maintainable configs.",
       "tags": [
         "variables",
@@ -401,7 +401,8 @@
         "pip",
         "argparse"
       ],
-      "example_path": "learning-path/foundation/stage-01-python-core"
+      "example_path": "learning-path/foundation/stage-01-python-core",
+      "example_file": "learning-path/foundation/stage-01-python-core/main.py"
     },
     {
       "stage": "Stage 2: Data and Files",
@@ -422,7 +423,8 @@
         "pathlib",
         "collections"
       ],
-      "example_path": "learning-path/foundation/stage-02-data-and-files"
+      "example_path": "learning-path/foundation/stage-02-data-and-files",
+      "example_file": "learning-path/foundation/stage-02-data-and-files/transform_data.py"
     },
     {
       "stage": "Stage 3: API Integrations",
@@ -442,7 +444,8 @@
         "python-dotenv",
         "logging"
       ],
-      "example_path": "learning-path/foundation/stage-03-api-integrations"
+      "example_path": "learning-path/foundation/stage-03-api-integrations",
+      "example_file": "learning-path/foundation/stage-03-api-integrations/api_client.py"
     },
     {
       "stage": "Stage 4: Project Structure",
@@ -462,7 +465,8 @@
         "ruff",
         "black"
       ],
-      "example_path": "learning-path/foundation/stage-04-project-structure"
+      "example_path": "learning-path/foundation/stage-04-project-structure",
+      "example_file": "learning-path/foundation/stage-04-project-structure/app/main.py"
     },
     {
       "stage": "Stage 5: Intermediate Automation",
@@ -482,7 +486,8 @@
         "jinja2",
         "pytest"
       ],
-      "example_path": "learning-path/foundation/stage-05-intermediate-automation"
+      "example_path": "learning-path/foundation/stage-05-intermediate-automation",
+      "example_file": "learning-path/foundation/stage-05-intermediate-automation/scheduler_demo.py"
     },
     {
       "stage": "Stage 6: API Service Basics",
@@ -502,7 +507,8 @@
         "uvicorn",
         "pydantic"
       ],
-      "example_path": "learning-path/foundation/stage-06-api-service-basics"
+      "example_path": "learning-path/foundation/stage-06-api-service-basics",
+      "example_file": "learning-path/foundation/stage-06-api-service-basics/mini_api.py"
     },
     {
       "stage": "Stage 7: Storage",
@@ -522,7 +528,8 @@
         "sqlalchemy",
         "alembic"
       ],
-      "example_path": "learning-path/foundation/stage-07-storage"
+      "example_path": "learning-path/foundation/stage-07-storage",
+      "example_file": "learning-path/foundation/stage-07-storage/sqlite_example.py"
     },
     {
       "stage": "Stage 8: Async and Concurrency",
@@ -542,7 +549,8 @@
         "httpx",
         "concurrent.futures"
       ],
-      "example_path": "learning-path/foundation/stage-08-async-and-concurrency"
+      "example_path": "learning-path/foundation/stage-08-async-and-concurrency",
+      "example_file": "learning-path/foundation/stage-08-async-and-concurrency/async_demo.py"
     },
     {
       "stage": "Stage 9: Testing and Quality",
@@ -560,7 +568,8 @@
         "coverage",
         "pre-commit"
       ],
-      "example_path": "learning-path/foundation/stage-09-testing-and-quality"
+      "example_path": "learning-path/foundation/stage-09-testing-and-quality",
+      "example_file": "learning-path/foundation/stage-09-testing-and-quality/math_utils.py"
     },
     {
       "stage": "Stage 10: Delivery",
@@ -578,7 +587,8 @@
         "github actions",
         "makefile"
       ],
-      "example_path": "learning-path/foundation/stage-10-delivery"
+      "example_path": "learning-path/foundation/stage-10-delivery",
+      "example_file": ""
     }
   ],
   "open_source_stacks": [
@@ -625,6 +635,29 @@
         "ruff",
         "black",
         "mypy"
+      ]
+    }
+  ],
+  "mini_projects": [
+    {
+      "name": "Foundation Milestone 1: CLI Data Toolkit",
+      "path": "learning-path/projects/foundation-cli-data-toolkit",
+      "focus": "Core syntax + data transformations + file outputs",
+      "stack": [
+        "python",
+        "argparse",
+        "json",
+        "pathlib"
+      ]
+    },
+    {
+      "name": "Foundation Milestone 2: API + Storage Service",
+      "path": "learning-path/projects/foundation-api-storage-service",
+      "focus": "HTTP endpoint + persistence + tests",
+      "stack": [
+        "http.server",
+        "sqlite3",
+        "pytest"
       ]
     }
   ],
