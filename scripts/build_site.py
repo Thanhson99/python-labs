@@ -867,6 +867,28 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         },
     ]
 
+    extra_examples = [
+        {"title": "Decorators", "path": "learning-path/foundation/extras/decorators/example.py"},
+        {"title": "Context Managers", "path": "learning-path/foundation/extras/context-managers/example.py"},
+        {"title": "itertools + regex", "path": "learning-path/foundation/extras/itertools-regex/example.py"},
+        {"title": "argparse subcommands", "path": "learning-path/foundation/extras/argparse-subcommands/example.py"},
+        {"title": "logging config", "path": "learning-path/foundation/extras/logging-config/example.py"},
+        {"title": "CSV advanced", "path": "learning-path/foundation/extras/csv-advanced/example.py"},
+        {"title": "pathlib advanced", "path": "learning-path/foundation/extras/pathlib-advanced/example.py"},
+        {"title": "typing generics", "path": "learning-path/foundation/extras/typing-generics/example.py"},
+        {"title": "dataclass validation", "path": "learning-path/foundation/extras/dataclass-validation/example.py"},
+        {"title": "error patterns", "path": "learning-path/foundation/extras/error-patterns/example.py"},
+    ]
+
+    database_practicals = [
+        {"title": "PostgreSQL local (Docker)", "path": "learning-path/database/postgres-local/docker-compose.yml"},
+        {"title": "PostgreSQL connection check", "path": "learning-path/database/postgres-local/check_connection.py"},
+        {"title": "Alembic demo", "path": "learning-path/database/alembic-demo/README.md"},
+        {"title": "Indexing and query plan", "path": "learning-path/database/indexing-query-plan/example.sql"},
+        {"title": "Isolation notes", "path": "learning-path/database/isolation-demo/example.py"},
+        {"title": "Connection pool demo", "path": "learning-path/database/pool-demo/example.py"},
+    ]
+
     return {
         "generated_at": generated_at,
         "site": "foundation",
@@ -877,6 +899,8 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         "roadmap": roadmap,
         "open_source_stacks": open_source_stacks,
         "mini_projects": mini_projects,
+        "extra_examples": extra_examples,
+        "database_practicals": database_practicals,
         "recommended_services": beginner_services,
     }
 
@@ -1110,6 +1134,12 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             "focus": "API + DB + metrics + structured logging + deploy templates",
             "stack": ["FastAPI", "PostgreSQL", "Prometheus", "OpenTelemetry", "Docker"],
         },
+        {
+            "name": "Advanced Milestone 3: Capstone E2E Platform",
+            "path": "learning-path/projects/capstone-e2e-platform",
+            "focus": "API + queue + DB + metrics + dashboard + deploy templates + tests",
+            "stack": ["http.server", "sqlite3", "pytest", "docker-compose", "k8s manifest"],
+        },
     ]
 
     architecture_diagrams = [
@@ -1117,6 +1147,16 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         {"title": "Kafka Stream Processing Flow", "file": "assets/diagrams/kafka-flow.svg"},
         {"title": "Outbox Pattern Transaction Flow", "file": "assets/diagrams/outbox-pattern.svg"},
         {"title": "Saga Orchestration Flow", "file": "assets/diagrams/saga-flow.svg"},
+    ]
+
+    extra_examples = [
+        {"title": "Retry backoff", "path": "learning-path/advanced/extras/retry-backoff/example.py"},
+        {"title": "Circuit breaker", "path": "learning-path/advanced/extras/circuit-breaker/example.py"},
+        {"title": "Idempotency middleware", "path": "learning-path/advanced/extras/idempotency-middleware/example.py"},
+        {"title": "Saga compensation", "path": "learning-path/advanced/extras/saga-compensation/example.py"},
+        {"title": "Outbox relay", "path": "learning-path/advanced/extras/outbox-relay/example.py"},
+        {"title": "Contract testing", "path": "learning-path/advanced/extras/contract-testing/example.py"},
+        {"title": "Pattern tests", "path": "learning-path/advanced/extras/tests/test_patterns.py"},
     ]
 
     return {
@@ -1131,6 +1171,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         "open_source_stacks": open_source_stacks,
         "mini_projects": mini_projects,
         "architecture_diagrams": architecture_diagrams,
+        "extra_examples": extra_examples,
         "capstone_projects": capstone,
         "recommended_services": advanced_services,
     }

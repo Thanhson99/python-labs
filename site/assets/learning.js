@@ -163,8 +163,6 @@ function renderRoadmap(items, track, data) {
     `;
     })
     .join("");
-
-  bindRoadmapActions(track, data);
 }
 
 function renderServices(services) {
@@ -298,6 +296,36 @@ function renderMiniProjects(items) {
     .join("");
 }
 
+function renderPathLibrary(panelId, containerId, items, titlePrefix) {
+  const panel = document.getElementById(panelId);
+  const container = document.getElementById(containerId);
+  if (!panel || !container) {
+    return;
+  }
+  if (!Array.isArray(items) || items.length === 0) {
+    panel.style.display = "none";
+    return;
+  }
+
+  container.innerHTML = items
+    .map((item) => {
+      const runButton =
+        item.path && item.path.endsWith(".py")
+          ? `<button class="run-example-btn" data-example-file="${escapeHtml(item.path)}">Run file</button>`
+          : "";
+      return `
+      <article class="service-card">
+        <h3>${escapeHtml(item.title || item.name || "Example")}</h3>
+        <p><strong>${escapeHtml(titlePrefix)}:</strong> <code>${escapeHtml(item.path || "")}</code></p>
+        ${item.focus ? `<p><strong>Focus:</strong> ${escapeHtml(item.focus)}</p>` : ""}
+        ${item.stack ? `<div class="tags">${item.stack.map((v) => `<span class="tag">${escapeHtml(v)}</span>`).join("")}</div>` : ""}
+        ${runButton}
+      </article>
+      `;
+    })
+    .join("");
+}
+
 function renderArchitectureDiagrams(items) {
   const container = document.getElementById("diagrams");
   const panel = document.getElementById("diagramPanel");
@@ -350,8 +378,11 @@ async function initLearningSite() {
   renderArchitectureDiagrams(data.architecture_diagrams || []);
   renderOpenSourceStacks(data.open_source_stacks || []);
   renderMiniProjects(data.mini_projects || []);
+  renderPathLibrary("extraPanel", "extraExamples", data.extra_examples || [], "Path");
+  renderPathLibrary("dbPanel", "dbPracticals", data.database_practicals || [], "Path");
   renderCapstones(data.capstone_projects || []);
   renderServices(data.recommended_services || []);
+  bindRoadmapActions(track, data);
 
   const generatedAt = new Date(data.generated_at).toLocaleString();
   const generatedNode = document.getElementById("generatedAt");

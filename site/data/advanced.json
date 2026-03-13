@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T05:53:52.038106+00:00",
+  "generated_at": "2026-03-13T06:03:16.596371+00:00",
   "site": "advanced",
   "title": "Python Advanced Architecture Track",
   "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
@@ -634,6 +634,18 @@
         "OpenTelemetry",
         "Docker"
       ]
+    },
+    {
+      "name": "Advanced Milestone 3: Capstone E2E Platform",
+      "path": "learning-path/projects/capstone-e2e-platform",
+      "focus": "API + queue + DB + metrics + dashboard + deploy templates + tests",
+      "stack": [
+        "http.server",
+        "sqlite3",
+        "pytest",
+        "docker-compose",
+        "k8s manifest"
+      ]
     }
   ],
   "architecture_diagrams": [
@@ -652,6 +664,36 @@
     {
       "title": "Saga Orchestration Flow",
       "file": "assets/diagrams/saga-flow.svg"
+    }
+  ],
+  "extra_examples": [
+    {
+      "title": "Retry backoff",
+      "path": "learning-path/advanced/extras/retry-backoff/example.py"
+    },
+    {
+      "title": "Circuit breaker",
+      "path": "learning-path/advanced/extras/circuit-breaker/example.py"
+    },
+    {
+      "title": "Idempotency middleware",
+      "path": "learning-path/advanced/extras/idempotency-middleware/example.py"
+    },
+    {
+      "title": "Saga compensation",
+      "path": "learning-path/advanced/extras/saga-compensation/example.py"
+    },
+    {
+      "title": "Outbox relay",
+      "path": "learning-path/advanced/extras/outbox-relay/example.py"
+    },
+    {
+      "title": "Contract testing",
+      "path": "learning-path/advanced/extras/contract-testing/example.py"
+    },
+    {
+      "title": "Pattern tests",
+      "path": "learning-path/advanced/extras/tests/test_patterns.py"
     }
   ],
   "capstone_projects": [

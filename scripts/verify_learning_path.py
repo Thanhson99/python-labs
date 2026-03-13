@@ -19,6 +19,14 @@ SAMPLES = [
     "learning-path/advanced/phase-e-reliability-engineering/resilient_http_client.py",
     "learning-path/projects/foundation-cli-data-toolkit/app.py",
     "learning-path/projects/advanced-event-pipeline-starter/event_pipeline.py",
+    "learning-path/foundation/extras/decorators/example.py",
+    "learning-path/foundation/extras/context-managers/example.py",
+    "learning-path/foundation/extras/argparse-subcommands/example.py",
+    "learning-path/advanced/extras/retry-backoff/example.py",
+    "learning-path/advanced/extras/idempotency-middleware/example.py",
+    "learning-path/projects/advanced-observable-service-platform/app.py",
+    "learning-path/projects/capstone-e2e-platform/app/repository.py",
+    "learning-path/projects/capstone-e2e-platform/app/worker.py",
 ]
 
 
@@ -59,6 +67,8 @@ def main() -> int:
                 "--status",
                 "active",
             ]
+        elif sample.endswith("argparse-subcommands/example.py"):
+            cmd = [py, str(sample_path), "hello", "--name", "qa"]
 
         ok, out = run_cmd(cmd, cwd=sample_path.parent)
         if not ok:
@@ -68,6 +78,16 @@ def main() -> int:
     ok, out = run_cmd([py, "-m", "pytest", "-q", str(pytest_file)], cwd=ROOT)
     if not ok:
         failures.append(f"pytest failed\n{out}")
+
+    advanced_tests = ROOT / "learning-path/advanced/extras/tests/test_patterns.py"
+    ok, out = run_cmd([py, "-m", "pytest", "-q", str(advanced_tests)], cwd=ROOT)
+    if not ok:
+        failures.append(f"advanced pattern tests failed\n{out}")
+
+    capstone_tests = ROOT / "learning-path/projects/capstone-e2e-platform/tests/test_repository.py"
+    ok, out = run_cmd([py, "-m", "pytest", "-q", str(capstone_tests)], cwd=ROOT)
+    if not ok:
+        failures.append(f"capstone tests failed\n{out}")
 
     if failures:
         print("Learning-path quality gate: FAILED")

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: capstone-api
+  template:
+    metadata:
+      labels:
+        app: capstone-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/capstone-api:latest
+          ports:
+            - containerPort: 9200

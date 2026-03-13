@@ -94,6 +94,13 @@ Run all core learning-path checks (compile + selected samples + pytest stage):
 python3 scripts/verify_learning_path.py
 ```
 
+## Extended Learning Content
+
+- `learning-path/foundation/extras/`: additional foundational examples (decorators, context managers, regex, argparse, logging, typing, etc.).
+- `learning-path/database/`: practical database track (PostgreSQL local, Alembic flow, indexing/query plans, isolation, pooling).
+- `learning-path/advanced/extras/`: distributed pattern examples with tests (idempotency, retry/backoff, circuit breaker, saga, outbox, contracts).
+- `learning-path/projects/capstone-e2e-platform/`: end-to-end capstone (API + queue + DB + metrics + dashboard + deploy templates + tests).
+
 ## Notes
 
 - Keep secrets in local env files only; never commit real keys.

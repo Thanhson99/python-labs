@@ -17,7 +17,7 @@ def setup(conn: sqlite3.Connection) -> None:
 
 def create_order_with_event(conn: sqlite3.Connection, order_id: str) -> None:
     with conn:
-        conn.execute("INSERT INTO orders(id, status) VALUES (?, ?)", (order_id, "created"))
+        conn.execute("INSERT OR REPLACE INTO orders(id, status) VALUES (?, ?)", (order_id, "created"))
         conn.execute(
             "INSERT INTO outbox(event_type, payload) VALUES (?, ?)",
             ("order_created", f'{{"order_id":"{order_id}"}}'),

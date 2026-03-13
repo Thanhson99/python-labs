@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T05:53:52.038106+00:00",
+  "generated_at": "2026-03-13T06:03:16.596371+00:00",
   "site": "foundation",
   "title": "Python Foundation Track",
   "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
@@ -659,6 +659,74 @@
         "sqlite3",
         "pytest"
       ]
+    }
+  ],
+  "extra_examples": [
+    {
+      "title": "Decorators",
+      "path": "learning-path/foundation/extras/decorators/example.py"
+    },
+    {
+      "title": "Context Managers",
+      "path": "learning-path/foundation/extras/context-managers/example.py"
+    },
+    {
+      "title": "itertools + regex",
+      "path": "learning-path/foundation/extras/itertools-regex/example.py"
+    },
+    {
+      "title": "argparse subcommands",
+      "path": "learning-path/foundation/extras/argparse-subcommands/example.py"
+    },
+    {
+      "title": "logging config",
+      "path": "learning-path/foundation/extras/logging-config/example.py"
+    },
+    {
+      "title": "CSV advanced",
+      "path": "learning-path/foundation/extras/csv-advanced/example.py"
+    },
+    {
+      "title": "pathlib advanced",
+      "path": "learning-path/foundation/extras/pathlib-advanced/example.py"
+    },
+    {
+      "title": "typing generics",
+      "path": "learning-path/foundation/extras/typing-generics/example.py"
+    },
+    {
+      "title": "dataclass validation",
+      "path": "learning-path/foundation/extras/dataclass-validation/example.py"
+    },
+    {
+      "title": "error patterns",
+      "path": "learning-path/foundation/extras/error-patterns/example.py"
+    }
+  ],
+  "database_practicals": [
+    {
+      "title": "PostgreSQL local (Docker)",
+      "path": "learning-path/database/postgres-local/docker-compose.yml"
+    },
+    {
+      "title": "PostgreSQL connection check",
+      "path": "learning-path/database/postgres-local/check_connection.py"
+    },
+    {
+      "title": "Alembic demo",
+      "path": "learning-path/database/alembic-demo/README.md"
+    },
+    {
+      "title": "Indexing and query plan",
+      "path": "learning-path/database/indexing-query-plan/example.sql"
+    },
+    {
+      "title": "Isolation notes",
+      "path": "learning-path/database/isolation-demo/example.py"
+    },
+    {
+      "title": "Connection pool demo",
+      "path": "learning-path/database/pool-demo/example.py"
     }
   ],
   "recommended_services": [
