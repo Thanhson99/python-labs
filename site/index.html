@@ -3,43 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Python Labs Learning Hub</title>
+    <title>Python Labs Learning Sites</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <header class="hero">
+    <header class="hero landing-hero">
       <div class="hero-content">
         <p class="eyebrow">Python Labs</p>
-        <h1>Learning Hub: Basic to Advanced</h1>
+        <h1>Dual Learning Sites</h1>
         <p>
-          One site to track what you already built, what to learn next, and how each
-          local service fits your roadmap.
+          Choose your track: foundation fundamentals or advanced microservice architecture.
+          Both tracks are generated from your current repository.
         </p>
       </div>
-      <div class="stats" id="stats"></div>
     </header>
 
     <main>
       <section class="panel">
-        <h2>Python Cheat Sheet</h2>
-        <div id="cheatsheet" class="grid"></div>
-      </section>
-
-      <section class="panel">
-        <h2>Roadmap</h2>
-        <div id="roadmap" class="timeline"></div>
-      </section>
-
-      <section class="panel">
-        <h2>Service Catalog</h2>
-        <div id="services" class="cards"></div>
+        <h2>Choose a Site</h2>
+        <div class="cards two-cols">
+          <article class="service-card">
+            <h3>Foundation Site</h3>
+            <p>Massive practical cheat sheet for Python core to strong intermediate.</p>
+            <p><a class="btn" href="foundation.html">Open Foundation</a></p>
+          </article>
+          <article class="service-card">
+            <h3>Advanced Architecture Site</h3>
+            <p>Roadmap for production systems: queues, Kafka, microservices, reliability.</p>
+            <p><a class="btn" href="advanced.html">Open Advanced</a></p>
+          </article>
+        </div>
       </section>
     </main>
-
-    <footer>
-      <span id="generatedAt"></span>
-    </footer>
-
-    <script src="assets/app.js"></script>
   </body>
 </html>

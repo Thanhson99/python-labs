@@ -1,70 +1,11 @@
 {
-  "generated_at": "2026-03-13T04:17:06.903754+00:00",
+  "generated_at": "2026-03-13T04:36:32.797841+00:00",
   "overview": {
     "service_count": 11,
     "basic_count": 4,
     "intermediate_count": 3,
     "advanced_count": 4
   },
-  "roadmap": [
-    {
-      "phase": "1. Basic Foundations",
-      "focus": [
-        "variables, data types, operators",
-        "if/else, loops",
-        "functions, arguments, return values",
-        "comments and docstrings",
-        "imports and standard library"
-      ],
-      "practice_with": [
-        "services/get-data",
-        "services/download-video",
-        "services/basic-bot"
-      ]
-    },
-    {
-      "phase": "2. Intermediate Python",
-      "focus": [
-        "modular project structure",
-        "working with APIs",
-        "error handling and logging",
-        "files and JSON data",
-        "virtual environments and dependencies"
-      ],
-      "practice_with": [
-        "services/AI-search-engine",
-        "services/calculator-gradient-image",
-        "services/nft-ai-bot"
-      ]
-    },
-    {
-      "phase": "3. Advanced and Microservice Thinking",
-      "focus": [
-        "service boundaries and contracts",
-        "schedulers/background jobs",
-        "testing strategy",
-        "external integrations",
-        "deployment and runtime scripts"
-      ],
-      "practice_with": [
-        "services/crypto-bot",
-        "services/dropshipping-bot",
-        "services/composio"
-      ]
-    },
-    {
-      "phase": "4. Specialized Domains",
-      "focus": [
-        "web3 and smart contracts",
-        "automation pipelines",
-        "security and secret handling",
-        "project hardening for production"
-      ],
-      "practice_with": [
-        "services/smart-contract"
-      ]
-    }
-  ],
   "services": [
     {
       "name": "AI-search-engine",

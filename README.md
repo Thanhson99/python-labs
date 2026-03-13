@@ -1,11 +1,11 @@
 # python-labs
 
-Reorganized Python lab workspace with a unified learning site.
+Reorganized Python lab workspace with dual learning sites.
 
 ## New Structure
 
 - `services/`: all lab projects grouped as independent services.
-- `site/`: static learning portal (cheat sheet + roadmap + service catalog).
+- `site/`: static portal with two separated learning sites.
 - `scripts/`: cross-platform scripts to build and run the site.
 - `docs/`: markdown versions of roadmap and cheat sheet.
 - `archive/`: legacy/experimental folders not used for the main learning flow.
@@ -56,12 +56,21 @@ Optional custom start port:
 scripts\run_site.cmd
 ```
 
+## Open the Two Sites
+
+- `http://127.0.0.1:<PORT>/` -> track selector landing page
+- `http://127.0.0.1:<PORT>/foundation.html` -> huge foundation cheatsheet + roadmap
+- `http://127.0.0.1:<PORT>/advanced.html` -> advanced architecture roadmap + Java/Python stack mapping
+
 ## Auto Runtime Behavior
 
 - Auto-detects available Python command (`python3`, `python`, or `py -3` on Windows).
 - Auto-checks if requested port is in use.
 - If port is busy, automatically increments to the next free port.
-- Rebuilds `site/data/catalog.json` from `services/` before serving.
+- Rebuilds all track data from `services/` before serving:
+  - `site/data/catalog.json`
+  - `site/data/foundation.json`
+  - `site/data/advanced.json`
 
 ## Manual Build Only
 

@@ -1,0 +1,668 @@
+{
+  "generated_at": "2026-03-13T04:36:32.797841+00:00",
+  "site": "advanced",
+  "title": "Python Advanced Architecture Track",
+  "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
+  "cheat_sheets": [
+    {
+      "category": "Architecture",
+      "title": "Layered Service",
+      "summary": "Transport -> application -> domain -> infrastructure.",
+      "snippet": "api -> use_case -> domain_model -> repository",
+      "application": "Keep business logic framework-agnostic.",
+      "tags": [
+        "architecture",
+        "clean"
+      ]
+    },
+    {
+      "category": "Architecture",
+      "title": "Hexagonal Ports/Adapters",
+      "summary": "Define ports as interfaces; adapters integrate vendors.",
+      "snippet": "class PriceFeedPort(Protocol):\\n    def latest(self, symbol: str) -> float: ...",
+      "application": "Swap API providers without core rewrite.",
+      "tags": [
+        "ports",
+        "adapters"
+      ]
+    },
+    {
+      "category": "Messaging",
+      "title": "RabbitMQ",
+      "summary": "Queue-based work distribution for tasks.",
+      "snippet": "aio-pika / pika + dead-letter queue + retry headers",
+      "application": "Email, image generation, asynchronous jobs.",
+      "tags": [
+        "rabbitmq",
+        "queue"
+      ]
+    },
+    {
+      "category": "Messaging",
+      "title": "Kafka",
+      "summary": "Event streaming and durable logs.",
+      "snippet": "aiokafka producer/consumer + partitioned topics",
+      "application": "Audit streams, analytics, CDC pipelines.",
+      "tags": [
+        "kafka",
+        "stream"
+      ]
+    },
+    {
+      "category": "Messaging",
+      "title": "Redis Streams",
+      "summary": "Lightweight stream + consumer groups.",
+      "snippet": "XADD / XREADGROUP for event fan-out",
+      "application": "Smaller event-driven systems.",
+      "tags": [
+        "redis",
+        "stream"
+      ]
+    },
+    {
+      "category": "Task Processing",
+      "title": "Celery",
+      "summary": "Distributed task queue with retries and scheduling.",
+      "snippet": "@celery.task(bind=True, autoretry_for=(Exception,), retry_backoff=True)",
+      "application": "Long-running async jobs in production.",
+      "tags": [
+        "celery",
+        "workers"
+      ]
+    },
+    {
+      "category": "Task Processing",
+      "title": "Dramatiq / RQ",
+      "summary": "Simpler alternatives for background workers.",
+      "snippet": "@dramatiq.actor(max_retries=5)",
+      "application": "Small and medium queue workloads.",
+      "tags": [
+        "dramatiq",
+        "rq"
+      ]
+    },
+    {
+      "category": "API",
+      "title": "FastAPI",
+      "summary": "Typed REST APIs with OpenAPI generation.",
+      "snippet": "@app.get('/health')\\ndef health() -> dict[str, str]:\\n    return {'status': 'ok'}",
+      "application": "Service endpoints + docs first workflow.",
+      "tags": [
+        "fastapi",
+        "api"
+      ]
+    },
+    {
+      "category": "API",
+      "title": "gRPC",
+      "summary": "Binary RPC for internal service-to-service traffic.",
+      "snippet": "protobuf contracts + generated Python stubs",
+      "application": "Low latency internal microservice calls.",
+      "tags": [
+        "grpc",
+        "protobuf"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "SQLAlchemy 2",
+      "summary": "Unit-of-work and repository patterns.",
+      "snippet": "session.execute(select(User).where(User.id == uid)).scalar_one_or_none()",
+      "application": "Reliable relational data layer.",
+      "tags": [
+        "sqlalchemy",
+        "postgres"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "Alembic Migrations",
+      "summary": "Version schema changes safely.",
+      "snippet": "alembic revision --autogenerate -m 'add event table'",
+      "application": "Zero-surprise database deployment.",
+      "tags": [
+        "alembic",
+        "migration"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "Async DB Access",
+      "summary": "Use async driver for high-concurrency APIs.",
+      "snippet": "asyncpg / sqlalchemy.ext.asyncio",
+      "application": "I/O heavy API services.",
+      "tags": [
+        "async",
+        "database"
+      ]
+    },
+    {
+      "category": "Caching",
+      "title": "Redis Cache Aside",
+      "summary": "Read-through with TTL and invalidation rules.",
+      "snippet": "value = redis.get(key) or load_from_db()",
+      "application": "Reduce DB load and response latency.",
+      "tags": [
+        "redis",
+        "cache"
+      ]
+    },
+    {
+      "category": "Observability",
+      "title": "Metrics",
+      "summary": "Expose Prometheus counters and histograms.",
+      "snippet": "REQUEST_LATENCY.labels(route='/verify').observe(seconds)",
+      "application": "SLO tracking and alerting.",
+      "tags": [
+        "prometheus",
+        "metrics"
+      ]
+    },
+    {
+      "category": "Observability",
+      "title": "Tracing",
+      "summary": "Propagate trace-id across services.",
+      "snippet": "OpenTelemetry instrumentation + OTLP exporter",
+      "application": "Debug distributed latency spikes.",
+      "tags": [
+        "otel",
+        "tracing"
+      ]
+    },
+    {
+      "category": "Observability",
+      "title": "Structured Logs",
+      "summary": "JSON logs with correlation id.",
+      "snippet": "{'trace_id': tid, 'event': 'order_confirmed', 'service': 'billing'}",
+      "application": "Centralized log analysis (ELK/Loki).",
+      "tags": [
+        "logs",
+        "json"
+      ]
+    },
+    {
+      "category": "Security",
+      "title": "JWT and Key Rotation",
+      "summary": "Use short token expiry and rotate signing keys.",
+      "snippet": "kid-based key set + refresh token revocation list",
+      "application": "Auth in microservice gateways.",
+      "tags": [
+        "jwt",
+        "auth"
+      ]
+    },
+    {
+      "category": "Security",
+      "title": "Secrets Management",
+      "summary": "Keep secrets outside image and repo.",
+      "snippet": "Vault / AWS Secrets Manager / Doppler",
+      "application": "Secure production config.",
+      "tags": [
+        "secrets",
+        "ops"
+      ]
+    },
+    {
+      "category": "Security",
+      "title": "Rate Limit",
+      "summary": "Protect endpoints from abuse.",
+      "snippet": "token bucket by IP/API key",
+      "application": "Public API hardening.",
+      "tags": [
+        "rate-limit",
+        "api"
+      ]
+    },
+    {
+      "category": "Resilience",
+      "title": "Circuit Breaker",
+      "summary": "Trip on repeated downstream failures.",
+      "snippet": "closed -> open -> half-open states",
+      "application": "Prevent cascading outages.",
+      "tags": [
+        "circuit-breaker",
+        "reliability"
+      ]
+    },
+    {
+      "category": "Resilience",
+      "title": "Idempotency Key",
+      "summary": "Handle duplicate retry requests safely.",
+      "snippet": "X-Idempotency-Key persisted with response hash",
+      "application": "Payments and order APIs.",
+      "tags": [
+        "idempotency",
+        "api"
+      ]
+    },
+    {
+      "category": "Resilience",
+      "title": "Outbox Pattern",
+      "summary": "Publish events reliably with DB transaction.",
+      "snippet": "write business row + outbox row in same tx",
+      "application": "Avoid lost events after commit.",
+      "tags": [
+        "outbox",
+        "event-driven"
+      ]
+    },
+    {
+      "category": "Deployment",
+      "title": "Docker Multi-stage",
+      "summary": "Slim production image with pinned base.",
+      "snippet": "builder stage installs deps, runtime stage runs app",
+      "application": "Fast CI and smaller attack surface.",
+      "tags": [
+        "docker",
+        "deployment"
+      ]
+    },
+    {
+      "category": "Deployment",
+      "title": "Kubernetes Basics",
+      "summary": "Use Deployment, Service, ConfigMap, Secret, HPA.",
+      "snippet": "readinessProbe + livenessProbe + resource limits",
+      "application": "Scalable service orchestration.",
+      "tags": [
+        "k8s",
+        "cloud"
+      ]
+    },
+    {
+      "category": "Deployment",
+      "title": "Blue/Green + Canary",
+      "summary": "Gradual rollout strategy reduces blast radius.",
+      "snippet": "10% traffic canary then full promotion",
+      "application": "Safer releases for critical APIs.",
+      "tags": [
+        "release",
+        "sre"
+      ]
+    },
+    {
+      "category": "Testing",
+      "title": "Contract Testing",
+      "summary": "Verify API compatibility between services.",
+      "snippet": "consumer-driven contracts (Pact) in CI",
+      "application": "Microservice integration stability.",
+      "tags": [
+        "contract",
+        "testing"
+      ]
+    },
+    {
+      "category": "Testing",
+      "title": "Load Testing",
+      "summary": "Measure throughput and latency budget.",
+      "snippet": "k6 scenarios with p95 and p99 thresholds",
+      "application": "Capacity planning before launch.",
+      "tags": [
+        "performance",
+        "load-test"
+      ]
+    },
+    {
+      "category": "CI/CD",
+      "title": "Pipeline Gates",
+      "summary": "lint -> unit -> integration -> security scan -> deploy",
+      "snippet": "fail fast on quality gates",
+      "application": "Reliable automated release process.",
+      "tags": [
+        "cicd",
+        "devops"
+      ]
+    },
+    {
+      "category": "Domain",
+      "title": "Event Modeling",
+      "summary": "Name events in business language.",
+      "snippet": "user_registered, payment_authorized, order_shipped",
+      "application": "Clear event-driven design.",
+      "tags": [
+        "ddd",
+        "events"
+      ]
+    },
+    {
+      "category": "Domain",
+      "title": "Saga Pattern",
+      "summary": "Coordinate distributed transactions.",
+      "snippet": "reserve -> charge -> confirm / compensate",
+      "application": "Order + payment orchestration.",
+      "tags": [
+        "saga",
+        "distributed"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "stage": "Phase A: Service Contracts",
+      "goals": [
+        "define API schemas (OpenAPI/protobuf)",
+        "enforce versioning strategy",
+        "set backward compatibility rules"
+      ],
+      "build": [
+        "contract-first user service",
+        "api lint pipeline"
+      ],
+      "tools": [
+        "FastAPI",
+        "Pydantic",
+        "protobuf",
+        "spectral"
+      ]
+    },
+    {
+      "stage": "Phase B: Event-Driven Core",
+      "goals": [
+        "choose queue vs stream",
+        "implement producer/consumer",
+        "add dead letter and retry policies"
+      ],
+      "build": [
+        "order event pipeline",
+        "notification worker"
+      ],
+      "tools": [
+        "RabbitMQ",
+        "Kafka",
+        "Redis Streams"
+      ]
+    },
+    {
+      "stage": "Phase C: Consistency Patterns",
+      "goals": [
+        "outbox/inbox",
+        "idempotency keys",
+        "saga orchestration and compensation"
+      ],
+      "build": [
+        "payment + order saga"
+      ],
+      "tools": [
+        "PostgreSQL",
+        "Celery",
+        "Kafka"
+      ]
+    },
+    {
+      "stage": "Phase D: Data Platform",
+      "goals": [
+        "transactional database design",
+        "read model/cache strategy",
+        "migration governance"
+      ],
+      "build": [
+        "billing ledger",
+        "query side read API"
+      ],
+      "tools": [
+        "SQLAlchemy",
+        "Alembic",
+        "Redis"
+      ]
+    },
+    {
+      "stage": "Phase E: Reliability Engineering",
+      "goals": [
+        "timeout budgets and retries",
+        "circuit breaker and fallback",
+        "bulkhead isolation"
+      ],
+      "build": [
+        "resilient API adapter layer"
+      ],
+      "tools": [
+        "httpx",
+        "tenacity",
+        "rate limiting"
+      ]
+    },
+    {
+      "stage": "Phase F: Security",
+      "goals": [
+        "OIDC/JWT architecture",
+        "key rotation",
+        "secrets and policy management"
+      ],
+      "build": [
+        "auth gateway",
+        "token introspection service"
+      ],
+      "tools": [
+        "Auth0/Keycloak",
+        "Vault",
+        "OPA"
+      ]
+    },
+    {
+      "stage": "Phase G: Observability",
+      "goals": [
+        "golden signals dashboards",
+        "distributed tracing",
+        "alert routing and runbooks"
+      ],
+      "build": [
+        "full telemetry stack for 3 services"
+      ],
+      "tools": [
+        "Prometheus",
+        "Grafana",
+        "OpenTelemetry",
+        "Loki"
+      ]
+    },
+    {
+      "stage": "Phase H: Platform and Delivery",
+      "goals": [
+        "container hardening",
+        "kubernetes deployment templates",
+        "canary/blue-green release"
+      ],
+      "build": [
+        "production deployment blueprint"
+      ],
+      "tools": [
+        "Docker",
+        "Kubernetes",
+        "Argo Rollouts"
+      ]
+    },
+    {
+      "stage": "Phase I: Governance and Cost",
+      "goals": [
+        "service ownership model",
+        "slo and error budgets",
+        "cost/performance optimization"
+      ],
+      "build": [
+        "team service catalog + operational playbook"
+      ],
+      "tools": [
+        "Backstage",
+        "FinOps dashboards"
+      ]
+    }
+  ],
+  "java_python_map": [
+    {
+      "domain": "Message Queue",
+      "java_stack": "RabbitMQ + Spring AMQP",
+      "python_stack": "RabbitMQ + aio-pika / pika + Celery",
+      "when": "Asynchronous job processing, delayed tasks"
+    },
+    {
+      "domain": "Event Streaming",
+      "java_stack": "Kafka + Spring Kafka",
+      "python_stack": "Kafka + aiokafka / confluent-kafka",
+      "when": "Event-driven architecture, audit logs, analytics"
+    },
+    {
+      "domain": "REST API",
+      "java_stack": "Spring Boot",
+      "python_stack": "FastAPI / Flask",
+      "when": "Public/internal HTTP services"
+    },
+    {
+      "domain": "ORM",
+      "java_stack": "JPA / Hibernate",
+      "python_stack": "SQLAlchemy",
+      "when": "Relational persistence with repository patterns"
+    },
+    {
+      "domain": "Batch Jobs",
+      "java_stack": "Spring Batch",
+      "python_stack": "Celery beat / Airflow",
+      "when": "Scheduled ETL or periodic processing"
+    },
+    {
+      "domain": "Service Discovery",
+      "java_stack": "Eureka",
+      "python_stack": "Consul / Kubernetes DNS",
+      "when": "Dynamic service-to-service resolution"
+    },
+    {
+      "domain": "Config Server",
+      "java_stack": "Spring Cloud Config",
+      "python_stack": "env + Vault + config service",
+      "when": "Centralized config management"
+    },
+    {
+      "domain": "Gateway",
+      "java_stack": "Spring Cloud Gateway",
+      "python_stack": "Kong / Traefik / Nginx + FastAPI",
+      "when": "Auth, routing, throttling, request policy"
+    },
+    {
+      "domain": "Observability",
+      "java_stack": "Micrometer + Zipkin",
+      "python_stack": "Prometheus + OpenTelemetry + Grafana",
+      "when": "Metrics and tracing at scale"
+    }
+  ],
+  "capstone_projects": [
+    {
+      "name": "Realtime Market Intelligence Platform",
+      "scope": "ingestion -> processing -> alerting -> dashboard",
+      "stack": [
+        "FastAPI",
+        "Kafka",
+        "Redis",
+        "PostgreSQL",
+        "Grafana"
+      ]
+    },
+    {
+      "name": "E-commerce Event Microservices",
+      "scope": "catalog, cart, payment, shipment, notification",
+      "stack": [
+        "FastAPI",
+        "RabbitMQ",
+        "Celery",
+        "OpenTelemetry",
+        "Kubernetes"
+      ]
+    },
+    {
+      "name": "AI Workflow Orchestrator",
+      "scope": "job queue, model adapters, usage metering, billing",
+      "stack": [
+        "FastAPI",
+        "Dramatiq",
+        "Redis",
+        "PostgreSQL",
+        "Prometheus"
+      ]
+    }
+  ],
+  "recommended_services": [
+    {
+      "name": "composio",
+      "path": "services/composio",
+      "entrypoint": "services/composio/upload-video-youtube/app.py",
+      "python_files": 4,
+      "requirements": [],
+      "tech_stack": [
+        "composio_langchain",
+        "configparser",
+        "flask",
+        "langchain",
+        "langchain_openai",
+        "requests"
+      ],
+      "topics": [
+        "API orchestration",
+        "automation workflows",
+        "template rendering"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "crypto-bot",
+      "path": "services/crypto-bot",
+      "entrypoint": "services/crypto-bot/main.py",
+      "python_files": 29,
+      "requirements": [
+        "python-telegram-bot",
+        "python-dotenv",
+        "apscheduler",
+        "feedparser",
+        "pytest"
+      ],
+      "tech_stack": [
+        "apscheduler",
+        "difflib",
+        "dotenv",
+        "feedparser",
+        "modules",
+        "pytest",
+        "python-dotenv",
+        "python-telegram-bot",
+        "requests",
+        "telegram"
+      ],
+      "topics": [
+        "telegram bot",
+        "schedulers",
+        "external APIs",
+        "testing"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "dropshipping-bot",
+      "path": "services/dropshipping-bot",
+      "entrypoint": "services/dropshipping-bot/configs/base_config.py",
+      "python_files": 6,
+      "requirements": [],
+      "tech_stack": [
+        "dotenv",
+        "services",
+        "utils"
+      ],
+      "topics": [
+        "service architecture",
+        "configuration management"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "smart-contract",
+      "path": "services/smart-contract",
+      "entrypoint": "services/smart-contract/main.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "web3"
+      ],
+      "topics": [
+        "web3",
+        "blockchain transactions",
+        "contract deployment"
+      ],
+      "level": "advanced"
+    }
+  ]
+}

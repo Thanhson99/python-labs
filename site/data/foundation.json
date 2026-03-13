@@ -1,0 +1,671 @@
+{
+  "generated_at": "2026-03-13T04:36:32.797841+00:00",
+  "site": "foundation",
+  "title": "Python Foundation Track",
+  "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
+  "cheat_sheets": [
+    {
+      "category": "Syntax",
+      "title": "Variables and Naming",
+      "summary": "Use snake_case and keep names semantic.",
+      "snippet": "user_name = 'hopee'\\nmax_retries = 3\\nis_ready = False",
+      "application": "Readable scripts and maintainable configs.",
+      "tags": [
+        "variables",
+        "style"
+      ]
+    },
+    {
+      "category": "Syntax",
+      "title": "Core Data Types",
+      "summary": "Know list, tuple, dict, set tradeoffs.",
+      "snippet": "skills = ['python', 'sql']\\nprofile = {'name': 'A', 'exp': 2}\\nunique_ids = {1, 2, 3}",
+      "application": "Modeling incoming API payloads.",
+      "tags": [
+        "types",
+        "collections"
+      ]
+    },
+    {
+      "category": "Syntax",
+      "title": "Conditionals",
+      "summary": "Guard invalid states early.",
+      "snippet": "if not token:\\n    raise ValueError('missing token')\\nelif token == 'dev':\\n    mode = 'sandbox'",
+      "application": "Input validation before requests.",
+      "tags": [
+        "if",
+        "validation"
+      ]
+    },
+    {
+      "category": "Syntax",
+      "title": "Loops",
+      "summary": "Prefer enumerate for index + item.",
+      "snippet": "for idx, item in enumerate(items, start=1):\\n    print(idx, item)",
+      "application": "Batch processing + progress logs.",
+      "tags": [
+        "for",
+        "iteration"
+      ]
+    },
+    {
+      "category": "Functions",
+      "title": "Function Design",
+      "summary": "One purpose per function, explicit return.",
+      "snippet": "def build_url(host, path):\\n    return f'{host.rstrip('/')}/{path.lstrip('/')}'",
+      "application": "Reusable helper utilities.",
+      "tags": [
+        "functions",
+        "clean-code"
+      ]
+    },
+    {
+      "category": "Functions",
+      "title": "Default Arguments",
+      "summary": "Avoid mutable defaults.",
+      "snippet": "def add_tag(tag, tags=None):\\n    tags = [] if tags is None else tags\\n    tags.append(tag)\\n    return tags",
+      "application": "Prevent shared-state bugs.",
+      "tags": [
+        "functions",
+        "pitfalls"
+      ]
+    },
+    {
+      "category": "Functions",
+      "title": "Lambda and sorted",
+      "summary": "Keep lambdas short and obvious.",
+      "snippet": "users = sorted(users, key=lambda x: x['score'], reverse=True)",
+      "application": "Ranking and quick transforms.",
+      "tags": [
+        "lambda",
+        "sorting"
+      ]
+    },
+    {
+      "category": "Docs",
+      "title": "Docstring Convention",
+      "summary": "Document args, returns, and raises.",
+      "snippet": "def fetch(url):\\n    \"\"\"Fetch JSON data.\\n\\n    Args:\\n        url: endpoint URL\\n    Returns:\\n        dict payload\\n    \"\"\"",
+      "application": "Faster onboarding and IDE hints.",
+      "tags": [
+        "docstring",
+        "documentation"
+      ]
+    },
+    {
+      "category": "Docs",
+      "title": "Useful Comments",
+      "summary": "Explain why, not what.",
+      "snippet": "# Keep 2 retries only to avoid duplicate external charges",
+      "application": "Capture domain decision context.",
+      "tags": [
+        "comments",
+        "code-review"
+      ]
+    },
+    {
+      "category": "Imports",
+      "title": "Import Ordering",
+      "summary": "stdlib, third-party, local modules.",
+      "snippet": "import json\\nfrom pathlib import Path\\n\\nimport requests\\n\\nfrom .client import ApiClient",
+      "application": "Consistent project hygiene.",
+      "tags": [
+        "imports",
+        "structure"
+      ]
+    },
+    {
+      "category": "Error Handling",
+      "title": "try/except/finally",
+      "summary": "Catch specific exceptions.",
+      "snippet": "try:\\n    payload = response.json()\\nexcept ValueError as exc:\\n    logger.error('invalid json: %s', exc)\\nfinally:\\n    response.close()",
+      "application": "Safe API and file handling.",
+      "tags": [
+        "exceptions",
+        "reliability"
+      ]
+    },
+    {
+      "category": "Error Handling",
+      "title": "Custom Exceptions",
+      "summary": "Model domain-level failures.",
+      "snippet": "class PaymentDeclinedError(Exception):\\n    pass",
+      "application": "Clear service contracts.",
+      "tags": [
+        "exceptions",
+        "domain"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "List Comprehension",
+      "summary": "Compact mapping + filtering.",
+      "snippet": "valid_ids = [u['id'] for u in users if u.get('active')]",
+      "application": "Transform API lists quickly.",
+      "tags": [
+        "list",
+        "comprehension"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "Dict Get and Defaults",
+      "summary": "Avoid KeyError in partial payloads.",
+      "snippet": "country = profile.get('address', {}).get('country', 'unknown')",
+      "application": "Resilient JSON parsing.",
+      "tags": [
+        "dict",
+        "json"
+      ]
+    },
+    {
+      "category": "Data",
+      "title": "Dataclasses",
+      "summary": "Typed lightweight data models.",
+      "snippet": "from dataclasses import dataclass\\n\\n@dataclass\\nclass User:\\n    id: int\\n    email: str",
+      "application": "Internal DTO for service layers.",
+      "tags": [
+        "dataclass",
+        "typing"
+      ]
+    },
+    {
+      "category": "Files",
+      "title": "Pathlib",
+      "summary": "Use Path instead of raw strings.",
+      "snippet": "from pathlib import Path\\nreport = Path('data') / 'report.json'\\nreport.parent.mkdir(exist_ok=True)",
+      "application": "Cross-platform file paths.",
+      "tags": [
+        "pathlib",
+        "filesystem"
+      ]
+    },
+    {
+      "category": "Files",
+      "title": "JSON IO",
+      "summary": "Always set encoding and pretty indent for debug files.",
+      "snippet": "with open('out.json', 'w', encoding='utf-8') as f:\\n    json.dump(payload, f, ensure_ascii=False, indent=2)",
+      "application": "Audit logs and debug snapshots.",
+      "tags": [
+        "json",
+        "io"
+      ]
+    },
+    {
+      "category": "HTTP",
+      "title": "Requests with Timeout",
+      "summary": "Never call API without timeout.",
+      "snippet": "response = requests.get(url, timeout=15)\\nresponse.raise_for_status()",
+      "application": "Avoid hanging worker processes.",
+      "tags": [
+        "requests",
+        "api"
+      ]
+    },
+    {
+      "category": "HTTP",
+      "title": "Retry Pattern",
+      "summary": "Retry only idempotent operations.",
+      "snippet": "for _ in range(3):\\n    try:\\n        return client.get()\\n    except TimeoutError:\\n        time.sleep(1)",
+      "application": "Handle unstable providers.",
+      "tags": [
+        "retry",
+        "resilience"
+      ]
+    },
+    {
+      "category": "CLI",
+      "title": "argparse",
+      "summary": "Build scripts with clear flags.",
+      "snippet": "parser.add_argument('--limit', type=int, default=50)\\nargs = parser.parse_args()",
+      "application": "Reusable local automations.",
+      "tags": [
+        "cli",
+        "argparse"
+      ]
+    },
+    {
+      "category": "Environment",
+      "title": "Environment Variables",
+      "summary": "Load secrets from env, not code.",
+      "snippet": "api_key = os.getenv('OPENAI_API_KEY')\\nif not api_key:\\n    raise RuntimeError('missing OPENAI_API_KEY')",
+      "application": "Secure config handling.",
+      "tags": [
+        "env",
+        "security"
+      ]
+    },
+    {
+      "category": "Logging",
+      "title": "Structured Logging",
+      "summary": "Log context-rich messages.",
+      "snippet": "logger.info('sync completed', extra={'service': 'crypto', 'count': 42})",
+      "application": "Easier incident debugging.",
+      "tags": [
+        "logging",
+        "observability"
+      ]
+    },
+    {
+      "category": "Testing",
+      "title": "pytest Basics",
+      "summary": "Arrange, Act, Assert pattern.",
+      "snippet": "def test_add():\\n    assert add(2, 3) == 5",
+      "application": "Prevent regression in helpers.",
+      "tags": [
+        "pytest",
+        "qa"
+      ]
+    },
+    {
+      "category": "Testing",
+      "title": "Mock External Calls",
+      "summary": "Patch network clients in tests.",
+      "snippet": "@patch('module.requests.get')\\ndef test_fetch(mock_get):\\n    ...",
+      "application": "Fast stable CI without network.",
+      "tags": [
+        "mock",
+        "testing"
+      ]
+    },
+    {
+      "category": "Packaging",
+      "title": "requirements Discipline",
+      "summary": "Pin critical versions for stability.",
+      "snippet": "requests==2.32.3\\npython-dotenv==1.0.1",
+      "application": "Reproducible environments.",
+      "tags": [
+        "dependencies",
+        "packaging"
+      ]
+    },
+    {
+      "category": "Performance",
+      "title": "Generator",
+      "summary": "Use generators for large streams.",
+      "snippet": "def read_lines(path):\\n    with open(path) as f:\\n        for line in f:\\n            yield line.strip()",
+      "application": "Memory-efficient pipelines.",
+      "tags": [
+        "performance",
+        "generator"
+      ]
+    },
+    {
+      "category": "Concurrency",
+      "title": "ThreadPoolExecutor",
+      "summary": "Parallelize IO-bound workloads.",
+      "snippet": "with ThreadPoolExecutor(max_workers=8) as ex:\\n    results = list(ex.map(fetch, urls))",
+      "application": "Bulk HTTP fetching.",
+      "tags": [
+        "concurrency",
+        "io"
+      ]
+    },
+    {
+      "category": "Typing",
+      "title": "Type Hints",
+      "summary": "Annotate public interfaces.",
+      "snippet": "def normalize(amount: float, currency: str) -> float:\\n    return round(amount, 2)",
+      "application": "Static analysis and safer refactor.",
+      "tags": [
+        "typing",
+        "quality"
+      ]
+    },
+    {
+      "category": "Project",
+      "title": "Module Layout",
+      "summary": "Separate config, core logic, adapters.",
+      "snippet": "service/\\n  config.py\\n  adapters/\\n  core/\\n  app.py",
+      "application": "Microservice-ready structure.",
+      "tags": [
+        "architecture",
+        "layout"
+      ]
+    },
+    {
+      "category": "Security",
+      "title": "Input Sanitization",
+      "summary": "Validate and normalize user data early.",
+      "snippet": "email = email.strip().lower()\\nif '@' not in email:\\n    raise ValueError('invalid email')",
+      "application": "Avoid bad records and injection paths.",
+      "tags": [
+        "security",
+        "validation"
+      ]
+    },
+    {
+      "category": "Workflow",
+      "title": "Pre-Commit Checks",
+      "summary": "Run format, lint, test before commit.",
+      "snippet": "python -m py_compile scripts/build_site.py\\npytest -q",
+      "application": "Higher merge confidence.",
+      "tags": [
+        "workflow",
+        "quality"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "stage": "Stage 1: Python Core",
+      "goals": [
+        "variables, data types, operators",
+        "if/else, loops, functions",
+        "comments and docstrings",
+        "imports and module basics"
+      ],
+      "build": [
+        "CLI calculator",
+        "json parser",
+        "file reader tool"
+      ],
+      "tools": [
+        "python",
+        "venv",
+        "pip",
+        "argparse"
+      ]
+    },
+    {
+      "stage": "Stage 2: Data and Files",
+      "goals": [
+        "dict/list/set patterns",
+        "json and csv processing",
+        "pathlib and filesystem safety",
+        "basic performance with comprehensions"
+      ],
+      "build": [
+        "daily report generator",
+        "data cleaner",
+        "batch rename script"
+      ],
+      "tools": [
+        "json",
+        "csv",
+        "pathlib",
+        "collections"
+      ]
+    },
+    {
+      "stage": "Stage 3: API Integrations",
+      "goals": [
+        "requests + timeouts",
+        "error handling and retries",
+        "environment variable config",
+        "simple logging strategy"
+      ],
+      "build": [
+        "weather cli",
+        "currency monitor",
+        "rss news collector"
+      ],
+      "tools": [
+        "requests",
+        "python-dotenv",
+        "logging"
+      ]
+    },
+    {
+      "stage": "Stage 4: Project Structure",
+      "goals": [
+        "split config/core/adapters",
+        "remove duplicated utilities",
+        "create reusable modules",
+        "manage requirements per service"
+      ],
+      "build": [
+        "mini service template",
+        "shared utils package"
+      ],
+      "tools": [
+        "pip",
+        "pytest",
+        "ruff",
+        "black"
+      ]
+    },
+    {
+      "stage": "Stage 5: Intermediate Automation",
+      "goals": [
+        "schedule scripts",
+        "consume third-party APIs",
+        "produce markdown/html reports",
+        "use lightweight tests"
+      ],
+      "build": [
+        "market tracker",
+        "auto summary bot",
+        "alert scheduler"
+      ],
+      "tools": [
+        "apscheduler",
+        "jinja2",
+        "pytest"
+      ]
+    },
+    {
+      "stage": "Stage 6: API Service Basics",
+      "goals": [
+        "build CRUD API",
+        "use pydantic validation",
+        "add health and readiness endpoints",
+        "introduce simple middleware"
+      ],
+      "build": [
+        "task api",
+        "auth prototype",
+        "service status board"
+      ],
+      "tools": [
+        "fastapi",
+        "uvicorn",
+        "pydantic"
+      ]
+    },
+    {
+      "stage": "Stage 7: Storage",
+      "goals": [
+        "sql fundamentals",
+        "orm usage",
+        "migrations",
+        "indexes and query tuning basics"
+      ],
+      "build": [
+        "inventory service",
+        "blog backend"
+      ],
+      "tools": [
+        "postgresql",
+        "sqlalchemy",
+        "alembic"
+      ]
+    },
+    {
+      "stage": "Stage 8: Async and Concurrency",
+      "goals": [
+        "threadpool vs async",
+        "I/O bound tuning",
+        "background worker basics",
+        "graceful shutdown"
+      ],
+      "build": [
+        "bulk fetcher",
+        "parallel scraper",
+        "async notifier"
+      ],
+      "tools": [
+        "asyncio",
+        "httpx",
+        "concurrent.futures"
+      ]
+    },
+    {
+      "stage": "Stage 9: Testing and Quality",
+      "goals": [
+        "unit + integration tests",
+        "test doubles/mocks",
+        "code coverage",
+        "pre-commit automation"
+      ],
+      "build": [
+        "test harness for one service"
+      ],
+      "tools": [
+        "pytest",
+        "coverage",
+        "pre-commit"
+      ]
+    },
+    {
+      "stage": "Stage 10: Delivery",
+      "goals": [
+        "dockerize one service",
+        "config by environment",
+        "basic CI pipeline",
+        "release notes and changelog"
+      ],
+      "build": [
+        "dockerized api + ci"
+      ],
+      "tools": [
+        "docker",
+        "github actions",
+        "makefile"
+      ]
+    }
+  ],
+  "recommended_services": [
+    {
+      "name": "AI-search-engine",
+      "path": "services/AI-search-engine",
+      "entrypoint": "services/AI-search-engine/main.py",
+      "python_files": 6,
+      "requirements": [
+        "google-search-results",
+        "beautifulsoup4",
+        "requests",
+        "numpy"
+      ],
+      "tech_stack": [
+        "beautifulsoup4",
+        "bs4",
+        "core",
+        "google-search-results",
+        "numpy",
+        "requests",
+        "serpapi"
+      ],
+      "topics": [
+        "web scraping",
+        "search workflow",
+        "performance measurement"
+      ],
+      "level": "intermediate"
+    },
+    {
+      "name": "basic-bot",
+      "path": "services/basic-bot",
+      "entrypoint": "services/basic-bot/test.py",
+      "python_files": 3,
+      "requirements": [],
+      "tech_stack": [
+        "bs4",
+        "openai",
+        "requests"
+      ],
+      "topics": [
+        "OpenAI API basics",
+        "prompting",
+        "script automation"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "box-browser",
+      "path": "services/box-browser",
+      "entrypoint": "services/box-browser/BrowserWindow.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "tkinter",
+        "webview"
+      ],
+      "topics": [
+        "GUI automation",
+        "desktop integration"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "calculator-gradient-image",
+      "path": "services/calculator-gradient-image",
+      "entrypoint": "services/calculator-gradient-image/app.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "cv2",
+        "matplotlib",
+        "numpy"
+      ],
+      "topics": [
+        "image processing",
+        "numerical operations"
+      ],
+      "level": "intermediate"
+    },
+    {
+      "name": "download-video",
+      "path": "services/download-video",
+      "entrypoint": "services/download-video/index.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "pytube"
+      ],
+      "topics": [
+        "HTTP download",
+        "CLI scripts"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "get-data",
+      "path": "services/get-data",
+      "entrypoint": "services/get-data/index.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "http"
+      ],
+      "topics": [
+        "data collection",
+        "HTTP requests"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "nft-ai-bot",
+      "path": "services/nft-ai-bot",
+      "entrypoint": "services/nft-ai-bot/main.py",
+      "python_files": 1,
+      "requirements": [
+        "openai",
+        "requests",
+        "python-dotenv"
+      ],
+      "tech_stack": [
+        "dotenv",
+        "openai",
+        "python-dotenv",
+        "requests"
+      ],
+      "topics": [
+        "AI image generation",
+        "environment variables",
+        "HTTP APIs"
+      ],
+      "level": "intermediate"
+    }
+  ]
+}
