@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-03-13T04:17:06.903754+00:00",
+  "overview": {
+    "service_count": 11,
+    "basic_count": 4,
+    "intermediate_count": 3,
+    "advanced_count": 4
+  },
+  "roadmap": [
+    {
+      "phase": "1. Basic Foundations",
+      "focus": [
+        "variables, data types, operators",
+        "if/else, loops",
+        "functions, arguments, return values",
+        "comments and docstrings",
+        "imports and standard library"
+      ],
+      "practice_with": [
+        "services/get-data",
+        "services/download-video",
+        "services/basic-bot"
+      ]
+    },
+    {
+      "phase": "2. Intermediate Python",
+      "focus": [
+        "modular project structure",
+        "working with APIs",
+        "error handling and logging",
+        "files and JSON data",
+        "virtual environments and dependencies"
+      ],
+      "practice_with": [
+        "services/AI-search-engine",
+        "services/calculator-gradient-image",
+        "services/nft-ai-bot"
+      ]
+    },
+    {
+      "phase": "3. Advanced and Microservice Thinking",
+      "focus": [
+        "service boundaries and contracts",
+        "schedulers/background jobs",
+        "testing strategy",
+        "external integrations",
+        "deployment and runtime scripts"
+      ],
+      "practice_with": [
+        "services/crypto-bot",
+        "services/dropshipping-bot",
+        "services/composio"
+      ]
+    },
+    {
+      "phase": "4. Specialized Domains",
+      "focus": [
+        "web3 and smart contracts",
+        "automation pipelines",
+        "security and secret handling",
+        "project hardening for production"
+      ],
+      "practice_with": [
+        "services/smart-contract"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "AI-search-engine",
+      "path": "services/AI-search-engine",
+      "entrypoint": "services/AI-search-engine/main.py",
+      "python_files": 6,
+      "requirements": [
+        "google-search-results",
+        "beautifulsoup4",
+        "requests",
+        "numpy"
+      ],
+      "tech_stack": [
+        "beautifulsoup4",
+        "bs4",
+        "core",
+        "google-search-results",
+        "numpy",
+        "requests",
+        "serpapi"
+      ],
+      "topics": [
+        "web scraping",
+        "search workflow",
+        "performance measurement"
+      ],
+      "level": "intermediate"
+    },
+    {
+      "name": "basic-bot",
+      "path": "services/basic-bot",
+      "entrypoint": "services/basic-bot/test.py",
+      "python_files": 3,
+      "requirements": [],
+      "tech_stack": [
+        "bs4",
+        "openai",
+        "requests"
+      ],
+      "topics": [
+        "OpenAI API basics",
+        "prompting",
+        "script automation"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "box-browser",
+      "path": "services/box-browser",
+      "entrypoint": "services/box-browser/BrowserWindow.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "tkinter",
+        "webview"
+      ],
+      "topics": [
+        "GUI automation",
+        "desktop integration"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "calculator-gradient-image",
+      "path": "services/calculator-gradient-image",
+      "entrypoint": "services/calculator-gradient-image/app.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "cv2",
+        "matplotlib",
+        "numpy"
+      ],
+      "topics": [
+        "image processing",
+        "numerical operations"
+      ],
+      "level": "intermediate"
+    },
+    {
+      "name": "composio",
+      "path": "services/composio",
+      "entrypoint": "services/composio/upload-video-youtube/app.py",
+      "python_files": 4,
+      "requirements": [],
+      "tech_stack": [
+        "composio_langchain",
+        "configparser",
+        "flask",
+        "langchain",
+        "langchain_openai",
+        "requests"
+      ],
+      "topics": [
+        "API orchestration",
+        "automation workflows",
+        "template rendering"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "crypto-bot",
+      "path": "services/crypto-bot",
+      "entrypoint": "services/crypto-bot/main.py",
+      "python_files": 29,
+      "requirements": [
+        "python-telegram-bot",
+        "python-dotenv",
+        "apscheduler",
+        "feedparser",
+        "pytest"
+      ],
+      "tech_stack": [
+        "apscheduler",
+        "difflib",
+        "dotenv",
+        "feedparser",
+        "modules",
+        "pytest",
+        "python-dotenv",
+        "python-telegram-bot",
+        "requests",
+        "telegram"
+      ],
+      "topics": [
+        "telegram bot",
+        "schedulers",
+        "external APIs",
+        "testing"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "download-video",
+      "path": "services/download-video",
+      "entrypoint": "services/download-video/index.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "pytube"
+      ],
+      "topics": [
+        "HTTP download",
+        "CLI scripts"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "dropshipping-bot",
+      "path": "services/dropshipping-bot",
+      "entrypoint": "services/dropshipping-bot/configs/base_config.py",
+      "python_files": 6,
+      "requirements": [],
+      "tech_stack": [
+        "dotenv",
+        "services",
+        "utils"
+      ],
+      "topics": [
+        "service architecture",
+        "configuration management"
+      ],
+      "level": "advanced"
+    },
+    {
+      "name": "get-data",
+      "path": "services/get-data",
+      "entrypoint": "services/get-data/index.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "http"
+      ],
+      "topics": [
+        "data collection",
+        "HTTP requests"
+      ],
+      "level": "basic"
+    },
+    {
+      "name": "nft-ai-bot",
+      "path": "services/nft-ai-bot",
+      "entrypoint": "services/nft-ai-bot/main.py",
+      "python_files": 1,
+      "requirements": [
+        "openai",
+        "requests",
+        "python-dotenv"
+      ],
+      "tech_stack": [
+        "dotenv",
+        "openai",
+        "python-dotenv",
+        "requests"
+      ],
+      "topics": [
+        "AI image generation",
+        "environment variables",
+        "HTTP APIs"
+      ],
+      "level": "intermediate"
+    },
+    {
+      "name": "smart-contract",
+      "path": "services/smart-contract",
+      "entrypoint": "services/smart-contract/main.py",
+      "python_files": 1,
+      "requirements": [],
+      "tech_stack": [
+        "web3"
+      ],
+      "topics": [
+        "web3",
+        "blockchain transactions",
+        "contract deployment"
+      ],
+      "level": "advanced"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ env/
 **/.env.*
 
 # Local secret config
-composio/config.ini
+services/composio/config.ini
 
 # Logs and runtime files
 *.log
@@ -34,8 +34,8 @@ build/
 dist/
 *.pyz
 *.toc
-exe/build/
-exe/dist/
+archive/exe-experiment/build/
+archive/exe-experiment/dist/
 
 # IDE/editor
 .vscode/

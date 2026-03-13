@@ -1,45 +1,75 @@
 # python-labs
 
-A personal collection of Python experiments and mini-projects.
+Reorganized Python lab workspace with a unified learning site.
 
-## Project Structure
+## New Structure
 
-- `AI-search-engine/`: Search and report generation utilities.
-- `basic-bot/`: Small bot and data analysis scripts.
-- `box-browser/`: Browser window automation sample.
-- `calculator-gradient-image/`: Image gradient processing script.
-- `composio/`: Composio + OpenAI integration demos.
-- `crypto-bot/`: Crypto tracking and Telegram bot utilities.
-- `download-video/`: Video download script.
-- `dropshipping-bot/`: Dropshipping research helpers.
-- `exe/`: PyInstaller build output and executable experiments.
-- `get-data/`: Data fetcher script.
-- `nft-ai-bot/`: NFT and AI related automation script.
-- `smart-contract/`: Solidity and web3 testing scripts.
+- `services/`: all lab projects grouped as independent services.
+- `site/`: static learning portal (cheat sheet + roadmap + service catalog).
+- `scripts/`: cross-platform scripts to build and run the site.
+- `docs/`: markdown versions of roadmap and cheat sheet.
+- `archive/`: legacy/experimental folders not used for the main learning flow.
 
-## Security Notes
+## Services
 
-This repository may require API keys for local runs, but secrets must never be committed.
+- `services/AI-search-engine`
+- `services/basic-bot`
+- `services/box-browser`
+- `services/calculator-gradient-image`
+- `services/composio`
+- `services/crypto-bot`
+- `services/download-video`
+- `services/dropshipping-bot`
+- `services/get-data`
+- `services/nft-ai-bot`
+- `services/smart-contract`
 
-- Keep real keys only in local environment files.
-- Use placeholder values in tracked files.
-- Rotate any key that was previously exposed.
+## Build and Run Learning Site
 
-## Local Setup (General)
+### macOS / Linux
 
-1. Create a virtual environment.
-2. Install dependencies per project (`requirements.txt` where available).
-3. Configure local environment values (`.env` / `config.ini`) with your own keys.
-4. Run scripts from each project folder.
+```bash
+./scripts/run_site.sh
+```
 
-## Git Hygiene
+Optional custom start port:
 
-A root `.gitignore` is included to exclude:
+```bash
+./scripts/run_site.sh 8080
+```
 
-- `.env` files and local secret configs
-- Python cache and virtual environments
-- logs and local build artifacts
+### Windows PowerShell
 
-## Disclaimer
+```powershell
+./scripts/run_site.ps1
+```
 
-These are lab/demo projects and may need refactoring, tests, and production hardening before real-world use.
+Optional custom start port:
+
+```powershell
+./scripts/run_site.ps1 -StartPort 8080
+```
+
+### Windows CMD
+
+```cmd
+scripts\run_site.cmd
+```
+
+## Auto Runtime Behavior
+
+- Auto-detects available Python command (`python3`, `python`, or `py -3` on Windows).
+- Auto-checks if requested port is in use.
+- If port is busy, automatically increments to the next free port.
+- Rebuilds `site/data/catalog.json` from `services/` before serving.
+
+## Manual Build Only
+
+```bash
+python3 scripts/build_site.py
+```
+
+## Notes
+
+- Keep secrets in local env files only; never commit real keys.
+- This repo is for learning/lab use; each service may need additional refactor/tests for production.
