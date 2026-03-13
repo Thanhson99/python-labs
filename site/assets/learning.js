@@ -80,6 +80,11 @@ function renderRoadmap(items) {
         <p><strong>Goals:</strong> ${escapeHtml((item.goals || item.focus || []).join(", "))}</p>
         <p><strong>Build:</strong> ${escapeHtml((item.build || item.practice_with || []).join(", "))}</p>
         <p><strong>Tools:</strong> ${escapeHtml((item.tools || []).join(", "))}</p>
+        ${
+          item.example_path
+            ? `<p><strong>Example code:</strong> <code>${escapeHtml(item.example_path)}</code></p>`
+            : ""
+        }
       </article>
     `,
     )
@@ -206,7 +211,8 @@ async function initLearningSite() {
     title.textContent = data.title || title.textContent;
   }
   if (subtitle) {
-    subtitle.textContent = data.subtitle || "";
+    const root = data.example_root ? ` Example root: ${data.example_root}` : "";
+    subtitle.textContent = `${data.subtitle || ""}${root}`;
   }
 
   renderStats(data);

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learning-api
+  template:
+    metadata:
+      labels:
+        app: learning-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/learning-api:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080

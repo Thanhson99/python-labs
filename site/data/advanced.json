@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-03-13T05:35:46.025680+00:00",
+  "generated_at": "2026-03-13T05:43:08.264134+00:00",
   "site": "advanced",
   "title": "Python Advanced Architecture Track",
   "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
+  "example_root": "learning-path/advanced",
   "cheat_sheets": [
     {
       "category": "Architecture",
@@ -352,7 +353,8 @@
         "Pydantic",
         "protobuf",
         "spectral"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-a-service-contracts"
     },
     {
       "stage": "Phase B: Event-Driven Core",
@@ -369,7 +371,8 @@
         "RabbitMQ",
         "Kafka",
         "Redis Streams"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-b-event-driven-core"
     },
     {
       "stage": "Phase C: Consistency Patterns",
@@ -385,7 +388,8 @@
         "PostgreSQL",
         "Celery",
         "Kafka"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-c-consistency-patterns"
     },
     {
       "stage": "Phase D: Data Platform",
@@ -402,7 +406,8 @@
         "SQLAlchemy",
         "Alembic",
         "Redis"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-d-data-platform"
     },
     {
       "stage": "Phase E: Reliability Engineering",
@@ -418,7 +423,8 @@
         "httpx",
         "tenacity",
         "rate limiting"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-e-reliability-engineering"
     },
     {
       "stage": "Phase F: Security",
@@ -435,7 +441,8 @@
         "Auth0/Keycloak",
         "Vault",
         "OPA"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-f-security"
     },
     {
       "stage": "Phase G: Observability",
@@ -452,7 +459,8 @@
         "Grafana",
         "OpenTelemetry",
         "Loki"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-g-observability"
     },
     {
       "stage": "Phase H: Platform and Delivery",
@@ -468,7 +476,8 @@
         "Docker",
         "Kubernetes",
         "Argo Rollouts"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-h-platform-delivery"
     },
     {
       "stage": "Phase I: Governance and Cost",
@@ -483,7 +492,8 @@
       "tools": [
         "Backstage",
         "FinOps dashboards"
-      ]
+      ],
+      "example_path": "learning-path/advanced/phase-i-governance-and-cost"
     }
   ],
   "java_python_map": [

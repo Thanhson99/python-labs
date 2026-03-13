@@ -6,6 +6,7 @@ Reorganized Python lab workspace with dual learning sites.
 
 - `services/`: all lab projects grouped as independent services.
 - `site/`: static portal with two separated learning sites.
+- `learning-path/`: hands-on code labs mapped to roadmap stages/phases.
 - `scripts/`: cross-platform scripts to build and run the site.
 - `docs/`: markdown versions of roadmap and cheat sheet.
 - `archive/`: legacy/experimental folders not used for the main learning flow.
@@ -61,6 +62,8 @@ scripts\run_site.cmd
 - `http://127.0.0.1:<PORT>/` -> track selector landing page
 - `http://127.0.0.1:<PORT>/foundation.html` -> huge foundation cheatsheet + roadmap
 - `http://127.0.0.1:<PORT>/advanced.html` -> advanced architecture roadmap + Java/Python stack mapping
+
+Each roadmap card includes an `Example code` path under `learning-path/` so you can open matching code while reading the site.
 
 ## Auto Runtime Behavior
 

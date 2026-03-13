@@ -28,6 +28,7 @@ services/composio/config.ini
 # Logs and runtime files
 *.log
 logs/
+learning-path/**/*.db
 
 # Build/dist artifacts
 build/

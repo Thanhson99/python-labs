@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-03-13T05:35:46.025680+00:00",
+  "generated_at": "2026-03-13T05:43:08.264134+00:00",
   "site": "foundation",
   "title": "Python Foundation Track",
   "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
+  "example_root": "learning-path/foundation",
   "cheat_sheets": [
     {
       "category": "Syntax",
@@ -399,7 +400,8 @@
         "venv",
         "pip",
         "argparse"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-01-python-core"
     },
     {
       "stage": "Stage 2: Data and Files",
@@ -419,7 +421,8 @@
         "csv",
         "pathlib",
         "collections"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-02-data-and-files"
     },
     {
       "stage": "Stage 3: API Integrations",
@@ -438,7 +441,8 @@
         "requests",
         "python-dotenv",
         "logging"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-03-api-integrations"
     },
     {
       "stage": "Stage 4: Project Structure",
@@ -457,7 +461,8 @@
         "pytest",
         "ruff",
         "black"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-04-project-structure"
     },
     {
       "stage": "Stage 5: Intermediate Automation",
@@ -476,7 +481,8 @@
         "apscheduler",
         "jinja2",
         "pytest"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-05-intermediate-automation"
     },
     {
       "stage": "Stage 6: API Service Basics",
@@ -495,7 +501,8 @@
         "fastapi",
         "uvicorn",
         "pydantic"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-06-api-service-basics"
     },
     {
       "stage": "Stage 7: Storage",
@@ -514,7 +521,8 @@
         "postgresql",
         "sqlalchemy",
         "alembic"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-07-storage"
     },
     {
       "stage": "Stage 8: Async and Concurrency",
@@ -533,7 +541,8 @@
         "asyncio",
         "httpx",
         "concurrent.futures"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-08-async-and-concurrency"
     },
     {
       "stage": "Stage 9: Testing and Quality",
@@ -550,7 +559,8 @@
         "pytest",
         "coverage",
         "pre-commit"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-09-testing-and-quality"
     },
     {
       "stage": "Stage 10: Delivery",
@@ -567,7 +577,8 @@
         "docker",
         "github actions",
         "makefile"
-      ]
+      ],
+      "example_path": "learning-path/foundation/stage-10-delivery"
     }
   ],
   "open_source_stacks": [

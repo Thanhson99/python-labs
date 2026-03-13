@@ -1,0 +1,7 @@
+{
+  "events": [
+    {"id": 1, "kind": "login", "ok": true},
+    {"id": 2, "kind": "login", "ok": false},
+    {"id": 3, "kind": "purchase", "ok": true}
+  ]
+}

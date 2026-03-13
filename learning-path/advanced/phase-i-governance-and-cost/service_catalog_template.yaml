@@ -1,0 +1,11 @@
+service: billing-api
+owner_team: payments-platform
+tier: critical
+runbook: https://internal.example/runbooks/billing-api
+dependencies:
+  - postgres
+  - redis
+  - kafka
+alerts:
+  - p95_latency_high
+  - error_rate_spike

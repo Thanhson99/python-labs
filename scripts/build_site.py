@@ -701,6 +701,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["CLI calculator", "json parser", "file reader tool"],
             "tools": ["python", "venv", "pip", "argparse"],
+            "example_path": "learning-path/foundation/stage-01-python-core",
         },
         {
             "stage": "Stage 2: Data and Files",
@@ -712,6 +713,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["daily report generator", "data cleaner", "batch rename script"],
             "tools": ["json", "csv", "pathlib", "collections"],
+            "example_path": "learning-path/foundation/stage-02-data-and-files",
         },
         {
             "stage": "Stage 3: API Integrations",
@@ -723,6 +725,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["weather cli", "currency monitor", "rss news collector"],
             "tools": ["requests", "python-dotenv", "logging"],
+            "example_path": "learning-path/foundation/stage-03-api-integrations",
         },
         {
             "stage": "Stage 4: Project Structure",
@@ -734,6 +737,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["mini service template", "shared utils package"],
             "tools": ["pip", "pytest", "ruff", "black"],
+            "example_path": "learning-path/foundation/stage-04-project-structure",
         },
         {
             "stage": "Stage 5: Intermediate Automation",
@@ -745,6 +749,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["market tracker", "auto summary bot", "alert scheduler"],
             "tools": ["apscheduler", "jinja2", "pytest"],
+            "example_path": "learning-path/foundation/stage-05-intermediate-automation",
         },
         {
             "stage": "Stage 6: API Service Basics",
@@ -756,6 +761,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["task api", "auth prototype", "service status board"],
             "tools": ["fastapi", "uvicorn", "pydantic"],
+            "example_path": "learning-path/foundation/stage-06-api-service-basics",
         },
         {
             "stage": "Stage 7: Storage",
@@ -768,6 +774,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["inventory service", "blog backend"],
             "tools": ["postgresql", "sqlalchemy", "alembic"],
+            "example_path": "learning-path/foundation/stage-07-storage",
         },
         {
             "stage": "Stage 8: Async and Concurrency",
@@ -779,6 +786,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["bulk fetcher", "parallel scraper", "async notifier"],
             "tools": ["asyncio", "httpx", "concurrent.futures"],
+            "example_path": "learning-path/foundation/stage-08-async-and-concurrency",
         },
         {
             "stage": "Stage 9: Testing and Quality",
@@ -790,6 +798,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["test harness for one service"],
             "tools": ["pytest", "coverage", "pre-commit"],
+            "example_path": "learning-path/foundation/stage-09-testing-and-quality",
         },
         {
             "stage": "Stage 10: Delivery",
@@ -801,6 +810,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["dockerized api + ci"],
             "tools": ["docker", "github actions", "makefile"],
+            "example_path": "learning-path/foundation/stage-10-delivery",
         },
     ]
 
@@ -837,6 +847,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         "site": "foundation",
         "title": "Python Foundation Track",
         "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
+        "example_root": "learning-path/foundation",
         "cheat_sheets": FOUNDATION_CHEATSHEET,
         "roadmap": roadmap,
         "open_source_stacks": open_source_stacks,
@@ -913,6 +924,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["contract-first user service", "api lint pipeline"],
             "tools": ["FastAPI", "Pydantic", "protobuf", "spectral"],
+            "example_path": "learning-path/advanced/phase-a-service-contracts",
         },
         {
             "stage": "Phase B: Event-Driven Core",
@@ -923,6 +935,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["order event pipeline", "notification worker"],
             "tools": ["RabbitMQ", "Kafka", "Redis Streams"],
+            "example_path": "learning-path/advanced/phase-b-event-driven-core",
         },
         {
             "stage": "Phase C: Consistency Patterns",
@@ -933,6 +946,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["payment + order saga"],
             "tools": ["PostgreSQL", "Celery", "Kafka"],
+            "example_path": "learning-path/advanced/phase-c-consistency-patterns",
         },
         {
             "stage": "Phase D: Data Platform",
@@ -943,6 +957,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["billing ledger", "query side read API"],
             "tools": ["SQLAlchemy", "Alembic", "Redis"],
+            "example_path": "learning-path/advanced/phase-d-data-platform",
         },
         {
             "stage": "Phase E: Reliability Engineering",
@@ -953,6 +968,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["resilient API adapter layer"],
             "tools": ["httpx", "tenacity", "rate limiting"],
+            "example_path": "learning-path/advanced/phase-e-reliability-engineering",
         },
         {
             "stage": "Phase F: Security",
@@ -963,6 +979,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["auth gateway", "token introspection service"],
             "tools": ["Auth0/Keycloak", "Vault", "OPA"],
+            "example_path": "learning-path/advanced/phase-f-security",
         },
         {
             "stage": "Phase G: Observability",
@@ -973,6 +990,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["full telemetry stack for 3 services"],
             "tools": ["Prometheus", "Grafana", "OpenTelemetry", "Loki"],
+            "example_path": "learning-path/advanced/phase-g-observability",
         },
         {
             "stage": "Phase H: Platform and Delivery",
@@ -983,6 +1001,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["production deployment blueprint"],
             "tools": ["Docker", "Kubernetes", "Argo Rollouts"],
+            "example_path": "learning-path/advanced/phase-h-platform-delivery",
         },
         {
             "stage": "Phase I: Governance and Cost",
@@ -993,6 +1012,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
             ],
             "build": ["team service catalog + operational playbook"],
             "tools": ["Backstage", "FinOps dashboards"],
+            "example_path": "learning-path/advanced/phase-i-governance-and-cost",
         },
     ]
 
@@ -1047,6 +1067,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         "site": "advanced",
         "title": "Python Advanced Architecture Track",
         "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
+        "example_root": "learning-path/advanced",
         "cheat_sheets": ADVANCED_CHEATSHEET,
         "roadmap": roadmap,
         "java_python_map": java_python_map,
