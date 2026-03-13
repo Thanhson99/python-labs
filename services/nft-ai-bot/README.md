@@ -1,7 +1,13 @@
-# AI NFT Bot
+# NFT AI Bot
 
-## Mô tả
-Bot AI tự động tạo mô tả ảnh từ ChatGPT, sau đó dùng Stable Diffusion để vẽ ảnh NFT.
+## Description
+This bot generates NFT image prompts and images using AI APIs.
 
-## Cài đặt
-1. Tạo file `.env` và thêm API keys:
+## Setup
+1. Create a `.env` file and add your API keys.
+2. Install dependencies from `requirements.txt`.
+3. Run `python main.py`.
+
+## Notes
+- Keep secrets in environment variables.
+- This project is a learning/demo workflow and may require API updates.

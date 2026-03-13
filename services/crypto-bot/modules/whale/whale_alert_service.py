@@ -6,7 +6,7 @@ load_dotenv()
 WHALE_ALERT_API_KEY = os.getenv("WHALE_ALERT_API_KEY")
 
 def get_whale_alert_transactions():
-    """Lấy giao dịch cá voi từ Whale Alert"""
+    """Fetch whale transactions from Whale Alert"""
     url = f"https://api.whale-alert.io/v1/transactions?api_key={WHALE_ALERT_API_KEY}&min_value=1000000"
     response = requests.get(url).json()
 

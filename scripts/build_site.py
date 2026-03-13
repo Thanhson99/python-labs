@@ -187,6 +187,30 @@ FOUNDATION_CHEATSHEET = [
         "tags": ["json", "io"],
     },
     {
+        "category": "Database",
+        "title": "SQLite Connection",
+        "summary": "Simple local database for scripts and prototypes.",
+        "snippet": "import sqlite3\\nconn = sqlite3.connect('app.db')\\ncur = conn.cursor()\\ncur.execute('SELECT 1')\\nconn.close()",
+        "application": "Quick local persistence without external services.",
+        "tags": ["sqlite", "database"],
+    },
+    {
+        "category": "Database",
+        "title": "PostgreSQL via SQLAlchemy",
+        "summary": "Use engine + session factory for clean data access.",
+        "snippet": "from sqlalchemy import create_engine\\nfrom sqlalchemy.orm import sessionmaker\\nengine = create_engine('postgresql+psycopg://user:pass@localhost:5432/app')\\nSession = sessionmaker(bind=engine)\\nsession = Session()",
+        "application": "Production-ready relational database integration.",
+        "tags": ["postgresql", "sqlalchemy"],
+    },
+    {
+        "category": "Database",
+        "title": "Connection URL from Environment",
+        "summary": "Never hardcode credentials in source files.",
+        "snippet": "db_url = os.getenv('DATABASE_URL')\\nif not db_url:\\n    raise RuntimeError('DATABASE_URL is required')",
+        "application": "Secure and portable environment-specific configuration.",
+        "tags": ["database", "env", "security"],
+    },
+    {
         "category": "HTTP",
         "title": "Requests with Timeout",
         "summary": "Never call API without timeout.",
@@ -740,6 +764,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
                 "orm usage",
                 "migrations",
                 "indexes and query tuning basics",
+                "connection pooling and transaction safety",
             ],
             "build": ["inventory service", "blog backend"],
             "tools": ["postgresql", "sqlalchemy", "alembic"],
@@ -779,6 +804,34 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         },
     ]
 
+    open_source_stacks = [
+        {
+            "name": "FastAPI Starter",
+            "use_case": "Typed REST APIs with automatic docs.",
+            "packages": ["fastapi", "uvicorn", "pydantic"],
+        },
+        {
+            "name": "Data Layer Starter",
+            "use_case": "Relational persistence and migrations.",
+            "packages": ["sqlalchemy", "alembic", "psycopg"],
+        },
+        {
+            "name": "Caching Starter",
+            "use_case": "Low-latency reads and temporary state.",
+            "packages": ["redis", "hiredis"],
+        },
+        {
+            "name": "Background Jobs Starter",
+            "use_case": "Async tasks and periodic workers.",
+            "packages": ["celery", "redis", "apscheduler"],
+        },
+        {
+            "name": "Quality Starter",
+            "use_case": "Linting, formatting, and tests.",
+            "packages": ["pytest", "ruff", "black", "mypy"],
+        },
+    ]
+
     return {
         "generated_at": generated_at,
         "site": "foundation",
@@ -786,6 +839,7 @@ def _build_foundation_track(services: list[dict], generated_at: str) -> dict:
         "subtitle": "Large practical cheatsheet + stepwise roadmap from beginner to strong intermediate.",
         "cheat_sheets": FOUNDATION_CHEATSHEET,
         "roadmap": roadmap,
+        "open_source_stacks": open_source_stacks,
         "recommended_services": beginner_services,
     }
 
@@ -960,6 +1014,34 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         },
     ]
 
+    open_source_stacks = [
+        {
+            "name": "Event-Driven Core",
+            "use_case": "Domain events and asynchronous service communication.",
+            "packages": ["aiokafka", "pydantic", "tenacity"],
+        },
+        {
+            "name": "Queue Worker Core",
+            "use_case": "Reliable background processing with retries.",
+            "packages": ["celery", "rabbitmq", "redis"],
+        },
+        {
+            "name": "Service Platform Core",
+            "use_case": "HTTP API + DB + migration + cache baseline.",
+            "packages": ["fastapi", "sqlalchemy", "alembic", "redis", "httpx"],
+        },
+        {
+            "name": "Observability Core",
+            "use_case": "Metrics, tracing, and log correlation.",
+            "packages": ["prometheus-client", "opentelemetry-sdk", "structlog"],
+        },
+        {
+            "name": "Security Core",
+            "use_case": "AuthN/AuthZ and secret management.",
+            "packages": ["pyjwt", "passlib", "authlib", "hvac"],
+        },
+    ]
+
     return {
         "generated_at": generated_at,
         "site": "advanced",
@@ -968,6 +1050,7 @@ def _build_advanced_track(services: list[dict], generated_at: str) -> dict:
         "cheat_sheets": ADVANCED_CHEATSHEET,
         "roadmap": roadmap,
         "java_python_map": java_python_map,
+        "open_source_stacks": open_source_stacks,
         "capstone_projects": capstone,
         "recommended_services": advanced_services,
     }

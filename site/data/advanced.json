@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T04:36:32.797841+00:00",
+  "generated_at": "2026-03-13T05:35:46.025680+00:00",
   "site": "advanced",
   "title": "Python Advanced Architecture Track",
   "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
@@ -540,6 +540,56 @@
       "java_stack": "Micrometer + Zipkin",
       "python_stack": "Prometheus + OpenTelemetry + Grafana",
       "when": "Metrics and tracing at scale"
+    }
+  ],
+  "open_source_stacks": [
+    {
+      "name": "Event-Driven Core",
+      "use_case": "Domain events and asynchronous service communication.",
+      "packages": [
+        "aiokafka",
+        "pydantic",
+        "tenacity"
+      ]
+    },
+    {
+      "name": "Queue Worker Core",
+      "use_case": "Reliable background processing with retries.",
+      "packages": [
+        "celery",
+        "rabbitmq",
+        "redis"
+      ]
+    },
+    {
+      "name": "Service Platform Core",
+      "use_case": "HTTP API + DB + migration + cache baseline.",
+      "packages": [
+        "fastapi",
+        "sqlalchemy",
+        "alembic",
+        "redis",
+        "httpx"
+      ]
+    },
+    {
+      "name": "Observability Core",
+      "use_case": "Metrics, tracing, and log correlation.",
+      "packages": [
+        "prometheus-client",
+        "opentelemetry-sdk",
+        "structlog"
+      ]
+    },
+    {
+      "name": "Security Core",
+      "use_case": "AuthN/AuthZ and secret management.",
+      "packages": [
+        "pyjwt",
+        "passlib",
+        "authlib",
+        "hvac"
+      ]
     }
   ],
   "capstone_projects": [

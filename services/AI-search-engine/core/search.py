@@ -16,7 +16,7 @@ def search_algorithms():
             "q": query,
             "api_key": API_KEY,
             "engine": "google",
-            "num": 5  # Giới hạn 5 kết quả mỗi nguồn
+            "num": 5  # Limit to 5 results per source
         }
         search = GoogleSearch(params)
         results = search.get_dict()

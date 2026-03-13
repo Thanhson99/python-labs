@@ -6,7 +6,7 @@ load_dotenv()
 GLASSNODE_API_KEY = os.getenv("GLASSNODE_API_KEY")
 
 def get_glassnode_data(coin_list):
-    """Lấy dữ liệu cá voi từ Glassnode"""
+    """Fetch whale data from Glassnode"""
     transactions = []
     
     for coin in coin_list:
@@ -14,7 +14,7 @@ def get_glassnode_data(coin_list):
         response = requests.get(url).json()
 
         if response:
-            whale_data = response[-1]  # Lấy dữ liệu mới nhất
+            whale_data = response[-1]  # Use latest data point
             transactions.append({
                 "symbol": coin,
                 "amount": whale_data["balance"],

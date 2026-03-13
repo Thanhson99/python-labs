@@ -1,28 +1,18 @@
-🔍 Tìm thấy 7 thuật toán từ Google:
+🔍 Found 5 algorithms from Google:
 
-1️⃣ Thuật toán từ https://www.geeksforgeeks.org/sorting-algorithms/
+1️⃣ Algorithm from https://www.geeksforgeeks.org/sorting-algorithms/
     - Code:
-        Không tìm thấy code hoặc chỉ là tài liệu....
-    - Thời gian thực thi: 0.0000s
+        Code not found or page is documentation only....
+    - Execution time: 0.0000s
 
-2️⃣ Thuật toán từ https://www.geeksforgeeks.org/sorting-algorithms/
+2️⃣ Algorithm from https://www.geeksforgeeks.org/arrays-sort-in-java-with-examples/
     - Code:
-        Không tìm thấy code hoặc chỉ là tài liệu....
-    - Thời gian thực thi: 0.0000s
+        Code not found or page is documentation only....
+    - Execution time: 0.0000s
 
-3️⃣ Thuật toán từ https://www.geeksforgeeks.org/arrays-sort-in-java-with-examples/
+3️⃣ Algorithm from https://github.com/leduythuccs/Sorting-Algorithms
     - Code:
-        Không tìm thấy code hoặc chỉ là tài liệu....
-    - Thời gian thực thi: 0.0000s
+        Code not found or page is documentation only....
+    - Execution time: 0.0000s
 
-4️⃣ Thuật toán từ https://github.com/leduythuccs/Sorting-Algorithms
-    - Code:
-        Không tìm thấy code hoặc chỉ là tài liệu....
-    - Thời gian thực thi: 0.0000s
-
-5️⃣ Thuật toán từ https://github.com/julie-jiang/Sorting-Algorithms
-    - Code:
-        Không tìm thấy code hoặc chỉ là tài liệu....
-    - Thời gian thực thi: 0.0000s
-
-✅ Thuật toán tốt nhất: https://www.geeksforgeeks.org/sorting-algorithms/ (Nhanh nhất: 0.0000s)
+✅ Best algorithm: https://www.geeksforgeeks.org/sorting-algorithms/ (Fastest: 0.0000s)

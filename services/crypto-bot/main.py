@@ -3,22 +3,22 @@ import os
 import time
 from apscheduler.schedulers.background import BackgroundScheduler
 
-SCHEDULE_INTERVAL = int(os.getenv("SCHEDULE_INTERVAL", 6))  # Mặc định chạy mỗi 6 giờ
+SCHEDULE_INTERVAL = int(os.getenv("SCHEDULE_INTERVAL", 6))  # Default interval runs every 6 hours
 
 if __name__ == "__main__":
-    print(f"✅ Bot đang chạy, sẽ cập nhật tin tức mỗi {SCHEDULE_INTERVAL} giờ...")
+    print(f"✅ Bot is running, news will refresh every {SCHEDULE_INTERVAL} hours...")
 
-    # 🚀 Chạy ngay lần đầu tiên khi bot khởi động
+    # 🚀 Run once immediately at startup
     job()  
 
-    # Khởi tạo scheduler để chạy lặp lại
+    # Initialize scheduler for recurring execution
     scheduler = BackgroundScheduler()
     scheduler.add_job(job, "interval", hours=SCHEDULE_INTERVAL)
     scheduler.start()
 
     try:
         while True:
-            time.sleep(1)  # Giữ chương trình chạy
+            time.sleep(1)  # Keep process alive
     except KeyboardInterrupt:
-        print("❌ Dừng bot")
+        print("❌ Stopping bot")
         scheduler.shutdown()

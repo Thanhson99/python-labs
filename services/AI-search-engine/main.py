@@ -6,19 +6,19 @@ from core.reporter import generate_report
 import json
 import os
 
-# Cấu hình log
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Tạo thư mục lưu dữ liệu nếu chưa có
+# Ensure output data directory exists
 os.makedirs("data", exist_ok=True)
 
 def main():
-    logging.info("Bắt đầu tìm kiếm thuật toán...")
+    logging.info("Starting algorithm search...")
     urls = search_algorithms()
     
     algorithms = []
     for url in urls:
-        logging.info(f"Đang lấy thuật toán từ {url}")
+        logging.info(f"Fetching algorithm content from {url}")
         code = scrape_algorithm(url)
         exec_time = measure_execution_time(code)
         algorithms.append({"url": url, "code": code, "time": exec_time})
@@ -30,7 +30,7 @@ def main():
     
     generate_report(algorithms)
     
-    logging.info("Hoàn thành! Xem kết quả trong data/report.txt")
+    logging.info("Completed. Check results in data/report.txt")
 
 if __name__ == "__main__":
     main()

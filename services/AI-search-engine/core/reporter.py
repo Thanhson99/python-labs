@@ -1,30 +1,30 @@
 def generate_report(algorithms):
     with open("data/report.txt", "w") as f:
-        f.write("🔍 Tìm thấy {} thuật toán từ Google:\n\n".format(len(algorithms)))
+        f.write("🔍 Found {} algorithms from Google:\n\n".format(len(algorithms)))
 
         for i, algo in enumerate(algorithms[:5]):
-            f.write(f"{i+1}️⃣ Thuật toán từ {algo.get('url', 'Không có URL')}\n")
+            f.write(f"{i+1}️⃣ Algorithm from {algo.get('url', 'No URL')}\n")
 
-            # Kiểm tra nếu 'code' tồn tại và là chuỗi
+            # Ensure "code" exists and is a string
             if isinstance(algo.get('code'), str):
-                code_snippet = algo['code'][:100]  # Cắt 100 ký tự đầu
+                code_snippet = algo['code'][:100]  # Keep the first 100 characters
             else:
-                code_snippet = "Không tìm thấy code hoặc chỉ là tài liệu."
+                code_snippet = "Code not found or page is documentation only."
 
             f.write(f"    - Code:\n        {code_snippet}...\n")
 
-            # Chuyển đổi thời gian thực thi
+            # Convert execution time to float safely
             try:
                 time_taken = float(algo.get("time", 0))
             except (ValueError, TypeError):
                 time_taken = 0.0
 
-            f.write(f"    - Thời gian thực thi: {time_taken:.4f}s\n\n")
+            f.write(f"    - Execution time: {time_taken:.4f}s\n\n")
 
-        # Xác định thuật toán tốt nhất
+        # Determine the best algorithm by execution time
         try:
             best_time = float(algorithms[0].get("time", 0))
         except (ValueError, TypeError):
             best_time = 0.0
 
-        f.write(f"✅ Thuật toán tốt nhất: {algorithms[0].get('url', 'Không có URL')} (Nhanh nhất: {best_time:.4f}s)\n")
+        f.write(f"✅ Best algorithm: {algorithms[0].get('url', 'No URL')} (Fastest: {best_time:.4f}s)\n")

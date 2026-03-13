@@ -7,6 +7,14 @@ function escapeHtml(input) {
     .replaceAll("'", "&#39;");
 }
 
+function normalizeSnippet(snippet) {
+  if (snippet === null || snippet === undefined) {
+    return "";
+  }
+  // Data can contain literal "\n"; convert to real line breaks for <pre><code>.
+  return String(snippet).replace(/\\n/g, "\n");
+}
+
 function renderStats(data) {
   const stats = document.getElementById("stats");
   if (!stats) {
@@ -47,7 +55,7 @@ function renderCheatSheet(items) {
         <p><span class="tag category">${escapeHtml(item.category || "General")}</span></p>
         <h3>${escapeHtml(item.title || "")}</h3>
         <p>${escapeHtml(item.summary || "")}</p>
-        <pre><code>${escapeHtml(item.snippet || "")}</code></pre>
+        <pre><code>${escapeHtml(normalizeSnippet(item.snippet || ""))}</code></pre>
         <p><strong>Application:</strong> ${escapeHtml(item.application || "")}</p>
         <div class="tags">
           ${(item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
@@ -155,6 +163,33 @@ function renderCapstones(items) {
     .join("");
 }
 
+function renderOpenSourceStacks(items) {
+  const container = document.getElementById("oss");
+  const panel = document.getElementById("ossPanel");
+  if (!panel || !container) {
+    return;
+  }
+
+  if (!Array.isArray(items) || items.length === 0) {
+    panel.style.display = "none";
+    return;
+  }
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+      <article class="service-card">
+        <h3>${escapeHtml(item.name || "")}</h3>
+        <p><strong>Use case:</strong> ${escapeHtml(item.use_case || "")}</p>
+        <div class="tags">
+          ${(item.packages || []).map((pkg) => `<span class="tag">${escapeHtml(pkg)}</span>`).join("")}
+        </div>
+      </article>
+    `,
+    )
+    .join("");
+}
+
 async function initLearningSite() {
   const source = document.body.dataset.source;
   if (!source) {
@@ -178,6 +213,7 @@ async function initLearningSite() {
   renderCheatSheet(data.cheat_sheets || []);
   renderRoadmap(data.roadmap || []);
   renderStackMap(data.java_python_map || []);
+  renderOpenSourceStacks(data.open_source_stacks || []);
   renderCapstones(data.capstone_projects || []);
   renderServices(data.recommended_services || []);
 

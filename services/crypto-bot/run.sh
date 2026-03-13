@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "Đang khởi động bot..."
+echo "Starting bot..."
 nohup python3 main.py > logs/bot.log 2>&1 &
-echo "Bot đang chạy nền!"
+echo "Bot is running in the background!"

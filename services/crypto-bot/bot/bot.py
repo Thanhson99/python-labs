@@ -4,32 +4,32 @@ from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Load token từ .env
+# Load token from .env
 load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
-# Thiết lập logging
+# Configure logging
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     level=logging.INFO,
 )
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Lệnh /start để kiểm tra bot hoạt động"""
-    await update.message.reply_text("🔥 Bot đã kết nối thành công! Gõ /test để nhận tin nhắn.")
+    """Handle /start command to verify bot health"""
+    await update.message.reply_text("🔥 Bot connected successfully! Type /test to receive a message.")
 
 async def test_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Lệnh /test để gửi tin nhắn mẫu"""
-    await update.message.reply_text("✅ Bot đang hoạt động tốt!")
+    """Handle /test command to send a sample message"""
+    await update.message.reply_text("✅ Bot is working correctly!")
 
 def main():
-    """Khởi động bot Telegram"""
+    """Start Telegram bot"""
     app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("test", test_message))
 
-    print("✅ Bot đang chạy...")
+    print("✅ Bot is running...")
     app.run_polling()
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "your-openai-api-key"  # Đặt API key của bạn tại đây
+openai.api_key = "your-openai-api-key"  # Set your API key here
 
 def explain_code(code_snippet):
     response = openai.Completion.create(
@@ -10,7 +10,7 @@ def explain_code(code_snippet):
     )
     return response.choices[0].text.strip()
 
-# Ví dụ mã Python
+# Python code example
 code_snippet = """
 def add(a, b):
     return a + b

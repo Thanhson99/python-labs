@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("Path:", self.path)  # In thông tin từ trình duyệt
+        print("Path:", self.path)  # Print request path from browser
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b"Data received!")

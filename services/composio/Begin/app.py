@@ -4,8 +4,8 @@ import requests
 
 app = Flask(__name__)
 
-# Cấu hình API của Composio
-COMPOSIO_API_URL = "https://api.composio.ai/v1/run"  # Thay thế bằng URL thật
+# Composio API configuration
+COMPOSIO_API_URL = "https://api.composio.ai/v1/run"  # Replace with the real endpoint if needed
 API_KEY = os.getenv("COMPOSIO_API_KEY", "your_composio_api_key")
 
 @app.route("/")
@@ -16,10 +16,10 @@ def index():
 def run_composio():
     user_input = request.json.get("input")
 
-    # Gửi yêu cầu đến Composio
+    # Send request to Composio
     payload = {
         "prompt": user_input,
-        "model": "gpt-4-turbo"  # Chọn mô hình phù hợp
+        "model": "gpt-4-turbo"  # Choose the model you want to use
     }
     
     headers = {
