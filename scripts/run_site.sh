@@ -31,17 +31,25 @@ port_in_use() {
 
 next_free_port() {
   local port="$1"
-  local attempts=200
-  local i=0
-  while [ "$i" -lt "$attempts" ]; do
-    if ! port_in_use "$port"; then
-      echo "$port"
-      return
-    fi
-    port=$((port + 1))
-    i=$((i + 1))
-  done
-  echo ""
+  "$PYTHON_CMD" - "$port" <<'PY'
+import socket
+import sys
+
+start = int(sys.argv[1])
+
+for candidate in range(start, start + 200):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.bind(("127.0.0.1", candidate))
+    except OSError:
+        continue
+    finally:
+        s.close()
+    print(candidate)
+    break
+else:
+    print("")
+PY
 }
 
 PYTHON_CMD="$(find_python_cmd)"
