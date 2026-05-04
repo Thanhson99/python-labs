@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interview Role Question Bank</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body
+    class="interview-body"
+    data-page="interview-questions"
+    data-source="data/interview-fresher-questions.json"
+    data-registry="data/interview-role-sets.json"
+  >
+    <header class="hero interview-hero">
+      <div class="hero-content">
+        <p class="eyebrow">Python Labs</p>
+        <h1 id="title">Interview Role Question Bank</h1>
+        <p id="subtitle"></p>
+        <div class="hero-actions">
+          <a class="btn" href="interview-sources.html">Back to interview questions</a>
+          <a class="btn" href="index.html">Back to track selection</a>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Interview Role Question Bank</h2>
+        <p class="page-note">
+          This page only shows interview-style sets such as fresher, intermediate, senior, and bilingual prompts.
+        </p>
+        <div class="quiz-summary" id="quizSummary">
+          <div class="summary-card">
+            <div class="summary-label">Answered</div>
+            <div class="summary-value" id="answeredCount">0</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-label">Correct</div>
+            <div class="summary-value" id="correctCount">0</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-label">Score</div>
+            <div class="summary-value" id="scorePercent">0%</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-label">Rating</div>
+            <div class="summary-value" id="scoreRating">Not graded</div>
+          </div>
+        </div>
+        <div class="quiz-toolbar">
+          <button class="btn" id="finishQuizBtn" type="button">Finish Quiz</button>
+          <button class="btn secondary-btn" id="resetQuizBtn" type="button">Reset Quiz</button>
+        </div>
+        <div id="questionSetLinks" class="cards compact-cards"></div>
+        <div class="search-bar">
+          <input
+            id="questionSearch"
+            class="search-input"
+            type="search"
+            placeholder="Search interview questions, Vietnamese, English, answers..."
+          />
+          <div class="search-meta" id="searchMeta">Showing all questions</div>
+        </div>
+        <div id="filters" class="filter-bar"></div>
+        <div id="questionList" class="question-list"></div>
+      </section>
+    </main>
+
+    <footer><span id="generatedAt"></span></footer>
+    <script src="assets/interview.js"></script>
+  </body>
+</html>

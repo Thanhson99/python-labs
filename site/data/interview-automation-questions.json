@@ -1,0 +1,293 @@
+{
+  "title": "Automation Interview Question Bank",
+  "subtitle": "Intermediate scripting and automation questions focused on practical repeatable workflows.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "intermediate",
+  "questions": [
+    {
+      "category": "CLI Design",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is a dry-run mode valuable in automation scripts?",
+      "intent": "Checks whether you think about safety before real side effects.",
+      "options": [
+        "A. It previews actions without changing real data.",
+        "B. It always makes the script faster.",
+        "C. It removes the need for logs."
+      ],
+      "correct_answer": "A. It previews actions without changing real data.",
+      "explanation": "Dry-run mode lets you inspect which files, records, or API calls would be affected before the script writes, deletes, or updates anything.",
+      "code_snippet": "if args.dry_run:\\n    print(f'Would delete: {path}')\\nelse:\\n    path.unlink()",
+      "compare": [
+        "Dry-run: safer rollout and easier review.",
+        "Immediate execution: faster, but riskier for destructive operations."
+      ]
+    },
+    {
+      "category": "Scheduling",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What problem does idempotency solve in scheduled jobs?",
+      "intent": "Checks whether you can prevent duplicate side effects.",
+      "options": [
+        "A. It makes every job run only once forever.",
+        "B. Re-running the same job should not duplicate the final effect.",
+        "C. It avoids all network errors."
+      ],
+      "correct_answer": "B. Re-running the same job should not duplicate the final effect.",
+      "explanation": "Jobs can be retried or triggered twice. Idempotency means the end state remains correct even if the same input is processed more than once.",
+      "code_snippet": "if already_processed(job_id):\\n    return\\nprocess_job(job_id)\\nmark_processed(job_id)",
+      "compare": [
+        "Idempotent job: safer retries and replays.",
+        "Non-idempotent job: duplicate emails, charges, or rows are more likely."
+      ]
+    },
+    {
+      "category": "Retries",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "When should you retry an operation in automation workflows?",
+      "intent": "Tests whether you distinguish transient failures from permanent ones.",
+      "options": [
+        "A. Retry temporary failures like timeouts or 503 responses.",
+        "B. Retry every error forever.",
+        "C. Never retry anything."
+      ],
+      "correct_answer": "A. Retry temporary failures like timeouts or 503 responses.",
+      "explanation": "Retries are appropriate for transient issues. Permanent failures like invalid credentials or malformed input should usually fail fast and be fixed instead of retried.",
+      "code_snippet": "for attempt in range(3):\\n    try:\\n        return fetch_data()\\n    except TimeoutError:\\n        time.sleep(2 ** attempt)",
+      "compare": [
+        "Transient error: retry can help.",
+        "Permanent error: retry wastes time and can amplify load."
+      ]
+    },
+    {
+      "category": "Files",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is `pathlib` usually better than raw path strings in automation code?",
+      "intent": "Checks practical Python style for file operations.",
+      "options": [
+        "A. It provides clearer cross-platform path operations.",
+        "B. It disables all file errors.",
+        "C. It only works on Linux."
+      ],
+      "correct_answer": "A. It provides clearer cross-platform path operations.",
+      "explanation": "pathlib improves readability and reduces manual string concatenation mistakes. It also keeps path logic more portable across operating systems.",
+      "code_snippet": "from pathlib import Path\\nreport = Path('output') / 'summary.json'\\nreport.parent.mkdir(parents=True, exist_ok=True)",
+      "compare": [
+        "pathlib: explicit path objects and methods.",
+        "Raw strings: easy to start, easier to misuse."
+      ]
+    },
+    {
+      "category": "Observability",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What should good automation logs include?",
+      "intent": "Checks whether you know how to debug jobs after they run unattended.",
+      "options": [
+        "A. Context like job id, input source, counts, and error details.",
+        "B. Only the word success.",
+        "C. Nothing, because logs slow the script."
+      ],
+      "correct_answer": "A. Context like job id, input source, counts, and error details.",
+      "explanation": "Automation often runs without a human watching. Logs should help answer what ran, what changed, where it failed, and how much work was done.",
+      "code_snippet": "logger.info('sync finished', extra={'job_id': job_id, 'count': len(rows)})",
+      "compare": [
+        "Structured logs: easier filtering and diagnosis.",
+        "Sparse logs: hard to reconstruct incidents."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which approach is usually faster for repeated membership checks on a large collection: `if item in big_list` or `if item in big_set`?",
+      "intent": "Tests data-structure-aware optimization.",
+      "options": [
+        "A. `big_set`, because average membership lookup is faster.",
+        "B. `big_list`, because lists are always optimized better in Python.",
+        "C. They are always identical in performance."
+      ],
+      "correct_answer": "A. `big_set`, because average membership lookup is faster.",
+      "explanation": "Repeated list scans are linear, while set membership is usually near constant time on average. This difference matters heavily in loops.",
+      "code_snippet": "blocked = set(blocked_ids)\\nfor user_id in users:\\n    if user_id in blocked:\\n        ...",
+      "compare": [
+        "List membership: simpler but slower at scale for repeated checks.",
+        "Set membership: better when uniqueness and fast lookup matter."
+      ]
+    },
+    {
+      "category": "Optimization",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the main optimization problem in opening and closing the same output file inside every loop iteration?",
+      "intent": "Checks practical file I/O efficiency awareness.",
+      "options": [
+        "A. Repeated open-close operations add unnecessary overhead.",
+        "B. Python forbids file writes inside loops.",
+        "C. It always corrupts the file immediately."
+      ],
+      "correct_answer": "A. Repeated open-close operations add unnecessary overhead.",
+      "explanation": "Keeping the file open for the batch or buffering writes is usually more efficient than reopening it for every row.",
+      "code_snippet": "with open('out.txt', 'a', encoding='utf-8') as f:\\n    for row in rows:\\n        f.write(row + '\\n')",
+      "compare": [
+        "Open per row: high overhead and noisier code.",
+        "Open once: faster and easier to reason about."
+      ]
+    },
+    {
+      "category": "Safety Traps",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is this risky in automation: `for path in files: path.unlink()` with no preview, backup, or filtering?",
+      "intent": "Checks whether you think about destructive automation failure modes.",
+      "options": [
+        "A. It can destroy unintended files if the input set is wrong.",
+        "B. It is safe because Python validates business intent automatically.",
+        "C. It only fails when running on Windows."
+      ],
+      "correct_answer": "A. It can destroy unintended files if the input set is wrong.",
+      "explanation": "Delete operations need guardrails like dry-run, folder scoping, confirmation, or output review because mistakes are hard to reverse.",
+      "code_snippet": "for path in candidate_paths:\\n    print(path)  # preview first\\n# delete only after verification",
+      "compare": [
+        "Blind delete: fast but dangerous.",
+        "Previewed delete: slower upfront but operationally safer."
+      ]
+    },
+    {
+      "category": "Retries",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the trap in retrying a non-idempotent action like sending an email or charging a card without deduplication?",
+      "intent": "Tests real-world retry correctness.",
+      "options": [
+        "A. The action may happen multiple times and create duplicate side effects.",
+        "B. Retries automatically become idempotent after the second attempt.",
+        "C. Python's exception handling prevents duplicates."
+      ],
+      "correct_answer": "A. The action may happen multiple times and create duplicate side effects.",
+      "explanation": "Retries are safe only when the final effect tolerates repeats or you add idempotency keys, deduplication, or state checks.",
+      "code_snippet": "if already_sent(message_id):\\n    return\\nsend_email()\\nmark_sent(message_id)",
+      "compare": [
+        "Blind retry: can duplicate external effects.",
+        "Idempotent retry: safer under timeouts and transient failure."
+      ]
+    },
+    {
+      "category": "Scheduling",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why can a cron job that takes longer than its schedule interval become dangerous?",
+      "intent": "Checks job overlap reasoning.",
+      "options": [
+        "A. Overlapping runs can race, duplicate work, or overload dependencies.",
+        "B. Cron automatically serializes every job perfectly.",
+        "C. It only affects log formatting."
+      ],
+      "correct_answer": "A. Overlapping runs can race, duplicate work, or overload dependencies.",
+      "explanation": "Long jobs may still be running when the next schedule starts. Locks, lease files, or queue-based orchestration can prevent harmful overlap.",
+      "code_snippet": "if lock_exists():\\n    return\\ncreate_lock()\\ntry:\\n    run_job()\\nfinally:\\n    remove_lock()",
+      "compare": [
+        "No overlap control: simple but fragile.",
+        "Locking or orchestration: safer for recurring workloads."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually more memory efficient for very large files: `rows = f.readlines()` or iterating `for line in f`?",
+      "intent": "Tests scalable file processing choices.",
+      "options": [
+        "A. `for line in f`, because it streams incrementally.",
+        "B. `readlines()`, because it compresses lines automatically.",
+        "C. They use the same memory for any file size."
+      ],
+      "correct_answer": "A. `for line in f`, because it streams incrementally.",
+      "explanation": "Streaming avoids loading the entire file into memory at once, which is critical for large logs and exports.",
+      "code_snippet": "with open('big.log', encoding='utf-8') as f:\\n    for line in f:\\n        process(line)",
+      "compare": [
+        "readlines(): easy for small files, memory-heavy for large ones.",
+        "Streaming iteration: better for large-file automation."
+      ]
+    },
+    {
+      "category": "Validation",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why should automation scripts often validate input schema before processing thousands of rows?",
+      "intent": "Checks whether you front-load failure detection.",
+      "options": [
+        "A. So the script fails early instead of producing partial bad output.",
+        "B. Because validation makes loops disappear.",
+        "C. Only because tests require it."
+      ],
+      "correct_answer": "A. So the script fails early instead of producing partial bad output.",
+      "explanation": "Schema checks catch missing columns, invalid types, or broken sources before deep side effects happen.",
+      "code_snippet": "required = {'email', 'status'}\\nmissing = required - set(reader.fieldnames or [])\\nif missing:\\n    raise ValueError(f'missing columns: {missing}')",
+      "compare": [
+        "Early validation: safer and clearer failures.",
+        "Late discovery: partial work and harder cleanup."
+      ]
+    },
+    {
+      "category": "Optimization",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the likely bottleneck in calling an API once per row when many rows share the same lookup key?",
+      "intent": "Tests caching and deduplication thinking.",
+      "options": [
+        "A. Repeated network calls for identical information.",
+        "B. Python cannot loop over repeated values.",
+        "C. The garbage collector always blocks requests."
+      ],
+      "correct_answer": "A. Repeated network calls for identical information.",
+      "explanation": "Memoization or pre-grouping repeated keys often reduces latency and API cost dramatically.",
+      "code_snippet": "cache = {}\\nfor key in keys:\\n    if key not in cache:\\n        cache[key] = fetch_remote(key)",
+      "compare": [
+        "Naive repeated fetch: simple but expensive.",
+        "Cached lookup: better for repeated keys."
+      ]
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is using local machine time without timezone awareness a trap in scheduled automations?",
+      "intent": "Checks date/time correctness.",
+      "options": [
+        "A. Timezone and daylight changes can shift execution assumptions.",
+        "B. Python stores all dates in UTC automatically.",
+        "C. Cron ignores timezone differences entirely."
+      ],
+      "correct_answer": "A. Timezone and daylight changes can shift execution assumptions.",
+      "explanation": "Scheduling logic becomes fragile when business time and server time are mixed carelessly.",
+      "code_snippet": "from datetime import datetime, timezone\\nnow = datetime.now(timezone.utc)",
+      "compare": [
+        "Naive local time: easier to start, riskier in real operations.",
+        "Explicit timezone handling: safer and more portable."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually better for joining many output lines: repeated `text += line` inside a loop or collecting into a list and using `'\\n'.join(...)`?",
+      "intent": "Tests Python string-building efficiency.",
+      "options": [
+        "A. Collecting and joining is usually better for many pieces.",
+        "B. Repeated concatenation is always faster in Python.",
+        "C. They are identical for large batches."
+      ],
+      "correct_answer": "A. Collecting and joining is usually better for many pieces.",
+      "explanation": "Repeated string concatenation can be inefficient as the text grows, while join is designed for assembling many fragments.",
+      "code_snippet": "lines = []\\nfor row in rows:\\n    lines.append(format_row(row))\\ntext = '\\n'.join(lines)",
+      "compare": [
+        "Repeated `+=`: okay for tiny cases, worse at scale.",
+        "Join: better for larger assembled output."
+      ]
+    }
+  ]
+}

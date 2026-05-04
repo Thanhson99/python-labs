@@ -1,0 +1,162 @@
+{
+  "title": "Code Interview Practice Site",
+  "subtitle": "Static code-focused interview practice from Python basics to advanced backend, automation, AI/ML, and system design implementation questions.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "ladders": [
+    {
+      "level": "basic",
+      "name": "Code Foundations",
+      "summary": "Python syntax, collections, files, JSON, testing, and basic automation coding habits.",
+      "focus": ["python core", "dict/list/set", "functions", "files", "json", "testing"]
+    },
+    {
+      "level": "intermediate",
+      "name": "Implementation and APIs",
+      "summary": "APIs, retries, async, databases, ORM tradeoffs, automation pipelines, and debugging.",
+      "focus": ["http", "retry", "orm", "transactions", "asyncio", "cli automation"]
+    },
+    {
+      "level": "advanced",
+      "name": "Architecture and AI Systems",
+      "summary": "Scaling, observability, distributed systems, AI pipelines, retrieval, and production tradeoffs.",
+      "focus": ["queues", "caching", "RAG", "embeddings", "reliability", "deployment"]
+    }
+  ],
+  "topic_catalog": [
+    {
+      "domain": "Python",
+      "title": "Language and Data Structures",
+      "summary": "Questions about Python core behavior, traps, identity vs equality, mutability, and efficient use of collections.",
+      "examples": ["mutable defaults", "list vs set performance", "dict.get", "tuple immutability"],
+      "depth": "Basic to intermediate"
+    },
+    {
+      "domain": "Automation",
+      "title": "Scripts and File Pipelines",
+      "summary": "Practical code questions around dry-run, file I/O, batch processing, idempotency, and scheduling safety.",
+      "examples": ["dry-run", "streaming large files", "checkpoint files", "destructive operations"],
+      "depth": "Basic to advanced"
+    },
+    {
+      "domain": "Backend",
+      "title": "HTTP, Databases, and ORM",
+      "summary": "Code-focused backend questions around timeouts, retries, transactions, query shaping, and caching.",
+      "examples": ["N+1 queries", "timeouts", "parameterized SQL", "cache invalidation"],
+      "depth": "Intermediate"
+    },
+    {
+      "domain": "AI/ML",
+      "title": "AI and Machine Learning Code Paths",
+      "summary": "Applied questions about evaluation, leakage, embeddings, prompt templates, RAG, and model-serving tradeoffs.",
+      "examples": ["precision vs recall", "data leakage", "prompt injection", "retrieval quality"],
+      "depth": "Intermediate to advanced"
+    },
+    {
+      "domain": "Systems",
+      "title": "Distributed and Production Patterns",
+      "summary": "Implementation-heavy questions on queues, idempotency, retries, observability, and delivery safety.",
+      "examples": ["outbox", "circuit breaker", "queue lag", "readiness checks"],
+      "depth": "Advanced"
+    }
+  ],
+  "practice_sets": [
+    {
+      "level": "Basic",
+      "level_class": "basic",
+      "name": "Basic Master Set",
+      "summary": "Large all-in-one foundation bank with more than 100 questions.",
+      "topics": ["python core", "data structures", "exceptions", "files", "testing", "automation basics"],
+      "output": "Code-focused beginner practice",
+      "question_set": "basic",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Intermediate Master Set",
+      "summary": "Large implementation bank for APIs, async, databases, optimization, and data flow.",
+      "topics": ["api", "database", "async", "retry", "testing", "performance"],
+      "output": "Mid-level code interview practice",
+      "question_set": "intermediate",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "Advanced Master Set",
+      "summary": "Large advanced bank for distributed systems, AI systems, resilience, and operations.",
+      "topics": ["system design", "resilience", "observability", "ai", "deployment", "tradeoffs"],
+      "output": "Hard code and architecture practice",
+      "question_set": "advanced",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Automation Set",
+      "summary": "Code questions about scripting, scheduling, file pipelines, retries, and safety.",
+      "topics": ["automation", "file io", "scheduling", "retry", "dry run"],
+      "output": "Automation-oriented code quiz",
+      "question_set": "automation",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Backend and Data Set",
+      "summary": "Code questions for APIs, persistence, ORM behavior, caching, and query design.",
+      "topics": ["backend", "sql", "orm", "cache", "transactions"],
+      "output": "Backend implementation quiz",
+      "question_set": "backend",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "AI and Machine Learning Set",
+      "summary": "Applied AI/ML code and reasoning questions for evaluation, retrieval, prompts, and serving tradeoffs.",
+      "topics": ["ml", "rag", "embeddings", "prompting", "evaluation"],
+      "output": "AI/ML technical quiz",
+      "question_set": "ai-ml",
+      "question_page": "code-questions.html"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "System Design Set",
+      "summary": "Production code and architecture questions around queues, scaling, reliability, and delivery behavior.",
+      "topics": ["queues", "idempotency", "readiness", "timeouts", "observability"],
+      "output": "Advanced systems quiz",
+      "question_set": "system-design",
+      "question_page": "code-questions.html"
+    }
+  ],
+  "project_ideas": [
+    {
+      "name": "Static Code Quiz Engine",
+      "summary": "A JSON-driven static site that turns code questions into a scored quiz without a backend.",
+      "why": "Shows how to model content, scoring, and search entirely on GitHub Pages.",
+      "stack": ["HTML", "CSS", "JavaScript", "JSON", "GitHub Pages"]
+    },
+    {
+      "name": "Automation Drill Lab",
+      "summary": "A collection of tiny scripts and question sets around files, APIs, retries, and schedules.",
+      "why": "Useful for practical coding interviews that ask for scripts and operational reasoning.",
+      "stack": ["Python", "argparse", "logging", "json", "http"]
+    }
+  ],
+  "preparation_notes": [
+    {
+      "title": "Practice by writing and comparing code",
+      "note": "Code interviews improve faster when you compare multiple implementations and explain which one is safer or faster."
+    },
+    {
+      "title": "Focus on bottlenecks, not only syntax",
+      "note": "A strong answer identifies whether the real cost is in loops, I/O, queries, network calls, or external dependencies."
+    },
+    {
+      "title": "Treat failure paths as first-class",
+      "note": "Real code quality is often revealed by retries, validation, cleanup, and edge cases rather than the happy path."
+    }
+  ]
+}

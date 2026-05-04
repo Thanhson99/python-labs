@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Interview Practice</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body
+    class="interview-body"
+    data-page="interview-catalog"
+    data-source="data/interview-practice-catalog.json"
+  >
+    <header class="hero interview-hero">
+      <div class="hero-content">
+        <p class="eyebrow">Python Labs</p>
+        <h1 id="title">Code Interview Practice</h1>
+        <p id="subtitle"></p>
+        <div class="hero-actions">
+          <a class="btn" href="code-questions.html?set=basic">Open Code Questions</a>
+          <a class="btn" href="interview-sources.html">Open Interview Sources</a>
+          <a class="btn" href="index.html">Back to track selection</a>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Code Ladders</h2>
+        <div id="ladders" class="cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Code Topic Catalog</h2>
+        <div id="topicCatalog" class="cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Code Practice Sets</h2>
+        <div id="practiceSets" class="cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Portfolio Project Ideas</h2>
+        <div id="projectIdeas" class="cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Preparation Notes</h2>
+        <div id="prepNotes" class="cards"></div>
+      </section>
+    </main>
+
+    <footer><span id="generatedAt"></span></footer>
+    <script src="assets/interview.js"></script>
+  </body>
+</html>

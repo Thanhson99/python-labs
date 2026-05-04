@@ -1,0 +1,274 @@
+{
+  "title": "Backend and Data Interview Question Bank",
+  "subtitle": "Intermediate backend questions about APIs, persistence, validation, and reliability.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "intermediate",
+  "questions": [
+    {
+      "category": "API Design",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why should request validation happen near the API boundary?",
+      "intent": "Checks whether you isolate bad input early.",
+      "options": [
+        "A. To reject invalid payloads before deeper business logic runs.",
+        "B. To make every request slower.",
+        "C. Because databases cannot store strings."
+      ],
+      "correct_answer": "A. To reject invalid payloads before deeper business logic runs.",
+      "explanation": "Boundary validation reduces downstream error states, keeps contracts explicit, and prevents invalid data from leaking into core logic or persistence layers.",
+      "code_snippet": "if not payload.get('email'):\\n    raise ValueError('email is required')",
+      "compare": [
+        "Early validation: clearer failure and safer internal code.",
+        "Late validation: more branching and harder debugging."
+      ]
+    },
+    {
+      "category": "Databases",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is a transaction and why is it useful?",
+      "intent": "Checks whether you understand atomic multi-step changes.",
+      "options": [
+        "A. A transaction groups operations so they succeed or fail together.",
+        "B. A transaction is only a SQL comment.",
+        "C. A transaction guarantees infinite scaling."
+      ],
+      "correct_answer": "A. A transaction groups operations so they succeed or fail together.",
+      "explanation": "Transactions help preserve data consistency. If one step fails, the system can roll back the whole unit of work instead of leaving partial writes.",
+      "code_snippet": "with session.begin():\\n    session.add(order)\\n    session.add(payment_log)",
+      "compare": [
+        "Transaction: safer for coupled writes.",
+        "No transaction: partial state is more likely on failure."
+      ]
+    },
+    {
+      "category": "Caching",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "When does caching help a backend service?",
+      "intent": "Tests whether you know why and when to trade freshness for speed.",
+      "options": [
+        "A. When repeated expensive reads can tolerate some staleness.",
+        "B. For every write-heavy workflow automatically.",
+        "C. Only when the database is broken."
+      ],
+      "correct_answer": "A. When repeated expensive reads can tolerate some staleness.",
+      "explanation": "Caching reduces latency and backend load, but it introduces invalidation and freshness tradeoffs. It helps most when the same data is read often and changes less frequently.",
+      "code_snippet": "cached = cache.get(key)\\nif cached is not None:\\n    return cached\\nvalue = load_from_db(key)\\ncache.set(key, value, ttl=60)",
+      "compare": [
+        "Cache hit: lower latency and lower DB load.",
+        "Cache miss or stale cache: extra complexity and potential inconsistency."
+      ]
+    },
+    {
+      "category": "ORM",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why can ORM convenience still require SQL knowledge?",
+      "intent": "Checks whether you understand abstractions do not remove query cost.",
+      "options": [
+        "A. ORM-generated queries can still be inefficient or incorrect for the workload.",
+        "B. ORMs replace all need for data modeling.",
+        "C. SQL is unrelated to relational databases."
+      ],
+      "correct_answer": "A. ORM-generated queries can still be inefficient or incorrect for the workload.",
+      "explanation": "You still need to understand joins, indexes, and query shape. Otherwise, an ORM can hide slow N+1 queries or pull much more data than needed.",
+      "code_snippet": "users = session.query(User).all()\\nfor user in users:\\n    print(user.orders)  # may trigger N+1 queries",
+      "compare": [
+        "ORM: faster development and cleaner models.",
+        "Raw SQL insight: necessary for performance and debugging."
+      ]
+    },
+    {
+      "category": "Reliability",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why should external API failures be isolated from core domain logic?",
+      "intent": "Tests whether you can limit blast radius.",
+      "options": [
+        "A. So upstream instability does not crash unrelated business flows.",
+        "B. So the codebase has more folders.",
+        "C. Because external APIs are always optional."
+      ],
+      "correct_answer": "A. So upstream instability does not crash unrelated business flows.",
+      "explanation": "Separating providers behind an adapter or service boundary makes timeouts, retries, fallbacks, and test doubles easier to manage without contaminating the rest of the system.",
+      "code_snippet": "class PaymentGateway:\\n    def charge(self, request):\\n        ...",
+      "compare": [
+        "Isolated adapter: easier testing and controlled retries.",
+        "Provider logic everywhere: harder to change and debug."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually a backend anti-pattern for loading related data: one query per parent row or one shaped query that fetches needed relations eagerly?",
+      "intent": "Tests N+1 query awareness.",
+      "options": [
+        "A. One query per parent row is the anti-pattern because it often creates N+1 queries.",
+        "B. The shaped query is always slower by definition.",
+        "C. Databases optimize both into identical execution plans automatically."
+      ],
+      "correct_answer": "A. One query per parent row is the anti-pattern because it often creates N+1 queries.",
+      "explanation": "Repeated relation loading causes avoidable round trips and query overhead. Loading strategy should match the actual access pattern.",
+      "code_snippet": "users = session.query(User).options(selectinload(User.orders)).all()",
+      "compare": [
+        "N+1 loading: simple to write, expensive at scale.",
+        "Planned eager loading: often better for known access paths."
+      ]
+    },
+    {
+      "category": "Optimization",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the performance trap in selecting `*` from a large table when only two fields are needed?",
+      "intent": "Tests query shaping awareness.",
+      "options": [
+        "A. Extra columns increase transfer, parsing, and memory cost.",
+        "B. SQL does not allow selecting fewer fields in production.",
+        "C. Wide rows always compress to the same size anyway."
+      ],
+      "correct_answer": "A. Extra columns increase transfer, parsing, and memory cost.",
+      "explanation": "Selecting only the required columns is a simple optimization that can matter significantly on large datasets or hot endpoints.",
+      "code_snippet": "SELECT id, email FROM users WHERE status = 'active';",
+      "compare": [
+        "SELECT *: convenient but often wasteful.",
+        "Projected columns: leaner for bandwidth and memory."
+      ]
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is caching mutable database-derived objects and then mutating them in-place a trap?",
+      "intent": "Tests subtle shared-state reasoning.",
+      "options": [
+        "A. Other requests may observe stale or unexpectedly modified cached state.",
+        "B. Python automatically deep-copies all cached values.",
+        "C. Cached objects cannot be mutated after retrieval."
+      ],
+      "correct_answer": "A. Other requests may observe stale or unexpectedly modified cached state.",
+      "explanation": "Caches need careful control over object identity, mutation, serialization, and invalidation.",
+      "code_snippet": "profile = cache.get(key)\\nprofile['count'] += 1  # risky if shared mutable cache object",
+      "compare": [
+        "Mutable shared cache objects: risky and surprising.",
+        "Immutable/serialized cache values: safer boundaries."
+      ]
+    },
+    {
+      "category": "API Design",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is returning raw internal exceptions directly to API clients a bad idea?",
+      "intent": "Checks error-contract discipline.",
+      "options": [
+        "A. It can leak internals and produce unstable client-facing contracts.",
+        "B. Clients prefer stack traces for all failures.",
+        "C. It makes performance benchmarking easier."
+      ],
+      "correct_answer": "A. It can leak internals and produce unstable client-facing contracts.",
+      "explanation": "Client-facing errors should be deliberate, stable, and safe rather than accidental reflections of internal implementation.",
+      "code_snippet": "return {'error': 'invalid_request', 'message': 'email is required'}",
+      "compare": [
+        "Raw internal exception: unstable and potentially unsafe.",
+        "Mapped API error contract: cleaner for clients."
+      ]
+    },
+    {
+      "category": "Databases",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the trap in checking uniqueness only in application code before insert and not enforcing it in the database?",
+      "intent": "Tests race-condition awareness around writes.",
+      "options": [
+        "A. Concurrent requests can still insert duplicates.",
+        "B. Databases reject duplicates automatically without constraints.",
+        "C. Application checks are always stronger than constraints."
+      ],
+      "correct_answer": "A. Concurrent requests can still insert duplicates.",
+      "explanation": "Application checks alone are not enough under concurrency. Important uniqueness should usually be enforced in the database as well.",
+      "code_snippet": "ALTER TABLE users ADD CONSTRAINT users_email_key UNIQUE (email);",
+      "compare": [
+        "App-only uniqueness check: race-prone.",
+        "Database constraint: stronger integrity protection."
+      ]
+    },
+    {
+      "category": "ORM",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually safer in request-scoped code: one long-lived global session or a controlled session per unit of work?",
+      "intent": "Tests session lifecycle discipline.",
+      "options": [
+        "A. A controlled session per unit of work is usually safer.",
+        "B. One global session is always best because it saves memory.",
+        "C. ORM sessions never hold state between operations."
+      ],
+      "correct_answer": "A. A controlled session per unit of work is usually safer.",
+      "explanation": "Global long-lived sessions can accumulate stale state, transaction confusion, and cross-request leakage.",
+      "code_snippet": "with Session() as session:\\n    ...",
+      "compare": [
+        "Scoped session: clearer lifecycle and isolation.",
+        "Global session: convenient at first, fragile later."
+      ]
+    },
+    {
+      "category": "Caching",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is cache invalidation hard in backend systems?",
+      "intent": "Tests real-world cache discipline.",
+      "options": [
+        "A. Because you must balance freshness, correctness, and efficiency.",
+        "B. Because caches delete themselves correctly by default.",
+        "C. Because invalidation only matters in frontend apps."
+      ],
+      "correct_answer": "A. Because you must balance freshness, correctness, and efficiency.",
+      "explanation": "The hard part of caching is not storing values, but keeping them accurate enough for real product behavior.",
+      "code_snippet": "cache.delete(f'user:{user_id}')  # after update",
+      "compare": [
+        "No invalidation strategy: stale data risk.",
+        "Deliberate invalidation: more complexity, more correctness."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually a better optimization target first for a slow endpoint: tiny syntax tweaks or measuring query count and latency sources?",
+      "intent": "Tests prioritization under performance pressure.",
+      "options": [
+        "A. Measure query count and latency sources first.",
+        "B. Micro-optimize variable names and indentation first.",
+        "C. Add more comments before measuring anything."
+      ],
+      "correct_answer": "A. Measure query count and latency sources first.",
+      "explanation": "Performance work should start with evidence. Real bottlenecks are often I/O, query shape, or repeated remote calls, not tiny syntax choices.",
+      "code_snippet": "start = time.perf_counter()\\n...\\nduration = time.perf_counter() - start",
+      "compare": [
+        "Evidence-driven tuning: better ROI.",
+        "Blind micro-optimization: low confidence and often wasted effort."
+      ]
+    },
+    {
+      "category": "Reliability",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why can coupling an HTTP request directly to a slow external provider hurt backend reliability?",
+      "intent": "Checks request-path design judgment.",
+      "options": [
+        "A. Provider slowness can tie up request latency and resources end-to-end.",
+        "B. HTTP servers automatically turn slow providers into async queues.",
+        "C. Slow providers only affect frontend rendering."
+      ],
+      "correct_answer": "A. Provider slowness can tie up request latency and resources end-to-end.",
+      "explanation": "Sometimes the better design is a background job, timeout, fallback, cache, or asynchronous workflow rather than a synchronous dependency on the hot path.",
+      "code_snippet": "job_id = enqueue_export(request)\\nreturn {'job_id': job_id, 'status': 'queued'}",
+      "compare": [
+        "Synchronous dependency on hot path: simpler, but riskier.",
+        "Async or buffered design: more resilient under slow dependencies."
+      ]
+    }
+  ]
+}

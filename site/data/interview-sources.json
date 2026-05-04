@@ -1,0 +1,159 @@
+{
+  "title": "Interview Questions and Sources Site",
+  "subtitle": "Static interview question hub for fresher, intermediate, and senior preparation, with Vietnamese and English reference links underneath.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "question_sets": [
+    {
+      "name": "Fresher Interview Set",
+      "level": "Basic",
+      "level_class": "basic",
+      "summary": "Entry-level interview quiz for Python basics, files, JSON, testing, and simple debugging.",
+      "href": "interview-role-questions.html?set=fresher"
+    },
+    {
+      "name": "Intermediate Interview Set",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Mid-level interview quiz for APIs, database work, async, retries, and implementation tradeoffs.",
+      "href": "interview-role-questions.html?set=mid"
+    },
+    {
+      "name": "Senior Interview Set",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "summary": "Hard interview quiz for scaling, reliability, architecture, operations, and AI/system tradeoffs.",
+      "href": "interview-role-questions.html?set=senior"
+    },
+    {
+      "name": "Bilingual VI/EN Interview Set",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Vietnamese and English interview prompts for learning terminology and answer phrasing.",
+      "href": "interview-role-questions.html?set=bilingual"
+    }
+  ],
+  "guides": [
+    {
+      "title": "Interview question sets live here",
+      "note": "Use this site for interview-style sets such as fresher, intermediate, senior, and bilingual interview prompts."
+    },
+    {
+      "title": "Reference links stay secondary",
+      "note": "External links are supporting reading only. The core practice experience should stay in the local JSON quiz sets."
+    },
+    {
+      "title": "Read in both Vietnamese and English",
+      "note": "Vietnamese helps fast understanding. English helps with global terminology and real interview phrasing."
+    }
+  ],
+  "vietnamese_sources": [
+    {
+      "name": "Viblo Interview - Python Tag",
+      "language": "Vietnamese",
+      "level": "Basic to advanced",
+      "url": "https://interview.viblo.asia/tags/python",
+      "focus": "Community interview questions, answer discussion, and level-based browsing.",
+      "best_for": "Reviewing practical interview prompts and seeing how others answer."
+    },
+    {
+      "name": "Viblo Interview - FAQ / Platform",
+      "language": "Vietnamese",
+      "level": "General",
+      "url": "https://interview.viblo.asia/faq",
+      "focus": "Platform overview for contributing and browsing interview knowledge.",
+      "best_for": "Understanding how to use the Viblo interview ecosystem."
+    },
+    {
+      "name": "TopDev - Python Interview Questions",
+      "language": "Vietnamese",
+      "level": "Basic to intermediate",
+      "url": "https://topdev.vn/blog/top-10-cau-hoi-phong-van-python-developer/",
+      "focus": "Python interview traps and common question styles.",
+      "best_for": "Quick warmup on classic Python trick questions."
+    },
+    {
+      "name": "TopDev Interview - Python Topic",
+      "language": "Vietnamese",
+      "level": "Basic to intermediate",
+      "url": "https://topdev.vn/interview/python-s9094",
+      "focus": "Technical and soft-skill interview prompt collection around Python roles.",
+      "best_for": "Combining technical review with HR-style question practice."
+    }
+  ],
+  "english_sources": [
+    {
+      "name": "roadmap.sh Questions",
+      "language": "English",
+      "level": "Basic to advanced",
+      "url": "https://roadmap.sh/questions",
+      "focus": "Broad interview question collections by topic such as backend, SQL, REST API, DevOps, and data science.",
+      "best_for": "Topic-by-topic interview prep beyond Python only."
+    },
+    {
+      "name": "InterviewBit - Python Interview Questions",
+      "language": "English",
+      "level": "Basic to advanced",
+      "url": "https://www.interviewbit.com/python-interview-questions/",
+      "focus": "Large Python question bank with tricky conceptual questions and explanations.",
+      "best_for": "Structured Python-specific interview review."
+    },
+    {
+      "name": "GeeksforGeeks - Python Interview Questions",
+      "language": "English",
+      "level": "Basic to advanced",
+      "url": "https://www.geeksforgeeks.org/python-interview-questions/",
+      "focus": "Broad Python interview coverage from syntax to advanced topics.",
+      "best_for": "Large-volume revision and concept recall."
+    },
+    {
+      "name": "GeeksforGeeks - Advanced Python Interview Questions",
+      "language": "English",
+      "level": "Advanced",
+      "url": "https://www.geeksforgeeks.org/interview-prep/advanced-topics-interview-questions-python-programming/",
+      "focus": "Advanced Python concepts such as exception handling, internals, and deeper language features.",
+      "best_for": "Harder technical interviews and senior-level prep."
+    },
+    {
+      "name": "GeeksforGeeks - Python Data Structures Interview Questions",
+      "language": "English",
+      "level": "Basic to intermediate",
+      "url": "https://www.geeksforgeeks.org/python/data-structures-dictionary-set-tuple-strings-interview-questions-python-programming/",
+      "focus": "Interview patterns for lists, tuples, sets, dictionaries, and strings.",
+      "best_for": "Sharpening Python collection knowledge and code comparisons."
+    },
+    {
+      "name": "roadmap.sh - Data Science Questions",
+      "language": "English",
+      "level": "Intermediate to advanced",
+      "url": "https://roadmap.sh/questions/data-science",
+      "focus": "Data science, machine learning, business communication, and practical interview framing.",
+      "best_for": "AI/ML interview preparation beyond code syntax alone."
+    }
+  ],
+  "study_paths": [
+    {
+      "title": "Basic Path",
+      "steps": [
+        "Start with Python core collections and syntax.",
+        "Practice simple traps like mutable defaults, slicing, list multiplication, and identity vs equality.",
+        "Move into files, JSON, CLI, and small automation scripts."
+      ]
+    },
+    {
+      "title": "Intermediate Path",
+      "steps": [
+        "Study APIs, retries, validation, testing, database transactions, and ORM behavior.",
+        "Add code comparison drills: memory usage, query count, repeated I/O, and cache tradeoffs.",
+        "Practice explaining when one implementation is safer or faster than another."
+      ]
+    },
+    {
+      "title": "Advanced Path",
+      "steps": [
+        "Focus on system design, distributed consistency, observability, and resilience patterns.",
+        "Add AI/ML topics such as evaluation, RAG, embeddings, prompt injection, and production tradeoffs.",
+        "Train on failure modes, rollout strategy, and operational reasoning, not only happy-path design."
+      ]
+    }
+  ]
+}

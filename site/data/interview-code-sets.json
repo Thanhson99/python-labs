@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-05-04T00:00:00Z",
+  "sets": [
+    {
+      "id": "basic",
+      "name": "Basic Master Set",
+      "level": "Basic",
+      "level_class": "basic",
+      "summary": "Python core, collections, files, testing, HTTP, automation, and ML fundamentals.",
+      "file": "data/interview-basic-questions.json"
+    },
+    {
+      "id": "intermediate",
+      "name": "Intermediate Master Set",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Application structure, APIs, databases, testing, async, automation, and data workflows.",
+      "file": "data/interview-intermediate-questions.json"
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced Master Set",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "summary": "Concurrency, APIs, databases, resilience, observability, AI systems, and deployment.",
+      "file": "data/interview-advanced-questions.json"
+    },
+    {
+      "id": "automation",
+      "name": "Automation",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Scripting pipelines, scheduling, retries, optimization, and file workflows.",
+      "file": "data/interview-automation-questions.json"
+    },
+    {
+      "id": "backend",
+      "name": "Backend and Data",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "APIs, validation, SQL, transactions, ORM usage, caching, and service design basics.",
+      "file": "data/interview-backend-questions.json"
+    },
+    {
+      "id": "ai-ml",
+      "name": "AI and Machine Learning",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "summary": "Model evaluation, embeddings, inference patterns, data leakage, RAG, and prompt reliability.",
+      "file": "data/interview-ai-ml-questions.json"
+    },
+    {
+      "id": "system-design",
+      "name": "System Design",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "summary": "Queues, idempotency, observability, failure isolation, scaling, and delivery tradeoffs.",
+      "file": "data/interview-system-design-questions.json"
+    }
+  ]
+}

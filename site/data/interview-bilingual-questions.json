@@ -1,0 +1,108 @@
+{
+  "title": "Bilingual Interview Question Bank",
+  "subtitle": "Vietnamese and English interview prompts for learning, self-study, and GitHub Pages search.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "intermediate",
+  "questions": [
+    {
+      "category": "Bilingual Python",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is using a mutable default argument dangerous?",
+      "question_vi": "Vì sao dùng mutable default argument lại nguy hiểm?",
+      "question_en": "Why is using a mutable default argument dangerous?",
+      "correct_answer": "Because the same default object is reused across function calls and can leak shared state.",
+      "explanation": "Đây là bẫy kinh điển trong Python. Danh sách hoặc dictionary default được tạo một lần khi định nghĩa function, không phải mỗi lần gọi."
+    },
+    {
+      "category": "Bilingual Backend",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is the N+1 query problem?",
+      "question_vi": "N+1 query problem là gì?",
+      "question_en": "What is the N+1 query problem?",
+      "correct_answer": "It is a performance issue where one initial query triggers many additional per-row queries.",
+      "explanation": "Thường gặp khi dùng ORM không chú ý loading strategy. Nó làm tăng round trip tới database và gây chậm endpoint."
+    },
+    {
+      "category": "Bilingual Automation",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is dry-run mode important?",
+      "question_vi": "Vì sao dry-run mode quan trọng?",
+      "question_en": "Why is dry-run mode important?",
+      "correct_answer": "Because it previews actions before destructive side effects happen.",
+      "explanation": "Dry-run giúp kiểm tra file, row, hoặc API action nào sẽ bị ảnh hưởng trước khi xóa, ghi đè, hay update thật."
+    },
+    {
+      "category": "Bilingual AI/ML",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "What is overfitting?",
+      "question_vi": "Overfitting là gì?",
+      "question_en": "What is overfitting?",
+      "correct_answer": "It is when a model learns training data too specifically and generalizes poorly.",
+      "explanation": "Model có thể đạt điểm train rất cao nhưng fail trên dữ liệu mới. Đây là vấn đề học thuộc thay vì học quy luật."
+    },
+    {
+      "category": "Bilingual System Design",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why is idempotency important in distributed systems?",
+      "question_vi": "Vì sao idempotency quan trọng trong distributed systems?",
+      "question_en": "Why is idempotency important in distributed systems?",
+      "correct_answer": "Because retries and duplicate delivery should not create duplicate business effects.",
+      "explanation": "Trong hệ phân tán, retry và replay xảy ra thường xuyên. Nếu không idempotent thì dễ tạo double charge, double email, double write."
+    },
+    {
+      "category": "Bilingual Performance",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Which is usually faster for repeated membership checks: list or set?",
+      "question_vi": "Cái nào thường nhanh hơn khi check membership lặp lại nhiều lần: list hay set?",
+      "question_en": "Which is usually faster for repeated membership checks: list or set?",
+      "correct_answer": "A set is usually faster for repeated membership checks.",
+      "explanation": "Set lookup trung bình gần O(1), còn list scan là O(n). Khi lặp nhiều lần sự khác biệt rất rõ."
+    },
+    {
+      "category": "Bilingual Reliability",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why should external API failures be isolated behind a service boundary?",
+      "question_vi": "Vì sao lỗi từ external API nên được cô lập sau một service boundary?",
+      "question_en": "Why should external API failures be isolated behind a service boundary?",
+      "correct_answer": "Because isolation reduces blast radius and makes retries, fallbacks, and testing easier.",
+      "explanation": "Nếu provider logic rải khắp codebase thì mỗi thay đổi hoặc outage sẽ lan rộng. Adapter/service boundary giúp kiểm soát rủi ro."
+    },
+    {
+      "category": "Bilingual Testing",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why are flaky tests harmful?",
+      "question_vi": "Vì sao flaky test lại có hại?",
+      "question_en": "Why are flaky tests harmful?",
+      "correct_answer": "Because they reduce trust in the test suite and waste debugging time.",
+      "explanation": "Test lúc pass lúc fail mà không đổi code sẽ làm team mất niềm tin vào CI và bỏ qua cả lỗi thật."
+    },
+    {
+      "category": "Bilingual Data",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "question": "Why is schema validation useful before processing imported files?",
+      "question_vi": "Vì sao nên validate schema trước khi xử lý file import?",
+      "question_en": "Why is schema validation useful before processing imported files?",
+      "correct_answer": "Because early validation catches structural problems before partial bad processing happens.",
+      "explanation": "Nếu thiếu cột hoặc type sai mà xử lý luôn thì rất dễ tạo output lỗi hoặc side effect dang dở."
+    },
+    {
+      "category": "Bilingual Delivery",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why are rollback plans important?",
+      "question_vi": "Vì sao rollback plan quan trọng?",
+      "question_en": "Why are rollback plans important?",
+      "correct_answer": "Because failed releases need a fast and safe recovery path.",
+      "explanation": "Release tốt không chỉ là deploy được mà còn phải quay lại nhanh khi metric xấu hoặc bug nặng xuất hiện."
+    }
+  ]
+}

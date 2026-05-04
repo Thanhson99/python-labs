@@ -1,0 +1,275 @@
+{
+  "title": "System Design Interview Question Bank",
+  "subtitle": "Advanced distributed systems and delivery questions for backend and platform interviews.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "advanced",
+  "questions": [
+    {
+      "category": "Queues",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why use a message queue between services?",
+      "intent": "Checks whether you understand decoupling and asynchronous work.",
+      "options": [
+        "A. It buffers work and decouples producers from consumers.",
+        "B. It removes all need for retries.",
+        "C. It guarantees zero bugs."
+      ],
+      "correct_answer": "A. It buffers work and decouples producers from consumers.",
+      "explanation": "Queues help services handle spikes, perform background work, and fail more independently. They improve elasticity, but introduce ordering, retry, and observability concerns.",
+      "code_snippet": "producer.publish({'event': 'order_created', 'order_id': 42})",
+      "compare": [
+        "Synchronous call: simpler flow, tighter coupling.",
+        "Queue: more resilient to spikes, but operationally more complex."
+      ]
+    },
+    {
+      "category": "Consistency",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why is idempotency important for queue consumers?",
+      "intent": "Tests whether you understand at-least-once delivery realities.",
+      "options": [
+        "A. Because messages may be delivered more than once.",
+        "B. Because queues never retry.",
+        "C. Because idempotency improves UI design."
+      ],
+      "correct_answer": "A. Because messages may be delivered more than once.",
+      "explanation": "Many messaging systems prefer at-least-once delivery. Consumers therefore need deduplication or safe write patterns so replayed messages do not create duplicate business effects.",
+      "code_snippet": "if event_store.seen(message.id):\\n    return\\nhandle(message)\\nevent_store.mark_seen(message.id)",
+      "compare": [
+        "Idempotent consumer: safe with retries and replays.",
+        "Non-idempotent consumer: duplicates are much harder to control."
+      ]
+    },
+    {
+      "category": "Observability",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "What is the difference between logs, metrics, and traces?",
+      "intent": "Checks whether you can explain observability layers clearly.",
+      "options": [
+        "A. Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+        "B. They are different words for the same output.",
+        "C. Only metrics matter in production."
+      ],
+      "correct_answer": "A. Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+      "explanation": "Each signal answers different questions. Metrics are good for dashboards and alerts, logs give detail, and traces show distributed request paths and latency breakdowns.",
+      "code_snippet": "logger.info('request complete')\\nmetrics.increment('http_requests_total')\\ntracer.start_span('checkout')",
+      "compare": [
+        "Metrics: fast aggregate visibility.",
+        "Logs: rich detail.",
+        "Traces: cross-service request context."
+      ]
+    },
+    {
+      "category": "Resilience",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "What problem does a circuit breaker solve?",
+      "intent": "Tests whether you know how to contain cascading failures.",
+      "options": [
+        "A. It temporarily stops calls to a failing dependency to protect the system.",
+        "B. It encrypts the database.",
+        "C. It replaces monitoring."
+      ],
+      "correct_answer": "A. It temporarily stops calls to a failing dependency to protect the system.",
+      "explanation": "If a downstream service is failing or slow, a circuit breaker can fail fast instead of piling up more requests and consuming resources. It limits cascading damage and gives dependencies time to recover.",
+      "code_snippet": "if breaker.is_open():\\n    raise DependencyUnavailable()\\nreturn client.get()",
+      "compare": [
+        "Without breaker: retries and waiting can amplify outages.",
+        "With breaker: faster failure and better resource control."
+      ]
+    },
+    {
+      "category": "Delivery",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why are health checks useful in deployed services?",
+      "intent": "Checks whether you think about runtime lifecycle and traffic routing.",
+      "options": [
+        "A. They help orchestrators know whether an instance is alive and ready to receive traffic.",
+        "B. They compile code automatically.",
+        "C. They remove the need for tests."
+      ],
+      "correct_answer": "A. They help orchestrators know whether an instance is alive and ready to receive traffic.",
+      "explanation": "Liveness and readiness checks let the platform restart broken instances and avoid sending traffic to instances that have started but are not yet ready to serve safely.",
+      "code_snippet": "GET /health/live\\nGET /health/ready",
+      "compare": [
+        "Liveness: is the process still functioning.",
+        "Readiness: can it safely receive real traffic now."
+      ]
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Which is usually safer for a slow downstream dependency on a hot request path: unbounded waiting or a timeout plus fallback/failure strategy?",
+      "intent": "Tests latency-control judgment.",
+      "options": [
+        "A. Timeout plus fallback or controlled failure is usually safer.",
+        "B. Unbounded waiting is always better because requests should never fail fast.",
+        "C. System design ignores timeout behavior."
+      ],
+      "correct_answer": "A. Timeout plus fallback or controlled failure is usually safer.",
+      "explanation": "Infinite waiting ties up resources and can cascade instability through the whole system.",
+      "code_snippet": "result = client.get(timeout=2)\\nif not result:\\n    return cached_response()",
+      "compare": [
+        "Unbounded wait: simpler but dangerous under failure.",
+        "Bounded timeout strategy: safer under pressure."
+      ]
+    },
+    {
+      "category": "Scaling",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "What is the trap in assuming autoscaling alone solves overload?",
+      "intent": "Tests operational realism.",
+      "options": [
+        "A. Scaling is delayed and dependencies may still bottleneck or fail.",
+        "B. Autoscaling provides infinite instant capacity.",
+        "C. Overload only happens when code has syntax bugs."
+      ],
+      "correct_answer": "A. Scaling is delayed and dependencies may still bottleneck or fail.",
+      "explanation": "Autoscaling helps, but queue growth, cold starts, downstream limits, and cost ceilings still matter.",
+      "code_snippet": "if queue_depth > threshold:\\n    scale_workers()",
+      "compare": [
+        "Autoscaling as sole plan: optimistic and incomplete.",
+        "Autoscaling plus capacity planning: more realistic."
+      ]
+    },
+    {
+      "category": "Consistency",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why is a dual write from database to message broker a classic trap?",
+      "intent": "Tests consistency-pattern understanding.",
+      "options": [
+        "A. One write may succeed while the other fails, causing divergence.",
+        "B. Databases and brokers commit atomically by default across all stacks.",
+        "C. Dual writes only matter in frontend apps."
+      ],
+      "correct_answer": "A. One write may succeed while the other fails, causing divergence.",
+      "explanation": "This is why patterns like the outbox exist: to avoid inconsistent side effects across systems.",
+      "code_snippet": "save_order()\\npublish_event()  # risky if second step fails",
+      "compare": [
+        "Naive dual write: simple but inconsistent under failure.",
+        "Outbox pattern: more robust consistency handling."
+      ]
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why is relying on message ordering across unrelated partitions or consumers a trap?",
+      "intent": "Tests subtle queue semantics awareness.",
+      "options": [
+        "A. Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+        "B. All distributed queues preserve one total global order automatically.",
+        "C. Ordering is irrelevant in event-driven systems."
+      ],
+      "correct_answer": "A. Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+      "explanation": "Ordering semantics depend on the technology, partition key, and consumer model. Assumptions here frequently break in production.",
+      "code_snippet": "partition_key = user_id  # preserve per-user order, not global order",
+      "compare": [
+        "Assumed global order: risky mental model.",
+        "Explicit scoped ordering: safer and more realistic."
+      ]
+    },
+    {
+      "category": "Observability",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why are queue lag and processing age valuable metrics in asynchronous systems?",
+      "intent": "Tests meaningful backlog measurement.",
+      "options": [
+        "A. They show how delayed work is becoming, not just how many messages exist.",
+        "B. They only matter for frontend rendering speed.",
+        "C. Message count alone always tells the full story."
+      ],
+      "correct_answer": "A. They show how delayed work is becoming, not just how many messages exist.",
+      "explanation": "Backlog age often reveals user-visible delay more directly than raw queue depth alone.",
+      "code_snippet": "lag_seconds = now_ts - oldest_message_ts",
+      "compare": [
+        "Queue depth only: incomplete signal.",
+        "Lag/age metrics: closer to real delivery delay."
+      ]
+    },
+    {
+      "category": "Resilience",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "What is the trap in retrying immediately from every caller when a shared dependency fails?",
+      "intent": "Tests retry storm awareness.",
+      "options": [
+        "A. Immediate retries can amplify load and deepen the outage.",
+        "B. More retries always heal the dependency faster.",
+        "C. Shared dependencies are not affected by client retry behavior."
+      ],
+      "correct_answer": "A. Immediate retries can amplify load and deepen the outage.",
+      "explanation": "Backoff, jitter, and circuit breakers are used specifically because uncontrolled retries are dangerous at scale.",
+      "code_snippet": "sleep(random.uniform(0.5, 2.0) * 2 ** attempt)",
+      "compare": [
+        "Immediate mass retry: outage amplifier.",
+        "Backoff and jitter: safer recovery posture."
+      ]
+    },
+    {
+      "category": "Delivery",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why can a readiness check that only returns process-up status still be misleading?",
+      "intent": "Tests deeper readiness design.",
+      "options": [
+        "A. The process may be alive but unable to serve safely due to initialization or dependency state.",
+        "B. Readiness and liveness are always identical by design.",
+        "C. Kubernetes ignores readiness endpoints anyway."
+      ],
+      "correct_answer": "A. The process may be alive but unable to serve safely due to initialization or dependency state.",
+      "explanation": "Good readiness checks reflect whether the instance can actually handle traffic correctly, not just whether a process exists.",
+      "code_snippet": "if not db_ready or not cache_warm:\\n    return 503",
+      "compare": [
+        "Process-only check: too shallow.",
+        "Traffic-safety check: better readiness signal."
+      ]
+    },
+    {
+      "category": "Optimization",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Which is a stronger first step for a slow distributed workflow: rewriting code blindly or mapping the latency budget across components?",
+      "intent": "Tests system-level optimization discipline.",
+      "options": [
+        "A. Map the latency budget and identify where time is actually spent.",
+        "B. Rewrite the code blindly because all slow systems are caused by syntax.",
+        "C. Increase logging verbosity and stop there."
+      ],
+      "correct_answer": "A. Map the latency budget and identify where time is actually spent.",
+      "explanation": "Slow systems are often bottlenecked by storage, networks, serialization, queueing, or downstream behavior rather than one local code block.",
+      "code_snippet": "client=30ms, db=120ms, queue=10ms, downstream=400ms",
+      "compare": [
+        "Measured latency budget: evidence-driven optimization.",
+        "Blind rewrite: expensive and low-confidence."
+      ]
+    },
+    {
+      "category": "Architecture",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "question": "Why is 'make everything async' sometimes a trap in system design interviews?",
+      "intent": "Tests nuance over buzzword answers.",
+      "options": [
+        "A. Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+        "B. Async eliminates every distributed-systems problem automatically.",
+        "C. Sync systems are forbidden in production."
+      ],
+      "correct_answer": "A. Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+      "explanation": "Asynchrony is powerful, but it is not free. Good answers justify where it helps and where synchronous simplicity is better.",
+      "code_snippet": "sync for checkout response, async for email and analytics",
+      "compare": [
+        "Everything async: fashionable but often overcomplicated.",
+        "Selective async: tradeoff-aware design."
+      ]
+    }
+  ]
+}

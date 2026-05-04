@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interview Questions and Sources</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body
+    class="interview-body"
+    data-page="interview-sources"
+    data-source="data/interview-sources.json"
+  >
+    <header class="hero interview-hero">
+      <div class="hero-content">
+        <p class="eyebrow">Python Labs</p>
+        <h1 id="title">Interview Questions and Sources</h1>
+        <p id="subtitle"></p>
+        <div class="hero-actions">
+          <a class="btn" href="interview-role-questions.html?set=fresher">Open Fresher Questions</a>
+          <a class="btn" href="interview.html">Open Code Practice</a>
+          <a class="btn" href="index.html">Back to track selection</a>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Interview Question Sets</h2>
+        <p class="page-note">
+          This site is for interview-style question sets such as `fresher`, `intermediate`, and `senior`. Reference links are listed below for extra reading.
+        </p>
+        <div id="sourceQuestionSets" class="cards compact-cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Vietnamese Reference Links</h2>
+        <div id="vietnameseSources" class="source-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>English Reference Links</h2>
+        <div id="englishSources" class="source-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Usage Notes</h2>
+        <div id="sourceGuides" class="cards"></div>
+      </section>
+    </main>
+
+    <footer><span id="generatedAt"></span></footer>
+    <script src="assets/interview.js"></script>
+  </body>
+</html>

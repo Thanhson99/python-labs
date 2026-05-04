@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-05-04T00:00:00Z",
+  "sets": [
+    {
+      "id": "fresher",
+      "name": "Fresher Interview Set",
+      "level": "Basic",
+      "level_class": "basic",
+      "summary": "Entry-level interview quiz for Python basics, files, JSON, testing, and simple debugging.",
+      "file": "data/interview-fresher-questions.json"
+    },
+    {
+      "id": "mid",
+      "name": "Intermediate Interview Set",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Mid-level interview quiz for APIs, database work, async, retries, and implementation tradeoffs.",
+      "file": "data/interview-mid-questions.json"
+    },
+    {
+      "id": "senior",
+      "name": "Senior Interview Set",
+      "level": "Advanced",
+      "level_class": "advanced",
+      "summary": "Hard interview quiz for scaling, reliability, architecture, operations, and AI/system tradeoffs.",
+      "file": "data/interview-senior-questions.json"
+    },
+    {
+      "id": "bilingual",
+      "name": "Bilingual VI/EN Interview Set",
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "summary": "Vietnamese and English interview prompts for learning terminology and answer phrasing.",
+      "file": "data/interview-bilingual-questions.json"
+    }
+  ]
+}

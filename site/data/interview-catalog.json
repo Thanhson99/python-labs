@@ -1,0 +1,208 @@
+{
+  "title": "Python Interview Practice Portal",
+  "subtitle": "Static preparation site from fundamentals to advanced engineering, automation, AI, and machine learning. Built to deploy directly on GitHub Pages using only HTML, CSS, JS, and JSON.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "ladders": [
+    {
+      "level": "basic",
+      "name": "Foundation Interview Ladder",
+      "summary": "Core Python syntax, data structures, functions, files, exceptions, and scripting habits.",
+      "focus": ["variables", "loops", "dict/list/set", "functions", "JSON", "CLI"]
+    },
+    {
+      "level": "intermediate",
+      "name": "Automation and Backend Ladder",
+      "summary": "Automation scripts, APIs, testing, packaging, databases, concurrency, and production habits.",
+      "focus": ["requests", "argparse", "pytest", "sqlite/postgres", "asyncio", "logging"]
+    },
+    {
+      "level": "advanced",
+      "name": "AI and System Design Ladder",
+      "summary": "Model-serving patterns, ML workflow basics, vector search, queues, observability, and cost tradeoffs.",
+      "focus": ["prompt pipelines", "ML lifecycle", "RAG", "caching", "workers", "resilience"]
+    }
+  ],
+  "topic_catalog": [
+    {
+      "domain": "Python Core",
+      "title": "Language Fundamentals",
+      "summary": "Interviewers expect precise answers about mutability, scope, comprehensions, imports, and function behavior.",
+      "examples": ["mutable default args", "list vs tuple", "LEGB scope", "decorators"],
+      "depth": "Basic to intermediate"
+    },
+    {
+      "domain": "Automation",
+      "title": "Practical Scripting",
+      "summary": "Covers file pipelines, cron-style jobs, scraping safeguards, and using Python to remove repetitive manual work.",
+      "examples": ["CSV transform", "folder watcher", "API sync", "browser automation"],
+      "depth": "Basic to advanced"
+    },
+    {
+      "domain": "Backend",
+      "title": "APIs and Persistence",
+      "summary": "Covers REST basics, validation, SQL vs NoSQL tradeoffs, ORM usage, and transaction handling.",
+      "examples": ["FastAPI route", "SQLite prototype", "SQLAlchemy session", "retry timeout"],
+      "depth": "Intermediate"
+    },
+    {
+      "domain": "AI/ML",
+      "title": "AI and Machine Learning Fundamentals",
+      "summary": "Prepare for questions about supervised learning, model evaluation, embeddings, inference pipelines, and prompt design.",
+      "examples": ["precision vs recall", "train/validation/test", "embedding search", "feature leakage"],
+      "depth": "Intermediate to advanced"
+    },
+    {
+      "domain": "Architecture",
+      "title": "Production Engineering",
+      "summary": "Distributed systems questions about queues, idempotency, observability, caching, and graceful failure handling.",
+      "examples": ["worker retry", "dead letter queue", "circuit breaker", "metrics and logs"],
+      "depth": "Advanced"
+    },
+    {
+      "domain": "Interview Delivery",
+      "title": "Answer Framing",
+      "summary": "How to explain tradeoffs, narrate debugging, compare alternatives, and justify implementation choices clearly.",
+      "examples": ["state assumptions", "compare two tools", "explain root cause", "show rollback plan"],
+      "depth": "All levels"
+    }
+  ],
+  "practice_sets": [
+    {
+      "level": "Basic",
+      "level_class": "basic",
+      "name": "Basic Master Set",
+      "summary": "Large all-in-one foundation bank with more than 100 questions.",
+      "topics": ["python core", "data structures", "exceptions", "files", "testing", "automation basics"],
+      "output": "Flashcards, quiz rounds, and beginner interview prep",
+      "question_set": "basic"
+    },
+    {
+      "level": "Basic",
+      "level_class": "basic",
+      "name": "Fresher Interview Set",
+      "summary": "Curated fresher-style interview quiz with practical beginner traps and common recruiter questions.",
+      "topics": ["fresher", "python basics", "collections", "json", "files", "simple debugging"],
+      "output": "Static interview quiz for fresher preparation",
+      "question_set": "fresher"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Intermediate Master Set",
+      "summary": "Large all-in-one mid-level bank with more than 100 practical questions.",
+      "topics": ["apis", "sqlite/postgres", "testing", "async", "automation", "data pipelines"],
+      "output": "Mid-level interview prep with implementation and architecture tradeoffs",
+      "question_set": "intermediate"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Intermediate Interview Set",
+      "summary": "Synthesized interview quiz for mid-level engineers with code comparison and optimization thinking.",
+      "topics": ["api", "db", "async", "retry", "testing", "optimization"],
+      "output": "Implementation-focused interview simulation",
+      "question_set": "mid"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "Advanced Master Set",
+      "summary": "Large all-in-one advanced bank with more than 100 questions.",
+      "topics": ["concurrency", "architecture", "resilience", "AI systems", "deployment", "observability"],
+      "output": "Senior interview prep and system design discussion",
+      "question_set": "advanced"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "Senior Interview Set",
+      "summary": "Hard synthesized interview quiz with tradeoffs, scaling, failure modes, and system reasoning.",
+      "topics": ["senior", "system design", "reliability", "tradeoffs", "performance", "operations"],
+      "output": "Senior-level interview simulation",
+      "question_set": "senior"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Automation and API Set",
+      "summary": "Scenario-driven questions on scripts, retries, timeouts, jobs, parsing, and testing.",
+      "topics": ["automation", "requests", "pytest", "logging"],
+      "output": "Whiteboard explanation plus code sketch",
+      "question_set": "automation"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Backend and Data Set",
+      "summary": "Questions on APIs, validation, SQL, ORM behavior, caching, and service boundaries.",
+      "topics": ["backend", "sql", "transactions", "orm", "caching"],
+      "output": "Design explanation and data tradeoffs",
+      "question_set": "backend"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "AI/ML and System Design Set",
+      "summary": "Discuss AI pipeline components, evaluation, cost, and platform reliability patterns.",
+      "topics": ["ML basics", "RAG", "queues", "observability", "deployment"],
+      "output": "Architecture discussion with tradeoffs",
+      "question_set": "ai-ml"
+    },
+    {
+      "level": "Advanced",
+      "level_class": "advanced",
+      "name": "Distributed System Design Set",
+      "summary": "Production patterns around queues, idempotency, health checks, circuit breakers, and delivery.",
+      "topics": ["queues", "idempotency", "tracing", "resilience", "kubernetes"],
+      "output": "System design discussion with operational tradeoffs",
+      "question_set": "system-design"
+    },
+    {
+      "level": "Intermediate",
+      "level_class": "intermediate",
+      "name": "Bilingual VI/EN Set",
+      "summary": "Question bank with Vietnamese and English interview prompts for searching and study.",
+      "topics": ["viet", "english", "search", "interview prompts", "self study"],
+      "output": "Song ngữ Việt/Anh để tra cứu và học phỏng vấn",
+      "question_set": "bilingual"
+    }
+  ],
+  "project_ideas": [
+    {
+      "name": "Automation Command Center",
+      "summary": "A static catalog plus Python scripts that automate file cleanup, API fetch jobs, and scheduled reports.",
+      "why": "Shows practical Python value beyond algorithm questions.",
+      "stack": ["Python", "JSON", "argparse", "logging", "scheduler"]
+    },
+    {
+      "name": "Mini Interview Quiz Engine",
+      "summary": "Static site reading question banks from JSON and showing answers, explanations, and comparisons.",
+      "why": "Demonstrates frontend basics, data modeling, and content operations without a database.",
+      "stack": ["HTML", "CSS", "JavaScript", "JSON", "GitHub Pages"]
+    },
+    {
+      "name": "AI Search Lab",
+      "summary": "Prototype search, summarization, and ranking ideas using local examples and documented evaluation notes.",
+      "why": "Useful for AI/backend interviews where reasoning about retrieval and quality matters.",
+      "stack": ["Python", "evaluation", "embeddings", "prompting"]
+    }
+  ],
+  "preparation_notes": [
+    {
+      "title": "Use JSON as the source of truth",
+      "note": "For a static GitHub Pages site, keep questions, answers, tags, and explanations in JSON files that are fetched client-side."
+    },
+    {
+      "title": "Separate static and local-only features",
+      "note": "Anything that needs Python execution, private keys, or filesystem access should stay local. Static interview content should avoid server APIs."
+    },
+    {
+      "title": "Answer with tradeoffs",
+      "note": "When asked about tools or architecture, compare at least two options and explain when each is better."
+    },
+    {
+      "title": "Keep examples small and inspectable",
+      "note": "For interview prep, short code snippets with one focused lesson are better than large demos with hidden complexity."
+    }
+  ]
+}
