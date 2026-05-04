@@ -2,6 +2,8 @@
 
 Reorganized Python lab workspace with multiple learning sites and GitHub Pages friendly entrypoints.
 
+Live site: https://thanhson99.github.io/python-labs/
+
 ## New Structure
 
 - `services/`: all lab projects grouped as independent services.
@@ -59,6 +61,10 @@ scripts\run_site.cmd
 ```
 
 ## Open the Sites
+
+Public GitHub Pages:
+
+- `https://thanhson99.github.io/python-labs/` -> live static entry page
 
 - `http://127.0.0.1:<PORT>/` -> track selector landing page
 - `http://127.0.0.1:<PORT>/foundation.html` -> huge foundation cheatsheet + roadmap
