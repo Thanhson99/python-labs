@@ -1,0 +1,669 @@
+{
+  "title": "Backend and Data Interview Question Bank",
+  "subtitle": "Bộ câu hỏi backend trung cấp về API, lưu trữ, validation và reliability.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "trung cấp",
+  "questions": [
+    {
+      "category": "API Design",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao nên validation request happen near the API boundary?",
+      "intent": "Checks whether you isolate bad input early.",
+      "options": [
+        "To reject invalid các payload before deeper logic nghiệp vụ runs.",
+        "B. To make every request slower.",
+        "C. Bởi vì databases cannot store strings."
+      ],
+      "correct_answer": "To reject invalid các payload before deeper logic nghiệp vụ runs.",
+      "explanation": "Boundary validation reduces downstream error states, keeps contracts explicit, and prevents invalid data from leaking into core logic or persistence layers.",
+      "code_snippet": "if not payload.get('email'):\\n    raise ValueError('email is required')",
+      "compare": [
+        "Early validation: clearer failure and safer internal code.",
+        "Late validation: more nhánh xử lý and harder debugging."
+      ],
+      "category_vi": "Thiết kế API",
+      "question_en": "Why should request validation happen near the API boundary?",
+      "question_vi": "Vì sao nên validation request happen near the API boundary?",
+      "correct_answer_en": "A. To reject invalid payloads before deeper business logic runs.",
+      "correct_answer_vi": "To reject invalid các payload before deeper logic nghiệp vụ runs.",
+      "explanation_en": "Boundary validation reduces downstream error states, keeps contracts explicit, and prevents invalid data from leaking into core logic or persistence layers.",
+      "explanation_vi": "Boundary validation reduces downstream error states, keeps contracts explicit, and prevents invalid data from leaking into core logic or persistence layers.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. To reject invalid payloads before deeper business logic runs.",
+        "B. To make every request slower.",
+        "C. Because databases cannot store strings."
+      ],
+      "options_vi": [
+        "To reject invalid các payload before deeper logic nghiệp vụ runs.",
+        "B. To make every request slower.",
+        "C. Bởi vì databases cannot store strings."
+      ],
+      "compare_en": [
+        "Early validation: clearer failure and safer internal code.",
+        "Late validation: more branching and harder debugging."
+      ],
+      "compare_vi": [
+        "Early validation: clearer failure and safer internal code.",
+        "Late validation: more nhánh xử lý and harder debugging."
+      ],
+      "intent_en": "Checks whether you isolate bad input early.",
+      "intent_vi": "Checks whether you isolate bad input early."
+    },
+    {
+      "category": "Databases",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Transaction and why is it useful là gì?",
+      "intent": "Checks whether you understand atomic multi-step changes.",
+      "options": [
+        "Transaction groups operations so they succeed or fail together.",
+        "B. Transaction is only a SQL comment.",
+        "C. Transaction guarantees infinite scaling."
+      ],
+      "correct_answer": "Transaction groups operations so they succeed or fail together.",
+      "explanation": "Transactions help preserve data consistency. If one step fails, the system can roll back the whole đơn vị công việc instead of leaving partial writes.",
+      "code_snippet": "with session.begin():\\n    session.add(order)\\n    session.add(payment_log)",
+      "compare": [
+        "Transaction: safer for coupled writes.",
+        "No transaction: partial state is more likely on failure."
+      ],
+      "category_vi": "Database",
+      "question_en": "What is a transaction and why is it useful?",
+      "question_vi": "Transaction and why is it useful là gì?",
+      "correct_answer_en": "A. A transaction groups operations so they succeed or fail together.",
+      "correct_answer_vi": "Transaction groups operations so they succeed or fail together.",
+      "explanation_en": "Transactions help preserve data consistency. If one step fails, the system can roll back the whole unit of work instead of leaving partial writes.",
+      "explanation_vi": "Transactions help preserve data consistency. If one step fails, the system can roll back the whole đơn vị công việc instead of leaving partial writes.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. A transaction groups operations so they succeed or fail together.",
+        "B. A transaction is only a SQL comment.",
+        "C. A transaction guarantees infinite scaling."
+      ],
+      "options_vi": [
+        "Transaction groups operations so they succeed or fail together.",
+        "B. Transaction is only a SQL comment.",
+        "C. Transaction guarantees infinite scaling."
+      ],
+      "compare_en": [
+        "Transaction: safer for coupled writes.",
+        "No transaction: partial state is more likely on failure."
+      ],
+      "compare_vi": [
+        "Transaction: safer for coupled writes.",
+        "No transaction: partial state is more likely on failure."
+      ],
+      "intent_en": "Checks whether you understand atomic multi-step changes.",
+      "intent_vi": "Checks whether you understand atomic multi-step changes."
+    },
+    {
+      "category": "Caching",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "When does caching help a backend service?",
+      "intent": "Tests whether you know why and when to trade độ tươi mới for speed.",
+      "options": [
+        "When các lần đọc tốn kém lặp đi lặp lại can tolerate some staleness.",
+        "B. For every write-heavy workflow automatically.",
+        "C. Only when the database is broken."
+      ],
+      "correct_answer": "When các lần đọc tốn kém lặp đi lặp lại can tolerate some staleness.",
+      "explanation": "Caching reduces latency and backend load, but it introduces invalidation and độ tươi mới tradeoffs. Nó giúp most when the same data is read often and changes less frequently.",
+      "code_snippet": "cached = cache.get(key)\\nif cached is not None:\\n    return cached\\nvalue = load_from_db(key)\\ncache.set(key, value, ttl=60)",
+      "compare": [
+        "Cache hit: lower latency and lower DB load.",
+        "Cache miss or cũ cache: extra complexity and potential inconsistency."
+      ],
+      "category_vi": "Caching",
+      "question_en": "When does caching help a backend service?",
+      "question_vi": "When does caching help a backend service?",
+      "correct_answer_en": "A. When repeated expensive reads can tolerate some staleness.",
+      "correct_answer_vi": "When các lần đọc tốn kém lặp đi lặp lại can tolerate some staleness.",
+      "explanation_en": "Caching reduces latency and backend load, but it introduces invalidation and freshness tradeoffs. It helps most when the same data is read often and changes less frequently.",
+      "explanation_vi": "Caching reduces latency and backend load, but it introduces invalidation and độ tươi mới tradeoffs. Nó giúp most when the same data is read often and changes less frequently.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. When repeated expensive reads can tolerate some staleness.",
+        "B. For every write-heavy workflow automatically.",
+        "C. Only when the database is broken."
+      ],
+      "options_vi": [
+        "When các lần đọc tốn kém lặp đi lặp lại can tolerate some staleness.",
+        "B. For every write-heavy workflow automatically.",
+        "C. Only when the database is broken."
+      ],
+      "compare_en": [
+        "Cache hit: lower latency and lower DB load.",
+        "Cache miss or stale cache: extra complexity and potential inconsistency."
+      ],
+      "compare_vi": [
+        "Cache hit: lower latency and lower DB load.",
+        "Cache miss or cũ cache: extra complexity and potential inconsistency."
+      ],
+      "intent_en": "Tests whether you know why and when to trade freshness for speed.",
+      "intent_vi": "Tests whether you know why and when to trade độ tươi mới for speed."
+    },
+    {
+      "category": "ORM",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao sự tiện lợi của ORM vẫn đòi hỏi kiến thức SQL?",
+      "intent": "Checks whether you understand abstractions do not remove query cost.",
+      "options": [
+        "Các query do ORM sinh ra vẫn có thể kém hiệu quả hoặc không phù hợp với workload.",
+        "B. ORMs replace all need for data modeling.",
+        "C. SQL is unrelated to relational databases."
+      ],
+      "correct_answer": "Các query do ORM sinh ra vẫn có thể kém hiệu quả hoặc không phù hợp với workload.",
+      "explanation": "Bạn vẫn cần hiểu join, index và hình dạng của query. Nếu không, ORM có thể che giấu các N+1 query chậm hoặc kéo về nhiều dữ liệu hơn mức cần thiết.",
+      "code_snippet": "users = session.query(User).all()\\nfor user in users:\\n    print(user.orders)  # may trigger N+1 queries",
+      "compare": [
+        "ORM: faster development and cleaner models.",
+        "Raw SQL insight: necessary for performance and debugging."
+      ],
+      "category_vi": "ORM",
+      "question_en": "Why can ORM convenience still require SQL knowledge?",
+      "question_vi": "Vì sao sự tiện lợi của ORM vẫn đòi hỏi kiến thức SQL?",
+      "correct_answer_en": "A. ORM-generated queries can still be inefficient or incorrect for the workload.",
+      "correct_answer_vi": "Các query do ORM sinh ra vẫn có thể kém hiệu quả hoặc không phù hợp với workload.",
+      "explanation_en": "You still need to understand joins, indexes, and query shape. Otherwise, an ORM can hide slow N+1 queries or pull much more data than needed.",
+      "explanation_vi": "Bạn vẫn cần hiểu join, index và hình dạng của query. Nếu không, ORM có thể che giấu các N+1 query chậm hoặc kéo về nhiều dữ liệu hơn mức cần thiết.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. ORM-generated queries can still be inefficient or incorrect for the workload.",
+        "B. ORMs replace all need for data modeling.",
+        "C. SQL is unrelated to relational databases."
+      ],
+      "options_vi": [
+        "Các query do ORM sinh ra vẫn có thể kém hiệu quả hoặc không phù hợp với workload.",
+        "B. ORMs replace all need for data modeling.",
+        "C. SQL is unrelated to relational databases."
+      ],
+      "compare_en": [
+        "ORM: faster development and cleaner models.",
+        "Raw SQL insight: necessary for performance and debugging."
+      ],
+      "compare_vi": [
+        "ORM: faster development and cleaner models.",
+        "Raw SQL insight: necessary for performance and debugging."
+      ],
+      "intent_en": "Checks whether you understand abstractions do not remove query cost.",
+      "intent_vi": "Checks whether you understand abstractions do not remove query cost."
+    },
+    {
+      "category": "Reliability",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao nên external API failures be isolated from core domain logic?",
+      "intent": "Tests whether you can limit blast radius.",
+      "options": [
+        "So sự bất ổn của upstream does not crash unrelated business flows.",
+        "B. So the codebase has more folders.",
+        "C. Bởi vì external APIs are always optional."
+      ],
+      "correct_answer": "So sự bất ổn của upstream does not crash unrelated business flows.",
+      "explanation": "Separating providers behind an adapter or service ranh giới makes timeouts, retries, fallbacks, and test double easier to manage without contaminating the rest of the system.",
+      "code_snippet": "class PaymentGateway:\\n    def charge(self, request):\\n        ...",
+      "compare": [
+        "Isolated adapter: easier testing and controlled retries.",
+        "Provider logic everywhere: harder to change and debug."
+      ],
+      "category_vi": "Reliability",
+      "question_en": "Why should external API failures be isolated from core domain logic?",
+      "question_vi": "Vì sao nên external API failures be isolated from core domain logic?",
+      "correct_answer_en": "A. So upstream instability does not crash unrelated business flows.",
+      "correct_answer_vi": "So sự bất ổn của upstream does not crash unrelated business flows.",
+      "explanation_en": "Separating providers behind an adapter or service boundary makes timeouts, retries, fallbacks, and test doubles easier to manage without contaminating the rest of the system.",
+      "explanation_vi": "Separating providers behind an adapter or service ranh giới makes timeouts, retries, fallbacks, and test double easier to manage without contaminating the rest of the system.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. So upstream instability does not crash unrelated business flows.",
+        "B. So the codebase has more folders.",
+        "C. Because external APIs are always optional."
+      ],
+      "options_vi": [
+        "So sự bất ổn của upstream does not crash unrelated business flows.",
+        "B. So the codebase has more folders.",
+        "C. Bởi vì external APIs are always optional."
+      ],
+      "compare_en": [
+        "Isolated adapter: easier testing and controlled retries.",
+        "Provider logic everywhere: harder to change and debug."
+      ],
+      "compare_vi": [
+        "Isolated adapter: easier testing and controlled retries.",
+        "Provider logic everywhere: harder to change and debug."
+      ],
+      "intent_en": "Tests whether you can limit blast radius.",
+      "intent_vi": "Tests whether you can limit blast radius."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Which is usually a backend anti-pattern for loading related data: một query cho mỗi dòng cha or một query được thiết kế phù hợp that fetches needed relations eagerly?",
+      "intent": "Tests N+1 query awareness.",
+      "options": [
+        "One query per parent row is the anti-pattern bởi vì it often creates N+1 queries.",
+        "B. The shaped query is always slower by definition.",
+        "C. Databases optimize both into identical thực thi plans automatically."
+      ],
+      "correct_answer": "One query per parent row is the anti-pattern bởi vì it often creates N+1 queries.",
+      "explanation": "Repeated relation loading causes avoidable các vòng round trip and query overhead. Loading strategy should match the actual access pattern.",
+      "code_snippet": "users = session.query(User).options(selectinload(User.orders)).all()",
+      "compare": [
+        "N+1 loading: simple to write, expensive at scale.",
+        "Planned eager loading: often better for known access paths."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which is usually a backend anti-pattern for loading related data: one query per parent row or one shaped query that fetches needed relations eagerly?",
+      "question_vi": "Which is usually a backend anti-pattern for loading related data: một query cho mỗi dòng cha or một query được thiết kế phù hợp that fetches needed relations eagerly?",
+      "correct_answer_en": "A. One query per parent row is the anti-pattern because it often creates N+1 queries.",
+      "correct_answer_vi": "One query per parent row is the anti-pattern bởi vì it often creates N+1 queries.",
+      "explanation_en": "Repeated relation loading causes avoidable round trips and query overhead. Loading strategy should match the actual access pattern.",
+      "explanation_vi": "Repeated relation loading causes avoidable các vòng round trip and query overhead. Loading strategy should match the actual access pattern.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. One query per parent row is the anti-pattern because it often creates N+1 queries.",
+        "B. The shaped query is always slower by definition.",
+        "C. Databases optimize both into identical execution plans automatically."
+      ],
+      "options_vi": [
+        "One query per parent row is the anti-pattern bởi vì it often creates N+1 queries.",
+        "B. The shaped query is always slower by definition.",
+        "C. Databases optimize both into identical thực thi plans automatically."
+      ],
+      "compare_en": [
+        "N+1 loading: simple to write, expensive at scale.",
+        "Planned eager loading: often better for known access paths."
+      ],
+      "compare_vi": [
+        "N+1 loading: simple to write, expensive at scale.",
+        "Planned eager loading: often better for known access paths."
+      ],
+      "intent_en": "Tests N+1 query awareness.",
+      "intent_vi": "Tests N+1 query awareness."
+    },
+    {
+      "category": "Optimization",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Performance trap in selecting `*` from a large table when only two fields are needed là gì?",
+      "intent": "Tests query shaping awareness.",
+      "options": [
+        "Extra columns increase transfer, parsing, and memory cost.",
+        "B. SQL does not allow selecting fewer fields in production.",
+        "C. Wide rows always compress to the same size anyway."
+      ],
+      "correct_answer": "Extra columns increase transfer, parsing, and memory cost.",
+      "explanation": "Selecting only the các cột cần thiết is a simple optimization that can matter significantly on large datasets or hot endpoints.",
+      "code_snippet": "SELECT id, email FROM users WHERE status = 'active';",
+      "compare": [
+        "SELECT *: convenient but often wasteful.",
+        "Projected columns: leaner for bandwidth and memory."
+      ],
+      "category_vi": "Optimization",
+      "question_en": "What is the performance trap in selecting `*` from a large table when only two fields are needed?",
+      "question_vi": "Performance trap in selecting `*` from a large table when only two fields are needed là gì?",
+      "correct_answer_en": "A. Extra columns increase transfer, parsing, and memory cost.",
+      "correct_answer_vi": "Extra columns increase transfer, parsing, and memory cost.",
+      "explanation_en": "Selecting only the required columns is a simple optimization that can matter significantly on large datasets or hot endpoints.",
+      "explanation_vi": "Selecting only the các cột cần thiết is a simple optimization that can matter significantly on large datasets or hot endpoints.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Extra columns increase transfer, parsing, and memory cost.",
+        "B. SQL does not allow selecting fewer fields in production.",
+        "C. Wide rows always compress to the same size anyway."
+      ],
+      "options_vi": [
+        "Extra columns increase transfer, parsing, and memory cost.",
+        "B. SQL does not allow selecting fewer fields in production.",
+        "C. Wide rows always compress to the same size anyway."
+      ],
+      "compare_en": [
+        "SELECT *: convenient but often wasteful.",
+        "Projected columns: leaner for bandwidth and memory."
+      ],
+      "compare_vi": [
+        "SELECT *: convenient but often wasteful.",
+        "Projected columns: leaner for bandwidth and memory."
+      ],
+      "intent_en": "Tests query shaping awareness.",
+      "intent_vi": "Tests query shaping awareness."
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao caching có thể thay đổi database-derived objects and then mutating them tại chỗ a trap?",
+      "intent": "Tests subtle shared-state reasoning.",
+      "options": [
+        "Other các request may observe cũ or bị sửa đổi ngoài dự kiến cached state.",
+        "B. Python automatically deep-copies all cached values.",
+        "C. Cached objects cannot be mutated after retrieval."
+      ],
+      "correct_answer": "Other các request may observe cũ or bị sửa đổi ngoài dự kiến cached state.",
+      "explanation": "Caches need careful control over object identity, mutation, serialization, and invalidation.",
+      "code_snippet": "profile = cache.get(key)\\nprofile['count'] += 1  # risky if shared mutable cache object",
+      "compare": [
+        "Mutable shared cache objects: risky and surprising.",
+        "Immutable/serialized cache values: safer boundaries."
+      ],
+      "category_vi": "Tricky Bugs",
+      "question_en": "Why is caching mutable database-derived objects and then mutating them in-place a trap?",
+      "question_vi": "Vì sao caching có thể thay đổi database-derived objects and then mutating them tại chỗ a trap?",
+      "correct_answer_en": "A. Other requests may observe stale or unexpectedly modified cached state.",
+      "correct_answer_vi": "Other các request may observe cũ or bị sửa đổi ngoài dự kiến cached state.",
+      "explanation_en": "Caches need careful control over object identity, mutation, serialization, and invalidation.",
+      "explanation_vi": "Caches need careful control over object identity, mutation, serialization, and invalidation.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Other requests may observe stale or unexpectedly modified cached state.",
+        "B. Python automatically deep-copies all cached values.",
+        "C. Cached objects cannot be mutated after retrieval."
+      ],
+      "options_vi": [
+        "Other các request may observe cũ or bị sửa đổi ngoài dự kiến cached state.",
+        "B. Python automatically deep-copies all cached values.",
+        "C. Cached objects cannot be mutated after retrieval."
+      ],
+      "compare_en": [
+        "Mutable shared cache objects: risky and surprising.",
+        "Immutable/serialized cache values: safer boundaries."
+      ],
+      "compare_vi": [
+        "Mutable shared cache objects: risky and surprising.",
+        "Immutable/serialized cache values: safer boundaries."
+      ],
+      "intent_en": "Tests subtle shared-state reasoning.",
+      "intent_vi": "Tests subtle shared-state reasoning."
+    },
+    {
+      "category": "API Design",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao returning exception nội bộ thô directly to API clients a bad idea?",
+      "intent": "Checks error-contract discipline.",
+      "options": [
+        "It can leak internals and produce unstable hướng tới client contracts.",
+        "B. Clients prefer stack traces for all failures.",
+        "C. It makes performance benchmarking easier."
+      ],
+      "correct_answer": "It can leak internals and produce unstable hướng tới client contracts.",
+      "explanation": "Client-facing errors should be deliberate, stable, and safe rather than accidental reflections of internal implementation.",
+      "code_snippet": "return {'error': 'invalid_request', 'message': 'email is required'}",
+      "compare": [
+        "Raw internal exception: unstable and potentially unsafe.",
+        "Mapped API error contract: cleaner for clients."
+      ],
+      "category_vi": "Thiết kế API",
+      "question_en": "Why is returning raw internal exceptions directly to API clients a bad idea?",
+      "question_vi": "Vì sao returning exception nội bộ thô directly to API clients a bad idea?",
+      "correct_answer_en": "A. It can leak internals and produce unstable client-facing contracts.",
+      "correct_answer_vi": "It can leak internals and produce unstable hướng tới client contracts.",
+      "explanation_en": "Client-facing errors should be deliberate, stable, and safe rather than accidental reflections of internal implementation.",
+      "explanation_vi": "Client-facing errors should be deliberate, stable, and safe rather than accidental reflections of internal implementation.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. It can leak internals and produce unstable client-facing contracts.",
+        "B. Clients prefer stack traces for all failures.",
+        "C. It makes performance benchmarking easier."
+      ],
+      "options_vi": [
+        "It can leak internals and produce unstable hướng tới client contracts.",
+        "B. Clients prefer stack traces for all failures.",
+        "C. It makes performance benchmarking easier."
+      ],
+      "compare_en": [
+        "Raw internal exception: unstable and potentially unsafe.",
+        "Mapped API error contract: cleaner for clients."
+      ],
+      "compare_vi": [
+        "Raw internal exception: unstable and potentially unsafe.",
+        "Mapped API error contract: cleaner for clients."
+      ],
+      "intent_en": "Checks error-contract discipline.",
+      "intent_vi": "Checks error-contract discipline."
+    },
+    {
+      "category": "Databases",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Trap in checking uniqueness only in application code before insert and not enforcing it in the database là gì?",
+      "intent": "Tests race-condition awareness around writes.",
+      "options": [
+        "Các request đồng thời vẫn có thể chèn dữ liệu trùng lặp.",
+        "B. Databases reject duplicates automatically without constraints.",
+        "C. Application checks are always stronger than constraints."
+      ],
+      "correct_answer": "Các request đồng thời vẫn có thể chèn dữ liệu trùng lặp.",
+      "explanation": "Application checks alone are not enough under concurrency. Important uniqueness should usually be enforced in the database as well.",
+      "code_snippet": "ALTER TABLE users ADD CONSTRAINT users_email_key UNIQUE (email);",
+      "compare": [
+        "App-only uniqueness check: race-prone.",
+        "Database constraint: stronger integrity protection."
+      ],
+      "category_vi": "Database",
+      "question_en": "What is the trap in checking uniqueness only in application code before insert and not enforcing it in the database?",
+      "question_vi": "Trap in checking uniqueness only in application code before insert and not enforcing it in the database là gì?",
+      "correct_answer_en": "A. Concurrent requests can still insert duplicates.",
+      "correct_answer_vi": "Các request đồng thời vẫn có thể chèn dữ liệu trùng lặp.",
+      "explanation_en": "Application checks alone are not enough under concurrency. Important uniqueness should usually be enforced in the database as well.",
+      "explanation_vi": "Application checks alone are not enough under concurrency. Important uniqueness should usually be enforced in the database as well.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Concurrent requests can still insert duplicates.",
+        "B. Databases reject duplicates automatically without constraints.",
+        "C. Application checks are always stronger than constraints."
+      ],
+      "options_vi": [
+        "Các request đồng thời vẫn có thể chèn dữ liệu trùng lặp.",
+        "B. Databases reject duplicates automatically without constraints.",
+        "C. Application checks are always stronger than constraints."
+      ],
+      "compare_en": [
+        "App-only uniqueness check: race-prone.",
+        "Database constraint: stronger integrity protection."
+      ],
+      "compare_vi": [
+        "App-only uniqueness check: race-prone.",
+        "Database constraint: stronger integrity protection."
+      ],
+      "intent_en": "Tests race-condition awareness around writes.",
+      "intent_vi": "Tests race-condition awareness around writes."
+    },
+    {
+      "category": "ORM",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Trong trường hợp in request-scoped code, cách nào thường an toàn hơn: one long-lived session toàn cục hay a session được kiểm soát per unit of work?",
+      "intent": "Tests session lifecycle discipline.",
+      "options": [
+        "Session được kiểm soát per đơn vị công việc is usually safer.",
+        "B. One session toàn cục is always best bởi vì it saves memory.",
+        "C. ORM sessions never hold state between operations."
+      ],
+      "correct_answer": "Session được kiểm soát per đơn vị công việc is usually safer.",
+      "explanation": "Global long-lived sessions can accumulate cũ state, transaction confusion, and cross-request leakage.",
+      "code_snippet": "with Session() as session:\\n    ...",
+      "compare": [
+        "Scoped session: clearer lifecycle and isolation.",
+        "Global session: convenient at first, fragile later."
+      ],
+      "category_vi": "ORM",
+      "question_en": "Which is usually safer in request-scoped code: one long-lived global session or a controlled session per unit of work?",
+      "question_vi": "Trong trường hợp in request-scoped code, cách nào thường an toàn hơn: one long-lived session toàn cục hay a session được kiểm soát per unit of work?",
+      "correct_answer_en": "A. A controlled session per unit of work is usually safer.",
+      "correct_answer_vi": "Session được kiểm soát per đơn vị công việc is usually safer.",
+      "explanation_en": "Global long-lived sessions can accumulate stale state, transaction confusion, and cross-request leakage.",
+      "explanation_vi": "Global long-lived sessions can accumulate cũ state, transaction confusion, and cross-request leakage.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. A controlled session per unit of work is usually safer.",
+        "B. One global session is always best because it saves memory.",
+        "C. ORM sessions never hold state between operations."
+      ],
+      "options_vi": [
+        "Session được kiểm soát per đơn vị công việc is usually safer.",
+        "B. One session toàn cục is always best bởi vì it saves memory.",
+        "C. ORM sessions never hold state between operations."
+      ],
+      "compare_en": [
+        "Scoped session: clearer lifecycle and isolation.",
+        "Global session: convenient at first, fragile later."
+      ],
+      "compare_vi": [
+        "Scoped session: clearer lifecycle and isolation.",
+        "Global session: convenient at first, fragile later."
+      ],
+      "intent_en": "Tests session lifecycle discipline.",
+      "intent_vi": "Tests session lifecycle discipline."
+    },
+    {
+      "category": "Caching",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao cache invalidation hard in backend systems?",
+      "intent": "Tests real-world cache discipline.",
+      "options": [
+        "Bởi vì you must balance freshness, correctness, and efficiency.",
+        "B. Bởi vì caches delete themselves correctly by default.",
+        "C. Bởi vì invalidation only matters in frontend apps."
+      ],
+      "correct_answer": "Bởi vì you must balance freshness, correctness, and efficiency.",
+      "explanation": "Phần khó của caching không phải là lưu giá trị, mà là giữ cho chúng đủ chính xác so với hành vi thực tế của sản phẩm.",
+      "code_snippet": "cache.delete(f'user:{user_id}')  # after update",
+      "compare": [
+        "No invalidation strategy: cũ data risk.",
+        "Deliberate invalidation: more complexity, more correctness."
+      ],
+      "category_vi": "Caching",
+      "question_en": "Why is cache invalidation hard in backend systems?",
+      "question_vi": "Vì sao cache invalidation hard in backend systems?",
+      "correct_answer_en": "A. Because you must balance freshness, correctness, and efficiency.",
+      "correct_answer_vi": "Bởi vì you must balance freshness, correctness, and efficiency.",
+      "explanation_en": "The hard part of caching is not storing values, but keeping them accurate enough for real product behavior.",
+      "explanation_vi": "Phần khó của caching không phải là lưu giá trị, mà là giữ cho chúng đủ chính xác so với hành vi thực tế của sản phẩm.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Because you must balance freshness, correctness, and efficiency.",
+        "B. Because caches delete themselves correctly by default.",
+        "C. Because invalidation only matters in frontend apps."
+      ],
+      "options_vi": [
+        "Bởi vì you must balance freshness, correctness, and efficiency.",
+        "B. Bởi vì caches delete themselves correctly by default.",
+        "C. Bởi vì invalidation only matters in frontend apps."
+      ],
+      "compare_en": [
+        "No invalidation strategy: stale data risk.",
+        "Deliberate invalidation: more complexity, more correctness."
+      ],
+      "compare_vi": [
+        "No invalidation strategy: cũ data risk.",
+        "Deliberate invalidation: more complexity, more correctness."
+      ],
+      "intent_en": "Tests real-world cache discipline.",
+      "intent_vi": "Tests real-world cache discipline."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Which is usually a better optimization target first for a slow endpoint: tiny syntax tweaks or measuring query count and latency sources?",
+      "intent": "Tests prioritization under performance pressure.",
+      "options": [
+        "Measure query count and latency sources first.",
+        "B. Micro-optimize variable names and indentation first.",
+        "C. Add more comments before measuring anything."
+      ],
+      "correct_answer": "Measure query count and latency sources first.",
+      "explanation": "Performance work should start with evidence. Real bottlenecks are often I/O, query shape, or repeated remote calls, not tiny syntax choices.",
+      "code_snippet": "start = time.perf_counter()\\n...\\nduration = time.perf_counter() - start",
+      "compare": [
+        "Evidence-driven tuning: better ROI.",
+        "Blind micro-optimization: low confidence and often wasted effort."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which is usually a better optimization target first for a slow endpoint: tiny syntax tweaks or measuring query count and latency sources?",
+      "question_vi": "Which is usually a better optimization target first for a slow endpoint: tiny syntax tweaks or measuring query count and latency sources?",
+      "correct_answer_en": "A. Measure query count and latency sources first.",
+      "correct_answer_vi": "Measure query count and latency sources first.",
+      "explanation_en": "Performance work should start with evidence. Real bottlenecks are often I/O, query shape, or repeated remote calls, not tiny syntax choices.",
+      "explanation_vi": "Performance work should start with evidence. Real bottlenecks are often I/O, query shape, or repeated remote calls, not tiny syntax choices.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Measure query count and latency sources first.",
+        "B. Micro-optimize variable names and indentation first.",
+        "C. Add more comments before measuring anything."
+      ],
+      "options_vi": [
+        "Measure query count and latency sources first.",
+        "B. Micro-optimize variable names and indentation first.",
+        "C. Add more comments before measuring anything."
+      ],
+      "compare_en": [
+        "Evidence-driven tuning: better ROI.",
+        "Blind micro-optimization: low confidence and often wasted effort."
+      ],
+      "compare_vi": [
+        "Evidence-driven tuning: better ROI.",
+        "Blind micro-optimization: low confidence and often wasted effort."
+      ],
+      "intent_en": "Tests prioritization under performance pressure.",
+      "intent_vi": "Tests prioritization under performance pressure."
+    },
+    {
+      "category": "Reliability",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao coupling an HTTP request directly to a slow external provider hurt backend reliability có thể xảy ra?",
+      "intent": "Checks request-path design judgment.",
+      "options": [
+        "Provider slowness can tie up request latency and resources end-to-end.",
+        "B. HTTP servers automatically turn slow providers into async queues.",
+        "C. Slow providers only affect frontend rendering."
+      ],
+      "correct_answer": "Provider slowness can tie up request latency and resources end-to-end.",
+      "explanation": "Sometimes the better design is a background job, timeout, fallback, cache, or asynchronous workflow rather than a synchronous dependency on the hot path.",
+      "code_snippet": "job_id = enqueue_export(request)\\nreturn {'job_id': job_id, 'status': 'queued'}",
+      "compare": [
+        "Synchronous dependency on hot path: simpler, but riskier.",
+        "Async or buffered design: more resilient under slow dependencies."
+      ],
+      "category_vi": "Reliability",
+      "question_en": "Why can coupling an HTTP request directly to a slow external provider hurt backend reliability?",
+      "question_vi": "Vì sao coupling an HTTP request directly to a slow external provider hurt backend reliability có thể xảy ra?",
+      "correct_answer_en": "A. Provider slowness can tie up request latency and resources end-to-end.",
+      "correct_answer_vi": "Provider slowness can tie up request latency and resources end-to-end.",
+      "explanation_en": "Sometimes the better design is a background job, timeout, fallback, cache, or asynchronous workflow rather than a synchronous dependency on the hot path.",
+      "explanation_vi": "Sometimes the better design is a background job, timeout, fallback, cache, or asynchronous workflow rather than a synchronous dependency on the hot path.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Provider slowness can tie up request latency and resources end-to-end.",
+        "B. HTTP servers automatically turn slow providers into async queues.",
+        "C. Slow providers only affect frontend rendering."
+      ],
+      "options_vi": [
+        "Provider slowness can tie up request latency and resources end-to-end.",
+        "B. HTTP servers automatically turn slow providers into async queues.",
+        "C. Slow providers only affect frontend rendering."
+      ],
+      "compare_en": [
+        "Synchronous dependency on hot path: simpler, but riskier.",
+        "Async or buffered design: more resilient under slow dependencies."
+      ],
+      "compare_vi": [
+        "Synchronous dependency on hot path: simpler, but riskier.",
+        "Async or buffered design: more resilient under slow dependencies."
+      ],
+      "intent_en": "Checks request-path design judgment.",
+      "intent_vi": "Checks request-path design judgment."
+    }
+  ],
+  "title_en": "Backend and Data Interview Question Bank",
+  "subtitle_en": "Intermediate backend questions about APIs, persistence, validation, and reliability.",
+  "level_en": "intermediate"
+}

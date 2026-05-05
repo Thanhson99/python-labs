@@ -1,0 +1,716 @@
+{
+  "title": "Ngân Hàng Câu Hỏi Phỏng Vấn Về Tự Động Hóa",
+  "subtitle": "Bộ câu hỏi trung cấp về scripting và automation, tập trung vào workflow thực tế có thể lặp lại.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "trung cấp",
+  "questions": [
+    {
+      "category": "CLI Design",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao a dry-run mode valuable in automation scripts?",
+      "intent": "Checks whether you think about safety before real side effects.",
+      "options": [
+        "It previews actions without changing real data.",
+        "B. It always makes the script faster.",
+        "C. It removes the need for logs."
+      ],
+      "correct_answer": "It previews actions without changing real data.",
+      "explanation": "Dry-run mode lets you inspect which files, records, or API các lời gọi would be affected before the script writes, deletes, or updates anything.",
+      "code_snippet": "if args.dry_run:\\n    print(f'Would delete: {path}')\\nelse:\\n    path.unlink()",
+      "compare": [
+        "Dry-run: safer rollout and easier review.",
+        "Immediate execution: faster, but riskier for destructive operations."
+      ],
+      "category_vi": "CLI Design",
+      "question_en": "Why is a dry-run mode valuable in automation scripts?",
+      "question_vi": "Vì sao a dry-run mode valuable in automation scripts?",
+      "correct_answer_en": "A. It previews actions without changing real data.",
+      "correct_answer_vi": "It previews actions without changing real data.",
+      "explanation_en": "Dry-run mode lets you inspect which files, records, or API calls would be affected before the script writes, deletes, or updates anything.",
+      "explanation_vi": "Dry-run mode lets you inspect which files, records, or API các lời gọi would be affected before the script writes, deletes, or updates anything.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. It previews actions without changing real data.",
+        "B. It always makes the script faster.",
+        "C. It removes the need for logs."
+      ],
+      "options_vi": [
+        "It previews actions without changing real data.",
+        "B. It always makes the script faster.",
+        "C. It removes the need for logs."
+      ],
+      "compare_en": [
+        "Dry-run: safer rollout and easier review.",
+        "Immediate execution: faster, but riskier for destructive operations."
+      ],
+      "compare_vi": [
+        "Dry-run: safer rollout and easier review.",
+        "Immediate execution: faster, but riskier for destructive operations."
+      ],
+      "intent_en": "Checks whether you think about safety before real side effects.",
+      "intent_vi": "Checks whether you think about safety before real side effects."
+    },
+    {
+      "category": "Scheduling",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Idempotency giải quyết vấn đề gì trong scheduled jobs?",
+      "intent": "Checks whether you can prevent duplicate side effects.",
+      "options": [
+        "It makes every job run only once forever.",
+        "B. Re-running the same job should not duplicate the final effect.",
+        "C. It avoids all network errors."
+      ],
+      "correct_answer": "B. Re-running the same job should not duplicate the final effect.",
+      "explanation": "Jobs can be retried or triggered twice. Idempotency means the end state remains correct even if the same input is processed more than once.",
+      "code_snippet": "if already_processed(job_id):\\n    return\\nprocess_job(job_id)\\nmark_processed(job_id)",
+      "compare": [
+        "Idempotent job: safer retry and replays.",
+        "Non-idempotent job: duplicate emails, charges, or rows are more likely."
+      ],
+      "category_vi": "Scheduling",
+      "question_en": "What problem does idempotency solve in scheduled jobs?",
+      "question_vi": "Idempotency giải quyết vấn đề gì trong scheduled jobs?",
+      "correct_answer_en": "B. Re-running the same job should not duplicate the final effect.",
+      "correct_answer_vi": "B. Re-running the same job should not duplicate the final effect.",
+      "explanation_en": "Jobs can be retried or triggered twice. Idempotency means the end state remains correct even if the same input is processed more than once.",
+      "explanation_vi": "Jobs can be retried or triggered twice. Idempotency means the end state remains correct even if the same input is processed more than once.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. It makes every job run only once forever.",
+        "B. Re-running the same job should not duplicate the final effect.",
+        "C. It avoids all network errors."
+      ],
+      "options_vi": [
+        "It makes every job run only once forever.",
+        "B. Re-running the same job should not duplicate the final effect.",
+        "C. It avoids all network errors."
+      ],
+      "compare_en": [
+        "Idempotent job: safer retries and replays.",
+        "Non-idempotent job: duplicate emails, charges, or rows are more likely."
+      ],
+      "compare_vi": [
+        "Idempotent job: safer retry and replays.",
+        "Non-idempotent job: duplicate emails, charges, or rows are more likely."
+      ],
+      "intent_en": "Checks whether you can prevent duplicate side effects.",
+      "intent_vi": "Checks whether you can prevent duplicate side effects."
+    },
+    {
+      "category": "Retries",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Khi nào nên you retry an operation in automation workflows?",
+      "intent": "Tests whether you distinguish tạm thời failures from permanent ones.",
+      "options": [
+        "Retry temporary failures like các timeout or 503 responses.",
+        "B. Retry every error forever.",
+        "C. Never retry anything."
+      ],
+      "correct_answer": "Retry temporary failures like các timeout or 503 responses.",
+      "explanation": "Retries are appropriate for tạm thời issues. Permanent failures like invalid credentials or sai cấu trúc input should usually thất bại sớm and be fixed instead of retried.",
+      "code_snippet": "for attempt in range(3):\\n    try:\\n        return fetch_data()\\n    except TimeoutError:\\n        time.sleep(2 ** attempt)",
+      "compare": [
+        "Transient error: retry can help.",
+        "Permanent error: retry wastes time and can amplify load."
+      ],
+      "category_vi": "Retries",
+      "question_en": "When should you retry an operation in automation workflows?",
+      "question_vi": "Khi nào nên you retry an operation in automation workflows?",
+      "correct_answer_en": "A. Retry temporary failures like timeouts or 503 responses.",
+      "correct_answer_vi": "Retry temporary failures like các timeout or 503 responses.",
+      "explanation_en": "Retries are appropriate for transient issues. Permanent failures like invalid credentials or malformed input should usually fail fast and be fixed instead of retried.",
+      "explanation_vi": "Retries are appropriate for tạm thời issues. Permanent failures like invalid credentials or sai cấu trúc input should usually thất bại sớm and be fixed instead of retried.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Retry temporary failures like timeouts or 503 responses.",
+        "B. Retry every error forever.",
+        "C. Never retry anything."
+      ],
+      "options_vi": [
+        "Retry temporary failures like các timeout or 503 responses.",
+        "B. Retry every error forever.",
+        "C. Never retry anything."
+      ],
+      "compare_en": [
+        "Transient error: retry can help.",
+        "Permanent error: retry wastes time and can amplify load."
+      ],
+      "compare_vi": [
+        "Transient error: retry can help.",
+        "Permanent error: retry wastes time and can amplify load."
+      ],
+      "intent_en": "Tests whether you distinguish transient failures from permanent ones.",
+      "intent_vi": "Tests whether you distinguish tạm thời failures from permanent ones."
+    },
+    {
+      "category": "Files",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao `pathlib` usually better than raw path strings in automation code?",
+      "intent": "Checks practical Python style for file operations.",
+      "options": [
+        "It provides clearer cross-platform path operations.",
+        "B. It disables all file errors.",
+        "C. It only works on Linux."
+      ],
+      "correct_answer": "It provides clearer cross-platform path operations.",
+      "explanation": "Pathlib improves readability and reduces manual string concatenation mistakes. It also keeps path logic more portable across operating systems.",
+      "code_snippet": "from pathlib import Path\\nreport = Path('output') / 'summary.json'\\nreport.parent.mkdir(parents=True, exist_ok=True)",
+      "compare": [
+        "Pathlib: rõ ràng path objects and methods.",
+        "Raw strings: easy to start, easier to misuse."
+      ],
+      "category_vi": "Files",
+      "question_en": "Why is `pathlib` usually better than raw path strings in automation code?",
+      "question_vi": "Vì sao `pathlib` usually better than raw path strings in automation code?",
+      "correct_answer_en": "A. It provides clearer cross-platform path operations.",
+      "correct_answer_vi": "It provides clearer cross-platform path operations.",
+      "explanation_en": "pathlib improves readability and reduces manual string concatenation mistakes. It also keeps path logic more portable across operating systems.",
+      "explanation_vi": "Pathlib improves readability and reduces manual string concatenation mistakes. It also keeps path logic more portable across operating systems.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. It provides clearer cross-platform path operations.",
+        "B. It disables all file errors.",
+        "C. It only works on Linux."
+      ],
+      "options_vi": [
+        "It provides clearer cross-platform path operations.",
+        "B. It disables all file errors.",
+        "C. It only works on Linux."
+      ],
+      "compare_en": [
+        "pathlib: explicit path objects and methods.",
+        "Raw strings: easy to start, easier to misuse."
+      ],
+      "compare_vi": [
+        "Pathlib: rõ ràng path objects and methods.",
+        "Raw strings: easy to start, easier to misuse."
+      ],
+      "intent_en": "Checks practical Python style for file operations.",
+      "intent_vi": "Checks practical Python style for file operations."
+    },
+    {
+      "category": "Observability",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Automation log tốt nên bao gồm những gì?",
+      "intent": "Checks whether you know how to debug jobs after they run unattended.",
+      "options": [
+        "Context like job id, input source, counts, and error details.",
+        "B. Only the word success.",
+        "C. Nothing, bởi vì log slow the script."
+      ],
+      "correct_answer": "Context like job id, input source, counts, and error details.",
+      "explanation": "Automation often runs without a human watching. Logs should help answer what ran, what changed, where it failed, and how much work was done.",
+      "code_snippet": "logger.info('sync finished', extra={'job_id': job_id, 'count': len(rows)})",
+      "compare": [
+        "Structured logs: easier filtering and diagnosis.",
+        "Sparse logs: hard to reconstruct incidents."
+      ],
+      "category_vi": "Quan sát hệ thống",
+      "question_en": "What should good automation logs include?",
+      "question_vi": "Automation log tốt nên bao gồm những gì?",
+      "correct_answer_en": "A. Context like job id, input source, counts, and error details.",
+      "correct_answer_vi": "Context like job id, input source, counts, and error details.",
+      "explanation_en": "Automation often runs without a human watching. Logs should help answer what ran, what changed, where it failed, and how much work was done.",
+      "explanation_vi": "Automation often runs without a human watching. Logs should help answer what ran, what changed, where it failed, and how much work was done.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Context like job id, input source, counts, and error details.",
+        "B. Only the word success.",
+        "C. Nothing, because logs slow the script."
+      ],
+      "options_vi": [
+        "Context like job id, input source, counts, and error details.",
+        "B. Only the word success.",
+        "C. Nothing, bởi vì log slow the script."
+      ],
+      "compare_en": [
+        "Structured logs: easier filtering and diagnosis.",
+        "Sparse logs: hard to reconstruct incidents."
+      ],
+      "compare_vi": [
+        "Structured logs: easier filtering and diagnosis.",
+        "Sparse logs: hard to reconstruct incidents."
+      ],
+      "intent_en": "Checks whether you know how to debug jobs after they run unattended.",
+      "intent_vi": "Checks whether you know how to debug jobs after they run unattended."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Which approach is usually faster for các phép kiểm tra membership lặp lại on a large collection: `if item in big_list` or `if item in big_set`?",
+      "intent": "Tests data-structure-aware optimization.",
+      "options": [
+        "`big_set`, bởi vì average membership lookup is faster.",
+        "B. `big_list`, bởi vì lists are always optimized better in Python.",
+        "C. Chúng là always identical in performance."
+      ],
+      "correct_answer": "`big_set`, bởi vì average membership lookup is faster.",
+      "explanation": "Repeated list scans are linear, while set membership is usually near constant time on average. This difference matters heavily in loops.",
+      "code_snippet": "blocked = set(blocked_ids)\\nfor user_id in users:\\n    if user_id in blocked:\\n        ...",
+      "compare": [
+        "List membership: simpler but slower at scale for repeated checks.",
+        "Set membership: better when uniqueness and fast lookup matter."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which approach is usually faster for repeated membership checks on a large collection: `if item in big_list` or `if item in big_set`?",
+      "question_vi": "Which approach is usually faster for các phép kiểm tra membership lặp lại on a large collection: `if item in big_list` or `if item in big_set`?",
+      "correct_answer_en": "A. `big_set`, because average membership lookup is faster.",
+      "correct_answer_vi": "`big_set`, bởi vì average membership lookup is faster.",
+      "explanation_en": "Repeated list scans are linear, while set membership is usually near constant time on average. This difference matters heavily in loops.",
+      "explanation_vi": "Repeated list scans are linear, while set membership is usually near constant time on average. This difference matters heavily in loops.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. `big_set`, because average membership lookup is faster.",
+        "B. `big_list`, because lists are always optimized better in Python.",
+        "C. They are always identical in performance."
+      ],
+      "options_vi": [
+        "`big_set`, bởi vì average membership lookup is faster.",
+        "B. `big_list`, bởi vì lists are always optimized better in Python.",
+        "C. Chúng là always identical in performance."
+      ],
+      "compare_en": [
+        "List membership: simpler but slower at scale for repeated checks.",
+        "Set membership: better when uniqueness and fast lookup matter."
+      ],
+      "compare_vi": [
+        "List membership: simpler but slower at scale for repeated checks.",
+        "Set membership: better when uniqueness and fast lookup matter."
+      ],
+      "intent_en": "Tests data-structure-aware optimization.",
+      "intent_vi": "Tests data-structure-aware optimization."
+    },
+    {
+      "category": "Optimization",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Main optimization problem in opening and closing the same output file inside every loop iteration là gì?",
+      "intent": "Checks practical file I/O efficiency awareness.",
+      "options": [
+        "Repeated open-close operations add unnecessary overhead.",
+        "B. Python forbids file writes inside loops.",
+        "C. It always corrupts the file immediately."
+      ],
+      "correct_answer": "Repeated open-close operations add unnecessary overhead.",
+      "explanation": "Keeping the file open for the batch or buffering writes is usually more efficient than reopening it for every row.",
+      "code_snippet": "with open('out.txt', 'a', encoding='utf-8') as f:\\n    for row in rows:\\n        f.write(row + '\\n')",
+      "compare": [
+        "Open per row: high overhead and noisier code.",
+        "Open once: faster and easier to reason about."
+      ],
+      "category_vi": "Optimization",
+      "question_en": "What is the main optimization problem in opening and closing the same output file inside every loop iteration?",
+      "question_vi": "Main optimization problem in opening and closing the same output file inside every loop iteration là gì?",
+      "correct_answer_en": "A. Repeated open-close operations add unnecessary overhead.",
+      "correct_answer_vi": "Repeated open-close operations add unnecessary overhead.",
+      "explanation_en": "Keeping the file open for the batch or buffering writes is usually more efficient than reopening it for every row.",
+      "explanation_vi": "Keeping the file open for the batch or buffering writes is usually more efficient than reopening it for every row.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Repeated open-close operations add unnecessary overhead.",
+        "B. Python forbids file writes inside loops.",
+        "C. It always corrupts the file immediately."
+      ],
+      "options_vi": [
+        "Repeated open-close operations add unnecessary overhead.",
+        "B. Python forbids file writes inside loops.",
+        "C. It always corrupts the file immediately."
+      ],
+      "compare_en": [
+        "Open per row: high overhead and noisier code.",
+        "Open once: faster and easier to reason about."
+      ],
+      "compare_vi": [
+        "Open per row: high overhead and noisier code.",
+        "Open once: faster and easier to reason about."
+      ],
+      "intent_en": "Checks practical file I/O efficiency awareness.",
+      "intent_vi": "Checks practical file I/O efficiency awareness."
+    },
+    {
+      "category": "Safety Traps",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao this risky in automation: `for path in files: path.unlink()` with no preview, backup, or filtering?",
+      "intent": "Checks whether you think about destructive automation failure modes.",
+      "options": [
+        "It can destroy unintended files if the input set is wrong.",
+        "B. Nó là safe bởi vì Python validates business intent automatically.",
+        "C. It only fails when running on Windows."
+      ],
+      "correct_answer": "It can destroy unintended files if the input set is wrong.",
+      "explanation": "Delete operations need guardrails like dry-run, folder scoping, confirmation, or output review bởi vì mistakes are hard to reverse.",
+      "code_snippet": "for path in candidate_paths:\\n    print(path)  # preview first\\n# delete only after verification",
+      "compare": [
+        "Blind delete: fast but dangerous.",
+        "Previewed delete: slower upfront but operationally safer."
+      ],
+      "category_vi": "Safety Traps",
+      "question_en": "Why is this risky in automation: `for path in files: path.unlink()` with no preview, backup, or filtering?",
+      "question_vi": "Vì sao this risky in automation: `for path in files: path.unlink()` with no preview, backup, or filtering?",
+      "correct_answer_en": "A. It can destroy unintended files if the input set is wrong.",
+      "correct_answer_vi": "It can destroy unintended files if the input set is wrong.",
+      "explanation_en": "Delete operations need guardrails like dry-run, folder scoping, confirmation, or output review because mistakes are hard to reverse.",
+      "explanation_vi": "Delete operations need guardrails like dry-run, folder scoping, confirmation, or output review bởi vì mistakes are hard to reverse.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. It can destroy unintended files if the input set is wrong.",
+        "B. It is safe because Python validates business intent automatically.",
+        "C. It only fails when running on Windows."
+      ],
+      "options_vi": [
+        "It can destroy unintended files if the input set is wrong.",
+        "B. Nó là safe bởi vì Python validates business intent automatically.",
+        "C. It only fails when running on Windows."
+      ],
+      "compare_en": [
+        "Blind delete: fast but dangerous.",
+        "Previewed delete: slower upfront but operationally safer."
+      ],
+      "compare_vi": [
+        "Blind delete: fast but dangerous.",
+        "Previewed delete: slower upfront but operationally safer."
+      ],
+      "intent_en": "Checks whether you think about destructive automation failure modes.",
+      "intent_vi": "Checks whether you think about destructive automation failure modes."
+    },
+    {
+      "category": "Retries",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Trap in retrying a non-idempotent action like sending an email or charging a card without deduplication là gì?",
+      "intent": "Tests real-world retry correctness.",
+      "options": [
+        "Hành động đó có thể xảy ra nhiều lần và tạo ra các tác dụng phụ trùng lặp.",
+        "B. Retries automatically become idempotent after the second attempt.",
+        "C. Python's exception handling prevents duplicates."
+      ],
+      "correct_answer": "Hành động đó có thể xảy ra nhiều lần và tạo ra các tác dụng phụ trùng lặp.",
+      "explanation": "Retries are safe only when the final effect tolerates repeats or you add idempotency keys, deduplication, or state checks.",
+      "code_snippet": "if already_sent(message_id):\\n    return\\nsend_email()\\nmark_sent(message_id)",
+      "compare": [
+        "Blind retry: can duplicate external effects.",
+        "Idempotent retry: safer under các timeout and tạm thời failure."
+      ],
+      "category_vi": "Retries",
+      "question_en": "What is the trap in retrying a non-idempotent action like sending an email or charging a card without deduplication?",
+      "question_vi": "Trap in retrying a non-idempotent action like sending an email or charging a card without deduplication là gì?",
+      "correct_answer_en": "A. The action may happen multiple times and create duplicate side effects.",
+      "correct_answer_vi": "Hành động đó có thể xảy ra nhiều lần và tạo ra các tác dụng phụ trùng lặp.",
+      "explanation_en": "Retries are safe only when the final effect tolerates repeats or you add idempotency keys, deduplication, or state checks.",
+      "explanation_vi": "Retries are safe only when the final effect tolerates repeats or you add idempotency keys, deduplication, or state checks.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. The action may happen multiple times and create duplicate side effects.",
+        "B. Retries automatically become idempotent after the second attempt.",
+        "C. Python's exception handling prevents duplicates."
+      ],
+      "options_vi": [
+        "Hành động đó có thể xảy ra nhiều lần và tạo ra các tác dụng phụ trùng lặp.",
+        "B. Retries automatically become idempotent after the second attempt.",
+        "C. Python's exception handling prevents duplicates."
+      ],
+      "compare_en": [
+        "Blind retry: can duplicate external effects.",
+        "Idempotent retry: safer under timeouts and transient failure."
+      ],
+      "compare_vi": [
+        "Blind retry: can duplicate external effects.",
+        "Idempotent retry: safer under các timeout and tạm thời failure."
+      ],
+      "intent_en": "Tests real-world retry correctness.",
+      "intent_vi": "Tests real-world retry correctness."
+    },
+    {
+      "category": "Scheduling",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao a cron job that takes longer than its schedule interval become nguy hiểm có thể xảy ra?",
+      "intent": "Checks job overlap reasoning.",
+      "options": [
+        "Overlapping runs can race, duplicate work, or overload dependencies.",
+        "B. Cron automatically serializes every job perfectly.",
+        "C. It only affects log formatting."
+      ],
+      "correct_answer": "Overlapping runs can race, duplicate work, or overload dependencies.",
+      "explanation": "Các job dài có thể vẫn đang chạy khi lịch kế tiếp bắt đầu. Lock, lease file hoặc điều phối dựa trên queue có thể ngăn tình trạng chồng lấn gây hại.",
+      "code_snippet": "if lock_exists():\\n    return\\ncreate_lock()\\ntry:\\n    run_job()\\nfinally:\\n    remove_lock()",
+      "compare": [
+        "No overlap control: simple but fragile.",
+        "Locking or orchestration: safer for recurring workloads."
+      ],
+      "category_vi": "Scheduling",
+      "question_en": "Why can a cron job that takes longer than its schedule interval become dangerous?",
+      "question_vi": "Vì sao a cron job that takes longer than its schedule interval become nguy hiểm có thể xảy ra?",
+      "correct_answer_en": "A. Overlapping runs can race, duplicate work, or overload dependencies.",
+      "correct_answer_vi": "Overlapping runs can race, duplicate work, or overload dependencies.",
+      "explanation_en": "Long jobs may still be running when the next schedule starts. Locks, lease files, or queue-based orchestration can prevent harmful overlap.",
+      "explanation_vi": "Các job dài có thể vẫn đang chạy khi lịch kế tiếp bắt đầu. Lock, lease file hoặc điều phối dựa trên queue có thể ngăn tình trạng chồng lấn gây hại.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Overlapping runs can race, duplicate work, or overload dependencies.",
+        "B. Cron automatically serializes every job perfectly.",
+        "C. It only affects log formatting."
+      ],
+      "options_vi": [
+        "Overlapping runs can race, duplicate work, or overload dependencies.",
+        "B. Cron automatically serializes every job perfectly.",
+        "C. It only affects log formatting."
+      ],
+      "compare_en": [
+        "No overlap control: simple but fragile.",
+        "Locking or orchestration: safer for recurring workloads."
+      ],
+      "compare_vi": [
+        "No overlap control: simple but fragile.",
+        "Locking or orchestration: safer for recurring workloads."
+      ],
+      "intent_en": "Checks job overlap reasoning.",
+      "intent_vi": "Checks job overlap reasoning."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Đối với very large files, cách nào thường tiết kiệm bộ nhớ hơn: `rows = f.readlines()` hay iterating `for line in f`?",
+      "intent": "Tests scalable file processing choices.",
+      "options": [
+        "`for line in f`, bởi vì it streams incrementally.",
+        "B. `readlines()`, bởi vì it compresses lines automatically.",
+        "C. They use the same memory for any file size."
+      ],
+      "correct_answer": "`for line in f`, bởi vì it streams incrementally.",
+      "explanation": "Streaming avoids loading the entire file into memory at once, which is critical for large log and exports.",
+      "code_snippet": "with open('big.log', encoding='utf-8') as f:\\n    for line in f:\\n        process(line)",
+      "compare": [
+        "Readlines(): easy for small files, memory-heavy for large ones.",
+        "Streaming iteration: better for large-file automation."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which is usually more memory efficient for very large files: `rows = f.readlines()` or iterating `for line in f`?",
+      "question_vi": "Đối với very large files, cách nào thường tiết kiệm bộ nhớ hơn: `rows = f.readlines()` hay iterating `for line in f`?",
+      "correct_answer_en": "A. `for line in f`, because it streams incrementally.",
+      "correct_answer_vi": "`for line in f`, bởi vì it streams incrementally.",
+      "explanation_en": "Streaming avoids loading the entire file into memory at once, which is critical for large logs and exports.",
+      "explanation_vi": "Streaming avoids loading the entire file into memory at once, which is critical for large log and exports.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. `for line in f`, because it streams incrementally.",
+        "B. `readlines()`, because it compresses lines automatically.",
+        "C. They use the same memory for any file size."
+      ],
+      "options_vi": [
+        "`for line in f`, bởi vì it streams incrementally.",
+        "B. `readlines()`, bởi vì it compresses lines automatically.",
+        "C. They use the same memory for any file size."
+      ],
+      "compare_en": [
+        "readlines(): easy for small files, memory-heavy for large ones.",
+        "Streaming iteration: better for large-file automation."
+      ],
+      "compare_vi": [
+        "Readlines(): easy for small files, memory-heavy for large ones.",
+        "Streaming iteration: better for large-file automation."
+      ],
+      "intent_en": "Tests scalable file processing choices.",
+      "intent_vi": "Tests scalable file processing choices."
+    },
+    {
+      "category": "Validation",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao nên automation scripts often validate input schema before processing thousands of rows?",
+      "intent": "Checks whether you front-load failure detection.",
+      "options": [
+        "So the script fails early instead of producing partial bad output.",
+        "B. Bởi vì validation makes loops disappear.",
+        "C. Only bởi vì tests require it."
+      ],
+      "correct_answer": "So the script fails early instead of producing partial bad output.",
+      "explanation": "Schema checks catch missing columns, invalid types, or broken sources before deep side effects happen.",
+      "code_snippet": "required = {'email', 'status'}\\nmissing = required - set(reader.fieldnames or [])\\nif missing:\\n    raise ValueError(f'missing columns: {missing}')",
+      "compare": [
+        "Early validation: safer and clearer failures.",
+        "Late discovery: partial work and harder cleanup."
+      ],
+      "category_vi": "Validation",
+      "question_en": "Why should automation scripts often validate input schema before processing thousands of rows?",
+      "question_vi": "Vì sao nên automation scripts often validate input schema before processing thousands of rows?",
+      "correct_answer_en": "A. So the script fails early instead of producing partial bad output.",
+      "correct_answer_vi": "So the script fails early instead of producing partial bad output.",
+      "explanation_en": "Schema checks catch missing columns, invalid types, or broken sources before deep side effects happen.",
+      "explanation_vi": "Schema checks catch missing columns, invalid types, or broken sources before deep side effects happen.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. So the script fails early instead of producing partial bad output.",
+        "B. Because validation makes loops disappear.",
+        "C. Only because tests require it."
+      ],
+      "options_vi": [
+        "So the script fails early instead of producing partial bad output.",
+        "B. Bởi vì validation makes loops disappear.",
+        "C. Only bởi vì tests require it."
+      ],
+      "compare_en": [
+        "Early validation: safer and clearer failures.",
+        "Late discovery: partial work and harder cleanup."
+      ],
+      "compare_vi": [
+        "Early validation: safer and clearer failures.",
+        "Late discovery: partial work and harder cleanup."
+      ],
+      "intent_en": "Checks whether you front-load failure detection.",
+      "intent_vi": "Checks whether you front-load failure detection."
+    },
+    {
+      "category": "Optimization",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Likely bottleneck in calling an API once per row when many rows share the same lookup key là gì?",
+      "intent": "Tests caching and deduplication thinking.",
+      "options": [
+        "Repeated network các lời gọi for identical information.",
+        "B. Python cannot loop over repeated values.",
+        "C. The garbage collector always blocks requests."
+      ],
+      "correct_answer": "Repeated network các lời gọi for identical information.",
+      "explanation": "Memoization or pre-grouping repeated keys often reduces latency and API cost dramatically.",
+      "code_snippet": "cache = {}\\nfor key in keys:\\n    if key not in cache:\\n        cache[key] = fetch_remote(key)",
+      "compare": [
+        "Naive repeated fetch: simple but expensive.",
+        "Cached lookup: better for repeated keys."
+      ],
+      "category_vi": "Optimization",
+      "question_en": "What is the likely bottleneck in calling an API once per row when many rows share the same lookup key?",
+      "question_vi": "Likely bottleneck in calling an API once per row when many rows share the same lookup key là gì?",
+      "correct_answer_en": "A. Repeated network calls for identical information.",
+      "correct_answer_vi": "Repeated network các lời gọi for identical information.",
+      "explanation_en": "Memoization or pre-grouping repeated keys often reduces latency and API cost dramatically.",
+      "explanation_vi": "Memoization or pre-grouping repeated keys often reduces latency and API cost dramatically.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Repeated network calls for identical information.",
+        "B. Python cannot loop over repeated values.",
+        "C. The garbage collector always blocks requests."
+      ],
+      "options_vi": [
+        "Repeated network các lời gọi for identical information.",
+        "B. Python cannot loop over repeated values.",
+        "C. The garbage collector always blocks requests."
+      ],
+      "compare_en": [
+        "Naive repeated fetch: simple but expensive.",
+        "Cached lookup: better for repeated keys."
+      ],
+      "compare_vi": [
+        "Naive repeated fetch: simple but expensive.",
+        "Cached lookup: better for repeated keys."
+      ],
+      "intent_en": "Tests caching and deduplication thinking.",
+      "intent_vi": "Tests caching and deduplication thinking."
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Vì sao using local machine time without timezone awareness a trap in scheduled automations?",
+      "intent": "Checks date/time correctness.",
+      "options": [
+        "Timezone and daylight changes can shift thực thi assumptions.",
+        "B. Python stores all dates in UTC automatically.",
+        "C. Cron ignores timezone differences entirely."
+      ],
+      "correct_answer": "Timezone and daylight changes can shift thực thi assumptions.",
+      "explanation": "Scheduling logic becomes fragile when business time and server time are mixed carelessly.",
+      "code_snippet": "from datetime import datetime, timezone\\nnow = datetime.now(timezone.utc)",
+      "compare": [
+        "Naive local time: easier to start, riskier in real operations.",
+        "Explicit timezone handling: safer and more portable."
+      ],
+      "category_vi": "Tricky Bugs",
+      "question_en": "Why is using local machine time without timezone awareness a trap in scheduled automations?",
+      "question_vi": "Vì sao using local machine time without timezone awareness a trap in scheduled automations?",
+      "correct_answer_en": "A. Timezone and daylight changes can shift execution assumptions.",
+      "correct_answer_vi": "Timezone and daylight changes can shift thực thi assumptions.",
+      "explanation_en": "Scheduling logic becomes fragile when business time and server time are mixed carelessly.",
+      "explanation_vi": "Scheduling logic becomes fragile when business time and server time are mixed carelessly.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Timezone and daylight changes can shift execution assumptions.",
+        "B. Python stores all dates in UTC automatically.",
+        "C. Cron ignores timezone differences entirely."
+      ],
+      "options_vi": [
+        "Timezone and daylight changes can shift thực thi assumptions.",
+        "B. Python stores all dates in UTC automatically.",
+        "C. Cron ignores timezone differences entirely."
+      ],
+      "compare_en": [
+        "Naive local time: easier to start, riskier in real operations.",
+        "Explicit timezone handling: safer and more portable."
+      ],
+      "compare_vi": [
+        "Naive local time: easier to start, riskier in real operations.",
+        "Explicit timezone handling: safer and more portable."
+      ],
+      "intent_en": "Checks date/time correctness.",
+      "intent_vi": "Checks date/time correctness."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Trung cấp",
+      "level_class": "intermediate",
+      "question": "Đối với joining many output lines, cách nào thường tốt hơn: repeated `text += line` inside a loop hay collecting into a list and using `'\\n'.join(...)`?",
+      "intent": "Tests Python string-building efficiency.",
+      "options": [
+        "Collecting and joining is usually better for many pieces.",
+        "B. Repeated concatenation is always faster in Python.",
+        "C. Chúng là identical for large batches."
+      ],
+      "correct_answer": "Collecting and joining is usually better for many pieces.",
+      "explanation": "Repeated string concatenation can be inefficient as the text grows, while join is designed for assembling many fragments.",
+      "code_snippet": "lines = []\\nfor row in rows:\\n    lines.append(format_row(row))\\ntext = '\\n'.join(lines)",
+      "compare": [
+        "Repeated `+=`: okay for tiny cases, worse at scale.",
+        "Join: better for larger assembled output."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which is usually better for joining many output lines: repeated `text += line` inside a loop or collecting into a list and using `'\\n'.join(...)`?",
+      "question_vi": "Đối với joining many output lines, cách nào thường tốt hơn: repeated `text += line` inside a loop hay collecting into a list and using `'\\n'.join(...)`?",
+      "correct_answer_en": "A. Collecting and joining is usually better for many pieces.",
+      "correct_answer_vi": "Collecting and joining is usually better for many pieces.",
+      "explanation_en": "Repeated string concatenation can be inefficient as the text grows, while join is designed for assembling many fragments.",
+      "explanation_vi": "Repeated string concatenation can be inefficient as the text grows, while join is designed for assembling many fragments.",
+      "level_en": "Intermediate",
+      "options_en": [
+        "A. Collecting and joining is usually better for many pieces.",
+        "B. Repeated concatenation is always faster in Python.",
+        "C. They are identical for large batches."
+      ],
+      "options_vi": [
+        "Collecting and joining is usually better for many pieces.",
+        "B. Repeated concatenation is always faster in Python.",
+        "C. Chúng là identical for large batches."
+      ],
+      "compare_en": [
+        "Repeated `+=`: okay for tiny cases, worse at scale.",
+        "Join: better for larger assembled output."
+      ],
+      "compare_vi": [
+        "Repeated `+=`: okay for tiny cases, worse at scale.",
+        "Join: better for larger assembled output."
+      ],
+      "intent_en": "Tests Python string-building efficiency.",
+      "intent_vi": "Tests Python string-building efficiency."
+    }
+  ],
+  "title_en": "Automation Interview Question Bank",
+  "subtitle_en": "Intermediate scripting and automation questions focused on practical repeatable workflows.",
+  "level_en": "intermediate"
+}

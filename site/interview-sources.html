@@ -13,13 +13,17 @@
   >
     <header class="hero interview-hero">
       <div class="hero-content">
-        <p class="eyebrow">Python Labs</p>
+        <div class="lang-switch top-right" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="vi">VI</button>
+        </div>
+        <p class="eyebrow" id="eyebrow">Python Labs</p>
         <h1 id="title">Interview Questions and Sources</h1>
         <p id="subtitle"></p>
         <div class="hero-actions">
-          <a class="btn" href="interview-role-questions.html?set=fresher">Open Fresher Questions</a>
-          <a class="btn" href="interview.html">Open Code Practice</a>
-          <a class="btn" href="index.html">Back to track selection</a>
+          <a class="btn" id="heroPrimaryButton" href="interview-role-questions.html?set=fresher">Open Fresher Questions</a>
+          <a class="btn" id="heroSecondaryButton" href="interview.html">Open Code Practice</a>
+          <a class="btn" id="backButton" href="index.html">Back to track selection</a>
         </div>
       </div>
       <div class="stats" id="stats"></div>
@@ -27,30 +31,31 @@
 
     <main>
       <section class="panel">
-        <h2>Interview Question Sets</h2>
-        <p class="page-note">
+        <h2 id="sectionQuestionSets">Interview Question Sets</h2>
+        <p class="page-note" id="sourcesNote">
           This site is for interview-style question sets such as `fresher`, `intermediate`, and `senior`. Reference links are listed below for extra reading.
         </p>
         <div id="sourceQuestionSets" class="cards compact-cards"></div>
       </section>
 
       <section class="panel">
-        <h2>Vietnamese Reference Links</h2>
+        <h2 id="sectionVietnameseSources">Vietnamese Reference Links</h2>
         <div id="vietnameseSources" class="source-list"></div>
       </section>
 
       <section class="panel">
-        <h2>English Reference Links</h2>
+        <h2 id="sectionEnglishSources">English Reference Links</h2>
         <div id="englishSources" class="source-list"></div>
       </section>
 
       <section class="panel">
-        <h2>Usage Notes</h2>
+        <h2 id="sectionUsageNotes">Usage Notes</h2>
         <div id="sourceGuides" class="cards"></div>
       </section>
     </main>
 
     <footer><span id="generatedAt"></span></footer>
+    <script src="assets/site.js"></script>
     <script src="assets/interview.js"></script>
   </body>
 </html>

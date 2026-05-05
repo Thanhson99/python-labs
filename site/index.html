@@ -6,47 +6,54 @@
     <title>Python Labs Learning Sites</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body>
+  <body data-page="landing">
     <header class="hero landing-hero">
       <div class="hero-content">
-        <p class="eyebrow">Python Labs</p>
-        <h1>Dual Learning Sites</h1>
-        <p>
-          Choose your track: foundation fundamentals or advanced microservice architecture.
-          Both tracks are generated from your current repository.
+        <div class="lang-switch top-right" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="vi">VI</button>
+        </div>
+        <p class="eyebrow" id="eyebrow">Python Labs</p>
+        <h1 id="landingTitle">Python Learning Portal</h1>
+        <p id="landingSubtitle">
+          Choose a site for learning, architecture, interview prep, or weekly planning.
+          Everything is static and generated from your current repository.
         </p>
       </div>
     </header>
 
     <main>
       <section class="panel">
-        <h2>Choose a Site</h2>
-        <div class="cards two-cols">
-          <article class="service-card">
-            <h3>Foundation Site</h3>
-            <p>Massive practical cheat sheet for Python core to strong intermediate.</p>
-            <p><a class="btn" href="foundation.html">Open Foundation</a></p>
+        <h2 id="landingSectionTitle">Choose a Site</h2>
+        <div class="cards landing-grid">
+          <article class="service-card landing-card">
+            <h3 id="landingFoundationTitle">Foundation Site</h3>
+            <p id="landingFoundationSummary">Massive practical cheat sheet for Python core to strong intermediate.</p>
+            <p class="landing-card-action"><a class="btn" id="landingFoundationButton" href="foundation.html">Open Foundation</a></p>
           </article>
-          <article class="service-card">
-            <h3>Advanced Architecture Site</h3>
-            <p>Roadmap for production systems: queues, Kafka, microservices, reliability.</p>
-            <p><a class="btn" href="advanced.html">Open Advanced</a></p>
+          <article class="service-card landing-card">
+            <h3 id="landingAdvancedTitle">Advanced Architecture Site</h3>
+            <p id="landingAdvancedSummary">Roadmap for production systems: queues, Kafka, microservices, reliability.</p>
+            <p class="landing-card-action"><a class="btn" id="landingAdvancedButton" href="advanced.html">Open Advanced</a></p>
           </article>
-          <article class="service-card">
-            <h3>Interview Practice Site</h3>
-            <p>Static interview prep portal with topic catalog, JSON question bank, answers, and explanations.</p>
-            <p><a class="btn" href="interview.html">Open Interview Prep</a></p>
+          <article class="service-card landing-card">
+            <h3 id="landingInterviewTitle">Interview Practice Site</h3>
+            <p id="landingInterviewSummary">Static interview prep portal with topic catalog, JSON question bank, answers, and explanations.</p>
+            <p class="landing-card-action"><a class="btn" id="landingInterviewButton" href="interview.html">Open Interview Prep</a></p>
           </article>
-          <article class="service-card">
-            <h3>Interview Sources Site</h3>
-            <p>Static curated source hub for Vietnamese and English interview learning resources.</p>
-            <p><a class="btn" href="interview-sources.html">Open Sources</a></p>
+          <article class="service-card landing-card">
+            <h3 id="landingSourcesTitle">Interview Sources Site</h3>
+            <p id="landingSourcesSummary">Static curated source hub for Vietnamese and English interview learning resources.</p>
+            <p class="landing-card-action"><a class="btn" id="landingSourcesButton" href="interview-sources.html">Open Sources</a></p>
+          </article>
+          <article class="service-card landing-card">
+            <h3 id="landingPlannerTitle">Study Planner Site</h3>
+            <p id="landingPlannerSummary">Weekly study plans with checklists for Foundation, Advanced, and Interview prep.</p>
+            <p class="landing-card-action"><a class="btn" id="landingPlannerButton" href="planner.html">Open Planner</a></p>
           </article>
         </div>
-        <p class="page-note">
-          The interview prep pages are fully static, so they can be deployed to GitHub Pages without a Python server.
-        </p>
       </section>
     </main>
+    <script src="assets/site.js"></script>
   </body>
 </html>

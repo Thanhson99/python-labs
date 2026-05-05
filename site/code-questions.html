@@ -14,12 +14,16 @@
   >
     <header class="hero interview-hero">
       <div class="hero-content">
-        <p class="eyebrow">Python Labs</p>
+        <div class="lang-switch top-right" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="vi">VI</button>
+        </div>
+        <p class="eyebrow" id="eyebrow">Python Labs</p>
         <h1 id="title">Code Question Bank</h1>
         <p id="subtitle"></p>
         <div class="hero-actions">
-          <a class="btn" href="interview.html">Back to code practice</a>
-          <a class="btn" href="index.html">Back to track selection</a>
+          <a class="btn" id="heroPrimaryButton" href="interview.html">Back to code practice</a>
+          <a class="btn" id="backButton" href="index.html">Back to track selection</a>
         </div>
       </div>
       <div class="stats" id="stats"></div>
@@ -27,25 +31,25 @@
 
     <main>
       <section class="panel">
-        <h2>Code Question Bank</h2>
-        <p class="page-note">
+        <h2 id="sectionQuestionBank">Code Question Bank</h2>
+        <p class="page-note" id="questionBankNote">
           This page only shows code-related practice sets. Choose answers, check results, and finish the quiz for a final score.
         </p>
         <div class="quiz-summary" id="quizSummary">
           <div class="summary-card">
-            <div class="summary-label">Answered</div>
+            <div class="summary-label" id="summaryAnsweredLabel">Answered</div>
             <div class="summary-value" id="answeredCount">0</div>
           </div>
           <div class="summary-card">
-            <div class="summary-label">Correct</div>
+            <div class="summary-label" id="summaryCorrectLabel">Correct</div>
             <div class="summary-value" id="correctCount">0</div>
           </div>
           <div class="summary-card">
-            <div class="summary-label">Score</div>
+            <div class="summary-label" id="summaryScoreLabel">Score</div>
             <div class="summary-value" id="scorePercent">0%</div>
           </div>
           <div class="summary-card">
-            <div class="summary-label">Rating</div>
+            <div class="summary-label" id="summaryRatingLabel">Rating</div>
             <div class="summary-value" id="scoreRating">Not graded</div>
           </div>
         </div>
@@ -69,6 +73,7 @@
     </main>
 
     <footer><span id="generatedAt"></span></footer>
+    <script src="assets/site.js"></script>
     <script src="assets/interview.js"></script>
   </body>
 </html>

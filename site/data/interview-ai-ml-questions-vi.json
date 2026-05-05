@@ -1,0 +1,669 @@
+{
+  "title": "Ngân Hàng Câu Hỏi Phỏng Vấn AI Và Machine Learning",
+  "subtitle": "Bộ câu hỏi nâng cao về đánh giá model, retrieval, prompting và các vấn đề AI trong production.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "nâng cao",
+  "questions": [
+    {
+      "category": "Evaluation",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Sự khác nhau giữa precision và recall là gì?",
+      "intent": "Checks whether you understand two core classification metrics and their tradeoff.",
+      "options": [
+        "Precision measures tính đúng đắn of predicted positives, recall measures coverage of actual positives.",
+        "B. Precision is huấn luyện speed, recall is inference speed.",
+        "C. They mean exactly the same thing."
+      ],
+      "correct_answer": "Precision measures tính đúng đắn of predicted positives, recall measures coverage of actual positives.",
+      "explanation": "Precision cho biết có bao nhiêu dự đoán dương tính là đúng thật. Recall cho biết bạn tìm ra được bao nhiêu trường hợp dương tính thực tế. Cân bằng phù hợp giữa hai chỉ số này phụ thuộc vào chi phí nghiệp vụ của false positive so với false negative.",
+      "code_snippet": "precision = tp / (tp + fp)\\nrecall = tp / (tp + fn)",
+      "compare": [
+        "High precision: fewer false positives.",
+        "High recall: fewer false negatives."
+      ],
+      "category_vi": "Evaluation",
+      "question_en": "What is the difference between precision and recall?",
+      "question_vi": "Sự khác nhau giữa precision và recall là gì?",
+      "correct_answer_en": "A. Precision measures correctness of predicted positives, recall measures coverage of actual positives.",
+      "correct_answer_vi": "Precision measures tính đúng đắn of predicted positives, recall measures coverage of actual positives.",
+      "explanation_en": "Precision answers how many predicted positives were actually correct. Recall answers how many real positives you successfully found. The right balance depends on the business cost of false positives versus false negatives.",
+      "explanation_vi": "Precision cho biết có bao nhiêu dự đoán dương tính là đúng thật. Recall cho biết bạn tìm ra được bao nhiêu trường hợp dương tính thực tế. Cân bằng phù hợp giữa hai chỉ số này phụ thuộc vào chi phí nghiệp vụ của false positive so với false negative.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Precision measures correctness of predicted positives, recall measures coverage of actual positives.",
+        "B. Precision is training speed, recall is inference speed.",
+        "C. They mean exactly the same thing."
+      ],
+      "options_vi": [
+        "Precision measures tính đúng đắn of predicted positives, recall measures coverage of actual positives.",
+        "B. Precision is huấn luyện speed, recall is inference speed.",
+        "C. They mean exactly the same thing."
+      ],
+      "compare_en": [
+        "High precision: fewer false positives.",
+        "High recall: fewer false negatives."
+      ],
+      "compare_vi": [
+        "High precision: fewer false positives.",
+        "High recall: fewer false negatives."
+      ],
+      "intent_en": "Checks whether you understand two core classification metrics and their tradeoff.",
+      "intent_vi": "Checks whether you understand two core classification metrics and their tradeoff."
+    },
+    {
+      "category": "Data Quality",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Data leakage in machine learning là gì?",
+      "intent": "Tests whether you can detect unrealistic đánh giá setups.",
+      "options": [
+        "Information from the future or target leaks into huấn luyện and inflates metrics.",
+        "B. The dataset is stored in JSON.",
+        "C. The model file is too large."
+      ],
+      "correct_answer": "Information from the future or target leaks into huấn luyện and inflates metrics.",
+      "explanation": "Leakage makes offline metrics look better than real-world performance bởi vì the model accidentally sees information it would not have at prediction time.",
+      "code_snippet": "# bad: target-derived feature\\ndf['approved_flag_copy'] = df['approved_flag']",
+      "compare": [
+        "Leakage present: misleading evaluation.",
+        "Leakage controlled: metrics are more trustworthy."
+      ],
+      "category_vi": "Data Quality",
+      "question_en": "What is data leakage in machine learning?",
+      "question_vi": "Data leakage in machine learning là gì?",
+      "correct_answer_en": "A. Information from the future or target leaks into training and inflates metrics.",
+      "correct_answer_vi": "Information from the future or target leaks into huấn luyện and inflates metrics.",
+      "explanation_en": "Leakage makes offline metrics look better than real-world performance because the model accidentally sees information it would not have at prediction time.",
+      "explanation_vi": "Leakage makes offline metrics look better than real-world performance bởi vì the model accidentally sees information it would not have at prediction time.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Information from the future or target leaks into training and inflates metrics.",
+        "B. The dataset is stored in JSON.",
+        "C. The model file is too large."
+      ],
+      "options_vi": [
+        "Information from the future or target leaks into huấn luyện and inflates metrics.",
+        "B. The dataset is stored in JSON.",
+        "C. The model file is too large."
+      ],
+      "compare_en": [
+        "Leakage present: misleading evaluation.",
+        "Leakage controlled: metrics are more trustworthy."
+      ],
+      "compare_vi": [
+        "Leakage present: misleading evaluation.",
+        "Leakage controlled: metrics are more trustworthy."
+      ],
+      "intent_en": "Tests whether you can detect unrealistic evaluation setups.",
+      "intent_vi": "Tests whether you can detect unrealistic đánh giá setups."
+    },
+    {
+      "category": "Embeddings",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao dùng embedding in semantic search?",
+      "intent": "Checks whether you understand meaning-based retrieval beyond keyword matching.",
+      "options": [
+        "Embeddings map text into vectors so semantically similar items are closer together.",
+        "B. Embeddings are just compressed PDFs.",
+        "C. Embeddings remove the need for ranking."
+      ],
+      "correct_answer": "Embeddings map text into vectors so semantically similar items are closer together.",
+      "explanation": "Vector representations help retrieve related content even when the exact words differ, which is useful for question answering, recommendation, and RAG pipelines.",
+      "code_snippet": "query_vec = embed(query)\\nresults = vector_index.search(query_vec, top_k=5)",
+      "compare": [
+        "Keyword search: exact or lexical matching.",
+        "Embedding search: meaning-oriented retrieval."
+      ],
+      "category_vi": "Embeddings",
+      "question_en": "Why use embeddings in semantic search?",
+      "question_vi": "Vì sao dùng embedding in semantic search?",
+      "correct_answer_en": "A. Embeddings map text into vectors so semantically similar items are closer together.",
+      "correct_answer_vi": "Embeddings map text into vectors so semantically similar items are closer together.",
+      "explanation_en": "Vector representations help retrieve related content even when the exact words differ, which is useful for question answering, recommendation, and RAG pipelines.",
+      "explanation_vi": "Vector representations help retrieve related content even when the exact words differ, which is useful for question answering, recommendation, and RAG pipelines.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Embeddings map text into vectors so semantically similar items are closer together.",
+        "B. Embeddings are just compressed PDFs.",
+        "C. Embeddings remove the need for ranking."
+      ],
+      "options_vi": [
+        "Embeddings map text into vectors so semantically similar items are closer together.",
+        "B. Embeddings are just compressed PDFs.",
+        "C. Embeddings remove the need for ranking."
+      ],
+      "compare_en": [
+        "Keyword search: exact or lexical matching.",
+        "Embedding search: meaning-oriented retrieval."
+      ],
+      "compare_vi": [
+        "Keyword search: exact or lexical matching.",
+        "Embedding search: meaning-oriented retrieval."
+      ],
+      "intent_en": "Checks whether you understand meaning-based retrieval beyond keyword matching.",
+      "intent_vi": "Checks whether you understand meaning-based retrieval beyond keyword matching."
+    },
+    {
+      "category": "RAG",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Retrieval-Augmented Generation giải quyết vấn đề gì?",
+      "intent": "Tests whether you understand how external knowledge is injected into LLM answers.",
+      "options": [
+        "It grounds generation with retrieved context instead of relying only on model memory.",
+        "B. It makes prompts unnecessary.",
+        "C. It guarantees truth in every answer."
+      ],
+      "correct_answer": "It grounds generation with retrieved context instead of relying only on model memory.",
+      "explanation": "RAG combines retrieval with generation so answers can use fresher, domain-specific documents. It improves relevance but still needs evaluation, ranking, and citation discipline.",
+      "code_snippet": "docs = retriever.search(question)\\nprompt = build_prompt(question, docs)\\nanswer = llm(prompt)",
+      "compare": [
+        "Pure LLM memory: simpler, but more limited and stale.",
+        "RAG: better grounding, but more pipeline complexity."
+      ],
+      "category_vi": "RAG",
+      "question_en": "What problem does Retrieval-Augmented Generation solve?",
+      "question_vi": "Retrieval-Augmented Generation giải quyết vấn đề gì?",
+      "correct_answer_en": "A. It grounds generation with retrieved context instead of relying only on model memory.",
+      "correct_answer_vi": "It grounds generation with retrieved context instead of relying only on model memory.",
+      "explanation_en": "RAG combines retrieval with generation so answers can use fresher, domain-specific documents. It improves relevance but still needs evaluation, ranking, and citation discipline.",
+      "explanation_vi": "RAG combines retrieval with generation so answers can use fresher, domain-specific documents. It improves relevance but still needs evaluation, ranking, and citation discipline.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It grounds generation with retrieved context instead of relying only on model memory.",
+        "B. It makes prompts unnecessary.",
+        "C. It guarantees truth in every answer."
+      ],
+      "options_vi": [
+        "It grounds generation with retrieved context instead of relying only on model memory.",
+        "B. It makes prompts unnecessary.",
+        "C. It guarantees truth in every answer."
+      ],
+      "compare_en": [
+        "Pure LLM memory: simpler, but more limited and stale.",
+        "RAG: better grounding, but more pipeline complexity."
+      ],
+      "compare_vi": [
+        "Pure LLM memory: simpler, but more limited and stale.",
+        "RAG: better grounding, but more pipeline complexity."
+      ],
+      "intent_en": "Tests whether you understand how external knowledge is injected into LLM answers.",
+      "intent_vi": "Tests whether you understand how external knowledge is injected into LLM answers."
+    },
+    {
+      "category": "Prompting",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao prompt templating useful in production AI systems?",
+      "intent": "Checks whether you separate prompt structure from application logic.",
+      "options": [
+        "It makes prompts versionable, testable, and easier to update safely.",
+        "B. It eliminates the need for evaluation.",
+        "C. It trains the model automatically."
+      ],
+      "correct_answer": "It makes prompts versionable, testable, and easier to update safely.",
+      "explanation": "Treating prompts as structured assets improves maintainability. You can compare versions, run offline checks, and change instructions without burying long strings across the codebase.",
+      "code_snippet": "template = 'Summarize the text in 3 bullets:\\n{text}'\\nprompt = template.format(text=article)",
+      "compare": [
+        "Prompt template: reusable and testable.",
+        "Inline ad hoc prompt strings: harder to govern."
+      ],
+      "category_vi": "Prompting",
+      "question_en": "Why is prompt templating useful in production AI systems?",
+      "question_vi": "Vì sao prompt templating useful in production AI systems?",
+      "correct_answer_en": "A. It makes prompts versionable, testable, and easier to update safely.",
+      "correct_answer_vi": "It makes prompts versionable, testable, and easier to update safely.",
+      "explanation_en": "Treating prompts as structured assets improves maintainability. You can compare versions, run offline checks, and change instructions without burying long strings across the codebase.",
+      "explanation_vi": "Treating prompts as structured assets improves maintainability. You can compare versions, run offline checks, and change instructions without burying long strings across the codebase.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It makes prompts versionable, testable, and easier to update safely.",
+        "B. It eliminates the need for evaluation.",
+        "C. It trains the model automatically."
+      ],
+      "options_vi": [
+        "It makes prompts versionable, testable, and easier to update safely.",
+        "B. It eliminates the need for evaluation.",
+        "C. It trains the model automatically."
+      ],
+      "compare_en": [
+        "Prompt template: reusable and testable.",
+        "Inline ad hoc prompt strings: harder to govern."
+      ],
+      "compare_vi": [
+        "Prompt template: reusable and testable.",
+        "Inline ad hoc prompt strings: harder to govern."
+      ],
+      "intent_en": "Checks whether you separate prompt structure from application logic.",
+      "intent_vi": "Checks whether you separate prompt structure from application logic."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Cách tiếp cận nào thường tốt hơn cho batch inference throughput: sending one request per item or batching many items when the model and system support it?",
+      "intent": "Tests serving-efficiency reasoning.",
+      "options": [
+        "Batching many items is often better for throughput when supported.",
+        "B. One request per item is always faster in all systems.",
+        "C. Batching only helps for SQL, not model serving."
+      ],
+      "correct_answer": "Batching many items is often better for throughput when supported.",
+      "explanation": "Batching can amortize compute and tầng transport overhead, though it may increase single-request latency.",
+      "code_snippet": "embeddings = model.embed(batch_of_texts)",
+      "compare": [
+        "Single-item calls: simpler, often lower throughput.",
+        "Batch inference: better throughput, sometimes higher latency."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which approach is usually better for batch inference throughput: sending one request per item or batching many items when the model and system support it?",
+      "question_vi": "Cách tiếp cận nào thường tốt hơn cho batch inference throughput: sending one request per item or batching many items when the model and system support it?",
+      "correct_answer_en": "A. Batching many items is often better for throughput when supported.",
+      "correct_answer_vi": "Batching many items is often better for throughput when supported.",
+      "explanation_en": "Batching can amortize compute and transport overhead, though it may increase single-request latency.",
+      "explanation_vi": "Batching can amortize compute and tầng transport overhead, though it may increase single-request latency.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Batching many items is often better for throughput when supported.",
+        "B. One request per item is always faster in all systems.",
+        "C. Batching only helps for SQL, not model serving."
+      ],
+      "options_vi": [
+        "Batching many items is often better for throughput when supported.",
+        "B. One request per item is always faster in all systems.",
+        "C. Batching only helps for SQL, not model serving."
+      ],
+      "compare_en": [
+        "Single-item calls: simpler, often lower throughput.",
+        "Batch inference: better throughput, sometimes higher latency."
+      ],
+      "compare_vi": [
+        "Single-item calls: simpler, often lower throughput.",
+        "Batch inference: better throughput, sometimes higher latency."
+      ],
+      "intent_en": "Tests serving-efficiency reasoning.",
+      "intent_vi": "Tests serving-efficiency reasoning."
+    },
+    {
+      "category": "Evaluation",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trap in choosing a model based only on benchmark accuracy without considering latency or cost là gì?",
+      "intent": "Tests applied AI tradeoff thinking.",
+      "options": [
+        "Model có chỉ số offline 'tốt nhất' vẫn có thể quá chậm hoặc quá đắt cho việc dùng trong sản phẩm thực tế.",
+        "B. Latency and cost are unrelated to AI systems.",
+        "C. Accuracy guarantees production success by itself."
+      ],
+      "correct_answer": "Model có chỉ số offline 'tốt nhất' vẫn có thể quá chậm hoặc quá đắt cho việc dùng trong sản phẩm thực tế.",
+      "explanation": "Real systems optimize across quality, cost, latency, and operational complexity rather than one metric alone.",
+      "code_snippet": "score = quality_weight * q - latency_weight * p95 - cost_weight * usd_per_1k",
+      "compare": [
+        "Metric-only selection: narrow and risky.",
+        "Multi-objective selection: closer to production reality."
+      ],
+      "category_vi": "Evaluation",
+      "question_en": "What is the trap in choosing a model based only on benchmark accuracy without considering latency or cost?",
+      "question_vi": "Trap in choosing a model based only on benchmark accuracy without considering latency or cost là gì?",
+      "correct_answer_en": "A. The 'best' offline metric model may be too slow or expensive for real product use.",
+      "correct_answer_vi": "Model có chỉ số offline 'tốt nhất' vẫn có thể quá chậm hoặc quá đắt cho việc dùng trong sản phẩm thực tế.",
+      "explanation_en": "Real systems optimize across quality, cost, latency, and operational complexity rather than one metric alone.",
+      "explanation_vi": "Real systems optimize across quality, cost, latency, and operational complexity rather than one metric alone.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. The 'best' offline metric model may be too slow or expensive for real product use.",
+        "B. Latency and cost are unrelated to AI systems.",
+        "C. Accuracy guarantees production success by itself."
+      ],
+      "options_vi": [
+        "Model có chỉ số offline 'tốt nhất' vẫn có thể quá chậm hoặc quá đắt cho việc dùng trong sản phẩm thực tế.",
+        "B. Latency and cost are unrelated to AI systems.",
+        "C. Accuracy guarantees production success by itself."
+      ],
+      "compare_en": [
+        "Metric-only selection: narrow and risky.",
+        "Multi-objective selection: closer to production reality."
+      ],
+      "compare_vi": [
+        "Metric-only selection: narrow and risky.",
+        "Multi-objective selection: closer to production reality."
+      ],
+      "intent_en": "Tests applied AI tradeoff thinking.",
+      "intent_vi": "Tests applied AI tradeoff thinking."
+    },
+    {
+      "category": "Data Quality",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao using future information in a feature pipeline a subtle but severe mistake?",
+      "intent": "Tests time-aware leakage detection.",
+      "options": [
+        "It leaks information that would not exist at prediction time.",
+        "B. It only changes memory usage and nothing else.",
+        "C. Future information is acceptable if the model is large enough."
+      ],
+      "correct_answer": "It leaks information that would not exist at prediction time.",
+      "explanation": "Time leakage can make historical đánh giá look unrealistically strong while real triển khai performs much worse.",
+      "code_snippet": "# wrong: using post-event status to predict pre-event outcome",
+      "compare": [
+        "Time-aware feature design: realistic evaluation.",
+        "Future leakage: inflated and misleading metrics."
+      ],
+      "category_vi": "Data Quality",
+      "question_en": "Why is using future information in a feature pipeline a subtle but severe mistake?",
+      "question_vi": "Vì sao using future information in a feature pipeline a subtle but severe mistake?",
+      "correct_answer_en": "A. It leaks information that would not exist at prediction time.",
+      "correct_answer_vi": "It leaks information that would not exist at prediction time.",
+      "explanation_en": "Time leakage can make historical evaluation look unrealistically strong while real deployment performs much worse.",
+      "explanation_vi": "Time leakage can make historical đánh giá look unrealistically strong while real triển khai performs much worse.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It leaks information that would not exist at prediction time.",
+        "B. It only changes memory usage and nothing else.",
+        "C. Future information is acceptable if the model is large enough."
+      ],
+      "options_vi": [
+        "It leaks information that would not exist at prediction time.",
+        "B. It only changes memory usage and nothing else.",
+        "C. Future information is acceptable if the model is large enough."
+      ],
+      "compare_en": [
+        "Time-aware feature design: realistic evaluation.",
+        "Future leakage: inflated and misleading metrics."
+      ],
+      "compare_vi": [
+        "Time-aware feature design: realistic evaluation.",
+        "Future leakage: inflated and misleading metrics."
+      ],
+      "intent_en": "Tests time-aware leakage detection.",
+      "intent_vi": "Tests time-aware leakage detection."
+    },
+    {
+      "category": "RAG",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trap in stuffing too many low-quality retrieved chunks into a prompt là gì?",
+      "intent": "Tests retrieval-quality discipline.",
+      "options": [
+        "More context can dilute relevance and waste context window budget.",
+        "B. Low-quality chunks always improve truthfulness.",
+        "C. Models ignore irrelevant context automatically every time."
+      ],
+      "correct_answer": "More context can dilute relevance and waste context window budget.",
+      "explanation": "Better retrieval is often about ranking and selection quality, not blindly maximizing chunk count.",
+      "code_snippet": "top_chunks = rerank(chunks)[:5]",
+      "compare": [
+        "Many weak chunks: noisy and expensive.",
+        "Fewer high-quality chunks: often better grounding."
+      ],
+      "category_vi": "RAG",
+      "question_en": "What is the trap in stuffing too many low-quality retrieved chunks into a prompt?",
+      "question_vi": "Trap in stuffing too many low-quality retrieved chunks into a prompt là gì?",
+      "correct_answer_en": "A. More context can dilute relevance and waste context window budget.",
+      "correct_answer_vi": "More context can dilute relevance and waste context window budget.",
+      "explanation_en": "Better retrieval is often about ranking and selection quality, not blindly maximizing chunk count.",
+      "explanation_vi": "Better retrieval is often about ranking and selection quality, not blindly maximizing chunk count.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. More context can dilute relevance and waste context window budget.",
+        "B. Low-quality chunks always improve truthfulness.",
+        "C. Models ignore irrelevant context automatically every time."
+      ],
+      "options_vi": [
+        "More context can dilute relevance and waste context window budget.",
+        "B. Low-quality chunks always improve truthfulness.",
+        "C. Models ignore irrelevant context automatically every time."
+      ],
+      "compare_en": [
+        "Many weak chunks: noisy and expensive.",
+        "Fewer high-quality chunks: often better grounding."
+      ],
+      "compare_vi": [
+        "Many weak chunks: noisy and expensive.",
+        "Fewer high-quality chunks: often better grounding."
+      ],
+      "intent_en": "Tests retrieval-quality discipline.",
+      "intent_vi": "Tests retrieval-quality discipline."
+    },
+    {
+      "category": "Prompting",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao prompt injection especially nguy hiểm in tool-using AI systems?",
+      "intent": "Tests safety reasoning beyond plain text generation.",
+      "options": [
+        "Malicious input may try to manipulate tool các lời gọi or override trusted instructions.",
+        "B. Injection only matters in SQL and never in prompts.",
+        "C. Models always perfectly distinguish trusted and untrusted text."
+      ],
+      "correct_answer": "Malicious input may try to manipulate tool các lời gọi or override trusted instructions.",
+      "explanation": "Tool-enabled systems raise the stakes bởi vì bad instructions can lead to harmful actions, not just wrong text.",
+      "code_snippet": "prompt = build_prompt(system_rules, retrieved_docs, user_input)",
+      "compare": [
+        "Plain text-only failure: bad answer risk.",
+        "Tool-using failure: action risk and stronger safety needs."
+      ],
+      "category_vi": "Prompting",
+      "question_en": "Why is prompt injection especially dangerous in tool-using AI systems?",
+      "question_vi": "Vì sao prompt injection especially nguy hiểm in tool-using AI systems?",
+      "correct_answer_en": "A. Malicious input may try to manipulate tool calls or override trusted instructions.",
+      "correct_answer_vi": "Malicious input may try to manipulate tool các lời gọi or override trusted instructions.",
+      "explanation_en": "Tool-enabled systems raise the stakes because bad instructions can lead to harmful actions, not just wrong text.",
+      "explanation_vi": "Tool-enabled systems raise the stakes bởi vì bad instructions can lead to harmful actions, not just wrong text.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Malicious input may try to manipulate tool calls or override trusted instructions.",
+        "B. Injection only matters in SQL and never in prompts.",
+        "C. Models always perfectly distinguish trusted and untrusted text."
+      ],
+      "options_vi": [
+        "Malicious input may try to manipulate tool các lời gọi or override trusted instructions.",
+        "B. Injection only matters in SQL and never in prompts.",
+        "C. Models always perfectly distinguish trusted and untrusted text."
+      ],
+      "compare_en": [
+        "Plain text-only failure: bad answer risk.",
+        "Tool-using failure: action risk and stronger safety needs."
+      ],
+      "compare_vi": [
+        "Plain text-only failure: bad answer risk.",
+        "Tool-using failure: action risk and stronger safety needs."
+      ],
+      "intent_en": "Tests safety reasoning beyond plain text generation.",
+      "intent_vi": "Tests safety reasoning beyond plain text generation."
+    },
+    {
+      "category": "Optimization",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trong a slow embedding retrieval pipeline: micro-optimizing Python loops or measuring embedding calls, vector search latency, and reranking cost, mục tiêu tối ưu đầu tiên thường là gì?",
+      "intent": "Tests evidence-first optimization.",
+      "options": [
+        "Measure the major stages first.",
+        "B. Micro-optimize loop syntax first.",
+        "C. Rename các biến first bởi vì names affect runtime most."
+      ],
+      "correct_answer": "Measure the major stages first.",
+      "explanation": "In AI pipelines the bottleneck is often model inference, network overhead, search, or reranking rather than small Python syntax choices.",
+      "code_snippet": "t0 = time.perf_counter()\\n...\\nprint(time.perf_counter() - t0)",
+      "compare": [
+        "Measured optimization: higher confidence and impact.",
+        "Blind micro-optimization: often low-value."
+      ],
+      "category_vi": "Optimization",
+      "question_en": "Which is often the first optimization target in a slow embedding retrieval pipeline: micro-optimizing Python loops or measuring embedding calls, vector search latency, and reranking cost?",
+      "question_vi": "Trong a slow embedding retrieval pipeline: micro-optimizing Python loops or measuring embedding calls, vector search latency, and reranking cost, mục tiêu tối ưu đầu tiên thường là gì?",
+      "correct_answer_en": "A. Measure the major stages first.",
+      "correct_answer_vi": "Measure the major stages first.",
+      "explanation_en": "In AI pipelines the bottleneck is often model inference, network overhead, search, or reranking rather than small Python syntax choices.",
+      "explanation_vi": "In AI pipelines the bottleneck is often model inference, network overhead, search, or reranking rather than small Python syntax choices.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Measure the major stages first.",
+        "B. Micro-optimize loop syntax first.",
+        "C. Rename variables first because names affect runtime most."
+      ],
+      "options_vi": [
+        "Measure the major stages first.",
+        "B. Micro-optimize loop syntax first.",
+        "C. Rename các biến first bởi vì names affect runtime most."
+      ],
+      "compare_en": [
+        "Measured optimization: higher confidence and impact.",
+        "Blind micro-optimization: often low-value."
+      ],
+      "compare_vi": [
+        "Measured optimization: higher confidence and impact.",
+        "Blind micro-optimization: often low-value."
+      ],
+      "intent_en": "Tests evidence-first optimization.",
+      "intent_vi": "Tests evidence-first optimization."
+    },
+    {
+      "category": "Evaluation",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Tricky failure mode of evaluating a chatbot only on curated ideal examples là gì?",
+      "intent": "Tests benchmark realism.",
+      "options": [
+        "Model có thể trông rất mạnh trên các bản demo sạch đẹp nhưng lại thất bại trên các truy vấn thực tế lộn xộn.",
+        "B. Curated examples are always stricter than production.",
+        "C. Real user data is never needed for evaluation."
+      ],
+      "correct_answer": "Model có thể trông rất mạnh trên các bản demo sạch đẹp nhưng lại thất bại trên các truy vấn thực tế lộn xộn.",
+      "explanation": "Evaluation sets should reflect actual user behavior, ambiguity, noise, and adversarial cases where possible.",
+      "code_snippet": "eval_set = ideal_cases + noisy_cases + ambiguous_cases",
+      "compare": [
+        "Curated-only eval: optimistic picture.",
+        "Representative eval: more trustworthy product signal."
+      ],
+      "category_vi": "Evaluation",
+      "question_en": "What is a tricky failure mode of evaluating a chatbot only on curated ideal examples?",
+      "question_vi": "Tricky failure mode of evaluating a chatbot only on curated ideal examples là gì?",
+      "correct_answer_en": "A. The model may look strong on clean demos but fail on messy real queries.",
+      "correct_answer_vi": "Model có thể trông rất mạnh trên các bản demo sạch đẹp nhưng lại thất bại trên các truy vấn thực tế lộn xộn.",
+      "explanation_en": "Evaluation sets should reflect actual user behavior, ambiguity, noise, and adversarial cases where possible.",
+      "explanation_vi": "Evaluation sets should reflect actual user behavior, ambiguity, noise, and adversarial cases where possible.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. The model may look strong on clean demos but fail on messy real queries.",
+        "B. Curated examples are always stricter than production.",
+        "C. Real user data is never needed for evaluation."
+      ],
+      "options_vi": [
+        "Model có thể trông rất mạnh trên các bản demo sạch đẹp nhưng lại thất bại trên các truy vấn thực tế lộn xộn.",
+        "B. Curated examples are always stricter than production.",
+        "C. Real user data is never needed for evaluation."
+      ],
+      "compare_en": [
+        "Curated-only eval: optimistic picture.",
+        "Representative eval: more trustworthy product signal."
+      ],
+      "compare_vi": [
+        "Curated-only eval: optimistic picture.",
+        "Representative eval: more trustworthy product signal."
+      ],
+      "intent_en": "Tests benchmark realism.",
+      "intent_vi": "Tests benchmark realism."
+    },
+    {
+      "category": "Embeddings",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao cosine similarity often used in embedding retrieval?",
+      "intent": "Checks vector-search fundamentals.",
+      "options": [
+        "It compares vector orientation and is useful for semantic similarity.",
+        "B. It sorts documents alphabetically.",
+        "C. It replaces the need for indexing."
+      ],
+      "correct_answer": "It compares vector orientation and is useful for semantic similarity.",
+      "explanation": "Cosine similarity is a common way to compare embedding direction rather than raw magnitude.",
+      "code_snippet": "score = dot(a, b) / (norm(a) * norm(b))",
+      "compare": [
+        "Cosine similarity: common semantic comparison metric.",
+        "No similarity metric: no ranking basis."
+      ],
+      "category_vi": "Embeddings",
+      "question_en": "Why is cosine similarity often used in embedding retrieval?",
+      "question_vi": "Vì sao cosine similarity often used in embedding retrieval?",
+      "correct_answer_en": "A. It compares vector orientation and is useful for semantic similarity.",
+      "correct_answer_vi": "It compares vector orientation and is useful for semantic similarity.",
+      "explanation_en": "Cosine similarity is a common way to compare embedding direction rather than raw magnitude.",
+      "explanation_vi": "Cosine similarity is a common way to compare embedding direction rather than raw magnitude.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It compares vector orientation and is useful for semantic similarity.",
+        "B. It sorts documents alphabetically.",
+        "C. It replaces the need for indexing."
+      ],
+      "options_vi": [
+        "It compares vector orientation and is useful for semantic similarity.",
+        "B. It sorts documents alphabetically.",
+        "C. It replaces the need for indexing."
+      ],
+      "compare_en": [
+        "Cosine similarity: common semantic comparison metric.",
+        "No similarity metric: no ranking basis."
+      ],
+      "compare_vi": [
+        "Cosine similarity: common semantic comparison metric.",
+        "No similarity metric: no ranking basis."
+      ],
+      "intent_en": "Checks vector-search fundamentals.",
+      "intent_vi": "Checks vector-search fundamentals."
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao caching LLM outputs by raw prompt text alone sometimes a trap?",
+      "intent": "Tests cache-key design awareness.",
+      "options": [
+        "Model version, system prompt, temperature, or tool context may change output semantics.",
+        "B. Prompt text is always sufficient for all cache correctness.",
+        "C. LLM outputs should never be cached under any condition."
+      ],
+      "correct_answer": "Model version, system prompt, temperature, or tool context may change output semantics.",
+      "explanation": "Good cache keys reflect the real determinants of behavior, not just one visible string.",
+      "code_snippet": "cache_key = hash((model, system_prompt, user_prompt, temperature))",
+      "compare": [
+        "Raw prompt-only cache key: simpler but risky.",
+        "Behavior-aware cache key: safer and more correct."
+      ],
+      "category_vi": "Tricky Bugs",
+      "question_en": "Why is caching LLM outputs by raw prompt text alone sometimes a trap?",
+      "question_vi": "Vì sao caching LLM outputs by raw prompt text alone sometimes a trap?",
+      "correct_answer_en": "A. Model version, system prompt, temperature, or tool context may change output semantics.",
+      "correct_answer_vi": "Model version, system prompt, temperature, or tool context may change output semantics.",
+      "explanation_en": "Good cache keys reflect the real determinants of behavior, not just one visible string.",
+      "explanation_vi": "Good cache keys reflect the real determinants of behavior, not just one visible string.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Model version, system prompt, temperature, or tool context may change output semantics.",
+        "B. Prompt text is always sufficient for all cache correctness.",
+        "C. LLM outputs should never be cached under any condition."
+      ],
+      "options_vi": [
+        "Model version, system prompt, temperature, or tool context may change output semantics.",
+        "B. Prompt text is always sufficient for all cache correctness.",
+        "C. LLM outputs should never be cached under any condition."
+      ],
+      "compare_en": [
+        "Raw prompt-only cache key: simpler but risky.",
+        "Behavior-aware cache key: safer and more correct."
+      ],
+      "compare_vi": [
+        "Raw prompt-only cache key: simpler but risky.",
+        "Behavior-aware cache key: safer and more correct."
+      ],
+      "intent_en": "Tests cache-key design awareness.",
+      "intent_vi": "Tests cache-key design awareness."
+    }
+  ],
+  "title_en": "AI and Machine Learning Interview Question Bank",
+  "subtitle_en": "Advanced question set covering model evaluation, retrieval, prompting, and production AI concerns.",
+  "level_en": "advanced"
+}

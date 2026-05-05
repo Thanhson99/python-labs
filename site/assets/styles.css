@@ -21,12 +21,17 @@ body {
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
   padding: 2rem;
   background: linear-gradient(120deg, #14532d 0%, #0f766e 45%, #0c4a6e 100%);
   color: #f8fafc;
+}
+
+.hero-content {
+  min-width: 0;
 }
 
 .landing-hero {
@@ -41,6 +46,10 @@ body {
   background: linear-gradient(125deg, #4c0519 0%, #9f1239 35%, #be5b04 68%, #14532d 100%);
 }
 
+.planner-hero {
+  background: linear-gradient(125deg, #1f2937 0%, #0f766e 38%, #0f766e 58%, #ca8a04 100%);
+}
+
 .hero h1 {
   margin: 0.2rem 0 0.6rem;
   font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
@@ -49,12 +58,15 @@ body {
 
 .hero p {
   max-width: 72ch;
+  line-height: 1.35;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .eyebrow {
@@ -64,11 +76,57 @@ body {
   opacity: 0.82;
 }
 
+.hero-note {
+  margin: 0.2rem 0 0;
+  color: rgba(248, 250, 252, 0.92);
+  line-height: 1.4;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-switch.top-right {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 5;
+}
+
+.lang-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #e2e8f0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  color: #0f172a;
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+.lang-btn:not(.active):hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(130px, 1fr));
   gap: 0.75rem;
   align-content: start;
+  padding-top: 5rem;
 }
 
 .stat-card {
@@ -125,6 +183,32 @@ main {
 
 .two-cols {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.landing-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.landing-card {
+  position: relative;
+  min-height: 220px;
+  padding-bottom: 5rem;
+}
+
+.landing-card p {
+  margin-top: 0;
+}
+
+.landing-card-action {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-card > :last-child {
+  margin-bottom: 0;
 }
 
 .service-card,
@@ -270,6 +354,91 @@ pre code {
 
 .interview-card {
   border-left: 4px solid #fb7185;
+}
+
+.planner-card,
+.planner-plan {
+  border-left: 4px solid #14b8a6;
+}
+
+.planner-plan-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.planner-progress-chip {
+  min-width: 74px;
+  text-align: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  background: #ccfbf1;
+  color: #115e59;
+  font-weight: 700;
+}
+
+.planner-weeks {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.6rem 1rem;
+}
+
+.planner-subsection {
+  margin-top: 0.8rem;
+}
+
+.planner-subsection p {
+  margin-bottom: 0.4rem;
+}
+
+.planner-subsection ul {
+  margin: 0.35rem 0 0;
+}
+
+.planner-week {
+  border: 1px solid #bfdbfe;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, #f8fffe 0%, #f8fbff 100%);
+  padding: 0.85rem;
+}
+
+.planner-week h4 {
+  margin: 0;
+}
+
+.planner-task-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.planner-task {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  border: 1px solid #dbeafe;
+  border-radius: 0.65rem;
+  background: #ffffff;
+  padding: 0.7rem 0.8rem;
+}
+
+.planner-task input {
+  margin-top: 0.25rem;
+}
+
+.planner-task:has(input:checked) {
+  border-color: #99f6e4;
+  background: #f0fdfa;
+}
+
+.planner-actions {
+  margin: 0.9rem 0 0;
 }
 
 .compact-card {
@@ -535,10 +704,54 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
+
+  .hero-content {
+    padding-top: 3.7rem;
+  }
+
+  .lang-switch.top-right {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .stats {
+    padding-top: 0;
+  }
 }
 
 @media (max-width: 1180px) {
   #cheatsheet.cards {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .lang-switch {
+    width: fit-content;
+  }
+
+  .hero-content {
+    padding-top: 3.9rem;
+  }
+
+  .lang-switch.top-right {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .planner-plan-header {
+    flex-direction: column;
+  }
+
+  .landing-grid {
     grid-template-columns: 1fr;
   }
 }

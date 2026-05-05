@@ -1,0 +1,672 @@
+{
+  "title": "Ngân Hàng Câu Hỏi Phỏng Vấn Thiết Kế Hệ Thống",
+  "subtitle": "Bộ câu hỏi nâng cao về hệ thống phân tán và delivery cho phỏng vấn backend và platform.",
+  "generated_at": "2026-05-04T00:00:00Z",
+  "level": "nâng cao",
+  "questions": [
+    {
+      "category": "Queues",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao dùng a message queue between services?",
+      "intent": "Checks whether you understand decoupling and asynchronous work.",
+      "options": [
+        "It buffers work and decouples producers from consumers.",
+        "B. It removes all need for retries.",
+        "C. It guarantees zero bugs."
+      ],
+      "correct_answer": "It buffers work and decouples producers from consumers.",
+      "explanation": "Queues help các service handle spikes, perform background work, and fail more independently. They improve elasticity, but introduce ordering, retry, and observability concerns.",
+      "code_snippet": "producer.publish({'event': 'order_created', 'order_id': 42})",
+      "compare": [
+        "Synchronous call: simpler flow, tighter coupling.",
+        "Queue: more resilient to spikes, but operationally more complex."
+      ],
+      "category_vi": "Queues",
+      "question_en": "Why use a message queue between services?",
+      "question_vi": "Vì sao dùng a message queue between services?",
+      "correct_answer_en": "A. It buffers work and decouples producers from consumers.",
+      "correct_answer_vi": "It buffers work and decouples producers from consumers.",
+      "explanation_en": "Queues help services handle spikes, perform background work, and fail more independently. They improve elasticity, but introduce ordering, retry, and observability concerns.",
+      "explanation_vi": "Queues help các service handle spikes, perform background work, and fail more independently. They improve elasticity, but introduce ordering, retry, and observability concerns.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It buffers work and decouples producers from consumers.",
+        "B. It removes all need for retries.",
+        "C. It guarantees zero bugs."
+      ],
+      "options_vi": [
+        "It buffers work and decouples producers from consumers.",
+        "B. It removes all need for retries.",
+        "C. It guarantees zero bugs."
+      ],
+      "compare_en": [
+        "Synchronous call: simpler flow, tighter coupling.",
+        "Queue: more resilient to spikes, but operationally more complex."
+      ],
+      "compare_vi": [
+        "Synchronous call: simpler flow, tighter coupling.",
+        "Queue: more resilient to spikes, but operationally more complex."
+      ],
+      "intent_en": "Checks whether you understand decoupling and asynchronous work.",
+      "intent_vi": "Checks whether you understand decoupling and asynchronous work."
+    },
+    {
+      "category": "Consistency",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao idempotency important for queue consumers?",
+      "intent": "Tests whether you understand at-least-once delivery realities.",
+      "options": [
+        "Bởi vì messages may be delivered more than once.",
+        "B. Bởi vì các queue never retry.",
+        "C. Bởi vì idempotency improves UI design."
+      ],
+      "correct_answer": "Bởi vì messages may be delivered more than once.",
+      "explanation": "Many messaging systems prefer at-least-once delivery. Consumers therefore need deduplication or safe write patterns so replayed messages do not create duplicate business effects.",
+      "code_snippet": "if event_store.seen(message.id):\\n    return\\nhandle(message)\\nevent_store.mark_seen(message.id)",
+      "compare": [
+        "Idempotent consumer: safe with retry and replays.",
+        "Non-idempotent consumer: duplicates are much harder to control."
+      ],
+      "category_vi": "Consistency",
+      "question_en": "Why is idempotency important for queue consumers?",
+      "question_vi": "Vì sao idempotency important for queue consumers?",
+      "correct_answer_en": "A. Because messages may be delivered more than once.",
+      "correct_answer_vi": "Bởi vì messages may be delivered more than once.",
+      "explanation_en": "Many messaging systems prefer at-least-once delivery. Consumers therefore need deduplication or safe write patterns so replayed messages do not create duplicate business effects.",
+      "explanation_vi": "Many messaging systems prefer at-least-once delivery. Consumers therefore need deduplication or safe write patterns so replayed messages do not create duplicate business effects.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Because messages may be delivered more than once.",
+        "B. Because queues never retry.",
+        "C. Because idempotency improves UI design."
+      ],
+      "options_vi": [
+        "Bởi vì messages may be delivered more than once.",
+        "B. Bởi vì các queue never retry.",
+        "C. Bởi vì idempotency improves UI design."
+      ],
+      "compare_en": [
+        "Idempotent consumer: safe with retries and replays.",
+        "Non-idempotent consumer: duplicates are much harder to control."
+      ],
+      "compare_vi": [
+        "Idempotent consumer: safe with retry and replays.",
+        "Non-idempotent consumer: duplicates are much harder to control."
+      ],
+      "intent_en": "Tests whether you understand at-least-once delivery realities.",
+      "intent_vi": "Tests whether you understand at-least-once delivery realities."
+    },
+    {
+      "category": "Observability",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Sự khác nhau giữa logs, metrics, và traces là gì?",
+      "intent": "Checks whether you can explain observability layers clearly.",
+      "options": [
+        "Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+        "B. Chúng là different words for the same output.",
+        "C. Only metrics matter in production."
+      ],
+      "correct_answer": "Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+      "explanation": "Each signal answers different questions. Metrics are good for dashboards and alerts, log give detail, and traces show distributed request paths and latency breakdowns.",
+      "code_snippet": "logger.info('request complete')\\nmetrics.increment('http_requests_total')\\ntracer.start_span('checkout')",
+      "compare": [
+        "Metrics: fast aggregate visibility.",
+        "Logs: rich detail.",
+        "Traces: cross-service request context."
+      ],
+      "category_vi": "Quan sát hệ thống",
+      "question_en": "What is the difference between logs, metrics, and traces?",
+      "question_vi": "Sự khác nhau giữa logs, metrics, và traces là gì?",
+      "correct_answer_en": "A. Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+      "correct_answer_vi": "Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+      "explanation_en": "Each signal answers different questions. Metrics are good for dashboards and alerts, logs give detail, and traces show distributed request paths and latency breakdowns.",
+      "explanation_vi": "Each signal answers different questions. Metrics are good for dashboards and alerts, log give detail, and traces show distributed request paths and latency breakdowns.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+        "B. They are different words for the same output.",
+        "C. Only metrics matter in production."
+      ],
+      "options_vi": [
+        "Logs record events, metrics summarize numeric behavior, traces follow request flow across services.",
+        "B. Chúng là different words for the same output.",
+        "C. Only metrics matter in production."
+      ],
+      "compare_en": [
+        "Metrics: fast aggregate visibility.",
+        "Logs: rich detail.",
+        "Traces: cross-service request context."
+      ],
+      "compare_vi": [
+        "Metrics: fast aggregate visibility.",
+        "Logs: rich detail.",
+        "Traces: cross-service request context."
+      ],
+      "intent_en": "Checks whether you can explain observability layers clearly.",
+      "intent_vi": "Checks whether you can explain observability layers clearly."
+    },
+    {
+      "category": "Resilience",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "A circuit breaker giải quyết vấn đề gì?",
+      "intent": "Tests whether you know how to contain cascading failures.",
+      "options": [
+        "It temporarily stops các lời gọi to a dependency đang lỗi to protect the system.",
+        "B. It encrypts the database.",
+        "C. It replaces monitoring."
+      ],
+      "correct_answer": "It temporarily stops các lời gọi to a dependency đang lỗi to protect the system.",
+      "explanation": "If a downstream service is failing or slow, a circuit breaker can thất bại sớm instead of piling up more các request and consuming resources. Nó giới hạn cascading damage and gives các dependency time to recover.",
+      "code_snippet": "if breaker.is_open():\\n    raise DependencyUnavailable()\\nreturn client.get()",
+      "compare": [
+        "Nếu không có breaker: retry and waiting can amplify outages.",
+        "Với breaker: faster failure and better resource control."
+      ],
+      "category_vi": "Resilience",
+      "question_en": "What problem does a circuit breaker solve?",
+      "question_vi": "A circuit breaker giải quyết vấn đề gì?",
+      "correct_answer_en": "A. It temporarily stops calls to a failing dependency to protect the system.",
+      "correct_answer_vi": "It temporarily stops các lời gọi to a dependency đang lỗi to protect the system.",
+      "explanation_en": "If a downstream service is failing or slow, a circuit breaker can fail fast instead of piling up more requests and consuming resources. It limits cascading damage and gives dependencies time to recover.",
+      "explanation_vi": "If a downstream service is failing or slow, a circuit breaker can thất bại sớm instead of piling up more các request and consuming resources. Nó giới hạn cascading damage and gives các dependency time to recover.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. It temporarily stops calls to a failing dependency to protect the system.",
+        "B. It encrypts the database.",
+        "C. It replaces monitoring."
+      ],
+      "options_vi": [
+        "It temporarily stops các lời gọi to a dependency đang lỗi to protect the system.",
+        "B. It encrypts the database.",
+        "C. It replaces monitoring."
+      ],
+      "compare_en": [
+        "Without breaker: retries and waiting can amplify outages.",
+        "With breaker: faster failure and better resource control."
+      ],
+      "compare_vi": [
+        "Nếu không có breaker: retry and waiting can amplify outages.",
+        "Với breaker: faster failure and better resource control."
+      ],
+      "intent_en": "Tests whether you know how to contain cascading failures.",
+      "intent_vi": "Tests whether you know how to contain cascading failures."
+    },
+    {
+      "category": "Delivery",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao health checks useful in deployed services?",
+      "intent": "Checks whether you think about runtime lifecycle and traffic routing.",
+      "options": [
+        "They help orchestrators know whether an instance is alive and ready to receive traffic.",
+        "B. They compile code automatically.",
+        "C. They remove the need for tests."
+      ],
+      "correct_answer": "They help orchestrators know whether an instance is alive and ready to receive traffic.",
+      "explanation": "Liveness and readiness checks let the platform restart broken instances and avoid sending traffic to instances that have started but are not yet ready to serve safely.",
+      "code_snippet": "GET /health/live\\nGET /health/ready",
+      "compare": [
+        "Liveness: is the process still functioning.",
+        "Readiness: can it safely receive real traffic now."
+      ],
+      "category_vi": "Delivery",
+      "question_en": "Why are health checks useful in deployed services?",
+      "question_vi": "Vì sao health checks useful in deployed services?",
+      "correct_answer_en": "A. They help orchestrators know whether an instance is alive and ready to receive traffic.",
+      "correct_answer_vi": "They help orchestrators know whether an instance is alive and ready to receive traffic.",
+      "explanation_en": "Liveness and readiness checks let the platform restart broken instances and avoid sending traffic to instances that have started but are not yet ready to serve safely.",
+      "explanation_vi": "Liveness and readiness checks let the platform restart broken instances and avoid sending traffic to instances that have started but are not yet ready to serve safely.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. They help orchestrators know whether an instance is alive and ready to receive traffic.",
+        "B. They compile code automatically.",
+        "C. They remove the need for tests."
+      ],
+      "options_vi": [
+        "They help orchestrators know whether an instance is alive and ready to receive traffic.",
+        "B. They compile code automatically.",
+        "C. They remove the need for tests."
+      ],
+      "compare_en": [
+        "Liveness: is the process still functioning.",
+        "Readiness: can it safely receive real traffic now."
+      ],
+      "compare_vi": [
+        "Liveness: is the process still functioning.",
+        "Readiness: can it safely receive real traffic now."
+      ],
+      "intent_en": "Checks whether you think about runtime lifecycle and traffic routing.",
+      "intent_vi": "Checks whether you think about runtime lifecycle and traffic routing."
+    },
+    {
+      "category": "Code Comparison",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trong trường hợp for a slow downstream dependency on a hot request path, cách nào thường an toàn hơn: unbounded waiting hay a timeout plus fallback/failure strategy?",
+      "intent": "Tests latency-control judgment.",
+      "options": [
+        "Timeout plus fallback or controlled failure is usually safer.",
+        "B. Unbounded waiting is always better bởi vì các request should never fail fast.",
+        "C. System design ignores timeout behavior."
+      ],
+      "correct_answer": "Timeout plus fallback or controlled failure is usually safer.",
+      "explanation": "Infinite waiting ties up resources and can cascade instability through the whole system.",
+      "code_snippet": "result = client.get(timeout=2)\\nif not result:\\n    return cached_response()",
+      "compare": [
+        "Unbounded wait: simpler but nguy hiểm under failure.",
+        "Bounded timeout strategy: safer under pressure."
+      ],
+      "category_vi": "Code Comparison",
+      "question_en": "Which is usually safer for a slow downstream dependency on a hot request path: unbounded waiting or a timeout plus fallback/failure strategy?",
+      "question_vi": "Trong trường hợp for a slow downstream dependency on a hot request path, cách nào thường an toàn hơn: unbounded waiting hay a timeout plus fallback/failure strategy?",
+      "correct_answer_en": "A. Timeout plus fallback or controlled failure is usually safer.",
+      "correct_answer_vi": "Timeout plus fallback or controlled failure is usually safer.",
+      "explanation_en": "Infinite waiting ties up resources and can cascade instability through the whole system.",
+      "explanation_vi": "Infinite waiting ties up resources and can cascade instability through the whole system.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Timeout plus fallback or controlled failure is usually safer.",
+        "B. Unbounded waiting is always better because requests should never fail fast.",
+        "C. System design ignores timeout behavior."
+      ],
+      "options_vi": [
+        "Timeout plus fallback or controlled failure is usually safer.",
+        "B. Unbounded waiting is always better bởi vì các request should never fail fast.",
+        "C. System design ignores timeout behavior."
+      ],
+      "compare_en": [
+        "Unbounded wait: simpler but dangerous under failure.",
+        "Bounded timeout strategy: safer under pressure."
+      ],
+      "compare_vi": [
+        "Unbounded wait: simpler but nguy hiểm under failure.",
+        "Bounded timeout strategy: safer under pressure."
+      ],
+      "intent_en": "Tests latency-control judgment.",
+      "intent_vi": "Tests latency-control judgment."
+    },
+    {
+      "category": "Scaling",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trap in assuming autoscaling alone solves overload là gì?",
+      "intent": "Tests operational realism.",
+      "options": [
+        "Scaling is delayed and các dependency may still bottleneck or fail.",
+        "B. Autoscaling provides infinite instant capacity.",
+        "C. Overload only happens when code has syntax bugs."
+      ],
+      "correct_answer": "Scaling is delayed and các dependency may still bottleneck or fail.",
+      "explanation": "Autoscaling helps, but queue growth, cold starts, downstream limits, and cost ceilings still matter.",
+      "code_snippet": "if queue_depth > threshold:\\n    scale_workers()",
+      "compare": [
+        "Autoscaling as sole plan: optimistic and incomplete.",
+        "Autoscaling plus capacity planning: more realistic."
+      ],
+      "category_vi": "Scaling",
+      "question_en": "What is the trap in assuming autoscaling alone solves overload?",
+      "question_vi": "Trap in assuming autoscaling alone solves overload là gì?",
+      "correct_answer_en": "A. Scaling is delayed and dependencies may still bottleneck or fail.",
+      "correct_answer_vi": "Scaling is delayed and các dependency may still bottleneck or fail.",
+      "explanation_en": "Autoscaling helps, but queue growth, cold starts, downstream limits, and cost ceilings still matter.",
+      "explanation_vi": "Autoscaling helps, but queue growth, cold starts, downstream limits, and cost ceilings still matter.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Scaling is delayed and dependencies may still bottleneck or fail.",
+        "B. Autoscaling provides infinite instant capacity.",
+        "C. Overload only happens when code has syntax bugs."
+      ],
+      "options_vi": [
+        "Scaling is delayed and các dependency may still bottleneck or fail.",
+        "B. Autoscaling provides infinite instant capacity.",
+        "C. Overload only happens when code has syntax bugs."
+      ],
+      "compare_en": [
+        "Autoscaling as sole plan: optimistic and incomplete.",
+        "Autoscaling plus capacity planning: more realistic."
+      ],
+      "compare_vi": [
+        "Autoscaling as sole plan: optimistic and incomplete.",
+        "Autoscaling plus capacity planning: more realistic."
+      ],
+      "intent_en": "Tests operational realism.",
+      "intent_vi": "Tests operational realism."
+    },
+    {
+      "category": "Consistency",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao a dual write from database to message broker a classic trap?",
+      "intent": "Tests consistency-pattern understanding.",
+      "options": [
+        "One write may succeed while the other fails, causing divergence.",
+        "B. Databases and brokers commit atomically by default across all stacks.",
+        "C. Dual writes only matter in frontend apps."
+      ],
+      "correct_answer": "One write may succeed while the other fails, causing divergence.",
+      "explanation": "Điều này là why patterns like the outbox exist: to avoid inconsistent side effects across systems.",
+      "code_snippet": "save_order()\\npublish_event()  # risky if second step fails",
+      "compare": [
+        "Naive dual write: simple but inconsistent under failure.",
+        "Outbox pattern: more robust consistency handling."
+      ],
+      "category_vi": "Consistency",
+      "question_en": "Why is a dual write from database to message broker a classic trap?",
+      "question_vi": "Vì sao a dual write from database to message broker a classic trap?",
+      "correct_answer_en": "A. One write may succeed while the other fails, causing divergence.",
+      "correct_answer_vi": "One write may succeed while the other fails, causing divergence.",
+      "explanation_en": "This is why patterns like the outbox exist: to avoid inconsistent side effects across systems.",
+      "explanation_vi": "Điều này là why patterns like the outbox exist: to avoid inconsistent side effects across systems.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. One write may succeed while the other fails, causing divergence.",
+        "B. Databases and brokers commit atomically by default across all stacks.",
+        "C. Dual writes only matter in frontend apps."
+      ],
+      "options_vi": [
+        "One write may succeed while the other fails, causing divergence.",
+        "B. Databases and brokers commit atomically by default across all stacks.",
+        "C. Dual writes only matter in frontend apps."
+      ],
+      "compare_en": [
+        "Naive dual write: simple but inconsistent under failure.",
+        "Outbox pattern: more robust consistency handling."
+      ],
+      "compare_vi": [
+        "Naive dual write: simple but inconsistent under failure.",
+        "Outbox pattern: more robust consistency handling."
+      ],
+      "intent_en": "Tests consistency-pattern understanding.",
+      "intent_vi": "Tests consistency-pattern understanding."
+    },
+    {
+      "category": "Tricky Bugs",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao relying on message ordering across unrelated partitions or consumers a trap?",
+      "intent": "Tests subtle queue semantics awareness.",
+      "options": [
+        "Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+        "B. All distributed các queue preserve one total global order automatically.",
+        "C. Ordering is irrelevant in event-driven systems."
+      ],
+      "correct_answer": "Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+      "explanation": "Ordering semantics depend on the technology, partition key, and consumer model. Assumptions here frequently break in production.",
+      "code_snippet": "partition_key = user_id  # preserve per-user order, not global order",
+      "compare": [
+        "Assumed global order: risky mental model.",
+        "Explicit scoped ordering: safer and more realistic."
+      ],
+      "category_vi": "Tricky Bugs",
+      "question_en": "Why is relying on message ordering across unrelated partitions or consumers a trap?",
+      "question_vi": "Vì sao relying on message ordering across unrelated partitions or consumers a trap?",
+      "correct_answer_en": "A. Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+      "correct_answer_vi": "Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+      "explanation_en": "Ordering semantics depend on the technology, partition key, and consumer model. Assumptions here frequently break in production.",
+      "explanation_vi": "Ordering semantics depend on the technology, partition key, and consumer model. Assumptions here frequently break in production.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+        "B. All distributed queues preserve one total global order automatically.",
+        "C. Ordering is irrelevant in event-driven systems."
+      ],
+      "options_vi": [
+        "Ordering guarantees are often limited in scope and can be broken by scaling choices.",
+        "B. All distributed các queue preserve one total global order automatically.",
+        "C. Ordering is irrelevant in event-driven systems."
+      ],
+      "compare_en": [
+        "Assumed global order: risky mental model.",
+        "Explicit scoped ordering: safer and more realistic."
+      ],
+      "compare_vi": [
+        "Assumed global order: risky mental model.",
+        "Explicit scoped ordering: safer and more realistic."
+      ],
+      "intent_en": "Tests subtle queue semantics awareness.",
+      "intent_vi": "Tests subtle queue semantics awareness."
+    },
+    {
+      "category": "Observability",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao độ trễ queue and tuổi xử lý valuable metrics in asynchronous systems?",
+      "intent": "Tests meaningful backlog measurement.",
+      "options": [
+        "They show how delayed work is becoming, not just how many messages exist.",
+        "B. They only matter for frontend rendering speed.",
+        "C. Message count alone always tells the full story."
+      ],
+      "correct_answer": "They show how delayed work is becoming, not just how many messages exist.",
+      "explanation": "Backlog age often reveals user-visible delay more directly than raw queue depth alone.",
+      "code_snippet": "lag_seconds = now_ts - oldest_message_ts",
+      "compare": [
+        "Queue depth only: incomplete signal.",
+        "Lag/age metrics: closer to real delivery delay."
+      ],
+      "category_vi": "Quan sát hệ thống",
+      "question_en": "Why are queue lag and processing age valuable metrics in asynchronous systems?",
+      "question_vi": "Vì sao độ trễ queue and tuổi xử lý valuable metrics in asynchronous systems?",
+      "correct_answer_en": "A. They show how delayed work is becoming, not just how many messages exist.",
+      "correct_answer_vi": "They show how delayed work is becoming, not just how many messages exist.",
+      "explanation_en": "Backlog age often reveals user-visible delay more directly than raw queue depth alone.",
+      "explanation_vi": "Backlog age often reveals user-visible delay more directly than raw queue depth alone.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. They show how delayed work is becoming, not just how many messages exist.",
+        "B. They only matter for frontend rendering speed.",
+        "C. Message count alone always tells the full story."
+      ],
+      "options_vi": [
+        "They show how delayed work is becoming, not just how many messages exist.",
+        "B. They only matter for frontend rendering speed.",
+        "C. Message count alone always tells the full story."
+      ],
+      "compare_en": [
+        "Queue depth only: incomplete signal.",
+        "Lag/age metrics: closer to real delivery delay."
+      ],
+      "compare_vi": [
+        "Queue depth only: incomplete signal.",
+        "Lag/age metrics: closer to real delivery delay."
+      ],
+      "intent_en": "Tests meaningful backlog measurement.",
+      "intent_vi": "Tests meaningful backlog measurement."
+    },
+    {
+      "category": "Resilience",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Trap in retrying immediately from every caller when a shared dependency fails là gì?",
+      "intent": "Tests cơn bão retry awareness.",
+      "options": [
+        "Immediate retry can amplify load and deepen the outage.",
+        "B. More retry always heal the dependency faster.",
+        "C. Shared các dependency are not affected by client retry behavior."
+      ],
+      "correct_answer": "Immediate retry can amplify load and deepen the outage.",
+      "explanation": "Backoff, jitter, and circuit breakers are used specifically bởi vì uncontrolled retry are nguy hiểm at scale.",
+      "code_snippet": "sleep(random.uniform(0.5, 2.0) * 2 ** attempt)",
+      "compare": [
+        "Immediate mass retry: outage amplifier.",
+        "Backoff and jitter: safer recovery posture."
+      ],
+      "category_vi": "Resilience",
+      "question_en": "What is the trap in retrying immediately from every caller when a shared dependency fails?",
+      "question_vi": "Trap in retrying immediately from every caller when a shared dependency fails là gì?",
+      "correct_answer_en": "A. Immediate retries can amplify load and deepen the outage.",
+      "correct_answer_vi": "Immediate retry can amplify load and deepen the outage.",
+      "explanation_en": "Backoff, jitter, and circuit breakers are used specifically because uncontrolled retries are dangerous at scale.",
+      "explanation_vi": "Backoff, jitter, and circuit breakers are used specifically bởi vì uncontrolled retry are nguy hiểm at scale.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Immediate retries can amplify load and deepen the outage.",
+        "B. More retries always heal the dependency faster.",
+        "C. Shared dependencies are not affected by client retry behavior."
+      ],
+      "options_vi": [
+        "Immediate retry can amplify load and deepen the outage.",
+        "B. More retry always heal the dependency faster.",
+        "C. Shared các dependency are not affected by client retry behavior."
+      ],
+      "compare_en": [
+        "Immediate mass retry: outage amplifier.",
+        "Backoff and jitter: safer recovery posture."
+      ],
+      "compare_vi": [
+        "Immediate mass retry: outage amplifier.",
+        "Backoff and jitter: safer recovery posture."
+      ],
+      "intent_en": "Tests retry storm awareness.",
+      "intent_vi": "Tests cơn bão retry awareness."
+    },
+    {
+      "category": "Delivery",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao readiness check chỉ trả về trạng thái process đang chạy vẫn có thể gây hiểu lầm?",
+      "intent": "Tests deeper readiness design.",
+      "options": [
+        "Process có thể vẫn còn sống nhưng chưa thể phục vụ an toàn do trạng thái khởi tạo hoặc trạng thái dependency.",
+        "B. Readiness and liveness are always identical by design.",
+        "C. Kubernetes ignores readiness endpoints anyway."
+      ],
+      "correct_answer": "Process có thể vẫn còn sống nhưng chưa thể phục vụ an toàn do trạng thái khởi tạo hoặc trạng thái dependency.",
+      "explanation": "Readiness check tốt phải phản ánh liệu instance có thực sự xử lý traffic đúng cách hay không, chứ không chỉ kiểm tra xem process có tồn tại hay không.",
+      "code_snippet": "if not db_ready or not cache_warm:\\n    return 503",
+      "compare": [
+        "Process-only check: too shallow.",
+        "Traffic-safety check: better readiness signal."
+      ],
+      "category_vi": "Delivery",
+      "question_en": "Why can a readiness check that only returns process-up status still be misleading?",
+      "question_vi": "Vì sao readiness check chỉ trả về trạng thái process đang chạy vẫn có thể gây hiểu lầm?",
+      "correct_answer_en": "A. The process may be alive but unable to serve safely due to initialization or dependency state.",
+      "correct_answer_vi": "Process có thể vẫn còn sống nhưng chưa thể phục vụ an toàn do trạng thái khởi tạo hoặc trạng thái dependency.",
+      "explanation_en": "Good readiness checks reflect whether the instance can actually handle traffic correctly, not just whether a process exists.",
+      "explanation_vi": "Readiness check tốt phải phản ánh liệu instance có thực sự xử lý traffic đúng cách hay không, chứ không chỉ kiểm tra xem process có tồn tại hay không.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. The process may be alive but unable to serve safely due to initialization or dependency state.",
+        "B. Readiness and liveness are always identical by design.",
+        "C. Kubernetes ignores readiness endpoints anyway."
+      ],
+      "options_vi": [
+        "Process có thể vẫn còn sống nhưng chưa thể phục vụ an toàn do trạng thái khởi tạo hoặc trạng thái dependency.",
+        "B. Readiness and liveness are always identical by design.",
+        "C. Kubernetes ignores readiness endpoints anyway."
+      ],
+      "compare_en": [
+        "Process-only check: too shallow.",
+        "Traffic-safety check: better readiness signal."
+      ],
+      "compare_vi": [
+        "Process-only check: too shallow.",
+        "Traffic-safety check: better readiness signal."
+      ],
+      "intent_en": "Tests deeper readiness design.",
+      "intent_vi": "Tests deeper readiness design."
+    },
+    {
+      "category": "Optimization",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Which is a stronger first step for a slow distributed workflow: rewriting code blindly or mapping the latency budget across components?",
+      "intent": "Tests system-level optimization discipline.",
+      "options": [
+        "Map the latency budget and identify where time is actually spent.",
+        "B. Rewrite the code blindly bởi vì all slow systems are caused by syntax.",
+        "C. Increase logging verbosity and stop there."
+      ],
+      "correct_answer": "Map the latency budget and identify where time is actually spent.",
+      "explanation": "Slow systems are often bottlenecked by storage, networks, serialization, queueing, or downstream behavior rather than one local code block.",
+      "code_snippet": "client=30ms, db=120ms, queue=10ms, downstream=400ms",
+      "compare": [
+        "Measured latency budget: evidence-driven optimization.",
+        "Blind rewrite: expensive and low-confidence."
+      ],
+      "category_vi": "Optimization",
+      "question_en": "Which is a stronger first step for a slow distributed workflow: rewriting code blindly or mapping the latency budget across components?",
+      "question_vi": "Which is a stronger first step for a slow distributed workflow: rewriting code blindly or mapping the latency budget across components?",
+      "correct_answer_en": "A. Map the latency budget and identify where time is actually spent.",
+      "correct_answer_vi": "Map the latency budget and identify where time is actually spent.",
+      "explanation_en": "Slow systems are often bottlenecked by storage, networks, serialization, queueing, or downstream behavior rather than one local code block.",
+      "explanation_vi": "Slow systems are often bottlenecked by storage, networks, serialization, queueing, or downstream behavior rather than one local code block.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Map the latency budget and identify where time is actually spent.",
+        "B. Rewrite the code blindly because all slow systems are caused by syntax.",
+        "C. Increase logging verbosity and stop there."
+      ],
+      "options_vi": [
+        "Map the latency budget and identify where time is actually spent.",
+        "B. Rewrite the code blindly bởi vì all slow systems are caused by syntax.",
+        "C. Increase logging verbosity and stop there."
+      ],
+      "compare_en": [
+        "Measured latency budget: evidence-driven optimization.",
+        "Blind rewrite: expensive and low-confidence."
+      ],
+      "compare_vi": [
+        "Measured latency budget: evidence-driven optimization.",
+        "Blind rewrite: expensive and low-confidence."
+      ],
+      "intent_en": "Tests system-level optimization discipline.",
+      "intent_vi": "Tests system-level optimization discipline."
+    },
+    {
+      "category": "Architecture",
+      "level": "Nâng cao",
+      "level_class": "advanced",
+      "question": "Vì sao 'make everything async' sometimes a trap in system design interviews?",
+      "intent": "Tests nuance over buzzword answers.",
+      "options": [
+        "Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+        "B. Async eliminates every distributed-systems problem automatically.",
+        "C. Sync systems are forbidden in production."
+      ],
+      "correct_answer": "Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+      "explanation": "Asynchrony is powerful, but it is not free. Good answers justify where it helps and where synchronous simplicity is better.",
+      "code_snippet": "sync for checkout response, async for email and analytics",
+      "compare": [
+        "Everything async: fashionable but often overcomplicated.",
+        "Selective async: tradeoff-aware design."
+      ],
+      "category_vi": "Kiến trúc",
+      "question_en": "Why is 'make everything async' sometimes a trap in system design interviews?",
+      "question_vi": "Vì sao 'make everything async' sometimes a trap in system design interviews?",
+      "correct_answer_en": "A. Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+      "correct_answer_vi": "Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+      "explanation_en": "Asynchrony is powerful, but it is not free. Good answers justify where it helps and where synchronous simplicity is better.",
+      "explanation_vi": "Asynchrony is powerful, but it is not free. Good answers justify where it helps and where synchronous simplicity is better.",
+      "level_en": "Advanced",
+      "options_en": [
+        "A. Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+        "B. Async eliminates every distributed-systems problem automatically.",
+        "C. Sync systems are forbidden in production."
+      ],
+      "options_vi": [
+        "Async introduces coordination, consistency, and observability costs that may not be justified everywhere.",
+        "B. Async eliminates every distributed-systems problem automatically.",
+        "C. Sync systems are forbidden in production."
+      ],
+      "compare_en": [
+        "Everything async: fashionable but often overcomplicated.",
+        "Selective async: tradeoff-aware design."
+      ],
+      "compare_vi": [
+        "Everything async: fashionable but often overcomplicated.",
+        "Selective async: tradeoff-aware design."
+      ],
+      "intent_en": "Tests nuance over buzzword answers.",
+      "intent_vi": "Tests nuance over buzzword answers."
+    }
+  ],
+  "title_en": "System Design Interview Question Bank",
+  "subtitle_en": "Advanced distributed systems and delivery questions for backend and platform interviews.",
+  "level_en": "advanced"
+}

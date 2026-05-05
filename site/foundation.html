@@ -9,57 +9,65 @@
   <body data-track="foundation" data-source="data/foundation.json">
     <header class="hero">
       <div class="hero-content">
-        <p class="eyebrow">Python Labs</p>
+        <div class="lang-switch top-right" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="vi">VI</button>
+        </div>
+        <p class="eyebrow" id="eyebrow">Python Labs</p>
         <h1 id="title">Foundation Track</h1>
         <p id="subtitle"></p>
-        <p><a class="btn" href="index.html">Back to track selection</a></p>
+        <p id="staticNote" class="hero-note"></p>
+        <div class="hero-actions">
+          <a class="btn" id="backButton" href="index.html">Back to track selection</a>
+        </div>
       </div>
       <div class="stats" id="stats"></div>
     </header>
 
     <main>
       <section class="panel">
-        <h2>Cheat Sheet Library</h2>
+        <h2 id="sectionCheatSheet">Cheat Sheet Library</h2>
         <div id="cheatsheet" class="cards"></div>
       </section>
 
       <section class="panel">
-        <h2>Roadmap</h2>
+        <h2 id="sectionRoadmap">Roadmap</h2>
         <div id="roadmap" class="timeline"></div>
       </section>
 
       <section class="panel">
-        <h2>Mini Projects</h2>
+        <h2 id="sectionMiniProjects">Mini Projects</h2>
         <div id="miniProjects" class="cards"></div>
       </section>
 
       <section class="panel" id="dbPanel">
-        <h2>Database Practicals</h2>
+        <h2 id="sectionDatabase">Database Practicals</h2>
         <div id="dbPracticals" class="cards"></div>
       </section>
 
       <section class="panel" id="extraPanel">
-        <h2>Extra Example Library</h2>
+        <h2 id="sectionExtraExamples">Extra Example Library</h2>
         <div id="extraExamples" class="cards"></div>
       </section>
 
       <section class="panel" id="ossPanel">
-        <h2>Open-Source Integration Stacks</h2>
+        <h2 id="sectionOpenSource">Open-Source Integration Stacks</h2>
         <div id="oss" class="cards"></div>
       </section>
 
       <section class="panel">
-        <h2>Recommended Services</h2>
+        <h2 id="sectionServices">Recommended Services</h2>
         <div id="services" class="cards"></div>
       </section>
     </main>
 
-    <section class="panel console-panel">
-      <h2>Example Runner Output</h2>
+    <section class="panel console-panel" id="consolePanel">
+      <h2 id="runnerHeading">Example Runner Output</h2>
       <pre id="runnerOutput"><code>Select a roadmap item and click "Run example".</code></pre>
     </section>
 
     <footer><span id="generatedAt"></span></footer>
+    <script src="assets/site.js"></script>
     <script src="assets/learning.js"></script>
   </body>
 </html>

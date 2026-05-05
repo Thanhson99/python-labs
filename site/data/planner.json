@@ -1,0 +1,777 @@
+{
+  "generated_at": "2026-05-05T00:00:00Z",
+  "default_locale": "en",
+  "supported_locales": ["en", "vi"],
+  "locales": {
+    "en": {
+      "title": "Study Planner",
+      "subtitle": "A richer static planner for Foundation, Backend, Advanced, and Interview preparation with browser-saved progress.",
+      "ui": {
+        "backButton": "Back to track selection",
+        "sectionHighlights": "How To Use This Planner",
+        "sectionQuickStart": "Quick Start",
+        "sectionHabits": "Daily Habits",
+        "sectionPlans": "Study Plans",
+        "sectionReview": "Weekly Review Questions",
+        "statsPlans": "Plans",
+        "statsWeeks": "Weeks",
+        "statsCompleted": "Completed Tasks",
+        "statsMode": "Mode",
+        "modeValue": "Saved locally",
+        "weekLabel": "Week",
+        "focusLabel": "Focus",
+        "goalLabel": "Outcome",
+        "taskLabel": "Checklist",
+        "durationLabel": "Duration",
+        "outcomeLabel": "Target outcome",
+        "deliverablesLabel": "Deliverables",
+        "milestonesLabel": "Milestones",
+        "resourcesLabel": "Use these site sections",
+        "resetPlan": "Reset plan progress",
+        "highlight1Title": "Pick one primary lane",
+        "highlight1Body": "Use one plan as your main lane and a second plan only as support work.",
+        "highlight2Title": "Turn reading into output",
+        "highlight2Body": "Every study block should end with code, notes, a comparison, or a spoken explanation.",
+        "highlight3Title": "Review bottlenecks, not only topics",
+        "highlight3Body": "Track where you slow down: syntax, debugging, architecture tradeoffs, or interview wording.",
+        "highlight4Title": "Keep progress lightweight",
+        "highlight4Body": "This planner stays static and GitHub Pages friendly, but still remembers completed tasks in your browser."
+      },
+      "quick_start": [
+        {
+          "title": "Choose one main objective",
+          "body": "Pick the goal that matters now: Python fundamentals, backend implementation, advanced systems, or interview speed."
+        },
+        {
+          "title": "Set a weekly time budget",
+          "body": "Plan 4 to 6 focused sessions per week so the checklist turns into real momentum."
+        },
+        {
+          "title": "Use the matching site beside the planner",
+          "body": "Foundation supports fundamentals, Advanced supports architecture, and Interview supports recall plus phrasing."
+        },
+        {
+          "title": "Review at the end of each week",
+          "body": "Do not only tick boxes. Summarize what became easier, what still feels slow, and what needs repetition."
+        }
+      ],
+      "daily_habits": [
+        {
+          "title": "15-minute recall block",
+          "body": "Start by recalling concepts from memory before reopening any cheat sheet or answer key."
+        },
+        {
+          "title": "One code artifact per day",
+          "body": "Produce at least one script, test, refactor, answer draft, or architecture note."
+        },
+        {
+          "title": "Explain one tradeoff out loud",
+          "body": "Practice phrasing decisions such as list vs set, retry vs fail fast, or monolith vs distributed flow."
+        },
+        {
+          "title": "Mark confusion immediately",
+          "body": "When you hesitate, write the exact topic or question instead of assuming you will remember it later."
+        },
+        {
+          "title": "End with a next-step note",
+          "body": "Leave one sentence for the next session so you can resume quickly without context loss."
+        }
+      ],
+      "weekly_review": [
+        {
+          "title": "Where was I genuinely slow?",
+          "body": "Identify whether the slowdown came from syntax, debugging, data flow, concurrency, or explaining tradeoffs."
+        },
+        {
+          "title": "What can I now do without looking things up?",
+          "body": "Measure retained skill, not only time spent."
+        },
+        {
+          "title": "Which topics still collapse under pressure?",
+          "body": "Use this to choose the next week’s repeated drills."
+        },
+        {
+          "title": "What did I build or explain this week?",
+          "body": "A week with no output usually means the study stayed too passive."
+        },
+        {
+          "title": "What should be cut next week?",
+          "body": "Remove low-value busywork and keep only tasks that clearly improve reasoning or implementation."
+        }
+      ],
+      "plans": [
+        {
+          "id": "foundation-sprint",
+          "level": "Foundation",
+          "name": "Foundation Sprint",
+          "summary": "A detailed 5-week plan that moves from Python basics into testing, scripting, and mini-project habits.",
+          "duration": "5 weeks",
+          "outcome": "Be able to write small Python utilities cleanly and explain core language choices with confidence.",
+          "focus": ["core syntax", "collections", "functions", "files", "testing", "small automation"],
+          "deliverables": [
+            "Three small CLI scripts",
+            "One tested utility module",
+            "One mini project with file or JSON handling"
+          ],
+          "milestones": [
+            "Choose the right collection without guessing",
+            "Handle files and JSON safely",
+            "Write tests for non-trivial utility logic"
+          ],
+          "resources": ["Foundation cheat sheet", "Foundation roadmap", "Mini projects", "Interview basic set"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Python Core and Collections",
+              "goal": "Understand syntax, loops, functions, and the right data structure for each case.",
+              "tasks": [
+                "Review the Foundation cheat sheet sections for lists, tuples, sets, and dictionaries.",
+                "Write three small scripts that use loops, conditions, and functions.",
+                "Explain out loud when to use list, set, dict, and tuple.",
+                "Redo five basic interview questions related to Python core."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Functions and Data Flow",
+              "goal": "Write reusable functions with clearer inputs, outputs, and edge-case handling.",
+              "tasks": [
+                "Refactor one long script into smaller functions.",
+                "Practice `*args`, `**kwargs`, default arguments, and return values.",
+                "Write one note comparing mutation versus immutability in simple utilities.",
+                "Review tricky questions about scope, arguments, and recursion."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Files, JSON, and CLI Thinking",
+              "goal": "Be comfortable moving data through files and small command-line scripts.",
+              "tasks": [
+                "Read and modify JSON data from a local file.",
+                "Build one small CLI script with input arguments and safe file output.",
+                "Practice handling missing files and invalid JSON cleanly.",
+                "Compare line-by-line processing versus loading everything into memory."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Testing and Debugging",
+              "goal": "Start writing code that is easier to trust and easier to fix.",
+              "tasks": [
+                "Write unit tests for two existing utility functions.",
+                "Practice debugging one script with print or logging and one with a test failure.",
+                "Create a short checklist for input validation and failure paths.",
+                "Review what made your bugs harder to spot the first time."
+              ]
+            },
+            {
+              "id": "week-5",
+              "title": "Mini Projects and Review",
+              "goal": "Turn isolated topics into reusable habits through a small project.",
+              "tasks": [
+                "Build one mini project from the Foundation roadmap.",
+                "Review every unfinished cheat sheet topic and summarize it in your own words.",
+                "Redo five interview-basic questions without looking at the answers first.",
+                "Write a short reflection on what is now easy and what still feels mechanical."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "backend-builder",
+          "level": "Foundation",
+          "name": "Backend Builder Path",
+          "summary": "A practical 4-week bridge from Python scripting into APIs, databases, validation, and service structure.",
+          "duration": "4 weeks",
+          "outcome": "Be able to reason about simple backend flows instead of only writing isolated scripts.",
+          "focus": ["http", "validation", "sql basics", "transactions", "orm tradeoffs", "service boundaries"],
+          "deliverables": [
+            "One API flow note",
+            "One database query comparison",
+            "One backend-focused interview practice session"
+          ],
+          "milestones": [
+            "Explain request validation clearly",
+            "Recognize N+1 and query-shape issues",
+            "Understand why retries and timeouts affect backend behavior"
+          ],
+          "resources": ["Interview backend set", "Interview intermediate set", "Foundation services section", "Advanced API tradeoff topics"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "HTTP and Request Validation",
+              "goal": "Understand endpoints, payload shape, status codes, and invalid input handling.",
+              "tasks": [
+                "Review HTTP status code questions and validation-related interview topics.",
+                "Write one example request/response flow with both success and error cases.",
+                "Compare client mistakes versus server failures with concrete examples.",
+                "Practice explaining why validation should happen before business logic."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Databases and Query Thinking",
+              "goal": "Build intuition around SQL shape, indexing, and data access cost.",
+              "tasks": [
+                "Review backend interview questions about SQL, ORM, and transactions.",
+                "Explain N+1, eager loading, and selecting only needed columns.",
+                "Write one short note on uniqueness checks in app code versus database constraints.",
+                "Summarize when caching helps and when staleness becomes the real problem."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Retries, Timeouts, and Safety",
+              "goal": "See backend behavior as a reliability problem, not only a correctness problem.",
+              "tasks": [
+                "Study retry, timeout, and idempotency questions in the interview sets.",
+                "List two cases where retry helps and two where it makes things worse.",
+                "Write one example of a non-idempotent action that should not be blindly retried.",
+                "Explain the difference between a slow dependency and a failed dependency."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Service Structure and Review",
+              "goal": "Tie backend concepts together into a cleaner service mental model.",
+              "tasks": [
+                "Sketch a tiny service structure with handler, validation, service, and persistence layers.",
+                "Review questions where architecture choices affect performance or clarity.",
+                "Answer five backend questions in writing with emphasis on tradeoffs.",
+                "Note which backend topics should be escalated into the Advanced plan."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "advanced-systems",
+          "level": "Advanced",
+          "name": "Advanced Systems Planner",
+          "summary": "A focused 5-week plan for backend architecture, reliability, observability, and production tradeoffs.",
+          "duration": "5 weeks",
+          "outcome": "Be able to discuss production architecture in terms of risks, tradeoffs, failure modes, and safe delivery.",
+          "focus": ["queues", "reliability", "observability", "deployment", "consistency", "tradeoffs"],
+          "deliverables": [
+            "One architecture comparison note",
+            "One dependency-failure walkthrough",
+            "Five written advanced interview answers"
+          ],
+          "milestones": [
+            "Understand outbox, retries, timeouts, fallback, and circuit breakers",
+            "Explain readiness, liveness, logs, metrics, and traces without mixing them up",
+            "Reason about rollout and rollback with operational caution"
+          ],
+          "resources": ["Advanced roadmap", "Architecture diagrams", "Interview advanced set", "Interview system-design set"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Messaging and Consistency",
+              "goal": "Understand queues, brokers, outbox, and why distributed writes are tricky.",
+              "tasks": [
+                "Study the queue and broker sections in the Advanced site.",
+                "Compare direct dual-write versus outbox in your own notes.",
+                "Explain idempotency and duplicate delivery with one concrete example.",
+                "Review one diagram and identify where inconsistency can appear."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Reliability Patterns",
+              "goal": "Reason clearly about retries, timeouts, fallback, and graceful degradation.",
+              "tasks": [
+                "Review timeout, retry, and circuit breaker concepts.",
+                "Write a short design note about when retries help and when they amplify failure.",
+                "Map one dependency outage scenario to fallback and degradation behavior.",
+                "Explain the difference between fail fast and silent degradation."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Observability and Delivery",
+              "goal": "Learn to think in signals, rollout safety, and operational clarity.",
+              "tasks": [
+                "Review logs, metrics, traces, liveness, and readiness.",
+                "Describe what a safe release plan needs before and after deployment.",
+                "Summarize three metrics you would watch for queue lag or service overload.",
+                "List one alert that is noisy and one alert that is actually decision-useful."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Scaling and Capacity Tradeoffs",
+              "goal": "Think about throughput, bottlenecks, and how local optimizations shift system behavior.",
+              "tasks": [
+                "Review scaling, queue lag, cache, and read-path questions.",
+                "Explain one case where average latency hides real user pain.",
+                "Compare horizontal scaling versus reducing work per request.",
+                "Note where batching helps and where it hurts tail latency."
+              ]
+            },
+            {
+              "id": "week-5",
+              "title": "Architecture Review Week",
+              "goal": "Tie concepts together by reviewing a full production-style flow.",
+              "tasks": [
+                "Walk through one Advanced capstone or architecture diagram end to end.",
+                "List the main failure points and the mitigation for each one.",
+                "Answer five advanced interview questions in writing with tradeoff-based reasoning.",
+                "Write one mock incident summary based on a queue or dependency failure."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "interview-cycle",
+          "level": "Interview",
+          "name": "Interview Prep Cycle",
+          "summary": "A deeper 4-week rotation for question practice, explanation quality, bilingual wording, and mock pressure.",
+          "duration": "4 weeks",
+          "outcome": "Answer more quickly, with less hand-waving, and with clearer English and Vietnamese technical phrasing.",
+          "focus": ["quiz practice", "explanations", "vocabulary", "speed review", "mock answers"],
+          "deliverables": [
+            "At least three completed quiz sets",
+            "Ten rewritten answers in your own words",
+            "One short mock interview transcript or note set"
+          ],
+          "milestones": [
+            "Explain core topics without reading the answer first",
+            "Phrase tradeoff answers with structure instead of improvising randomly",
+            "Switch between VI and EN more comfortably for technical terms"
+          ],
+          "resources": ["Interview basic set", "Interview fresher set", "Interview intermediate set", "Interview bilingual set", "Interview sources site"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Basic and Fresher Review",
+              "goal": "Refresh core Python and improve short, accurate explanations.",
+              "tasks": [
+                "Finish one basic code question set and one fresher interview set.",
+                "Rewrite three answers in your own words after checking the solution.",
+                "Mark the topics where you hesitate and send them back to Foundation review.",
+                "Practice saying two short answers aloud without filler words."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Intermediate and Role Practice",
+              "goal": "Get faster at APIs, database reasoning, and implementation tradeoffs.",
+              "tasks": [
+                "Finish one intermediate or backend-oriented question set.",
+                "Practice speaking two answers in English and two in Vietnamese.",
+                "Note every question where you knew the concept but struggled to phrase it.",
+                "Group wrong answers into concept gap, wording gap, or attention gap."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Advanced and Mock Review",
+              "goal": "Move from memorized answers to structured reasoning under pressure.",
+              "tasks": [
+                "Complete one advanced or system-design set under time pressure.",
+                "Write one mock answer using the pattern: context, tradeoff, risk, mitigation.",
+                "Review the bilingual set to strengthen technical wording in both languages.",
+                "Record one answer and listen for vagueness or repeated filler language."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Source Review and Consolidation",
+              "goal": "Use external sources selectively and consolidate what is worth keeping.",
+              "tasks": [
+                "Read two curated sources from the sources site and extract only useful patterns.",
+                "Create one cheat list of recurring interview traps and stronger answer shapes.",
+                "Redo missed questions from prior weeks before opening new ones.",
+                "Write a final summary of topics that still need deeper project work."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vi": {
+      "title": "Kế Hoạch Học",
+      "subtitle": "Planner static nhiều thông tin hơn cho Foundation, Backend, Advanced và luyện Interview, có lưu tiến độ ngay trên trình duyệt.",
+      "ui": {
+        "backButton": "Quay lại trang chọn lộ trình",
+        "sectionHighlights": "Cách Dùng Planner Này",
+        "sectionQuickStart": "Khởi Động Nhanh",
+        "sectionHabits": "Thói Quen Hằng Ngày",
+        "sectionPlans": "Các Kế Hoạch Học",
+        "sectionReview": "Câu Hỏi Review Cuối Tuần",
+        "statsPlans": "Kế hoạch",
+        "statsWeeks": "Tuần",
+        "statsCompleted": "Tác vụ hoàn thành",
+        "statsMode": "Chế độ",
+        "modeValue": "Lưu trên trình duyệt",
+        "weekLabel": "Tuần",
+        "focusLabel": "Trọng tâm",
+        "goalLabel": "Kết quả cần đạt",
+        "taskLabel": "Checklist",
+        "durationLabel": "Thời lượng",
+        "outcomeLabel": "Đầu ra mục tiêu",
+        "deliverablesLabel": "Thứ cần làm ra",
+        "milestonesLabel": "Mốc tiến bộ",
+        "resourcesLabel": "Nên dùng các phần này",
+        "resetPlan": "Đặt lại tiến độ kế hoạch",
+        "highlight1Title": "Chọn một lane chính",
+        "highlight1Body": "Dùng một plan làm trục chính, và chỉ dùng plan thứ hai như phần hỗ trợ.",
+        "highlight2Title": "Biến việc đọc thành đầu ra",
+        "highlight2Body": "Mỗi buổi học nên kết thúc bằng code, ghi chú, so sánh hoặc tự giải thích thành tiếng.",
+        "highlight3Title": "Review bottleneck chứ không chỉ review chủ đề",
+        "highlight3Body": "Theo dõi xem bạn chậm ở cú pháp, debug, trade-off kiến trúc hay cách diễn đạt khi phỏng vấn.",
+        "highlight4Title": "Giữ tiến độ ở mức gọn nhẹ",
+        "highlight4Body": "Planner này vẫn static và hợp với GitHub Pages, nhưng vẫn nhớ các task bạn đã hoàn thành."
+      },
+      "quick_start": [
+        {
+          "title": "Chọn một mục tiêu chính",
+          "body": "Xác định ngay mục tiêu quan trọng nhất lúc này: Python nền tảng, backend triển khai, hệ thống nâng cao hay tốc độ interview."
+        },
+        {
+          "title": "Đặt ngân sách thời gian mỗi tuần",
+          "body": "Lên kế hoạch 4 đến 6 buổi tập trung mỗi tuần để checklist thật sự tạo ra đà tiến."
+        },
+        {
+          "title": "Mở planner cùng với site tương ứng",
+          "body": "Foundation hỗ trợ nền tảng, Advanced hỗ trợ kiến trúc, còn Interview hỗ trợ ghi nhớ và cách diễn đạt."
+        },
+        {
+          "title": "Review vào cuối tuần",
+          "body": "Đừng chỉ tick box. Hãy tóm tắt điều gì đã dễ hơn, điều gì vẫn chậm và điều gì cần lặp lại."
+        }
+      ],
+      "daily_habits": [
+        {
+          "title": "Khối recall 15 phút",
+          "body": "Bắt đầu bằng cách nhớ lại từ đầu trước khi mở cheat sheet hay đáp án."
+        },
+        {
+          "title": "Mỗi ngày một đầu ra code",
+          "body": "Tạo ít nhất một script, test, bản refactor, draft câu trả lời hoặc ghi chú kiến trúc."
+        },
+        {
+          "title": "Giải thích một trade-off thành tiếng",
+          "body": "Luyện nói các quyết định như list so với set, retry so với fail fast, hay monolith so với luồng phân tán."
+        },
+        {
+          "title": "Đánh dấu điểm mơ hồ ngay lập tức",
+          "body": "Khi thấy ngập ngừng, ghi đúng chủ đề hoặc câu hỏi đó ra thay vì nghĩ là sẽ nhớ sau."
+        },
+        {
+          "title": "Kết thúc bằng một ghi chú cho buổi sau",
+          "body": "Để lại một câu ngắn cho bước tiếp theo để lần mở lại không mất thời gian vào việc lấy lại ngữ cảnh."
+        }
+      ],
+      "weekly_review": [
+        {
+          "title": "Mình thật sự chậm ở đâu?",
+          "body": "Xác định xem độ chậm đến từ cú pháp, debug, luồng dữ liệu, concurrency hay cách giải thích trade-off."
+        },
+        {
+          "title": "Điều gì giờ mình làm được mà không cần tra nữa?",
+          "body": "Đo kỹ năng giữ lại được, không chỉ đo thời gian đã bỏ ra."
+        },
+        {
+          "title": "Chủ đề nào vẫn vỡ khi bị ép thời gian?",
+          "body": "Dùng câu này để chọn bài lặp lại cho tuần sau."
+        },
+        {
+          "title": "Tuần này mình đã làm ra được gì?",
+          "body": "Một tuần không có đầu ra thường có nghĩa là việc học vẫn còn quá thụ động."
+        },
+        {
+          "title": "Tuần sau nên cắt bỏ cái gì?",
+          "body": "Bỏ bớt việc bận rộn nhưng ít giá trị, chỉ giữ các task thật sự cải thiện tư duy hoặc khả năng triển khai."
+        }
+      ],
+      "plans": [
+        {
+          "id": "foundation-sprint",
+          "level": "Foundation",
+          "name": "Nước Rút Foundation",
+          "summary": "Kế hoạch 5 tuần chi tiết để đi từ Python cơ bản sang thói quen scripting, testing và mini project vững hơn.",
+          "duration": "5 tuần",
+          "outcome": "Có thể viết các tiện ích Python nhỏ gọn gàng và tự tin giải thích các lựa chọn ngôn ngữ cốt lõi.",
+          "focus": ["cú pháp cốt lõi", "collection", "hàm", "file", "testing", "automation nhỏ"],
+          "deliverables": [
+            "Ba script CLI nhỏ",
+            "Một utility module có test",
+            "Một mini project có xử lý file hoặc JSON"
+          ],
+          "milestones": [
+            "Chọn đúng collection mà không đoán mò",
+            "Xử lý file và JSON an toàn hơn",
+            "Viết test cho logic tiện ích không còn quá đơn giản"
+          ],
+          "resources": ["Cheat sheet Foundation", "Roadmap Foundation", "Mini project", "Bộ interview basic"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Python Cốt Lõi Và Collections",
+              "goal": "Hiểu cú pháp, vòng lặp, hàm và chọn đúng cấu trúc dữ liệu cho từng trường hợp.",
+              "tasks": [
+                "Ôn lại các phần cheat sheet Foundation về list, tuple, set và dictionary.",
+                "Viết ba script nhỏ có dùng vòng lặp, điều kiện và hàm.",
+                "Tự giải thích thành tiếng khi nào nên dùng list, set, dict và tuple.",
+                "Làm lại năm câu interview basic liên quan đến Python core."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Hàm Và Luồng Dữ Liệu",
+              "goal": "Viết các hàm tái sử dụng với input, output và edge case rõ ràng hơn.",
+              "tasks": [
+                "Refactor một script dài thành các hàm nhỏ hơn.",
+                "Luyện `*args`, `**kwargs`, default argument và giá trị trả về.",
+                "Viết một ghi chú ngắn so sánh mutation với immutability trong utility đơn giản.",
+                "Ôn các câu hỏi bẫy về scope, argument và recursion."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "File, JSON Và Tư Duy CLI",
+              "goal": "Làm quen với việc đưa dữ liệu đi qua file và các script dòng lệnh nhỏ.",
+              "tasks": [
+                "Đọc và chỉnh sửa dữ liệu JSON từ một file local.",
+                "Tạo một script CLI nhỏ có tham số đầu vào và ghi file an toàn.",
+                "Luyện xử lý file bị thiếu và JSON lỗi theo cách sạch sẽ.",
+                "So sánh xử lý từng dòng với việc nạp cả file vào bộ nhớ."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Testing Và Debugging",
+              "goal": "Bắt đầu viết code dễ tin cậy hơn và dễ sửa hơn.",
+              "tasks": [
+                "Viết unit test cho hai hàm tiện ích đang có.",
+                "Luyện debug một script bằng print hoặc logging và một bài bằng test fail.",
+                "Tạo một checklist ngắn cho validation input và nhánh lỗi.",
+                "Review xem vì sao bug ban đầu lại khó nhìn ra."
+              ]
+            },
+            {
+              "id": "week-5",
+              "title": "Mini Project Và Tổng Ôn",
+              "goal": "Biến các chủ đề rời rạc thành thói quen dùng được qua một project nhỏ.",
+              "tasks": [
+                "Làm một mini project từ roadmap Foundation.",
+                "Ôn lại mọi chủ đề cheat sheet còn dang dở và tự tóm tắt lại bằng lời của bạn.",
+                "Làm lại năm câu trong bộ interview basic mà không nhìn đáp án trước.",
+                "Viết một đoạn reflection ngắn về phần gì đã dễ và phần gì vẫn còn máy móc."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "backend-builder",
+          "level": "Foundation",
+          "name": "Lộ Trình Backend Builder",
+          "summary": "Kế hoạch 4 tuần nối từ scripting Python sang API, database, validation và cấu trúc service.",
+          "duration": "4 tuần",
+          "outcome": "Có thể suy nghĩ về luồng backend đơn giản thay vì chỉ viết các script rời rạc.",
+          "focus": ["http", "validation", "sql cơ bản", "transaction", "trade-off ORM", "ranh giới service"],
+          "deliverables": [
+            "Một ghi chú về luồng API",
+            "Một bài so sánh query database",
+            "Một buổi luyện câu hỏi backend"
+          ],
+          "milestones": [
+            "Giải thích request validation rõ ràng hơn",
+            "Nhận ra N+1 và vấn đề shape của query",
+            "Hiểu vì sao retry và timeout ảnh hưởng hành vi backend"
+          ],
+          "resources": ["Bộ interview backend", "Bộ interview intermediate", "Phần services ở Foundation", "Các chủ đề API trade-off ở Advanced"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "HTTP Và Request Validation",
+              "goal": "Hiểu endpoint, payload, status code và cách xử lý input sai.",
+              "tasks": [
+                "Ôn các câu hỏi về HTTP status code và validation trong bộ interview.",
+                "Viết một ví dụ request hoặc response có cả nhánh thành công và lỗi.",
+                "So sánh lỗi do client với lỗi do server bằng ví dụ cụ thể.",
+                "Luyện giải thích vì sao validation nên xảy ra trước business logic."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Database Và Tư Duy Query",
+              "goal": "Tạo trực giác tốt hơn về shape của SQL, index và chi phí truy cập dữ liệu.",
+              "tasks": [
+                "Ôn các câu backend về SQL, ORM và transaction.",
+                "Giải thích N+1, eager loading và chuyện chỉ chọn các cột cần thiết.",
+                "Viết một ghi chú ngắn về uniqueness check ở app code so với database constraint.",
+                "Tóm tắt khi nào caching có ích và khi nào staleness mới là vấn đề chính."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Retry, Timeout Và Tính An Toàn",
+              "goal": "Nhìn hành vi backend như một bài reliability chứ không chỉ là bài đúng sai.",
+              "tasks": [
+                "Ôn các câu hỏi về retry, timeout và idempotency.",
+                "Liệt kê hai trường hợp retry có ích và hai trường hợp retry làm mọi thứ tệ hơn.",
+                "Viết một ví dụ về hành động non-idempotent không nên retry mù quáng.",
+                "Giải thích khác nhau giữa dependency chậm và dependency lỗi hẳn."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Cấu Trúc Service Và Tổng Ôn",
+              "goal": "Nối các khái niệm backend lại thành một mô hình service sạch hơn.",
+              "tasks": [
+                "Phác thảo một cấu trúc service nhỏ gồm handler, validation, service và persistence.",
+                "Review các câu hỏi nơi lựa chọn kiến trúc ảnh hưởng tới hiệu năng hoặc độ rõ ràng.",
+                "Trả lời năm câu backend bằng văn bản với trọng tâm là trade-off.",
+                "Ghi lại chủ đề backend nào cần đẩy sang plan Advanced."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "advanced-systems",
+          "level": "Advanced",
+          "name": "Planner Hệ Thống Nâng Cao",
+          "summary": "Kế hoạch 5 tuần tập trung vào kiến trúc backend, reliability, observability và trade-off trong production.",
+          "duration": "5 tuần",
+          "outcome": "Có thể bàn về kiến trúc production theo rủi ro, trade-off, failure mode và phát hành an toàn.",
+          "focus": ["queue", "reliability", "observability", "triển khai", "consistency", "trade-off"],
+          "deliverables": [
+            "Một ghi chú so sánh kiến trúc",
+            "Một walkthrough về lỗi dependency",
+            "Năm câu trả lời advanced được viết hoàn chỉnh"
+          ],
+          "milestones": [
+            "Hiểu outbox, retry, timeout, fallback và circuit breaker",
+            "Giải thích readiness, liveness, log, metrics và traces mà không lẫn nhau",
+            "Suy luận được về rollout và rollback theo góc nhìn vận hành"
+          ],
+          "resources": ["Roadmap Advanced", "Sơ đồ kiến trúc", "Bộ interview advanced", "Bộ interview system-design"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Messaging Và Consistency",
+              "goal": "Hiểu queue, broker, outbox và vì sao ghi phân tán lại khó.",
+              "tasks": [
+                "Học các phần về queue và broker trong site Advanced.",
+                "Tự ghi chú sự khác nhau giữa dual-write trực tiếp và outbox.",
+                "Giải thích idempotency và chuyện giao trùng với một ví dụ cụ thể.",
+                "Review một sơ đồ và chỉ ra nơi inconsistency có thể xuất hiện."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Các Mẫu Reliability",
+              "goal": "Suy luận rõ về retry, timeout, fallback và graceful degradation.",
+              "tasks": [
+                "Ôn lại các khái niệm timeout, retry và circuit breaker.",
+                "Viết một ghi chú thiết kế ngắn về khi nào retry có ích và khi nào nó làm lỗi tệ hơn.",
+                "Lấy một kịch bản dependency bị outage và map sang fallback cùng hành vi suy giảm.",
+                "Giải thích sự khác nhau giữa fail fast và silent degradation."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Observability Và Delivery",
+              "goal": "Học cách tư duy theo tín hiệu, độ an toàn rollout và sự rõ ràng khi vận hành.",
+              "tasks": [
+                "Ôn lại log, metrics, traces, liveness và readiness.",
+                "Mô tả một kế hoạch release an toàn cần gì trước và sau khi deploy.",
+                "Tóm tắt ba metrics bạn sẽ theo dõi khi queue bị lag hoặc service bị quá tải.",
+                "Liệt kê một alert gây ồn và một alert thật sự hữu ích cho quyết định."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Scaling Và Trade-off Năng Lực",
+              "goal": "Tư duy theo throughput, bottleneck và cách tối ưu cục bộ làm đổi hành vi hệ thống.",
+              "tasks": [
+                "Ôn các câu hỏi về scaling, queue lag, cache và read path.",
+                "Giải thích một trường hợp average latency che giấu nỗi đau thực sự của người dùng.",
+                "So sánh horizontal scaling với việc giảm công việc trên mỗi request.",
+                "Ghi lại nơi batching giúp ích và nơi nó làm xấu tail latency."
+              ]
+            },
+            {
+              "id": "week-5",
+              "title": "Tuần Review Kiến Trúc",
+              "goal": "Nối các khái niệm lại bằng cách review một luồng production hoàn chỉnh.",
+              "tasks": [
+                "Đi hết một capstone hoặc sơ đồ kiến trúc trong site Advanced từ đầu đến cuối.",
+                "Liệt kê các điểm lỗi chính và biện pháp giảm thiểu cho từng điểm.",
+                "Trả lời bằng văn bản năm câu interview advanced theo kiểu có phân tích trade-off.",
+                "Viết một mock incident summary dựa trên lỗi queue hoặc dependency."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "interview-cycle",
+          "level": "Interview",
+          "name": "Chu Kỳ Luyện Phỏng Vấn",
+          "summary": "Vòng 4 tuần sâu hơn để luyện bộ câu hỏi, chất lượng giải thích, cách diễn đạt song ngữ và áp lực mock.",
+          "duration": "4 tuần",
+          "outcome": "Trả lời nhanh hơn, ít vòng vo hơn và chắc hơn về diễn đạt kỹ thuật bằng cả tiếng Anh lẫn tiếng Việt.",
+          "focus": ["làm quiz", "giải thích", "từ vựng", "ôn nhanh", "mock answer"],
+          "deliverables": [
+            "Ít nhất ba bộ quiz hoàn thành",
+            "Mười câu trả lời được viết lại bằng lời của bạn",
+            "Một bản mock interview transcript hoặc note"
+          ],
+          "milestones": [
+            "Giải thích chủ đề cốt lõi mà không cần mở đáp án trước",
+            "Trả lời trade-off theo cấu trúc thay vì ứng biến rời rạc",
+            "Chuyển giữa VI và EN mượt hơn cho thuật ngữ kỹ thuật"
+          ],
+          "resources": ["Bộ interview basic", "Bộ interview fresher", "Bộ interview intermediate", "Bộ interview bilingual", "Site nguồn phỏng vấn"],
+          "weeks": [
+            {
+              "id": "week-1",
+              "title": "Ôn Basic Và Fresher",
+              "goal": "Làm mới lại Python cốt lõi và cải thiện cách giải thích ngắn gọn, chính xác.",
+              "tasks": [
+                "Hoàn thành một bộ câu hỏi code basic và một bộ interview fresher.",
+                "Viết lại ba câu trả lời theo lời của bạn sau khi xem đáp án.",
+                "Đánh dấu các chủ đề bạn còn ngập ngừng và trả chúng về phần Foundation để ôn lại.",
+                "Luyện nói hai câu trả lời ngắn mà không chèn filler words."
+              ]
+            },
+            {
+              "id": "week-2",
+              "title": "Luyện Intermediate Và Theo Vai Trò",
+              "goal": "Trả lời nhanh hơn ở các phần API, database và trade-off triển khai.",
+              "tasks": [
+                "Hoàn thành một bộ câu hỏi intermediate hoặc thiên về backend.",
+                "Luyện nói hai câu trả lời bằng tiếng Anh và hai câu bằng tiếng Việt.",
+                "Ghi lại mọi câu bạn hiểu khái niệm nhưng diễn đạt còn vấp.",
+                "Nhóm các câu sai theo concept gap, wording gap hoặc attention gap."
+              ]
+            },
+            {
+              "id": "week-3",
+              "title": "Advanced Và Mock Review",
+              "goal": "Chuyển từ học thuộc sang suy luận có cấu trúc dưới áp lực thời gian.",
+              "tasks": [
+                "Làm một bộ advanced hoặc system-design dưới áp lực thời gian.",
+                "Viết một câu trả lời mock theo khung: bối cảnh, trade-off, rủi ro, giảm thiểu.",
+                "Ôn bộ song ngữ để chắc hơn về cách diễn đạt kỹ thuật ở cả hai ngôn ngữ.",
+                "Tự ghi âm một câu trả lời và nghe lại xem chỗ nào còn mơ hồ."
+              ]
+            },
+            {
+              "id": "week-4",
+              "title": "Review Nguồn Và Gom Kiến Thức",
+              "goal": "Dùng nguồn bên ngoài có chọn lọc và gom lại những gì thật sự đáng giữ.",
+              "tasks": [
+                "Đọc hai nguồn curated từ site sources và chỉ rút ra các mẫu thật sự hữu ích.",
+                "Tạo một cheat list về các bẫy phỏng vấn hay lặp lại và dạng trả lời mạnh hơn.",
+                "Làm lại các câu sai của tuần trước trước khi mở thêm câu mới.",
+                "Viết một bản tổng kết các chủ đề vẫn cần project thực tế để hiểu sâu hơn."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

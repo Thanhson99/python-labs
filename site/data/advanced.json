@@ -1,6 +1,11 @@
 {
-  "generated_at": "2026-03-13T06:03:16.596371+00:00",
+  "generated_at": "2026-05-05T07:44:32.926020+00:00",
   "site": "advanced",
+  "default_locale": "en",
+  "supported_locales": [
+    "en",
+    "vi"
+  ],
   "title": "Python Advanced Architecture Track",
   "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
   "example_root": "learning-path/advanced",
@@ -818,5 +823,1767 @@
       ],
       "level": "advanced"
     }
-  ]
+  ],
+  "locales": {
+    "en": {
+      "title": "Python Advanced Architecture Track",
+      "subtitle": "Production roadmap: microservices, queues, streams, reliability, platform engineering.",
+      "ui": {
+        "hero": {
+          "eyebrow": "Python Labs",
+          "back_to_tracks": "Back to track selection",
+          "example_root": "Example root",
+          "static_note": "Static hosting mode: GitHub Pages can browse the roadmap and examples without the Python runner API.",
+          "local_runner_enabled": "Local runner is available on localhost."
+        },
+        "sections": {
+          "cheat_sheets": "Advanced Cheat Sheet Library",
+          "roadmap": "Architecture Roadmap",
+          "java_python_map": "Java to Python Stack Mapping",
+          "architecture_diagrams": "Architecture Diagrams",
+          "mini_projects": "Mini Projects",
+          "extra_examples": "Extra Pattern Library",
+          "open_source_stacks": "Open-Source Integration Stacks",
+          "capstone_projects": "Capstone Applications",
+          "recommended_services": "Recommended Services"
+        },
+        "stats": {
+          "cheat_items": "Cheat Items",
+          "roadmap_stages": "Roadmap Stages",
+          "completed": "Completed",
+          "track": "Track"
+        },
+        "fields": {
+          "application": "Application",
+          "goals": "Goals",
+          "build": "Build",
+          "tools": "Tools",
+          "example_code": "Example code",
+          "path": "Path",
+          "focus": "Focus",
+          "entrypoint": "Entrypoint",
+          "topics": "Topics",
+          "use_case": "Use case",
+          "java": "Java",
+          "python": "Python",
+          "when": "Use when",
+          "scope": "Scope"
+        },
+        "roadmap": {
+          "mark_completed": "Mark completed",
+          "run_example": "Run example",
+          "run_file": "Run file"
+        },
+        "runner": {
+          "heading": "Example Runner Output",
+          "placeholder": "Select a roadmap item and click \"Run example\".",
+          "disabled": "Static hosting mode detected. Run examples locally from the repository for live execution.",
+          "running": "Running",
+          "request_failed": "Runner request failed"
+        },
+        "footer": {
+          "generated_at": "Track data generated at"
+        },
+        "common": {
+          "general": "General",
+          "none": "(none)"
+        }
+      },
+      "cheat_sheets": [
+        {
+          "category": "Architecture",
+          "title": "Layered Service",
+          "summary": "Transport -> application -> domain -> infrastructure.",
+          "snippet": "api -> use_case -> domain_model -> repository",
+          "application": "Keep business logic framework-agnostic.",
+          "tags": [
+            "architecture",
+            "clean"
+          ]
+        },
+        {
+          "category": "Architecture",
+          "title": "Hexagonal Ports/Adapters",
+          "summary": "Define ports as interfaces; adapters integrate vendors.",
+          "snippet": "class PriceFeedPort(Protocol):\\n    def latest(self, symbol: str) -> float: ...",
+          "application": "Swap API providers without core rewrite.",
+          "tags": [
+            "ports",
+            "adapters"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "RabbitMQ",
+          "summary": "Queue-based work distribution for tasks.",
+          "snippet": "aio-pika / pika + dead-letter queue + retry headers",
+          "application": "Email, image generation, asynchronous jobs.",
+          "tags": [
+            "rabbitmq",
+            "queue"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "Kafka",
+          "summary": "Event streaming and durable logs.",
+          "snippet": "aiokafka producer/consumer + partitioned topics",
+          "application": "Audit streams, analytics, CDC pipelines.",
+          "tags": [
+            "kafka",
+            "stream"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "Redis Streams",
+          "summary": "Lightweight stream + consumer groups.",
+          "snippet": "XADD / XREADGROUP for event fan-out",
+          "application": "Smaller event-driven systems.",
+          "tags": [
+            "redis",
+            "stream"
+          ]
+        },
+        {
+          "category": "Task Processing",
+          "title": "Celery",
+          "summary": "Distributed task queue with retries and scheduling.",
+          "snippet": "@celery.task(bind=True, autoretry_for=(Exception,), retry_backoff=True)",
+          "application": "Long-running async jobs in production.",
+          "tags": [
+            "celery",
+            "workers"
+          ]
+        },
+        {
+          "category": "Task Processing",
+          "title": "Dramatiq / RQ",
+          "summary": "Simpler alternatives for background workers.",
+          "snippet": "@dramatiq.actor(max_retries=5)",
+          "application": "Small and medium queue workloads.",
+          "tags": [
+            "dramatiq",
+            "rq"
+          ]
+        },
+        {
+          "category": "API",
+          "title": "FastAPI",
+          "summary": "Typed REST APIs with OpenAPI generation.",
+          "snippet": "@app.get('/health')\\ndef health() -> dict[str, str]:\\n    return {'status': 'ok'}",
+          "application": "Service endpoints + docs first workflow.",
+          "tags": [
+            "fastapi",
+            "api"
+          ]
+        },
+        {
+          "category": "API",
+          "title": "gRPC",
+          "summary": "Binary RPC for internal service-to-service traffic.",
+          "snippet": "protobuf contracts + generated Python stubs",
+          "application": "Low latency internal microservice calls.",
+          "tags": [
+            "grpc",
+            "protobuf"
+          ]
+        },
+        {
+          "category": "Data",
+          "title": "SQLAlchemy 2",
+          "summary": "Unit-of-work and repository patterns.",
+          "snippet": "session.execute(select(User).where(User.id == uid)).scalar_one_or_none()",
+          "application": "Reliable relational data layer.",
+          "tags": [
+            "sqlalchemy",
+            "postgres"
+          ]
+        },
+        {
+          "category": "Data",
+          "title": "Alembic Migrations",
+          "summary": "Version schema changes safely.",
+          "snippet": "alembic revision --autogenerate -m 'add event table'",
+          "application": "Zero-surprise database deployment.",
+          "tags": [
+            "alembic",
+            "migration"
+          ]
+        },
+        {
+          "category": "Data",
+          "title": "Async DB Access",
+          "summary": "Use async driver for high-concurrency APIs.",
+          "snippet": "asyncpg / sqlalchemy.ext.asyncio",
+          "application": "I/O heavy API services.",
+          "tags": [
+            "async",
+            "database"
+          ]
+        },
+        {
+          "category": "Caching",
+          "title": "Redis Cache Aside",
+          "summary": "Read-through with TTL and invalidation rules.",
+          "snippet": "value = redis.get(key) or load_from_db()",
+          "application": "Reduce DB load and response latency.",
+          "tags": [
+            "redis",
+            "cache"
+          ]
+        },
+        {
+          "category": "Observability",
+          "title": "Metrics",
+          "summary": "Expose Prometheus counters and histograms.",
+          "snippet": "REQUEST_LATENCY.labels(route='/verify').observe(seconds)",
+          "application": "SLO tracking and alerting.",
+          "tags": [
+            "prometheus",
+            "metrics"
+          ]
+        },
+        {
+          "category": "Observability",
+          "title": "Tracing",
+          "summary": "Propagate trace-id across services.",
+          "snippet": "OpenTelemetry instrumentation + OTLP exporter",
+          "application": "Debug distributed latency spikes.",
+          "tags": [
+            "otel",
+            "tracing"
+          ]
+        },
+        {
+          "category": "Observability",
+          "title": "Structured Logs",
+          "summary": "JSON logs with correlation id.",
+          "snippet": "{'trace_id': tid, 'event': 'order_confirmed', 'service': 'billing'}",
+          "application": "Centralized log analysis (ELK/Loki).",
+          "tags": [
+            "logs",
+            "json"
+          ]
+        },
+        {
+          "category": "Security",
+          "title": "JWT and Key Rotation",
+          "summary": "Use short token expiry and rotate signing keys.",
+          "snippet": "kid-based key set + refresh token revocation list",
+          "application": "Auth in microservice gateways.",
+          "tags": [
+            "jwt",
+            "auth"
+          ]
+        },
+        {
+          "category": "Security",
+          "title": "Secrets Management",
+          "summary": "Keep secrets outside image and repo.",
+          "snippet": "Vault / AWS Secrets Manager / Doppler",
+          "application": "Secure production config.",
+          "tags": [
+            "secrets",
+            "ops"
+          ]
+        },
+        {
+          "category": "Security",
+          "title": "Rate Limit",
+          "summary": "Protect endpoints from abuse.",
+          "snippet": "token bucket by IP/API key",
+          "application": "Public API hardening.",
+          "tags": [
+            "rate-limit",
+            "api"
+          ]
+        },
+        {
+          "category": "Resilience",
+          "title": "Circuit Breaker",
+          "summary": "Trip on repeated downstream failures.",
+          "snippet": "closed -> open -> half-open states",
+          "application": "Prevent cascading outages.",
+          "tags": [
+            "circuit-breaker",
+            "reliability"
+          ]
+        },
+        {
+          "category": "Resilience",
+          "title": "Idempotency Key",
+          "summary": "Handle duplicate retry requests safely.",
+          "snippet": "X-Idempotency-Key persisted with response hash",
+          "application": "Payments and order APIs.",
+          "tags": [
+            "idempotency",
+            "api"
+          ]
+        },
+        {
+          "category": "Resilience",
+          "title": "Outbox Pattern",
+          "summary": "Publish events reliably with DB transaction.",
+          "snippet": "write business row + outbox row in same tx",
+          "application": "Avoid lost events after commit.",
+          "tags": [
+            "outbox",
+            "event-driven"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "title": "Docker Multi-stage",
+          "summary": "Slim production image with pinned base.",
+          "snippet": "builder stage installs deps, runtime stage runs app",
+          "application": "Fast CI and smaller attack surface.",
+          "tags": [
+            "docker",
+            "deployment"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "title": "Kubernetes Basics",
+          "summary": "Use Deployment, Service, ConfigMap, Secret, HPA.",
+          "snippet": "readinessProbe + livenessProbe + resource limits",
+          "application": "Scalable service orchestration.",
+          "tags": [
+            "k8s",
+            "cloud"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "title": "Blue/Green + Canary",
+          "summary": "Gradual rollout strategy reduces blast radius.",
+          "snippet": "10% traffic canary then full promotion",
+          "application": "Safer releases for critical APIs.",
+          "tags": [
+            "release",
+            "sre"
+          ]
+        },
+        {
+          "category": "Testing",
+          "title": "Contract Testing",
+          "summary": "Verify API compatibility between services.",
+          "snippet": "consumer-driven contracts (Pact) in CI",
+          "application": "Microservice integration stability.",
+          "tags": [
+            "contract",
+            "testing"
+          ]
+        },
+        {
+          "category": "Testing",
+          "title": "Load Testing",
+          "summary": "Measure throughput and latency budget.",
+          "snippet": "k6 scenarios with p95 and p99 thresholds",
+          "application": "Capacity planning before launch.",
+          "tags": [
+            "performance",
+            "load-test"
+          ]
+        },
+        {
+          "category": "CI/CD",
+          "title": "Pipeline Gates",
+          "summary": "lint -> unit -> integration -> security scan -> deploy",
+          "snippet": "fail fast on quality gates",
+          "application": "Reliable automated release process.",
+          "tags": [
+            "cicd",
+            "devops"
+          ]
+        },
+        {
+          "category": "Domain",
+          "title": "Event Modeling",
+          "summary": "Name events in business language.",
+          "snippet": "user_registered, payment_authorized, order_shipped",
+          "application": "Clear event-driven design.",
+          "tags": [
+            "ddd",
+            "events"
+          ]
+        },
+        {
+          "category": "Domain",
+          "title": "Saga Pattern",
+          "summary": "Coordinate distributed transactions.",
+          "snippet": "reserve -> charge -> confirm / compensate",
+          "application": "Order + payment orchestration.",
+          "tags": [
+            "saga",
+            "distributed"
+          ]
+        }
+      ],
+      "roadmap": [
+        {
+          "stage": "Phase A: Service Contracts",
+          "goals": [
+            "define API schemas (OpenAPI/protobuf)",
+            "enforce versioning strategy",
+            "set backward compatibility rules"
+          ],
+          "build": [
+            "contract-first user service",
+            "api lint pipeline"
+          ],
+          "tools": [
+            "FastAPI",
+            "Pydantic",
+            "protobuf",
+            "spectral"
+          ],
+          "example_path": "learning-path/advanced/phase-a-service-contracts",
+          "example_file": "learning-path/advanced/phase-a-service-contracts/pydantic_models.py"
+        },
+        {
+          "stage": "Phase B: Event-Driven Core",
+          "goals": [
+            "choose queue vs stream",
+            "implement producer/consumer",
+            "add dead letter and retry policies"
+          ],
+          "build": [
+            "order event pipeline",
+            "notification worker"
+          ],
+          "tools": [
+            "RabbitMQ",
+            "Kafka",
+            "Redis Streams"
+          ],
+          "example_path": "learning-path/advanced/phase-b-event-driven-core",
+          "example_file": "learning-path/advanced/phase-b-event-driven-core/rabbitmq_worker_example.py"
+        },
+        {
+          "stage": "Phase C: Consistency Patterns",
+          "goals": [
+            "outbox/inbox",
+            "idempotency keys",
+            "saga orchestration and compensation"
+          ],
+          "build": [
+            "payment + order saga"
+          ],
+          "tools": [
+            "PostgreSQL",
+            "Celery",
+            "Kafka"
+          ],
+          "example_path": "learning-path/advanced/phase-c-consistency-patterns",
+          "example_file": "learning-path/advanced/phase-c-consistency-patterns/outbox_pattern_example.py"
+        },
+        {
+          "stage": "Phase D: Data Platform",
+          "goals": [
+            "transactional database design",
+            "read model/cache strategy",
+            "migration governance"
+          ],
+          "build": [
+            "billing ledger",
+            "query side read API"
+          ],
+          "tools": [
+            "SQLAlchemy",
+            "Alembic",
+            "Redis"
+          ],
+          "example_path": "learning-path/advanced/phase-d-data-platform",
+          "example_file": "learning-path/advanced/phase-d-data-platform/repository_pattern.py"
+        },
+        {
+          "stage": "Phase E: Reliability Engineering",
+          "goals": [
+            "timeout budgets and retries",
+            "circuit breaker and fallback",
+            "bulkhead isolation"
+          ],
+          "build": [
+            "resilient API adapter layer"
+          ],
+          "tools": [
+            "httpx",
+            "tenacity",
+            "rate limiting"
+          ],
+          "example_path": "learning-path/advanced/phase-e-reliability-engineering",
+          "example_file": "learning-path/advanced/phase-e-reliability-engineering/resilient_http_client.py"
+        },
+        {
+          "stage": "Phase F: Security",
+          "goals": [
+            "OIDC/JWT architecture",
+            "key rotation",
+            "secrets and policy management"
+          ],
+          "build": [
+            "auth gateway",
+            "token introspection service"
+          ],
+          "tools": [
+            "Auth0/Keycloak",
+            "Vault",
+            "OPA"
+          ],
+          "example_path": "learning-path/advanced/phase-f-security",
+          "example_file": "learning-path/advanced/phase-f-security/jwt_service_example.py"
+        },
+        {
+          "stage": "Phase G: Observability",
+          "goals": [
+            "golden signals dashboards",
+            "distributed tracing",
+            "alert routing and runbooks"
+          ],
+          "build": [
+            "full telemetry stack for 3 services"
+          ],
+          "tools": [
+            "Prometheus",
+            "Grafana",
+            "OpenTelemetry",
+            "Loki"
+          ],
+          "example_path": "learning-path/advanced/phase-g-observability",
+          "example_file": "learning-path/advanced/phase-g-observability/structured_logging_example.py"
+        },
+        {
+          "stage": "Phase H: Platform and Delivery",
+          "goals": [
+            "container hardening",
+            "kubernetes deployment templates",
+            "canary/blue-green release"
+          ],
+          "build": [
+            "production deployment blueprint"
+          ],
+          "tools": [
+            "Docker",
+            "Kubernetes",
+            "Argo Rollouts"
+          ],
+          "example_path": "learning-path/advanced/phase-h-platform-delivery",
+          "example_file": ""
+        },
+        {
+          "stage": "Phase I: Governance and Cost",
+          "goals": [
+            "service ownership model",
+            "slo and error budgets",
+            "cost/performance optimization"
+          ],
+          "build": [
+            "team service catalog + operational playbook"
+          ],
+          "tools": [
+            "Backstage",
+            "FinOps dashboards"
+          ],
+          "example_path": "learning-path/advanced/phase-i-governance-and-cost",
+          "example_file": ""
+        }
+      ],
+      "java_python_map": [
+        {
+          "domain": "Message Queue",
+          "java_stack": "RabbitMQ + Spring AMQP",
+          "python_stack": "RabbitMQ + aio-pika / pika + Celery",
+          "when": "Asynchronous job processing, delayed tasks"
+        },
+        {
+          "domain": "Event Streaming",
+          "java_stack": "Kafka + Spring Kafka",
+          "python_stack": "Kafka + aiokafka / confluent-kafka",
+          "when": "Event-driven architecture, audit logs, analytics"
+        },
+        {
+          "domain": "REST API",
+          "java_stack": "Spring Boot",
+          "python_stack": "FastAPI / Flask",
+          "when": "Public/internal HTTP services"
+        },
+        {
+          "domain": "ORM",
+          "java_stack": "JPA / Hibernate",
+          "python_stack": "SQLAlchemy",
+          "when": "Relational persistence with repository patterns"
+        },
+        {
+          "domain": "Batch Jobs",
+          "java_stack": "Spring Batch",
+          "python_stack": "Celery beat / Airflow",
+          "when": "Scheduled ETL or periodic processing"
+        },
+        {
+          "domain": "Service Discovery",
+          "java_stack": "Eureka",
+          "python_stack": "Consul / Kubernetes DNS",
+          "when": "Dynamic service-to-service resolution"
+        },
+        {
+          "domain": "Config Server",
+          "java_stack": "Spring Cloud Config",
+          "python_stack": "env + Vault + config service",
+          "when": "Centralized config management"
+        },
+        {
+          "domain": "Gateway",
+          "java_stack": "Spring Cloud Gateway",
+          "python_stack": "Kong / Traefik / Nginx + FastAPI",
+          "when": "Auth, routing, throttling, request policy"
+        },
+        {
+          "domain": "Observability",
+          "java_stack": "Micrometer + Zipkin",
+          "python_stack": "Prometheus + OpenTelemetry + Grafana",
+          "when": "Metrics and tracing at scale"
+        }
+      ],
+      "open_source_stacks": [
+        {
+          "name": "Event-Driven Core",
+          "use_case": "Domain events and asynchronous service communication.",
+          "packages": [
+            "aiokafka",
+            "pydantic",
+            "tenacity"
+          ]
+        },
+        {
+          "name": "Queue Worker Core",
+          "use_case": "Reliable background processing with retries.",
+          "packages": [
+            "celery",
+            "rabbitmq",
+            "redis"
+          ]
+        },
+        {
+          "name": "Service Platform Core",
+          "use_case": "HTTP API + DB + migration + cache baseline.",
+          "packages": [
+            "fastapi",
+            "sqlalchemy",
+            "alembic",
+            "redis",
+            "httpx"
+          ]
+        },
+        {
+          "name": "Observability Core",
+          "use_case": "Metrics, tracing, and log correlation.",
+          "packages": [
+            "prometheus-client",
+            "opentelemetry-sdk",
+            "structlog"
+          ]
+        },
+        {
+          "name": "Security Core",
+          "use_case": "AuthN/AuthZ and secret management.",
+          "packages": [
+            "pyjwt",
+            "passlib",
+            "authlib",
+            "hvac"
+          ]
+        }
+      ],
+      "mini_projects": [
+        {
+          "name": "Advanced Milestone 1: Event Pipeline Starter",
+          "path": "learning-path/projects/advanced-event-pipeline-starter",
+          "focus": "Producer-consumer flow + retry + outbox pattern",
+          "stack": [
+            "Kafka",
+            "RabbitMQ",
+            "SQLite",
+            "Python workers"
+          ]
+        },
+        {
+          "name": "Advanced Milestone 2: Observable Service Platform",
+          "path": "learning-path/projects/advanced-observable-service-platform",
+          "focus": "API + DB + metrics + structured logging + deploy templates",
+          "stack": [
+            "FastAPI",
+            "PostgreSQL",
+            "Prometheus",
+            "OpenTelemetry",
+            "Docker"
+          ]
+        },
+        {
+          "name": "Advanced Milestone 3: Capstone E2E Platform",
+          "path": "learning-path/projects/capstone-e2e-platform",
+          "focus": "API + queue + DB + metrics + dashboard + deploy templates + tests",
+          "stack": [
+            "http.server",
+            "sqlite3",
+            "pytest",
+            "docker-compose",
+            "k8s manifest"
+          ]
+        }
+      ],
+      "architecture_diagrams": [
+        {
+          "title": "RabbitMQ Worker Flow",
+          "file": "assets/diagrams/rabbitmq-flow.svg"
+        },
+        {
+          "title": "Kafka Stream Processing Flow",
+          "file": "assets/diagrams/kafka-flow.svg"
+        },
+        {
+          "title": "Outbox Pattern Transaction Flow",
+          "file": "assets/diagrams/outbox-pattern.svg"
+        },
+        {
+          "title": "Saga Orchestration Flow",
+          "file": "assets/diagrams/saga-flow.svg"
+        }
+      ],
+      "extra_examples": [
+        {
+          "title": "Retry backoff",
+          "path": "learning-path/advanced/extras/retry-backoff/example.py"
+        },
+        {
+          "title": "Circuit breaker",
+          "path": "learning-path/advanced/extras/circuit-breaker/example.py"
+        },
+        {
+          "title": "Idempotency middleware",
+          "path": "learning-path/advanced/extras/idempotency-middleware/example.py"
+        },
+        {
+          "title": "Saga compensation",
+          "path": "learning-path/advanced/extras/saga-compensation/example.py"
+        },
+        {
+          "title": "Outbox relay",
+          "path": "learning-path/advanced/extras/outbox-relay/example.py"
+        },
+        {
+          "title": "Contract testing",
+          "path": "learning-path/advanced/extras/contract-testing/example.py"
+        },
+        {
+          "title": "Pattern tests",
+          "path": "learning-path/advanced/extras/tests/test_patterns.py"
+        }
+      ],
+      "capstone_projects": [
+        {
+          "name": "Realtime Market Intelligence Platform",
+          "scope": "ingestion -> processing -> alerting -> dashboard",
+          "stack": [
+            "FastAPI",
+            "Kafka",
+            "Redis",
+            "PostgreSQL",
+            "Grafana"
+          ]
+        },
+        {
+          "name": "E-commerce Event Microservices",
+          "scope": "catalog, cart, payment, shipment, notification",
+          "stack": [
+            "FastAPI",
+            "RabbitMQ",
+            "Celery",
+            "OpenTelemetry",
+            "Kubernetes"
+          ]
+        },
+        {
+          "name": "AI Workflow Orchestrator",
+          "scope": "job queue, model adapters, usage metering, billing",
+          "stack": [
+            "FastAPI",
+            "Dramatiq",
+            "Redis",
+            "PostgreSQL",
+            "Prometheus"
+          ]
+        }
+      ],
+      "recommended_services": [
+        {
+          "name": "composio",
+          "path": "services/composio",
+          "entrypoint": "services/composio/upload-video-youtube/app.py",
+          "python_files": 4,
+          "requirements": [],
+          "tech_stack": [
+            "composio_langchain",
+            "configparser",
+            "flask",
+            "langchain",
+            "langchain_openai",
+            "requests"
+          ],
+          "topics": [
+            "API orchestration",
+            "automation workflows",
+            "template rendering"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "crypto-bot",
+          "path": "services/crypto-bot",
+          "entrypoint": "services/crypto-bot/main.py",
+          "python_files": 29,
+          "requirements": [
+            "python-telegram-bot",
+            "python-dotenv",
+            "apscheduler",
+            "feedparser",
+            "pytest"
+          ],
+          "tech_stack": [
+            "apscheduler",
+            "difflib",
+            "dotenv",
+            "feedparser",
+            "modules",
+            "pytest",
+            "python-dotenv",
+            "python-telegram-bot",
+            "requests",
+            "telegram"
+          ],
+          "topics": [
+            "telegram bot",
+            "schedulers",
+            "external APIs",
+            "testing"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "dropshipping-bot",
+          "path": "services/dropshipping-bot",
+          "entrypoint": "services/dropshipping-bot/configs/base_config.py",
+          "python_files": 6,
+          "requirements": [],
+          "tech_stack": [
+            "dotenv",
+            "services",
+            "utils"
+          ],
+          "topics": [
+            "service architecture",
+            "configuration management"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "smart-contract",
+          "path": "services/smart-contract",
+          "entrypoint": "services/smart-contract/main.py",
+          "python_files": 1,
+          "requirements": [],
+          "tech_stack": [
+            "web3"
+          ],
+          "topics": [
+            "web3",
+            "blockchain transactions",
+            "contract deployment"
+          ],
+          "level": "advanced"
+        }
+      ]
+    },
+    "vi": {
+      "title": "Lộ trình Kiến Trúc Python Nâng Cao",
+      "subtitle": "Lộ trình production về microservice, queue, stream, reliability và platform engineering.",
+      "ui": {
+        "hero": {
+          "eyebrow": "Python Labs",
+          "back_to_tracks": "Quay lại trang chọn lộ trình",
+          "example_root": "Thư mục ví dụ",
+          "static_note": "Chế độ static: GitHub Pages có thể duyệt lộ trình và ví dụ mà không cần API chạy Python.",
+          "local_runner_enabled": "Có thể chạy ví dụ trực tiếp khi mở site bằng localhost."
+        },
+        "sections": {
+          "cheat_sheets": "Thư viện Cheat Sheet Nâng Cao",
+          "roadmap": "Lộ trình Kiến Trúc",
+          "java_python_map": "Bản đồ Stack Java sang Python",
+          "architecture_diagrams": "Sơ đồ Kiến Trúc",
+          "mini_projects": "Mini Project",
+          "extra_examples": "Thư viện Pattern Mở rộng",
+          "open_source_stacks": "Stack Tích hợp Mã nguồn mở",
+          "capstone_projects": "Ứng dụng Capstone",
+          "recommended_services": "Service Nên Tham Khảo"
+        },
+        "stats": {
+          "cheat_items": "Mục Cheat Sheet",
+          "roadmap_stages": "Chặng học",
+          "completed": "Hoàn thành",
+          "track": "Lộ trình"
+        },
+        "fields": {
+          "application": "Ứng dụng",
+          "goals": "Mục tiêu",
+          "build": "Nên làm",
+          "tools": "Công cụ",
+          "example_code": "Mã ví dụ",
+          "path": "Đường dẫn",
+          "focus": "Trọng tâm",
+          "entrypoint": "Điểm vào",
+          "topics": "Chủ đề",
+          "use_case": "Tình huống dùng",
+          "java": "Java",
+          "python": "Python",
+          "when": "Dùng khi",
+          "scope": "Phạm vi"
+        },
+        "roadmap": {
+          "mark_completed": "Đánh dấu hoàn thành",
+          "run_example": "Chạy ví dụ",
+          "run_file": "Chạy file"
+        },
+        "runner": {
+          "heading": "Kết quả chạy ví dụ",
+          "placeholder": "Chọn một mục trong lộ trình rồi bấm \"Chạy ví dụ\".",
+          "disabled": "Đang ở chế độ static. Hãy chạy ví dụ cục bộ từ repository nếu cần thực thi trực tiếp.",
+          "running": "Đang chạy",
+          "request_failed": "Gọi runner thất bại"
+        },
+        "footer": {
+          "generated_at": "Dữ liệu lộ trình được tạo lúc"
+        },
+        "common": {
+          "general": "Tổng quát",
+          "none": "(không có)"
+        }
+      },
+      "cheat_sheets": [
+        {
+          "category": "Kiến trúc",
+          "title": "Service phân lớp",
+          "summary": "Transport -> application -> domain -> infrastructure.",
+          "snippet": "api -> use_case -> domain_model -> repository",
+          "application": "Giữ business logic độc lập với framework.",
+          "tags": [
+            "architecture",
+            "clean"
+          ]
+        },
+        {
+          "category": "Kiến trúc",
+          "title": "Hexagonal Ports/Adapters",
+          "summary": "Định nghĩa port như interface; adapter dùng để tích hợp vendor.",
+          "snippet": "class PriceFeedPort(Protocol):\\n    def latest(self, symbol: str) -> float: ...",
+          "application": "Đổi nhà cung cấp API mà không phải viết lại core.",
+          "tags": [
+            "ports",
+            "adapters"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "RabbitMQ",
+          "summary": "Phân phối công việc theo mô hình queue.",
+          "snippet": "aio-pika / pika + dead-letter queue + retry headers",
+          "application": "Email, tạo ảnh, job bất đồng bộ.",
+          "tags": [
+            "rabbitmq",
+            "queue"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "Kafka",
+          "summary": "Event streaming và log bền vững.",
+          "snippet": "aiokafka producer/consumer + partitioned topics",
+          "application": "Luồng audit, analytics, CDC pipeline.",
+          "tags": [
+            "kafka",
+            "stream"
+          ]
+        },
+        {
+          "category": "Messaging",
+          "title": "Redis Streams",
+          "summary": "Stream nhẹ với consumer group.",
+          "snippet": "XADD / XREADGROUP for event fan-out",
+          "application": "Hệ thống event-driven quy mô nhỏ hơn.",
+          "tags": [
+            "redis",
+            "stream"
+          ]
+        },
+        {
+          "category": "Xử lý tác vụ",
+          "title": "Celery",
+          "summary": "Task queue phân tán có retry và scheduling.",
+          "snippet": "@celery.task(bind=True, autoretry_for=(Exception,), retry_backoff=True)",
+          "application": "Job async chạy lâu trong production.",
+          "tags": [
+            "celery",
+            "workers"
+          ]
+        },
+        {
+          "category": "Xử lý tác vụ",
+          "title": "Dramatiq / RQ",
+          "summary": "Giải pháp nền đơn giản hơn cho background worker.",
+          "snippet": "@dramatiq.actor(max_retries=5)",
+          "application": "Queue workload quy mô nhỏ và vừa.",
+          "tags": [
+            "dramatiq",
+            "rq"
+          ]
+        },
+        {
+          "category": "API",
+          "title": "FastAPI",
+          "summary": "REST API có type rõ ràng và sinh OpenAPI.",
+          "snippet": "@app.get('/health')\\ndef health() -> dict[str, str]:\\n    return {'status': 'ok'}",
+          "application": "Endpoint service và tài liệu theo hướng docs-first.",
+          "tags": [
+            "fastapi",
+            "api"
+          ]
+        },
+        {
+          "category": "API",
+          "title": "gRPC",
+          "summary": "Binary RPC cho giao tiếp service nội bộ.",
+          "snippet": "protobuf contracts + generated Python stubs",
+          "application": "Gọi nội bộ microservice độ trễ thấp.",
+          "tags": [
+            "grpc",
+            "protobuf"
+          ]
+        },
+        {
+          "category": "Dữ liệu",
+          "title": "SQLAlchemy 2",
+          "summary": "Mẫu unit-of-work và repository.",
+          "snippet": "session.execute(select(User).where(User.id == uid)).scalar_one_or_none()",
+          "application": "Tầng dữ liệu quan hệ đáng tin cậy.",
+          "tags": [
+            "sqlalchemy",
+            "postgres"
+          ]
+        },
+        {
+          "category": "Dữ liệu",
+          "title": "Alembic Migrations",
+          "summary": "Version hóa thay đổi schema an toàn.",
+          "snippet": "alembic revision --autogenerate -m 'add event table'",
+          "application": "Triển khai database ít bất ngờ hơn.",
+          "tags": [
+            "alembic",
+            "migration"
+          ]
+        },
+        {
+          "category": "Dữ liệu",
+          "title": "Async DB Access",
+          "summary": "Dùng async driver cho API có concurrency cao.",
+          "snippet": "asyncpg / sqlalchemy.ext.asyncio",
+          "application": "Phù hợp cho API nặng về I/O.",
+          "tags": [
+            "async",
+            "database"
+          ]
+        },
+        {
+          "category": "Caching",
+          "title": "Redis Cache Aside",
+          "summary": "Read-through với TTL và quy tắc invalidation.",
+          "snippet": "value = redis.get(key) or load_from_db()",
+          "application": "Giảm tải DB và giảm độ trễ phản hồi.",
+          "tags": [
+            "redis",
+            "cache"
+          ]
+        },
+        {
+          "category": "Quan sát hệ thống",
+          "title": "Metrics",
+          "summary": "Expose counter và histogram Prometheus.",
+          "snippet": "REQUEST_LATENCY.labels(route='/verify').observe(seconds)",
+          "application": "Theo dõi SLO và gắn cảnh báo.",
+          "tags": [
+            "prometheus",
+            "metrics"
+          ]
+        },
+        {
+          "category": "Quan sát hệ thống",
+          "title": "Tracing",
+          "summary": "Lan truyền trace-id qua nhiều service.",
+          "snippet": "OpenTelemetry instrumentation + OTLP exporter",
+          "application": "Debug spike độ trễ phân tán.",
+          "tags": [
+            "otel",
+            "tracing"
+          ]
+        },
+        {
+          "category": "Quan sát hệ thống",
+          "title": "Structured Logs",
+          "summary": "Log JSON có correlation id.",
+          "snippet": "{'trace_id': tid, 'event': 'order_confirmed', 'service': 'billing'}",
+          "application": "Phân tích log tập trung qua ELK/Loki.",
+          "tags": [
+            "logs",
+            "json"
+          ]
+        },
+        {
+          "category": "Bảo mật",
+          "title": "JWT và xoay khóa",
+          "summary": "Dùng thời hạn token ngắn và xoay khóa ký.",
+          "snippet": "kid-based key set + refresh token revocation list",
+          "application": "Auth trong gateway microservice.",
+          "tags": [
+            "jwt",
+            "auth"
+          ]
+        },
+        {
+          "category": "Bảo mật",
+          "title": "Quản lý secrets",
+          "summary": "Giữ secret ở ngoài image và repo.",
+          "snippet": "Vault / AWS Secrets Manager / Doppler",
+          "application": "Bảo vệ cấu hình production.",
+          "tags": [
+            "secrets",
+            "ops"
+          ]
+        },
+        {
+          "category": "Bảo mật",
+          "title": "Rate Limit",
+          "summary": "Bảo vệ endpoint khỏi lạm dụng.",
+          "snippet": "token bucket by IP/API key",
+          "application": "Gia cố public API.",
+          "tags": [
+            "rate-limit",
+            "api"
+          ]
+        },
+        {
+          "category": "Độ bền",
+          "title": "Circuit Breaker",
+          "summary": "Ngắt mạch khi downstream lỗi lặp lại.",
+          "snippet": "closed -> open -> half-open states",
+          "application": "Ngăn sự cố dây chuyền.",
+          "tags": [
+            "circuit-breaker",
+            "reliability"
+          ]
+        },
+        {
+          "category": "Độ bền",
+          "title": "Idempotency Key",
+          "summary": "Xử lý an toàn request retry bị trùng.",
+          "snippet": "X-Idempotency-Key persisted with response hash",
+          "application": "Payment API và order API.",
+          "tags": [
+            "idempotency",
+            "api"
+          ]
+        },
+        {
+          "category": "Độ bền",
+          "title": "Outbox Pattern",
+          "summary": "Phát event đáng tin cậy cùng transaction DB.",
+          "snippet": "write business row + outbox row in same tx",
+          "application": "Tránh mất event sau commit.",
+          "tags": [
+            "outbox",
+            "event-driven"
+          ]
+        },
+        {
+          "category": "Triển khai",
+          "title": "Docker Multi-stage",
+          "summary": "Image production gọn với base image đã pin phiên bản.",
+          "snippet": "builder stage installs deps, runtime stage runs app",
+          "application": "CI nhanh hơn và giảm attack surface.",
+          "tags": [
+            "docker",
+            "deployment"
+          ]
+        },
+        {
+          "category": "Triển khai",
+          "title": "Kubernetes Basics",
+          "summary": "Dùng Deployment, Service, ConfigMap, Secret, HPA.",
+          "snippet": "readinessProbe + livenessProbe + resource limits",
+          "application": "Điều phối service có thể mở rộng.",
+          "tags": [
+            "k8s",
+            "cloud"
+          ]
+        },
+        {
+          "category": "Triển khai",
+          "title": "Blue/Green + Canary",
+          "summary": "Triển khai dần để giảm blast radius.",
+          "snippet": "10% traffic canary then full promotion",
+          "application": "Release an toàn hơn cho API quan trọng.",
+          "tags": [
+            "release",
+            "sre"
+          ]
+        },
+        {
+          "category": "Testing",
+          "title": "Contract Testing",
+          "summary": "Xác minh tương thích API giữa các service.",
+          "snippet": "consumer-driven contracts (Pact) in CI",
+          "application": "Ổn định tích hợp microservice.",
+          "tags": [
+            "contract",
+            "testing"
+          ]
+        },
+        {
+          "category": "Testing",
+          "title": "Load Testing",
+          "summary": "Đo throughput và ngưỡng latency.",
+          "snippet": "k6 scenarios with p95 and p99 thresholds",
+          "application": "Lập kế hoạch capacity trước khi launch.",
+          "tags": [
+            "performance",
+            "load-test"
+          ]
+        },
+        {
+          "category": "CI/CD",
+          "title": "Pipeline Gates",
+          "summary": "lint -> unit -> integration -> security scan -> deploy",
+          "snippet": "fail fast on quality gates",
+          "application": "Quy trình release tự động đáng tin cậy.",
+          "tags": [
+            "cicd",
+            "devops"
+          ]
+        },
+        {
+          "category": "Domain",
+          "title": "Event Modeling",
+          "summary": "Đặt tên event bằng ngôn ngữ nghiệp vụ.",
+          "snippet": "user_registered, payment_authorized, order_shipped",
+          "application": "Thiết kế event-driven rõ ràng hơn.",
+          "tags": [
+            "ddd",
+            "events"
+          ]
+        },
+        {
+          "category": "Domain",
+          "title": "Saga Pattern",
+          "summary": "Điều phối transaction phân tán.",
+          "snippet": "reserve -> charge -> confirm / compensate",
+          "application": "Điều phối order và payment.",
+          "tags": [
+            "saga",
+            "distributed"
+          ]
+        }
+      ],
+      "roadmap": [
+        {
+          "stage": "Pha A: Hợp đồng Service",
+          "goals": [
+            "định nghĩa schema API (OpenAPI/protobuf)",
+            "áp dụng chiến lược versioning",
+            "đặt quy tắc tương thích ngược"
+          ],
+          "build": [
+            "user service theo contract-first",
+            "pipeline lint API"
+          ],
+          "tools": [
+            "FastAPI",
+            "Pydantic",
+            "protobuf",
+            "spectral"
+          ],
+          "example_path": "learning-path/advanced/phase-a-service-contracts",
+          "example_file": "learning-path/advanced/phase-a-service-contracts/pydantic_models.py"
+        },
+        {
+          "stage": "Pha B: Event-Driven Core",
+          "goals": [
+            "chọn queue hay stream",
+            "triển khai producer/consumer",
+            "thêm dead letter và retry policy"
+          ],
+          "build": [
+            "pipeline event đơn hàng",
+            "notification worker"
+          ],
+          "tools": [
+            "RabbitMQ",
+            "Kafka",
+            "Redis Streams"
+          ],
+          "example_path": "learning-path/advanced/phase-b-event-driven-core",
+          "example_file": "learning-path/advanced/phase-b-event-driven-core/rabbitmq_worker_example.py"
+        },
+        {
+          "stage": "Pha C: Consistency Patterns",
+          "goals": [
+            "outbox/inbox",
+            "idempotency key",
+            "saga orchestration và compensation"
+          ],
+          "build": [
+            "saga thanh toán + đơn hàng"
+          ],
+          "tools": [
+            "PostgreSQL",
+            "Celery",
+            "Kafka"
+          ],
+          "example_path": "learning-path/advanced/phase-c-consistency-patterns",
+          "example_file": "learning-path/advanced/phase-c-consistency-patterns/outbox_pattern_example.py"
+        },
+        {
+          "stage": "Pha D: Nền tảng Dữ liệu",
+          "goals": [
+            "thiết kế database giao dịch",
+            "chiến lược read model/cache",
+            "governance cho migration"
+          ],
+          "build": [
+            "billing ledger",
+            "read API cho query side"
+          ],
+          "tools": [
+            "SQLAlchemy",
+            "Alembic",
+            "Redis"
+          ],
+          "example_path": "learning-path/advanced/phase-d-data-platform",
+          "example_file": "learning-path/advanced/phase-d-data-platform/repository_pattern.py"
+        },
+        {
+          "stage": "Pha E: Reliability Engineering",
+          "goals": [
+            "timeout budget và retry",
+            "circuit breaker và fallback",
+            "bulkhead isolation"
+          ],
+          "build": [
+            "lớp adapter API có khả năng chịu lỗi"
+          ],
+          "tools": [
+            "httpx",
+            "tenacity",
+            "rate limiting"
+          ],
+          "example_path": "learning-path/advanced/phase-e-reliability-engineering",
+          "example_file": "learning-path/advanced/phase-e-reliability-engineering/resilient_http_client.py"
+        },
+        {
+          "stage": "Pha F: Bảo mật",
+          "goals": [
+            "kiến trúc OIDC/JWT",
+            "xoay khóa",
+            "quản lý secret và policy"
+          ],
+          "build": [
+            "auth gateway",
+            "service introspection token"
+          ],
+          "tools": [
+            "Auth0/Keycloak",
+            "Vault",
+            "OPA"
+          ],
+          "example_path": "learning-path/advanced/phase-f-security",
+          "example_file": "learning-path/advanced/phase-f-security/jwt_service_example.py"
+        },
+        {
+          "stage": "Pha G: Quan sát hệ thống",
+          "goals": [
+            "dashboard golden signals",
+            "distributed tracing",
+            "alert routing và runbook"
+          ],
+          "build": [
+            "full telemetry stack cho 3 service"
+          ],
+          "tools": [
+            "Prometheus",
+            "Grafana",
+            "OpenTelemetry",
+            "Loki"
+          ],
+          "example_path": "learning-path/advanced/phase-g-observability",
+          "example_file": "learning-path/advanced/phase-g-observability/structured_logging_example.py"
+        },
+        {
+          "stage": "Pha H: Platform và Delivery",
+          "goals": [
+            "hardening container",
+            "template deploy Kubernetes",
+            "release canary/blue-green"
+          ],
+          "build": [
+            "bản thiết kế triển khai production"
+          ],
+          "tools": [
+            "Docker",
+            "Kubernetes",
+            "Argo Rollouts"
+          ],
+          "example_path": "learning-path/advanced/phase-h-platform-delivery",
+          "example_file": ""
+        },
+        {
+          "stage": "Pha I: Governance và Cost",
+          "goals": [
+            "mô hình ownership cho service",
+            "SLO và error budget",
+            "tối ưu chi phí/hiệu năng"
+          ],
+          "build": [
+            "service catalog cho team + playbook vận hành"
+          ],
+          "tools": [
+            "Backstage",
+            "FinOps dashboards"
+          ],
+          "example_path": "learning-path/advanced/phase-i-governance-and-cost",
+          "example_file": ""
+        }
+      ],
+      "java_python_map": [
+        {
+          "domain": "Message Queue",
+          "java_stack": "RabbitMQ + Spring AMQP",
+          "python_stack": "RabbitMQ + aio-pika / pika + Celery",
+          "when": "Xử lý job bất đồng bộ, delayed task"
+        },
+        {
+          "domain": "Event Streaming",
+          "java_stack": "Kafka + Spring Kafka",
+          "python_stack": "Kafka + aiokafka / confluent-kafka",
+          "when": "Kiến trúc event-driven, audit log, analytics"
+        },
+        {
+          "domain": "REST API",
+          "java_stack": "Spring Boot",
+          "python_stack": "FastAPI / Flask",
+          "when": "HTTP service public hoặc nội bộ"
+        },
+        {
+          "domain": "ORM",
+          "java_stack": "JPA / Hibernate",
+          "python_stack": "SQLAlchemy",
+          "when": "Lưu trữ quan hệ theo repository pattern"
+        },
+        {
+          "domain": "Batch Jobs",
+          "java_stack": "Spring Batch",
+          "python_stack": "Celery beat / Airflow",
+          "when": "ETL theo lịch hoặc xử lý định kỳ"
+        },
+        {
+          "domain": "Service Discovery",
+          "java_stack": "Eureka",
+          "python_stack": "Consul / Kubernetes DNS",
+          "when": "Phân giải service động giữa các service"
+        },
+        {
+          "domain": "Config Server",
+          "java_stack": "Spring Cloud Config",
+          "python_stack": "env + Vault + config service",
+          "when": "Quản lý cấu hình tập trung"
+        },
+        {
+          "domain": "Gateway",
+          "java_stack": "Spring Cloud Gateway",
+          "python_stack": "Kong / Traefik / Nginx + FastAPI",
+          "when": "Auth, routing, throttling, request policy"
+        },
+        {
+          "domain": "Observability",
+          "java_stack": "Micrometer + Zipkin",
+          "python_stack": "Prometheus + OpenTelemetry + Grafana",
+          "when": "Metrics và tracing ở quy mô lớn"
+        }
+      ],
+      "open_source_stacks": [
+        {
+          "name": "Event-Driven Core",
+          "use_case": "Event domain và giao tiếp bất đồng bộ giữa service.",
+          "packages": [
+            "aiokafka",
+            "pydantic",
+            "tenacity"
+          ]
+        },
+        {
+          "name": "Queue Worker Core",
+          "use_case": "Xử lý nền đáng tin cậy với retry.",
+          "packages": [
+            "celery",
+            "rabbitmq",
+            "redis"
+          ]
+        },
+        {
+          "name": "Service Platform Core",
+          "use_case": "Nền API HTTP + DB + migration + cache.",
+          "packages": [
+            "fastapi",
+            "sqlalchemy",
+            "alembic",
+            "redis",
+            "httpx"
+          ]
+        },
+        {
+          "name": "Observability Core",
+          "use_case": "Metrics, tracing và liên kết log.",
+          "packages": [
+            "prometheus-client",
+            "opentelemetry-sdk",
+            "structlog"
+          ]
+        },
+        {
+          "name": "Security Core",
+          "use_case": "AuthN/AuthZ và quản lý secrets.",
+          "packages": [
+            "pyjwt",
+            "passlib",
+            "authlib",
+            "hvac"
+          ]
+        }
+      ],
+      "mini_projects": [
+        {
+          "name": "Cột mốc Advanced 1: Event Pipeline Starter",
+          "path": "learning-path/projects/advanced-event-pipeline-starter",
+          "focus": "Luồng producer-consumer + retry + outbox pattern",
+          "stack": [
+            "Kafka",
+            "RabbitMQ",
+            "SQLite",
+            "Python workers"
+          ]
+        },
+        {
+          "name": "Cột mốc Advanced 2: Observable Service Platform",
+          "path": "learning-path/projects/advanced-observable-service-platform",
+          "focus": "API + DB + metrics + structured logging + template deploy",
+          "stack": [
+            "FastAPI",
+            "PostgreSQL",
+            "Prometheus",
+            "OpenTelemetry",
+            "Docker"
+          ]
+        },
+        {
+          "name": "Cột mốc Advanced 3: Capstone E2E Platform",
+          "path": "learning-path/projects/capstone-e2e-platform",
+          "focus": "API + queue + DB + metrics + dashboard + template deploy + tests",
+          "stack": [
+            "http.server",
+            "sqlite3",
+            "pytest",
+            "docker-compose",
+            "k8s manifest"
+          ]
+        }
+      ],
+      "architecture_diagrams": [
+        {
+          "title": "Luồng Worker RabbitMQ",
+          "file": "assets/diagrams/rabbitmq-flow.svg"
+        },
+        {
+          "title": "Luồng Xử lý Stream Kafka",
+          "file": "assets/diagrams/kafka-flow.svg"
+        },
+        {
+          "title": "Luồng Transaction Outbox Pattern",
+          "file": "assets/diagrams/outbox-pattern.svg"
+        },
+        {
+          "title": "Luồng Điều phối Saga",
+          "file": "assets/diagrams/saga-flow.svg"
+        }
+      ],
+      "extra_examples": [
+        {
+          "title": "retry backoff",
+          "path": "learning-path/advanced/extras/retry-backoff/example.py"
+        },
+        {
+          "title": "circuit breaker",
+          "path": "learning-path/advanced/extras/circuit-breaker/example.py"
+        },
+        {
+          "title": "middleware idempotency",
+          "path": "learning-path/advanced/extras/idempotency-middleware/example.py"
+        },
+        {
+          "title": "saga compensation",
+          "path": "learning-path/advanced/extras/saga-compensation/example.py"
+        },
+        {
+          "title": "outbox relay",
+          "path": "learning-path/advanced/extras/outbox-relay/example.py"
+        },
+        {
+          "title": "contract testing",
+          "path": "learning-path/advanced/extras/contract-testing/example.py"
+        },
+        {
+          "title": "pattern tests",
+          "path": "learning-path/advanced/extras/tests/test_patterns.py"
+        }
+      ],
+      "capstone_projects": [
+        {
+          "name": "Nền tảng Market Intelligence Realtime",
+          "scope": "ingestion -> processing -> alerting -> dashboard",
+          "stack": [
+            "FastAPI",
+            "Kafka",
+            "Redis",
+            "PostgreSQL",
+            "Grafana"
+          ]
+        },
+        {
+          "name": "Microservice Sự kiện E-commerce",
+          "scope": "catalog, cart, payment, shipment, notification",
+          "stack": [
+            "FastAPI",
+            "RabbitMQ",
+            "Celery",
+            "OpenTelemetry",
+            "Kubernetes"
+          ]
+        },
+        {
+          "name": "Bộ điều phối AI Workflow",
+          "scope": "job queue, model adapter, usage metering, billing",
+          "stack": [
+            "FastAPI",
+            "Dramatiq",
+            "Redis",
+            "PostgreSQL",
+            "Prometheus"
+          ]
+        }
+      ],
+      "recommended_services": [
+        {
+          "name": "composio",
+          "path": "services/composio",
+          "entrypoint": "services/composio/upload-video-youtube/app.py",
+          "python_files": 4,
+          "requirements": [],
+          "tech_stack": [
+            "composio_langchain",
+            "configparser",
+            "flask",
+            "langchain",
+            "langchain_openai",
+            "requests"
+          ],
+          "topics": [
+            "API orchestration",
+            "automation workflows",
+            "template rendering"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "crypto-bot",
+          "path": "services/crypto-bot",
+          "entrypoint": "services/crypto-bot/main.py",
+          "python_files": 29,
+          "requirements": [
+            "python-telegram-bot",
+            "python-dotenv",
+            "apscheduler",
+            "feedparser",
+            "pytest"
+          ],
+          "tech_stack": [
+            "apscheduler",
+            "difflib",
+            "dotenv",
+            "feedparser",
+            "modules",
+            "pytest",
+            "python-dotenv",
+            "python-telegram-bot",
+            "requests",
+            "telegram"
+          ],
+          "topics": [
+            "telegram bot",
+            "schedulers",
+            "external APIs",
+            "testing"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "dropshipping-bot",
+          "path": "services/dropshipping-bot",
+          "entrypoint": "services/dropshipping-bot/configs/base_config.py",
+          "python_files": 6,
+          "requirements": [],
+          "tech_stack": [
+            "dotenv",
+            "services",
+            "utils"
+          ],
+          "topics": [
+            "service architecture",
+            "configuration management"
+          ],
+          "level": "advanced"
+        },
+        {
+          "name": "smart-contract",
+          "path": "services/smart-contract",
+          "entrypoint": "services/smart-contract/main.py",
+          "python_files": 1,
+          "requirements": [],
+          "tech_stack": [
+            "web3"
+          ],
+          "topics": [
+            "web3",
+            "blockchain transactions",
+            "contract deployment"
+          ],
+          "level": "advanced"
+        }
+      ]
+    }
+  }
 }

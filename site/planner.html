@@ -3,26 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Interview Practice</title>
+    <title>Python Labs Study Planner</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body
-    class="interview-body"
-    data-page="interview-catalog"
-    data-source="data/interview-practice-catalog.json"
-  >
-    <header class="hero interview-hero">
+  <body data-page="planner" data-source="data/planner.json">
+    <header class="hero planner-hero">
       <div class="hero-content">
         <div class="lang-switch top-right" aria-label="Language switcher">
           <button type="button" class="lang-btn active" data-lang="en">EN</button>
           <button type="button" class="lang-btn" data-lang="vi">VI</button>
         </div>
         <p class="eyebrow" id="eyebrow">Python Labs</p>
-        <h1 id="title">Code Interview Practice</h1>
+        <h1 id="title">Study Planner</h1>
         <p id="subtitle"></p>
         <div class="hero-actions">
-          <a class="btn" id="heroPrimaryButton" href="code-questions.html?set=basic">Open Code Questions</a>
-          <a class="btn" id="heroSecondaryButton" href="interview-sources.html">Open Interview Sources</a>
           <a class="btn" id="backButton" href="index.html">Back to track selection</a>
         </div>
       </div>
@@ -31,33 +25,33 @@
 
     <main>
       <section class="panel">
-        <h2 id="sectionLadders">Code Ladders</h2>
-        <div id="ladders" class="cards"></div>
+        <h2 id="sectionHighlights">How To Use This Planner</h2>
+        <div id="highlights" class="cards compact-cards"></div>
       </section>
 
       <section class="panel">
-        <h2 id="sectionTopicCatalog">Code Topic Catalog</h2>
-        <div id="topicCatalog" class="cards"></div>
+        <h2 id="sectionQuickStart">Quick Start</h2>
+        <div id="quickStart" class="cards compact-cards"></div>
       </section>
 
       <section class="panel">
-        <h2 id="sectionPracticeSets">Code Practice Sets</h2>
-        <div id="practiceSets" class="cards"></div>
+        <h2 id="sectionHabits">Daily Habits</h2>
+        <div id="habits" class="cards compact-cards"></div>
       </section>
 
       <section class="panel">
-        <h2 id="sectionProjectIdeas">Portfolio Project Ideas</h2>
-        <div id="projectIdeas" class="cards"></div>
+        <h2 id="sectionPlans">Study Plans</h2>
+        <div id="plans" class="timeline"></div>
       </section>
 
       <section class="panel">
-        <h2 id="sectionPrepNotes">Preparation Notes</h2>
-        <div id="prepNotes" class="cards"></div>
+        <h2 id="sectionReview">Weekly Review Questions</h2>
+        <div id="reviewQuestions" class="cards compact-cards"></div>
       </section>
     </main>
 
     <footer><span id="generatedAt"></span></footer>
     <script src="assets/site.js"></script>
-    <script src="assets/interview.js"></script>
+    <script src="assets/planner.js"></script>
   </body>
 </html>
